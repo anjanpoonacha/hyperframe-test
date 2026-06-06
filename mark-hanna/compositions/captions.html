@@ -1,0 +1,267 @@
+<template id="captions-template">
+  <div data-composition-id="captions" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; pointer-events:none;">
+    <style>
+      @font-face {
+        font-family: "Source Serif 4";
+        src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2");
+        font-weight: 900;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2");
+        font-weight: 400 700;
+        font-style: normal;
+      }
+      #cap-stage {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        font-family: "Roboto Mono", "Courier New", monospace;
+      }
+      .cap-group {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 1500px;
+        padding: 14px 32px;
+        font-size: 36px;
+        font-weight: 500;
+        line-height: 1.25;
+        text-align: center;
+        color: #E8DEC8;
+        letter-spacing: 0.02em;
+        background: rgba(14, 11, 8, 0.88);
+        border-top: 1px solid rgba(200, 117, 51, 0.6);
+        border-bottom: 1px solid rgba(200, 117, 51, 0.6);
+        backdrop-filter: blur(2px);
+        opacity: 0;
+        visibility: hidden;
+      }
+    </style>
+
+    <div data-hf-studio-original-display="" data-hf-studio-original-box-sizing="" data-hf-studio-original-flex-shrink="" data-hf-studio-original-flex-grow="" data-hf-studio-original-flex-basis="" data-hf-studio-original-max-height="" data-hf-studio-original-max-width="" data-hf-studio-original-min-height="" data-hf-studio-original-min-width="" data-hf-studio-original-height="" data-hf-studio-original-width="" data-hf-studio-box-size="true" style="--hf-studio-width:1920px;--hf-studio-height:1080px;width:1920px;height:1080px;min-width:0px;min-height:0px;max-width:none;max-height:none;box-sizing:border-box" id="cap-stage">
+                                                                                                <div class="cap-group" id="cap-0">The cartoon ran in every</div>
+                                                <div class="cap-group" id="cap-1">Hearst paper in America.</div>
+                                                <div class="cap-group" id="cap-2">A fat man, in a</div>
+                                                <div class="cap-group" id="cap-3">suit covered in dollar signs,</div>
+                                                <div class="cap-group" id="cap-4">smoking a cigar the size</div>
+                                                <div class="cap-group" id="cap-5">of his forearm.</div>
+                                                <div class="cap-group" id="cap-6">The caption changed every week.</div>
+                                                <div class="cap-group" id="cap-7">The man did not.</div>
+                                                <div class="cap-group" id="cap-8">His name was Mark Hanna.</div>
+                                                <div class="cap-group" id="cap-9">And in eighteen ninety-six, he</div>
+                                                <div class="cap-group" id="cap-10">did something no one had</div>
+                                                <div class="cap-group" id="cap-11">ever done at that scale.</div>
+                                                <div class="cap-group" id="cap-12">He turned the American presidential</div>
+                                                <div class="cap-group" id="cap-13">election into a corporate purchase</div>
+                                                <div class="cap-group" id="cap-14">order.</div>
+                                                <div class="cap-group" id="cap-15">Three and a half million</div>
+                                                <div class="cap-group" id="cap-16">dollars raised.</div>
+                                                <div class="cap-group" id="cap-17">Twenty times what his opponent</div>
+                                                <div class="cap-group" id="cap-18">spent.</div>
+                                                <div class="cap-group" id="cap-19">Banks assessed at a quarter</div>
+                                                <div class="cap-group" id="cap-20">of a percent of capital.</div>
+                                                <div class="cap-group" id="cap-21">Railroads, shaken down personally.</div>
+                                                <div class="cap-group" id="cap-22">Standard Oil, two hundred and</div>
+                                                <div class="cap-group" id="cap-23">fifty thousand dollars.</div>
+                                                <div class="cap-group" id="cap-24">JP Morgan, two hundred and</div>
+                                                <div class="cap-group" id="cap-25">fifty thousand dollars.</div>
+                                                <div class="cap-group" id="cap-26">Half a million voters, transported</div>
+                                                <div class="cap-group" id="cap-27">by train, to shake one</div>
+                                                <div class="cap-group" id="cap-28">man's hand.</div>
+                                                <div class="cap-group" id="cap-29">Two hundred million pieces of</div>
+                                                <div class="cap-group" id="cap-30">campaign literature, printed and mailed.</div>
+                                                <div class="cap-group" id="cap-31">The opposition had a thirty-six</div>
+                                                <div class="cap-group" id="cap-32">year old preacher who could</div>
+                                                <div class="cap-group" id="cap-33">move a crowd to tears.</div>
+                                                <div class="cap-group" id="cap-34">Hanna had a ledger.</div>
+                                                <div class="cap-group" id="cap-35">And when November came, the</div>
+                                                <div class="cap-group" id="cap-36">ledger won.</div>
+                                                <div class="cap-group" id="cap-37">He wasn't born with money.</div>
+                                                <div class="cap-group" id="cap-38">He was born in a</div>
+                                                <div class="cap-group" id="cap-39">grocery.</div>
+                                                <div class="cap-group" id="cap-40">New Lisbon, Ohio.</div>
+                                                <div class="cap-group" id="cap-41">Eighteen thirty-seven.</div>
+                                                <div class="cap-group" id="cap-42">His father, Doctor Leonard Hanna,</div>
+                                                <div class="cap-group" id="cap-43">was a country physician who</div>
+                                                <div class="cap-group" id="cap-44">ran a wholesale grocery on</div>
+                                                <div class="cap-group" id="cap-45">the side.</div>
+                                                <div class="cap-group" id="cap-46">Flour, salt, dry goods to</div>
+                                                <div class="cap-group" id="cap-47">Ohio farmers.</div>
+                                                <div class="cap-group" id="cap-48">When Mark was fifteen, the</div>
+                                                <div class="cap-group" id="cap-49">family moved to Cleveland.</div>
+                                                <div class="cap-group" id="cap-50">He enrolled at Western Reserve</div>
+                                                <div class="cap-group" id="cap-51">College.</div>
+                                                <div class="cap-group" id="cap-52">In his class, was a</div>
+                                                <div class="cap-group" id="cap-53">quiet, awkward boy who would</div>
+                                                <div class="cap-group" id="cap-54">grow up to control ninety</div>
+                                                <div class="cap-group" id="cap-55">percent of the oil refining</div>
+                                                <div class="cap-group" id="cap-56">capacity in the United States.</div>
+                                                <div class="cap-group" id="cap-57">His name was John D.</div>
+                                                <div class="cap-group" id="cap-58">Rockefeller.</div>
+                                                <div class="cap-group" id="cap-59">The two would orbit each</div>
+                                                <div class="cap-group" id="cap-60">other for the next forty</div>
+                                                <div class="cap-group" id="cap-61">years.</div>
+                                                <div class="cap-group" id="cap-62">Hanna lasted one year at</div>
+                                                <div class="cap-group" id="cap-63">Western Reserve before he quit.</div>
+                                                <div class="cap-group" id="cap-64">Not because he was failing.</div>
+                                                <div class="cap-group" id="cap-65">Because he had already figured</div>
+                                                <div class="cap-group" id="cap-66">out something the professors couldn't</div>
+                                                <div class="cap-group" id="cap-67">teach.</div>
+                                                <div class="cap-group" id="cap-68">The real education, was in</div>
+                                                <div class="cap-group" id="cap-69">the price of things.</div>
+                                                <div class="cap-group" id="cap-70">He went back to the</div>
+                                                <div class="cap-group" id="cap-71">store.</div>
+                                                <div class="cap-group" id="cap-72">Worked the floor.</div>
+                                                <div class="cap-group" id="cap-73">Watched how men negotiated.</div>
+                                                <div class="cap-group" id="cap-74">Watched who paid on time</div>
+                                                <div class="cap-group" id="cap-75">and who didn't.</div>
+                                                <div class="cap-group" id="cap-76">Watched which suppliers had leverage,</div>
+                                                <div class="cap-group" id="cap-77">and which ones begged.</div>
+                                                <div class="cap-group" id="cap-78">Then the Civil War came.</div>
+                                                <div class="cap-group" id="cap-79">He served briefly.</div>
+                                                <div class="cap-group" id="cap-80">Came home.</div>
+                                                <div class="cap-group" id="cap-81">And married a woman named</div>
+                                                <div class="cap-group" id="cap-82">Charlotte Rhodes.</div>
+                                                <div class="cap-group" id="cap-83">Her father was Daniel Rhodes.</div>
+                                                <div class="cap-group" id="cap-84">Coal and iron.</div>
+                                                <div class="cap-group" id="cap-85">One of the men quietly</div>
+                                                <div class="cap-group" id="cap-86">getting rich off everything Cleveland</div>
+                                                <div class="cap-group" id="cap-87">was becoming.</div>
+                                                <div class="cap-group" id="cap-88">Hanna walked into that business,</div>
+                                                <div class="cap-group" id="cap-89">and never walked out.</div>
+                                                <div class="cap-group" id="cap-90">By eighteen sixty-seven, Marcus Alonzo</div>
+                                                <div class="cap-group" id="cap-91">Hanna had built MA Hanna</div>
+                                                <div class="cap-group" id="cap-92">and Company.</div>
+                                                <div class="cap-group" id="cap-93">A coal and iron brokerage,</div>
+                                                <div class="cap-group" id="cap-94">sitting at the exact pivot</div>
+                                                <div class="cap-group" id="cap-95">point where Lake Erie ore</div>
+                                                <div class="cap-group" id="cap-96">boats unloaded for the Pittsburgh</div>
+                                                <div class="cap-group" id="cap-97">steel mills.</div>
+                                                <div class="cap-group" id="cap-98">Cleveland was the chokepoint.</div>
+                                                <div class="cap-group" id="cap-99">And Hanna sat on it.</div>
+                                                <div class="cap-group" id="cap-100">Every ton of iron ore</div>
+                                                <div class="cap-group" id="cap-101">that crossed Lake Erie in</div>
+                                                <div class="cap-group" id="cap-102">the eighteen seventies, passed through</div>
+                                                <div class="cap-group" id="cap-103">brokers like him, he took</div>
+                                                <div class="cap-group" id="cap-104">a cut.</div>
+                                                <div class="cap-group" id="cap-105">Then he bought the newspaper,</div>
+                                                <div class="cap-group" id="cap-106">the Cleveland Herald.</div>
+                                                <div class="cap-group" id="cap-107">Then a theater.</div>
+                                                <div class="cap-group" id="cap-108">Then banking interests.</div>
+                                                <div class="cap-group" id="cap-109">Then a streetcar line.</div>
+                                                <div class="cap-group" id="cap-110">By eighteen eighty, he controlled</div>
+                                                <div class="cap-group" id="cap-111">enough of Cleveland that when</div>
+                                                <div class="cap-group" id="cap-112">he walked into a room,</div>
+                                                <div class="cap-group" id="cap-113">the room changed temperature.</div>
+                                                <div class="cap-group" id="cap-114">And he was bored.</div>
+                                                <div class="cap-group" id="cap-115">Not with money, he had</div>
+                                                <div class="cap-group" id="cap-116">money.</div>
+                                                <div class="cap-group" id="cap-117">Bored with the ceiling.</div>
+                                                <div class="cap-group" id="cap-118">Because Hanna had figured out,</div>
+                                                <div class="cap-group" id="cap-119">watching the men who supplied</div>
+                                                <div class="cap-group" id="cap-120">his coal, the politicians who</div>
+                                                <div class="cap-group" id="cap-121">regulated his railroads, the judges</div>
+                                                <div class="cap-group" id="cap-122">who settled his contracts, that</div>
+                                                <div class="cap-group" id="cap-123">money was the second most</div>
+                                                <div class="cap-group" id="cap-124">powerful thing in America.</div>
+                                                <div class="cap-group" id="cap-125">The most powerful thing, was</div>
+                                                <div class="cap-group" id="cap-126">who decided where the money</div>
+                                                <div class="cap-group" id="cap-127">went.</div>
+                                                <div class="cap-group" id="cap-128">That was politics.</div>
+                                                <div class="cap-group" id="cap-129">And no one had ever</div>
+                                                <div class="cap-group" id="cap-130">run it like a business.</div>
+                                                <div class="cap-group" id="cap-131">Not yet.</div>
+                                                <div class="cap-group" id="cap-132">The year was eighteen eighty-eight.</div>
+                                                <div class="cap-group" id="cap-133">The Republican National Convention.</div>
+                                                <div class="cap-group" id="cap-134">Chicago.</div>
+                                                <div class="cap-group" id="cap-135">Mark Hanna arrived not as</div>
+                                                <div class="cap-group" id="cap-136">a candidate, but as a</div>
+                                                <div class="cap-group" id="cap-137">kingmaker.</div>
+                                                <div class="cap-group" id="cap-138">His man was John Sherman.</div>
+                                                <div class="cap-group" id="cap-139">Ohio senator.</div>
+                                                <div class="cap-group" id="cap-140">Treasury veteran.</div>
+                                                <div class="cap-group" id="cap-141">The establishment choice.</div>
+                                                <div class="cap-group" id="cap-142">Hanna worked the convention floor</div>
+                                                <div class="cap-group" id="cap-143">for six days.</div>
+                                                <div class="cap-group" id="cap-144">Trading delegates.</div>
+                                                <div class="cap-group" id="cap-145">Promising postmasterships.</div>
+                                                <div class="cap-group" id="cap-146">Calling in markers from Ohio</div>
+                                                <div class="cap-group" id="cap-147">to Pennsylvania.</div>
+                                                <div class="cap-group" id="cap-148">Sherman peaked on the first</div>
+                                                <div class="cap-group" id="cap-149">ballot at two hundred and</div>
+                                                <div class="cap-group" id="cap-150">twenty-nine votes.</div>
+                                                <div class="cap-group" id="cap-151">Then he bled out.</div>
+                                                <div class="cap-group" id="cap-152">Ballot after ballot, until the</div>
+                                                <div class="cap-group" id="cap-153">nomination went to Benjamin Harrison</div>
+                                                <div class="cap-group" id="cap-154">on the eighth.</div>
+                                                <div class="cap-group" id="cap-155">Hanna lost.</div>
+                                                <div class="cap-group" id="cap-156">But he saw something that</div>
+                                                <div class="cap-group" id="cap-157">week he would never forget.</div>
+                                                <div class="cap-group" id="cap-158">A forty-five year old congressman</div>
+                                                <div class="cap-group" id="cap-159">from Canton, Ohio had been</div>
+                                                <div class="cap-group" id="cap-160">chairing the resolutions committee.</div>
+                                                <div class="cap-group" id="cap-161">When delegates began breaking toward</div>
+                                                <div class="cap-group" id="cap-162">him as a dark-horse alternative,</div>
+                                                <div class="cap-group" id="cap-163">the congressman walked to the</div>
+                                                <div class="cap-group" id="cap-164">microphone, and refused.</div>
+                                                <div class="cap-group" id="cap-165">He told the convention he</div>
+                                                <div class="cap-group" id="cap-166">was bound to Sherman.</div>
+                                                <div class="cap-group" id="cap-167">And he sat down.</div>
+                                                <div class="cap-group" id="cap-168">That kind of loyalty was</div>
+                                                <div class="cap-group" id="cap-169">rare in eighteen eighty-eight politics.</div>
+                                                <div class="cap-group" id="cap-170">It was almost extinct.</div>
+                                                <div class="cap-group" id="cap-171">His name was William McKinley.</div>
+                                                <div class="cap-group" id="cap-172">Hanna walked across the floor,</div>
+                                                <div class="cap-group" id="cap-173">and introduced himself.</div>
+                                                <div class="cap-group" id="cap-174">He didn't know it yet.</div>
+                                                <div class="cap-group" id="cap-175">But he had just found</div>
+                                                <div class="cap-group" id="cap-176">his president.</div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      const groups = [{"id":"cap-0","start":0.04,"end":1.28},{"id":"cap-1","start":1.28,"end":3.08},{"id":"cap-2","start":3.08,"end":3.83},{"id":"cap-3","start":3.83,"end":5.76},{"id":"cap-4","start":5.76,"end":7.22},{"id":"cap-5","start":7.22,"end":8.36},{"id":"cap-6","start":8.36,"end":10.3},{"id":"cap-7","start":10.3,"end":11.56},{"id":"cap-8","start":11.56,"end":13.31},{"id":"cap-9","start":13.31,"end":14.75},{"id":"cap-10","start":14.75,"end":15.89},{"id":"cap-11","start":15.89,"end":17.2},{"id":"cap-12","start":17.2,"end":18.92},{"id":"cap-13","start":18.92,"end":20.8},{"id":"cap-14","start":20.8,"end":21.28},{"id":"cap-15","start":21.28,"end":22.73},{"id":"cap-16","start":22.73,"end":23.72},{"id":"cap-17","start":23.72,"end":25.21},{"id":"cap-18","start":25.21,"end":25.68},{"id":"cap-19","start":25.68,"end":27.07},{"id":"cap-20","start":27.07,"end":28.44},{"id":"cap-21","start":28.48,"end":30.82},{"id":"cap-22","start":30.82,"end":31.94},{"id":"cap-23","start":31.94,"end":33.76},{"id":"cap-24","start":33.76,"end":34.61},{"id":"cap-25","start":34.61,"end":36.68},{"id":"cap-26","start":36.68,"end":38.44},{"id":"cap-27","start":38.44,"end":39.69},{"id":"cap-28","start":39.69,"end":40.6},{"id":"cap-29","start":40.6,"end":41.86},{"id":"cap-30","start":41.86,"end":44.36},{"id":"cap-31","start":44.36,"end":45.43},{"id":"cap-32","start":45.43,"end":47.48},{"id":"cap-33","start":47.48,"end":48.9},{"id":"cap-34","start":48.9,"end":50.27},{"id":"cap-35","start":50.27,"end":51.68},{"id":"cap-36","start":51.68,"end":52.36},{"id":"cap-37","start":52.36,"end":53.84},{"id":"cap-38","start":53.84,"end":54.7},{"id":"cap-39","start":54.7,"end":55.48},{"id":"cap-40","start":55.48,"end":56.86},{"id":"cap-41","start":56.86,"end":58.14},{"id":"cap-42","start":58.18,"end":59.85},{"id":"cap-43","start":59.85,"end":60.97},{"id":"cap-44","start":60.97,"end":62.51},{"id":"cap-45","start":62.51,"end":63.22},{"id":"cap-46","start":63.22,"end":64.96},{"id":"cap-47","start":64.96,"end":66.08},{"id":"cap-48","start":66.08,"end":67.43},{"id":"cap-49","start":67.43,"end":69.04},{"id":"cap-50","start":69.04,"end":70.97},{"id":"cap-51","start":70.97,"end":71.4},{"id":"cap-52","start":71.4,"end":72.52},{"id":"cap-53","start":72.52,"end":74.35},{"id":"cap-54","start":74.35,"end":75.2},{"id":"cap-55","start":75.2,"end":77.28},{"id":"cap-56","start":77.28,"end":79.36},{"id":"cap-57","start":79.36,"end":80.56},{"id":"cap-58","start":80.56,"end":81.54},{"id":"cap-59","start":81.54,"end":82.49},{"id":"cap-60","start":82.49,"end":83.88},{"id":"cap-61","start":83.88,"end":84.48},{"id":"cap-62","start":84.48,"end":85.71},{"id":"cap-63","start":85.71,"end":87.5},{"id":"cap-64","start":87.5,"end":88.96},{"id":"cap-65","start":88.96,"end":90.03},{"id":"cap-66","start":90.03,"end":91.84},{"id":"cap-67","start":91.84,"end":92.24},{"id":"cap-68","start":92.24,"end":93.59},{"id":"cap-69","start":93.59,"end":94.84},{"id":"cap-70","start":94.84,"end":95.69},{"id":"cap-71","start":95.69,"end":96.12},{"id":"cap-72","start":96.12,"end":97.12},{"id":"cap-73","start":97.12,"end":98.94},{"id":"cap-74","start":98.94,"end":100.24},{"id":"cap-75","start":100.24,"end":101.2},{"id":"cap-76","start":101.2,"end":103.2},{"id":"cap-77","start":103.2,"end":104.34},{"id":"cap-78","start":104.34,"end":105.64},{"id":"cap-79","start":105.64,"end":106.9},{"id":"cap-80","start":106.9,"end":107.88},{"id":"cap-81","start":107.88,"end":109.09},{"id":"cap-82","start":109.09,"end":110.2},{"id":"cap-83","start":110.2,"end":111.96},{"id":"cap-84","start":111.96,"end":112.8},{"id":"cap-85","start":112.8,"end":113.64},{"id":"cap-86","start":113.64,"end":115.48},{"id":"cap-87","start":115.48,"end":116.28},{"id":"cap-88","start":116.32,"end":117.68},{"id":"cap-89","start":117.68,"end":119.0},{"id":"cap-90","start":119.0,"end":121.0},{"id":"cap-91","start":121.0,"end":122.7},{"id":"cap-92","start":122.7,"end":123.6},{"id":"cap-93","start":123.6,"end":125.32},{"id":"cap-94","start":125.32,"end":126.85},{"id":"cap-95","start":126.85,"end":128.31},{"id":"cap-96","start":128.31,"end":130.04},{"id":"cap-97","start":130.04,"end":130.8},{"id":"cap-98","start":130.8,"end":132.54},{"id":"cap-99","start":132.54,"end":133.72},{"id":"cap-100","start":133.72,"end":134.88},{"id":"cap-101","start":134.88,"end":135.97},{"id":"cap-102","start":135.97,"end":137.58},{"id":"cap-103","start":137.58,"end":138.98},{"id":"cap-104","start":138.98,"end":139.64},{"id":"cap-105","start":139.64,"end":140.87},{"id":"cap-106","start":140.87,"end":141.92},{"id":"cap-107","start":141.92,"end":142.83},{"id":"cap-108","start":142.83,"end":144.2},{"id":"cap-109","start":144.2,"end":145.64},{"id":"cap-110","start":145.68,"end":146.94},{"id":"cap-111","start":146.94,"end":148.18},{"id":"cap-112","start":148.18,"end":149.08},{"id":"cap-113","start":149.08,"end":150.92},{"id":"cap-114","start":150.92,"end":151.96},{"id":"cap-115","start":151.96,"end":153.14},{"id":"cap-116","start":153.14,"end":153.48},{"id":"cap-117","start":153.48,"end":154.84},{"id":"cap-118","start":154.84,"end":156.2},{"id":"cap-119","start":156.2,"end":157.65},{"id":"cap-120","start":157.65,"end":159.27},{"id":"cap-121","start":159.27,"end":161.38},{"id":"cap-122","start":161.38,"end":163.08},{"id":"cap-123","start":163.08,"end":164.33},{"id":"cap-124","start":164.33,"end":165.84},{"id":"cap-125","start":165.84,"end":167.12},{"id":"cap-126","start":167.12,"end":168.46},{"id":"cap-127","start":168.46,"end":168.96},{"id":"cap-128","start":168.96,"end":170.12},{"id":"cap-129","start":170.12,"end":170.96},{"id":"cap-130","start":170.96,"end":172.12},{"id":"cap-131","start":172.12,"end":172.96},{"id":"cap-132","start":172.96,"end":174.88},{"id":"cap-133","start":174.92,"end":177.25},{"id":"cap-134","start":177.25,"end":178.0},{"id":"cap-135","start":178.0,"end":179.36},{"id":"cap-136","start":179.36,"end":180.52},{"id":"cap-137","start":180.52,"end":181.28},{"id":"cap-138","start":181.28,"end":182.96},{"id":"cap-139","start":182.96,"end":183.94},{"id":"cap-140","start":183.94,"end":185.24},{"id":"cap-141","start":185.24,"end":186.8},{"id":"cap-142","start":186.8,"end":188.24},{"id":"cap-143","start":188.24,"end":189.24},{"id":"cap-144","start":189.24,"end":190.36},{"id":"cap-145","start":190.36,"end":192.02},{"id":"cap-146","start":192.02,"end":193.71},{"id":"cap-147","start":193.71,"end":194.9},{"id":"cap-148","start":194.9,"end":196.63},{"id":"cap-149","start":196.63,"end":197.23},{"id":"cap-150","start":197.23,"end":198.56},{"id":"cap-151","start":198.56,"end":199.63},{"id":"cap-152","start":199.63,"end":201.36},{"id":"cap-153","start":201.36,"end":203.32},{"id":"cap-154","start":203.32,"end":204.3},{"id":"cap-155","start":204.34,"end":205.4},{"id":"cap-156","start":205.4,"end":206.54},{"id":"cap-157","start":206.54,"end":207.88},{"id":"cap-158","start":207.88,"end":209.72},{"id":"cap-159","start":209.72,"end":211.54},{"id":"cap-160","start":211.54,"end":213.48},{"id":"cap-161","start":213.48,"end":215.19},{"id":"cap-162","start":215.19,"end":217.1},{"id":"cap-163","start":217.1,"end":218.63},{"id":"cap-164","start":218.63,"end":220.08},{"id":"cap-165","start":220.08,"end":221.44},{"id":"cap-166","start":221.44,"end":222.58},{"id":"cap-167","start":222.58,"end":223.8},{"id":"cap-168","start":223.8,"end":225.25},{"id":"cap-169","start":225.25,"end":227.44},{"id":"cap-170","start":227.44,"end":229.0},{"id":"cap-171","start":229.0,"end":231.12},{"id":"cap-172","start":231.12,"end":232.84},{"id":"cap-173","start":232.84,"end":233.92},{"id":"cap-174","start":233.96,"end":235.61},{"id":"cap-175","start":235.61,"end":236.54},{"id":"cap-176","start":236.54,"end":237.38}];
+
+      // Per skill: every group MUST have a hard kill after exit
+      const FADE_IN = 0.18;
+      const FADE_OUT = 0.14;
+
+      groups.forEach(g => {
+        const sel = "#" + g.id;
+        // entrance — set visible just before fade-in
+        tl.set(sel, { visibility: "visible" }, g.start);
+        tl.fromTo(sel,
+          { opacity: 0, y: 8 },
+          { opacity: 1, y: 0, duration: FADE_IN, ease: "power2.out" },
+          g.start
+        );
+        // exit
+        tl.to(sel, {
+          opacity: 0, duration: FADE_OUT, ease: "power2.in"
+        }, g.end - FADE_OUT);
+        // HARD KILL — non-negotiable per skill features.md
+        tl.set(sel, { opacity: 0, visibility: "hidden" }, g.end);
+      });
+
+      window.__timelines["captions"] = tl;
+    </script>
+  </div>
+</template>

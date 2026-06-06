@@ -1,0 +1,888 @@
+[
+  {
+    "id": "r2-baseline",
+    "text": "He took a cut. The crowd applauded.",
+    "note": "baseline",
+    "duration": 2.475,
+    "internal_silences": [
+      {
+        "start": 0.943167,
+        "end": 1.185708,
+        "duration": 0.242542
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.0514583,
+      "duration": 0.0514583
+    },
+    "trailing": {
+      "start": 2.369083,
+      "end": 2.474667,
+      "duration": 0.105583
+    }
+  },
+  {
+    "id": "r2-four-period",
+    "text": "He took a cut.... The crowd applauded.",
+    "note": "4 periods",
+    "duration": 2.453,
+    "internal_silences": [
+      {
+        "start": 1.011167,
+        "end": 1.224833,
+        "duration": 0.213667
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.0525417,
+      "duration": 0.0525417
+    },
+    "trailing": {
+      "start": 2.340417,
+      "end": 2.453333,
+      "duration": 0.112917
+    }
+  },
+  {
+    "id": "r2-six-period",
+    "text": "He took a cut...... The crowd applauded.",
+    "note": "6 periods",
+    "duration": 2.453,
+    "internal_silences": [
+      {
+        "start": 0.965375,
+        "end": 1.212125,
+        "duration": 0.24675
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.051875,
+      "duration": 0.051875
+    },
+    "trailing": {
+      "start": 2.340417,
+      "end": 2.453333,
+      "duration": 0.112917
+    }
+  },
+  {
+    "id": "r2-period-emdash",
+    "text": "He took a cut.\u2014 The crowd applauded.",
+    "note": "period+emdash",
+    "duration": 2.496,
+    "internal_silences": [
+      {
+        "start": 0.973375,
+        "end": 1.215833,
+        "duration": 0.242458
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.0525417,
+      "duration": 0.0525417
+    },
+    "trailing": {
+      "start": 2.390417,
+      "end": 2.496,
+      "duration": 0.105583
+    }
+  },
+  {
+    "id": "r2-emdash-period",
+    "text": "He took a cut\u2014. The crowd applauded.",
+    "note": "emdash+period",
+    "duration": 2.432,
+    "internal_silences": [
+      {
+        "start": 0.946,
+        "end": 1.173625,
+        "duration": 0.227625
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.0525417,
+      "duration": 0.0525417
+    },
+    "trailing": {
+      "start": 2.33325,
+      "end": 2.432,
+      "duration": 0.09875
+    }
+  },
+  {
+    "id": "r2-spaced-emdash-spaced",
+    "text": "He took a cut . \u2014 . The crowd applauded.",
+    "note": "spaced . \u2014 .",
+    "duration": 2.432,
+    "internal_silences": [
+      {
+        "start": 0.941792,
+        "end": 1.164833,
+        "duration": 0.223042
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.0525417,
+      "duration": 0.0525417
+    },
+    "trailing": {
+      "start": 2.320333,
+      "end": 2.432,
+      "duration": 0.111667
+    }
+  },
+  {
+    "id": "r2-comma-comma",
+    "text": "He took a cut, , the crowd applauded.",
+    "note": "comma comma",
+    "duration": 2.453,
+    "internal_silences": [
+      {
+        "start": 0.967958,
+        "end": 1.193375,
+        "duration": 0.225417
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.0536667,
+      "duration": 0.0536667
+    },
+    "trailing": {
+      "start": 2.368833,
+      "end": 2.453333,
+      "duration": 0.0845
+    }
+  },
+  {
+    "id": "r2-then",
+    "text": "He took a cut. Then the crowd applauded.",
+    "note": "+'Then'",
+    "duration": 2.709,
+    "internal_silences": [
+      {
+        "start": 0.866,
+        "end": 1.113833,
+        "duration": 0.247833
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.057625,
+      "duration": 0.057625
+    },
+    "trailing": {
+      "start": 2.593125,
+      "end": 2.709333,
+      "duration": 0.116208
+    }
+  },
+  {
+    "id": "r2-and-then",
+    "text": "He took a cut. And then, the crowd applauded.",
+    "note": "+'And then,'",
+    "duration": 3.072,
+    "internal_silences": [
+      {
+        "start": 0.877042,
+        "end": 1.149792,
+        "duration": 0.27275
+      },
+      {
+        "start": 1.723542,
+        "end": 1.827375,
+        "duration": 0.103833
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 2.969042,
+      "end": 3.072,
+      "duration": 0.102958
+    }
+  },
+  {
+    "id": "r2-explicit-pause",
+    "text": "He took a cut. Pause. The crowd applauded.",
+    "note": "literal 'Pause.'",
+    "duration": 2.901,
+    "internal_silences": [
+      {
+        "start": 0.782792,
+        "end": 0.970708,
+        "duration": 0.187917
+      },
+      {
+        "start": 1.494417,
+        "end": 1.686458,
+        "duration": 0.192042
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.058,
+      "duration": 0.058
+    },
+    "trailing": {
+      "start": 2.790375,
+      "end": 2.901333,
+      "duration": 0.110958
+    }
+  },
+  {
+    "id": "r2-uh",
+    "text": "He took a cut. Uh, the crowd applauded.",
+    "note": "filler 'Uh,'",
+    "duration": 2.795,
+    "internal_silences": [
+      {
+        "start": 0.906208,
+        "end": 1.172667,
+        "duration": 0.266458
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.0525417,
+      "duration": 0.0525417
+    },
+    "trailing": {
+      "start": 2.673625,
+      "end": 2.794667,
+      "duration": 0.121042
+    }
+  },
+  {
+    "id": "r2-period-newlines",
+    "text": "He took a cut.\n\n\n\nThe crowd applauded.",
+    "note": "4 newlines",
+    "duration": 2.475,
+    "internal_silences": [
+      {
+        "start": 0.943167,
+        "end": 1.185708,
+        "duration": 0.242542
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.0514583,
+      "duration": 0.0514583
+    },
+    "trailing": {
+      "start": 2.369083,
+      "end": 2.474667,
+      "duration": 0.105583
+    }
+  },
+  {
+    "id": "r2-tabs-newlines",
+    "text": "He took a cut.\n\t\nThe crowd applauded.",
+    "note": "tab between",
+    "duration": 2.475,
+    "internal_silences": [
+      {
+        "start": 0.943167,
+        "end": 1.185708,
+        "duration": 0.242542
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.0514583,
+      "duration": 0.0514583
+    },
+    "trailing": {
+      "start": 2.369083,
+      "end": 2.474667,
+      "duration": 0.105583
+    }
+  },
+  {
+    "id": "r2-year-quoted",
+    "text": "He said \"1896\".",
+    "note": "quoted year",
+    "duration": 3.264,
+    "internal_silences": [
+      {
+        "start": 0.565708,
+        "end": 0.717833,
+        "duration": 0.152125
+      },
+      {
+        "start": 1.54825,
+        "end": 1.71975,
+        "duration": 0.1715
+      },
+      {
+        "start": 2.918625,
+        "end": 2.977667,
+        "duration": 0.0590417
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 3.169042,
+      "end": 3.264,
+      "duration": 0.0949583
+    }
+  },
+  {
+    "id": "r2-year-paren",
+    "text": "It happened (1896).",
+    "note": "year in parens",
+    "duration": 3.179,
+    "internal_silences": [
+      {
+        "start": 0.646958,
+        "end": 0.854167,
+        "duration": 0.207208
+      },
+      {
+        "start": 1.640667,
+        "end": 1.748083,
+        "duration": 0.107417
+      },
+      {
+        "start": 2.819583,
+        "end": 2.877667,
+        "duration": 0.0580833
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 3.076667,
+      "end": 3.178667,
+      "duration": 0.102
+    }
+  },
+  {
+    "id": "r2-year-after-dash",
+    "text": "It happened \u2014 1896.",
+    "note": "year after em-dash",
+    "duration": 3.349,
+    "internal_silences": [
+      {
+        "start": 0.636542,
+        "end": 0.893375,
+        "duration": 0.256833
+      },
+      {
+        "start": 1.740958,
+        "end": 1.857792,
+        "duration": 0.116833
+      },
+      {
+        "start": 3.019208,
+        "end": 3.077667,
+        "duration": 0.0584583
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 3.269042,
+      "end": 3.349333,
+      "duration": 0.0802917
+    }
+  },
+  {
+    "id": "r2-year-of-1896",
+    "text": "Of 1896.",
+    "note": "'Of 1896'",
+    "duration": 2.965,
+    "internal_silences": [
+      {
+        "start": 1.072667,
+        "end": 1.340958,
+        "duration": 0.268292
+      },
+      {
+        "start": 2.61875,
+        "end": 2.677708,
+        "duration": 0.0589583
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 2.861458,
+      "end": 2.965333,
+      "duration": 0.103875
+    }
+  },
+  {
+    "id": "r2-year-back-in",
+    "text": "Back in 1896, he won.",
+    "note": "Back in 1896,",
+    "duration": 3.627,
+    "internal_silences": [
+      {
+        "start": 0.219708,
+        "end": 0.272667,
+        "duration": 0.0529583
+      },
+      {
+        "start": 1.293375,
+        "end": 1.386583,
+        "duration": 0.0932083
+      },
+      {
+        "start": 2.705792,
+        "end": 2.972625,
+        "duration": 0.266833
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 3.532375,
+      "end": 3.626667,
+      "duration": 0.0942917
+    }
+  },
+  {
+    "id": "r2-eighteen96",
+    "text": "Eighteen 96.",
+    "note": "mixed words/digits",
+    "duration": 1.579,
+    "internal_silences": [],
+    "leading": null,
+    "trailing": {
+      "start": 1.458417,
+      "end": 1.578667,
+      "duration": 0.12025
+    }
+  },
+  {
+    "id": "r2-three-list",
+    "text": "He sold coal, iron, and steel.",
+    "note": "lowercase 3-list (control)",
+    "duration": 2.539,
+    "internal_silences": [
+      {
+        "start": 1.018125,
+        "end": 1.250083,
+        "duration": 0.231958
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 2.430958,
+      "end": 2.538667,
+      "duration": 0.107708
+    }
+  },
+  {
+    "id": "r2-three-cap-list",
+    "text": "He owned Coal, Iron, and Steel.",
+    "note": "Cap 3-list with 'and'",
+    "duration": 2.496,
+    "internal_silences": [
+      {
+        "start": 0.946667,
+        "end": 1.176375,
+        "duration": 0.229708
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 2.380958,
+      "end": 2.496,
+      "duration": 0.115042
+    }
+  },
+  {
+    "id": "r2-cap-list-noand",
+    "text": "He owned Coal, Iron, Steel.",
+    "note": "Cap 3-list no 'and'",
+    "duration": 2.283,
+    "internal_silences": [
+      {
+        "start": 0.943208,
+        "end": 1.147958,
+        "duration": 0.20475
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 2.186917,
+      "end": 2.282667,
+      "duration": 0.09575
+    }
+  },
+  {
+    "id": "r2-fragment-cap",
+    "text": "Coal. Iron.",
+    "note": "two cap fragments period-split",
+    "duration": 1.323,
+    "internal_silences": [
+      {
+        "start": 0.478208,
+        "end": 0.571333,
+        "duration": 0.093125
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 1.195333,
+      "end": 1.322667,
+      "duration": 0.127333
+    }
+  },
+  {
+    "id": "r2-fragment-comma",
+    "text": "Coal, Iron.",
+    "note": "two cap fragments comma",
+    "duration": 1.344,
+    "internal_silences": [
+      {
+        "start": 0.539208,
+        "end": 0.61825,
+        "duration": 0.0790417
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 1.221542,
+      "end": 1.344,
+      "duration": 0.122458
+    }
+  },
+  {
+    "id": "r2-brokers-context",
+    "text": "Hanna built the network. Brokers like him. He took a cut. Banks held the gold.",
+    "note": "brokers in 4-sentence context",
+    "duration": 5.269,
+    "internal_silences": [
+      {
+        "start": 0.590708,
+        "end": 0.661375,
+        "duration": 0.0706667
+      },
+      {
+        "start": 0.924792,
+        "end": 0.988917,
+        "duration": 0.064125
+      },
+      {
+        "start": 1.340375,
+        "end": 1.643542,
+        "duration": 0.303167
+      },
+      {
+        "start": 2.700958,
+        "end": 2.837792,
+        "duration": 0.136833
+      },
+      {
+        "start": 3.616,
+        "end": 3.970417,
+        "duration": 0.354417
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.05025,
+      "duration": 0.05025
+    },
+    "trailing": {
+      "start": 5.167792,
+      "end": 5.269333,
+      "duration": 0.101542
+    }
+  },
+  {
+    "id": "r2-brokers-merged",
+    "text": "Hanna built the network. Brokers like him, he took a cut. Banks held the gold.",
+    "note": "brokers merged via comma",
+    "duration": 5.184,
+    "internal_silences": [
+      {
+        "start": 0.589125,
+        "end": 0.673292,
+        "duration": 0.0841667
+      },
+      {
+        "start": 0.917792,
+        "end": 0.987125,
+        "duration": 0.0693333
+      },
+      {
+        "start": 1.334792,
+        "end": 1.67125,
+        "duration": 0.336458
+      },
+      {
+        "start": 3.557792,
+        "end": 3.898125,
+        "duration": 0.340333
+      }
+    ],
+    "leading": {
+      "start": 0.0,
+      "end": 0.050375,
+      "duration": 0.050375
+    },
+    "trailing": {
+      "start": 5.09475,
+      "end": 5.184,
+      "duration": 0.08925
+    }
+  },
+  {
+    "id": "r2-rushed-original",
+    "text": "Pittsburgh Steel Mills doubled in size. The workers earned a dollar a day. The room changed temperature.",
+    "note": "rushed stretch baseline",
+    "duration": 6.72,
+    "internal_silences": [
+      {
+        "start": 1.294333,
+        "end": 1.370333,
+        "duration": 0.076
+      },
+      {
+        "start": 2.449667,
+        "end": 2.827333,
+        "duration": 0.377667
+      },
+      {
+        "start": 3.3795,
+        "end": 3.473708,
+        "duration": 0.0942083
+      },
+      {
+        "start": 4.584625,
+        "end": 4.97425,
+        "duration": 0.389625
+      },
+      {
+        "start": 5.8445,
+        "end": 5.971292,
+        "duration": 0.126792
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 6.623458,
+      "end": 6.72,
+      "duration": 0.0965417
+    }
+  },
+  {
+    "id": "r2-rushed-ellipsis",
+    "text": "Pittsburgh Steel Mills doubled in size... The workers earned a dollar a day... The room changed temperature.",
+    "note": "ellipses inserted",
+    "duration": 6.784,
+    "internal_silences": [
+      {
+        "start": 1.292,
+        "end": 1.371667,
+        "duration": 0.0796667
+      },
+      {
+        "start": 2.479375,
+        "end": 2.8505,
+        "duration": 0.371125
+      },
+      {
+        "start": 3.3795,
+        "end": 3.470042,
+        "duration": 0.0905417
+      },
+      {
+        "start": 4.640208,
+        "end": 5.039792,
+        "duration": 0.399583
+      },
+      {
+        "start": 5.916667,
+        "end": 6.047083,
+        "duration": 0.130417
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 6.702,
+      "end": 6.784,
+      "duration": 0.082
+    }
+  },
+  {
+    "id": "r2-rushed-emdash",
+    "text": "Pittsburgh Steel Mills doubled in size \u2014 and the workers earned a dollar a day \u2014 and the room changed temperature.",
+    "note": "em-dashes connecting",
+    "duration": 6.912,
+    "internal_silences": [
+      {
+        "start": 1.311042,
+        "end": 1.396292,
+        "duration": 0.08525
+      },
+      {
+        "start": 2.419042,
+        "end": 2.788125,
+        "duration": 0.369083
+      },
+      {
+        "start": 3.474792,
+        "end": 3.546792,
+        "duration": 0.072
+      },
+      {
+        "start": 4.634125,
+        "end": 5.018167,
+        "duration": 0.384042
+      },
+      {
+        "start": 6.085792,
+        "end": 6.176375,
+        "duration": 0.0905833
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 6.822208,
+      "end": 6.912,
+      "duration": 0.0897917
+    }
+  },
+  {
+    "id": "r2-rushed-paragraphs",
+    "text": "Pittsburgh Steel Mills doubled in size.\n\nThe workers earned a dollar a day.\n\nThe room changed temperature.",
+    "note": "paragraphs (control)",
+    "duration": 6.72,
+    "internal_silences": [
+      {
+        "start": 1.294333,
+        "end": 1.370333,
+        "duration": 0.076
+      },
+      {
+        "start": 2.449667,
+        "end": 2.827333,
+        "duration": 0.377667
+      },
+      {
+        "start": 3.3795,
+        "end": 3.473708,
+        "duration": 0.0942083
+      },
+      {
+        "start": 4.584625,
+        "end": 4.97425,
+        "duration": 0.389625
+      },
+      {
+        "start": 5.8445,
+        "end": 5.971292,
+        "duration": 0.126792
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 6.623458,
+      "end": 6.72,
+      "duration": 0.0965417
+    }
+  },
+  {
+    "id": "r2-rushed-pauses",
+    "text": "Pittsburgh Steel Mills doubled in size. Pause. The workers earned a dollar a day. Pause. The room changed temperature.",
+    "note": "literal 'Pause.' inserts",
+    "duration": 7.872,
+    "internal_silences": [
+      {
+        "start": 2.314292,
+        "end": 2.660708,
+        "duration": 0.346417
+      },
+      {
+        "start": 3.123292,
+        "end": 3.453417,
+        "duration": 0.330125
+      },
+      {
+        "start": 5.106792,
+        "end": 5.410667,
+        "duration": 0.303875
+      },
+      {
+        "start": 5.874667,
+        "end": 6.173667,
+        "duration": 0.299
+      },
+      {
+        "start": 7.016833,
+        "end": 7.145625,
+        "duration": 0.128792
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 7.777583,
+      "end": 7.872,
+      "duration": 0.0944167
+    }
+  },
+  {
+    "id": "r2-dollars-bare",
+    "text": "$100,000.",
+    "note": "100k digits",
+    "duration": 2.923,
+    "internal_silences": [
+      {
+        "start": 1.174667,
+        "end": 1.450583,
+        "duration": 0.275917
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 2.824917,
+      "end": 2.922667,
+      "duration": 0.09775
+    }
+  },
+  {
+    "id": "r2-dollars-words",
+    "text": "One hundred thousand dollars.",
+    "note": "100k words",
+    "duration": 2.027,
+    "internal_silences": [
+      {
+        "start": 0.711708,
+        "end": 0.789542,
+        "duration": 0.0778333
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 1.925875,
+      "end": 2.026667,
+      "duration": 0.100792
+    }
+  },
+  {
+    "id": "r2-dollars-3.5m",
+    "text": "$3.5 million.",
+    "note": "$3.5M digits",
+    "duration": 2.069,
+    "internal_silences": [
+      {
+        "start": 0.9215,
+        "end": 1.10375,
+        "duration": 0.18225
+      }
+    ],
+    "leading": null,
+    "trailing": {
+      "start": 1.971583,
+      "end": 2.069333,
+      "duration": 0.09775
+    }
+  }
+]

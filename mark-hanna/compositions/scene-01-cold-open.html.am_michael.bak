@@ -1,0 +1,490 @@
+<template id="scene-01-cold-open-template">
+  <div data-composition-id="scene-01-cold-open" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face {
+        font-family: "Source Serif 4";
+        src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2");
+        font-weight: 900;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2");
+        font-weight: 400 700;
+        font-style: normal;
+      }
+      .s1-stage {
+        position: absolute;
+        inset: 0;
+        background-color: #0E0B08;
+        font-family: "Source Serif 4", serif;
+        color: #E8DEC8;
+        overflow: hidden;
+      }
+
+      /* The Davenport cartoon — hero element of the cold open */
+      #s1-cartoon {
+        position: absolute;
+        top: 56%;
+        left: 50%;
+        width: 640px;
+        height: auto;
+        max-height: 720px;
+        opacity: 0;
+        z-index: 5;
+        filter: sepia(0.25) contrast(1.05) brightness(0.92) saturate(0.85);
+        box-shadow: 0 30px 80px rgba(0,0,0,0.65);
+        border: 1px solid #C87533;
+      }
+
+      /* Spotlight on cartoon */
+      #s1-spotlight {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 600px 500px at center, rgba(200,117,51,0.18) 0%, rgba(14,11,8,0) 60%);
+        z-index: 4;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Newsprint headline strip — slides in left */
+      #s1-headline {
+        position: absolute;
+        top: 92px;
+        left: 96px;
+        width: 1100px;
+        font-family: "Roboto Mono", "Courier New", monospace;
+        font-size: 22px;
+        font-weight: 500;
+        color: #9A8E76;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0;
+        z-index: 10;
+        border-top: 1px solid #C87533;
+        border-bottom: 1px solid #C87533;
+        padding: 14px 0;
+      }
+
+      /* The Hanna name reveal — drops down center */
+      #s1-name {
+        position: absolute;
+        top: 230px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 184px;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        color: #E8DEC8;
+        opacity: 0;
+        z-index: 11;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      }
+      #s1-name .first {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      #s1-name .last {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px);
+        color: #C87533;
+      }
+
+      /* Year subtitle */
+      #s1-year {
+        position: absolute;
+        top: 420px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-family: "Roboto Mono", "Courier New", monospace;
+        font-size: 32px;
+        font-weight: 500;
+        letter-spacing: 0.5em;
+        color: #C87533;
+        opacity: 0;
+        z-index: 11;
+      }
+
+      /* Indictment statement */
+      #s1-indictment {
+        position: absolute;
+        top: 510px;
+        left: 96px;
+        width: 1728px;
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 1.2;
+        color: #E8DEC8;
+        opacity: 0;
+        z-index: 11;
+      }
+      #s1-indictment .accent {
+        color: #C87533;
+        font-style: italic;
+      }
+
+      /* The four big numbers — financial scoreboard */
+      #s1-numbers-stage {
+        position: absolute;
+        top: 240px;
+        left: 96px;
+        right: 96px;
+        height: 540px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+        gap: 40px;
+        z-index: 12;
+        opacity: 0;
+      }
+      .s1-num {
+        opacity: 0;
+        text-align: center;
+        padding: 32px 16px;
+        border-top: 2px solid #C87533;
+        border-bottom: 1px solid #9A8E76;
+        background: rgba(232, 222, 200, 0.02);
+      }
+      .s1-num .label {
+        font-family: "Roboto Mono", monospace;
+        font-size: 18px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 18px;
+        min-height: 2.6em;
+        line-height: 1.3;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+      .s1-num .value {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 88px;
+        line-height: 1;
+        color: #E8DEC8;
+        margin-bottom: 14px;
+        font-variant-numeric: tabular-nums;
+      }
+      .s1-num .value.amber { color: #C87533; }
+      .s1-num .value.blood { color: #C03A2C; }
+      .s1-num .sub {
+        font-family: "Source Serif 4", serif;
+        font-size: 24px;
+        color: #E8DEC8;
+        font-style: italic;
+        line-height: 1.3;
+      }
+
+      /* The dichotomy — Bryan vs Hanna */
+      #s1-dichotomy {
+        position: absolute;
+        top: 240px;
+        left: 0;
+        width: 100%;
+        height: 700px;
+        z-index: 13;
+        opacity: 0;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 0;
+        align-items: center;
+      }
+      .s1-side {
+        padding: 60px 80px;
+        text-align: center;
+      }
+      .s1-side .who {
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 32px;
+      }
+      .s1-side .had {
+        font-family: "Source Serif 4", serif;
+        font-size: 36px;
+        font-style: italic;
+        color: #E8DEC8;
+        margin-bottom: 28px;
+        line-height: 1.3;
+      }
+      .s1-side .item {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 96px;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+      .s1-side .item.bryan { color: #E8DEC8; }
+      .s1-side .item.hanna { color: #C87533; }
+
+      .s1-vs {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 64px;
+        color: #C03A2C;
+        align-self: center;
+        font-weight: 400;
+      }
+
+      /* Final indictment */
+      #s1-verdict {
+        position: absolute;
+        bottom: 200px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 120px;
+        letter-spacing: -0.02em;
+        color: #C87533;
+        opacity: 0;
+        z-index: 14;
+      }
+    </style>
+
+    <div class="s1-stage">
+      <!-- Newsprint header strip -->
+      <div id="s1-headline">A Campaign Manager &#160;·&#160; Cleveland, Ohio &#160;·&#160; Eighteen Ninety-Six</div>
+
+      <!-- Spotlight glow -->
+      <div id="s1-spotlight"></div>
+
+      <!-- The cartoon -->
+      <img id="s1-cartoon" src="../assets/cartoon-dollar-mark-hanna.jpg?v=2" alt="Davenport cartoon of Mark Hanna">
+
+      <!-- The name -->
+      <div id="s1-name">
+        <span class="first">MARK</span>&#160;<span class="last">HANNA</span>
+      </div>
+
+      <!-- Year -->
+      <div id="s1-year">1 8 9 6</div>
+
+      <!-- Indictment -->
+      <div id="s1-indictment">
+        He turned the American presidential election<br>
+        into a <span class="accent">corporate purchase order.</span>
+      </div>
+
+      <!-- Numbers scoreboard -->
+      <div id="s1-numbers-stage">
+        <div class="s1-num" id="s1-n1">
+          <div class="label">Raised</div>
+          <div class="value amber">$3,500,000</div>
+          <div class="sub">in 1896 dollars</div>
+        </div>
+        <div class="s1-num" id="s1-n2">
+          <div class="label">Outspent His Opponent</div>
+          <div class="value blood">20 ×</div>
+          <div class="sub">over Bryan's campaign</div>
+        </div>
+        <div class="s1-num" id="s1-n3">
+          <div class="label">Voters Transported</div>
+          <div class="value amber">500,000</div>
+          <div class="sub">by train, to Canton</div>
+        </div>
+        <div class="s1-num" id="s1-n4">
+          <div class="label">Pieces Mailed</div>
+          <div class="value amber">200,000,000</div>
+          <div class="sub">in fourteen languages</div>
+        </div>
+      </div>
+
+      <!-- Dichotomy: Bryan vs Hanna -->
+      <div id="s1-dichotomy">
+        <div class="s1-side">
+          <div class="who">The Opposition</div>
+          <div class="had">had</div>
+          <div class="item bryan">A&#160;Voice.</div>
+        </div>
+        <div class="s1-vs">vs.</div>
+        <div class="s1-side">
+          <div class="who">Mark Hanna</div>
+          <div class="had">had</div>
+          <div class="item hanna">A&#160;Ledger.</div>
+        </div>
+      </div>
+
+      <!-- Verdict -->
+      <div id="s1-verdict">The Ledger Won.</div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // BEAT MAP (relative to scene-01 start at root t=0)
+      // 0.05  - 3.4    "The cartoon ran in every Hearst paper in America"
+      // 3.5   - 10     descriptions
+      // 12.7  - 14.0   "His name was Mark Hanna"
+      // 14.9  - 16.6   "And in 1896"
+      // 22.2  - 23.7   "corporate purchase order"
+      // 24    - 35     dollar numbers
+      // 35    - 41     standard oil / morgan
+      // 41.7  - 50     500K voters / 200M pieces
+      // 50    - 55     Bryan vs Hanna
+      // 55.6  - 56.7   "Hanna had a ledger"
+      // 58.1  - 59.2   "the ledger won"
+
+      // Phase 1: Cartoon and headline strip (0 → 12)
+      tl.to("#s1-headline", { opacity: 1, duration: 0.8, ease: "power3.out" }, 0.3);
+      tl.fromTo("#s1-cartoon",
+        {
+          opacity: 0,
+          xPercent: -50,
+          yPercent: -50,
+          scale: 1,
+          x: 0,
+          y: -65
+        },
+        {
+          opacity: 1,
+          xPercent: -50,
+          yPercent: -50,
+          scale: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          x: 0,
+          y: -65
+        },
+        0.6
+      );
+      tl.to("#s1-spotlight", { opacity: 1, duration: 1.5, ease: "sine.inOut" }, 0.6);
+
+      // Slow ken-burns on cartoon
+      tl.to("#s1-cartoon", {
+        scale: 1.08, duration: 11, ease: "none", overwrite: "auto"
+      }, 1.8);
+
+      // Phase 2: Hide cartoon, reveal NAME (10 → 18)
+      tl.to(["#s1-cartoon", "#s1-spotlight"], {
+        opacity: 0, scale: 1.15, duration: 0.8, ease: "power2.in"
+      }, 11);
+      tl.to("#s1-headline", { opacity: 0, duration: 0.6, ease: "power2.in" }, 11.2);
+
+      // Name lands on "His name was Mark Hanna"
+      tl.set("#s1-name", { opacity: 1 }, 12.4);
+      tl.to("#s1-name .first", {
+        opacity: 1, y: 0, duration: 0.7, ease: "power3.out"
+      }, 12.6);
+      tl.to("#s1-name .last", {
+        opacity: 1, y: 0, duration: 0.7, ease: "power3.out"
+      }, 13.0);
+
+      // Year on "in 1896"
+      tl.fromTo("#s1-year",
+        { opacity: 0, letterSpacing: "1.0em" },
+        { opacity: 1, letterSpacing: "0.5em", duration: 1.2, ease: "power2.out" },
+        14.9
+      );
+
+      // Hold name + year through 18
+      // Phase 3: Hide name+year, indictment lands on 22.2 ("corporate purchase order")
+      tl.to(["#s1-name", "#s1-year"], {
+        opacity: 0, duration: 0.7, ease: "power2.in"
+      }, 19.5);
+      tl.set(["#s1-name", "#s1-year"], { visibility: "hidden" }, 20.3);
+
+      tl.fromTo("#s1-indictment",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+        20.5
+      );
+      tl.to("#s1-indictment .accent", {
+        color: "#C03A2C", duration: 0.4, ease: "power2.in"
+      }, 22.2);
+
+      // Phase 4: Numbers scoreboard (24 → 50)
+      tl.to("#s1-indictment", { opacity: 0, duration: 0.6, ease: "power2.in" }, 24.5);
+      tl.set("#s1-indictment", { visibility: "hidden" }, 25.2);
+
+      tl.set("#s1-numbers-stage", { opacity: 1 }, 25.5);
+
+      // $3.5M lands on "Three and a half million" (~25-30s)
+      tl.fromTo("#s1-n1",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        25.5
+      );
+
+      // 20x on "times what his opponents spent" (caption cap-15 starts at 26.73s)
+      tl.fromTo("#s1-n2",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        26.5
+      );
+
+      // 500K on "Half a million voters" (41.7s)
+      tl.fromTo("#s1-n3",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        41.5
+      );
+
+      // 200M on "Two hundred million pieces"
+      tl.fromTo("#s1-n4",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        45.0
+      );
+
+      // Phase 5: Dichotomy on "preacher" / "Hanna had a ledger" (~50-55)
+      tl.to("#s1-numbers-stage", { opacity: 0, duration: 0.7, ease: "power2.in" }, 49.5);
+      tl.set("#s1-numbers-stage", { visibility: "hidden" }, 50.3);
+
+      tl.set("#s1-dichotomy", { opacity: 1 }, 50.5);
+      tl.fromTo(".s1-side:nth-child(1)",
+        { opacity: 0, x: -40 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
+        50.5
+      );
+      tl.fromTo(".s1-vs",
+        { opacity: 0, scale: 0.5 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" },
+        51.5
+      );
+      tl.fromTo(".s1-side:nth-child(3)",
+        { opacity: 0, x: 40 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
+        52.0
+      );
+
+      // Phase 6: Final verdict on "the ledger won"
+      tl.to("#s1-dichotomy", { opacity: 0, duration: 0.5, ease: "power2.in" }, 57.0);
+      tl.set("#s1-dichotomy", { visibility: "hidden" }, 57.5);
+
+      tl.fromTo("#s1-verdict",
+        { opacity: 0, scale: 0.92, letterSpacing: "0.1em" },
+        { opacity: 1, scale: 1, letterSpacing: "-0.02em", duration: 1.0, ease: "expo.out" },
+        57.5
+      );
+
+      window.__timelines["scene-01-cold-open"] = tl;
+    </script>
+  </div>
+</template>

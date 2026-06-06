@@ -1,0 +1,177 @@
+# TTS Punctuation Spike Results
+# Voice: bm_george (Kokoro 82M via hyperframes CLI)
+# Generated: Sat Jun  6 14:08:54 IST 2026
+
+## gap_period
+TEXT: He came home. He left.
+DURATION: 1.877333s
+INNER_SILENCES: 
+
+## gap_question
+TEXT: He came home? He left.
+DURATION: 1.877333s
+INNER_SILENCES: 
+
+## gap_exclaim
+TEXT: He came home! He left.
+DURATION: 1.920000s
+INNER_SILENCES: 
+
+## gap_ellipsis
+TEXT: He came home... He left.
+DURATION: 1.898667s
+INNER_SILENCES: 
+
+## gap_emdash
+TEXT: He came home — He left.
+DURATION: 1.877333s
+INNER_SILENCES: 
+
+## gap_semicolon
+TEXT: He came home; he left.
+DURATION: 1.898667s
+INNER_SILENCES: 
+
+## gap_period_double_space
+TEXT: He came home.  He left.
+DURATION: 1.877333s
+INNER_SILENCES: 
+
+## gap_period_newline
+TEXT: He came home.
+He left.
+DURATION: 1.877333s
+INNER_SILENCES: 
+
+## gap_period_blank_line
+TEXT: He came home.
+
+He left.
+DURATION: 1.877333s
+INNER_SILENCES: 
+
+## mid_comma
+TEXT: He paused, then he spoke.
+DURATION: 1.962667s
+INNER_SILENCES: 
+
+## mid_emdash
+TEXT: He paused — then he spoke.
+DURATION: 1.984000s
+INNER_SILENCES: 
+
+## mid_ellipsis
+TEXT: He paused... then he spoke.
+DURATION: 1.962667s
+INNER_SILENCES: 
+
+## mid_semicolon
+TEXT: He paused; then he spoke.
+DURATION: 2.005333s
+INNER_SILENCES: 
+
+## mid_period
+TEXT: He paused. Then he spoke.
+DURATION: 1.941333s
+INNER_SILENCES: 
+
+## mid_no_punct
+TEXT: He paused then he spoke.
+DURATION: 1.941333s
+INNER_SILENCES: 
+
+## year_bare
+TEXT: And in 1896 he did it.
+DURATION: 3.946667s
+INNER_SILENCES: 
+
+## year_comma
+TEXT: And in 1896, he did it.
+DURATION: 3.818667s
+INNER_SILENCES: 
+
+## year_with_word_year
+TEXT: And in the year 1896 he did it.
+DURATION: 4.373333s
+INNER_SILENCES: 
+
+## year_apostrophe
+TEXT: It happened in '96.
+DURATION: 1.984000s
+INNER_SILENCES: 
+
+## year_spelled
+TEXT: And in eighteen ninety-six he did it.
+DURATION: 2.538667s
+INNER_SILENCES: 
+
+## year_other_1880
+TEXT: By 1880 he was rich.
+DURATION: 3.626667s
+INNER_SILENCES: 
+
+## year_other_1837
+TEXT: Born in 1837.
+DURATION: 3.605333s
+INNER_SILENCES: 
+
+## year_period_end
+TEXT: He left in 1896.
+DURATION: 3.648000s
+INNER_SILENCES: 
+
+## list_two_capitalised
+TEXT: His business: Coal, iron.
+DURATION: 1.984000s
+INNER_SILENCES: 
+
+## list_two_no_caps
+TEXT: His business: coal, iron.
+DURATION: 1.984000s
+INNER_SILENCES: 
+
+## list_two_with_and
+TEXT: His business: coal and iron.
+DURATION: 2.090667s
+INNER_SILENCES: 
+
+## list_three
+TEXT: His business: coal, iron, steel.
+DURATION: 2.432000s
+INNER_SILENCES: 
+
+## initials_dotted
+TEXT: J.P. Morgan paid.
+DURATION: 1.984000s
+INNER_SILENCES: 
+
+## initials_no_dots
+TEXT: JP Morgan paid.
+DURATION: 1.834667s
+INNER_SILENCES: 
+
+## initials_spaced
+TEXT: J. P. Morgan paid.
+DURATION: 1.984000s
+INNER_SILENCES: 
+
+## initials_lower
+TEXT: j.p. Morgan paid.
+DURATION: 1.984000s
+INNER_SILENCES: 
+
+## opener_word_comma
+TEXT: Banks, assessed at a quarter percent.
+DURATION: 2.538667s
+INNER_SILENCES: 
+
+## opener_word_no_comma
+TEXT: Banks assessed at a quarter percent.
+DURATION: 2.538667s
+INNER_SILENCES: 
+
+## opener_word_emdash
+TEXT: Banks — assessed at a quarter percent.
+DURATION: 2.517333s
+INNER_SILENCES: 
+

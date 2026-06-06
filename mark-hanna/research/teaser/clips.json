@@ -1,0 +1,125 @@
+{
+  "source_render": "renders/mark-hanna-ep01-preview.mp4",
+  "source_audio": "assets/narration.wav",
+  "source_caption_groups": "assets/caption-groups.json",
+  "theme": "Mark Hanna 1896 — the cartoon you've seen, the name you don't know.",
+  "withheld": [
+    "Election outcome (Hanna's ledger wins November 1896)",
+    "William McKinley (the candidate Hanna manufactured)",
+    "William Jennings Bryan (named only as 'a thirty-six year old preacher')",
+    "Hanna's Cleveland origin / Rhodes marriage / coal-iron empire",
+    "Rockefeller as college classmate",
+    "Hanna's 1904 death and political legacy"
+  ],
+  "clips": [
+    {
+      "n": 1,
+      "role": "hook",
+      "start": 0.04,
+      "end": 3.08,
+      "duration": 3.04,
+      "narration": "The cartoon ran in every Hearst paper in America.",
+      "visual": "assets/cartoon-dollar-mark-hanna.jpg",
+      "motion": "slow push-in (Ken Burns 1.0 -> 1.05) on dollar-sign suit",
+      "hint_logic": "Names a phenomenon (cartoon) without naming the subject."
+    },
+    {
+      "n": 2,
+      "start": 8.36,
+      "end": 11.56,
+      "duration": 3.20,
+      "narration": "The caption changed every week. The man did not.",
+      "visual": "crossfade assets/cartoon-shylock-hanna.jpg -> assets/cartoon-boss-of-bosses.jpg",
+      "motion": "1.5s on each, 200ms crossfade",
+      "hint_logic": "Suggests a sustained press campaign; doesn't say what for."
+    },
+    {
+      "n": 3,
+      "start": 11.56,
+      "end": 13.31,
+      "duration": 1.75,
+      "narration": "His name was Mark Hanna.",
+      "visual": "assets/hanna-portrait.jpg on Ink Black; name in Playfair Display 900 (Newsprint Cream)",
+      "motion": "hard cut, name letter-spacing 0.05em -> -0.02em over 600ms",
+      "hint_logic": "Name lands like an indictment but explains nothing."
+    },
+    {
+      "n": 4,
+      "start": 13.31,
+      "end": 17.20,
+      "duration": 3.89,
+      "narration": "And in eighteen ninety-six, he did something no one had ever done at that scale.",
+      "visual": "1896 numerals fill frame, Blood Oxide #C03A2C, IBM Plex Mono 400px",
+      "motion": "expo.out entrance, hold, vignette closes",
+      "hint_logic": "Drops year + claim, withholds the act."
+    },
+    {
+      "n": 5,
+      "start": 17.20,
+      "end": 21.28,
+      "duration": 4.08,
+      "narration": "He turned the American presidential election into a corporate purchase order.",
+      "visual": "assets/newspaper-eveningstar-1896-01-11.jpg",
+      "motion": "Ken Burns slow pan left-to-right, 1.0 -> 1.04",
+      "hint_logic": "Names the genre of the crime; not the buyers, sellers, or winner."
+    },
+    {
+      "n": 6,
+      "start": 21.28,
+      "end": 25.68,
+      "duration": 4.40,
+      "narration": "Three and a half million dollars raised. Twenty times what his opponent spent.",
+      "visual": "$3,500,000 Hanna Amber #C87533 count-up; '20x' Blood Oxide stamp on cut",
+      "motion": "tabular-num count-up over 800ms; stamp in on word 'twenty'",
+      "hint_logic": "Pure number theatre. Opponent unnamed."
+    },
+    {
+      "n": 7,
+      "start": 30.82,
+      "end": 36.68,
+      "duration": 5.86,
+      "narration": "Standard Oil, two hundred and fifty thousand dollars. JP Morgan, two hundred and fifty thousand dollars.",
+      "visual": "stacked ledger lines, IBM Plex Mono: 'STANDARD OIL — $250,000' then 'JP MORGAN — $250,000'",
+      "motion": "lines type in left-aligned, hairline rule between, total line stays blank",
+      "hint_logic": "Names donors; hides the recipient and what the money bought."
+    },
+    {
+      "n": 8,
+      "start": 36.68,
+      "end": 40.60,
+      "duration": 3.92,
+      "narration": "Half a million voters, transported by train, to shake one man's hand.",
+      "visual": "assets/convention-1888.jpg",
+      "motion": "Ken Burns push-in, 1.0 -> 1.06",
+      "hint_logic": "The 'one man' is McKinley — deliberately never shown."
+    },
+    {
+      "n": 9,
+      "start": 44.36,
+      "end": 48.90,
+      "duration": 4.54,
+      "narration": "The opposition had a thirty-six year old preacher who could move a crowd to tears.",
+      "visual": "newsprint paper texture, no portrait; floating caption '— the opposition'",
+      "motion": "static texture, faint film grain",
+      "hint_logic": "Bryan unnamed. Viewers can't search forward to the outcome."
+    },
+    {
+      "n": 10,
+      "role": "closer",
+      "start": 48.90,
+      "end": 50.27,
+      "duration": 1.37,
+      "narration": "Hanna had a ledger.",
+      "visual": "assets/davenport-hanna-1896.jpg freeze",
+      "motion": "vignette closes hard; cut to black",
+      "hint_logic": "Closes on the instrument. Not on what it did. Curiosity gap intact."
+    }
+  ],
+  "total_runtime_seconds": 36.05,
+  "remaining_budget_seconds": 23.95,
+  "alternates_held_in_reserve": [
+    {"start": 25.68, "end": 28.44, "narration": "Banks assessed at a quarter of a percent of capital."},
+    {"start": 40.60, "end": 44.36, "narration": "Two hundred million pieces of campaign literature, printed and mailed."},
+    {"start": 52.36, "end": 55.48, "narration": "He wasn't born with money. He was born in a grocery."}
+  ]
+}

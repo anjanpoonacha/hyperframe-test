@@ -1,0 +1,106 @@
+[01-period] dur=2.48s lead=0.05 trail=0.11 internal=[0.24s@0.94] :: baseline period
+           text='He took a cut. The crowd applauded.'
+[01-period-double-space] dur=2.48s lead=0.05 trail=0.11 internal=[0.24s@0.94] :: period + double space
+           text='He took a cut.  The crowd applauded.'
+[01-question] dur=2.45s lead=0.05 trail=0.10 internal=[0.24s@0.94] :: question mark
+           text='He took a cut? The crowd applauded.'
+[01-exclam] dur=2.45s lead=0.05 trail=0.10 internal=[0.24s@0.95] :: exclamation
+           text='He took a cut! The crowd applauded.'
+[01-ellipsis] dur=2.43s lead=0.05 trail=0.09 internal=[0.22s@0.97] :: three-dot ellipsis
+           text='He took a cut... The crowd applauded.'
+[01-ellipsis-unicode] dur=2.50s lead=0.05 trail=0.10 internal=[0.24s@0.97] :: unicode ellipsis
+           text='He took a cut… The crowd applauded.'
+[01-emdash] dur=2.45s lead=0.05 trail=0.08 internal=[0.22s@0.99] :: em-dash + space
+           text='He took a cut— The crowd applauded.'
+[01-emdash-spaced] dur=2.50s lead=0.05 trail=0.09 internal=[0.22s@1.00] :: spaced em-dash
+           text='He took a cut — The crowd applauded.'
+[01-double-period] dur=2.50s lead=0.05 trail=0.10 internal=[0.23s@0.99] :: double period
+           text='He took a cut.. The crowd applauded.'
+[01-period-newline] dur=2.48s lead=0.05 trail=0.11 internal=[0.24s@0.94] :: period + \n
+           text='He took a cut.\nThe crowd applauded.'
+[01-period-double-nl] dur=2.48s lead=0.05 trail=0.11 internal=[0.24s@0.94] :: period + \n\n
+           text='He took a cut.\n\nThe crowd applauded.'
+[01-period-space-period] dur=2.50s lead=0.05 trail=0.10 internal=[0.23s@0.99] :: '. .' trick
+           text='He took a cut. . The crowd applauded.'
+[01-semicolon] dur=2.48s lead=0.05 trail=0.11 internal=[0.23s@0.94] :: semicolon + lowercase
+           text='He took a cut; the crowd applauded.'
+[01-comma-lower] dur=2.41s lead=0.05 trail=0.09 internal=[0.23s@0.92] :: comma + lowercase (merge)
+           text='He took a cut, the crowd applauded.'
+[02-comma] dur=3.09s lead=- trail=0.10 internal=[0.28s@1.13, 0.11s@2.13] :: comma
+           text='The room was hot, then it changed temperature.'
+[02-emdash] dur=2.99s lead=- trail=0.09 internal=[0.26s@1.11, 0.11s@2.06] :: em-dash
+           text='The room was hot — then it changed temperature.'
+[02-ellipsis] dur=3.07s lead=- trail=0.10 internal=[0.29s@1.18, 0.11s@2.11] :: ellipsis
+           text='The room was hot... then it changed temperature.'
+[02-semicolon] dur=3.05s lead=- trail=0.08 internal=[0.28s@1.14, 0.11s@2.11] :: semicolon
+           text='The room was hot; then it changed temperature.'
+[02-paren] dur=3.01s lead=- trail=0.09 internal=[0.25s@1.09, 0.11s@2.01] :: parenthetical
+           text='The room was hot (then it changed temperature).'
+[02-colon] dur=3.09s lead=- trail=0.10 internal=[0.28s@1.16, 0.11s@2.13] :: colon
+           text='The room was hot: then it changed temperature.'
+[03-single-space] dur=4.29s lead=- trail=0.09 internal=[0.29s@1.23, 0.28s@2.69] :: single-space sentences
+           text='Banks held the gold. Hanna held the banks. Politics held Hanna.'
+[03-double-space] dur=4.29s lead=- trail=0.09 internal=[0.29s@1.23, 0.28s@2.69] :: double-space sentences
+           text='Banks held the gold.  Hanna held the banks.  Politics held Hanna.'
+[03-newlines] dur=4.29s lead=- trail=0.09 internal=[0.29s@1.23, 0.28s@2.69] :: \n between sentences
+           text='Banks held the gold.\nHanna held the banks.\nPolitics held Hanna.'
+[03-paragraphs] dur=4.29s lead=- trail=0.09 internal=[0.29s@1.23, 0.28s@2.69] :: \n\n paragraphs
+           text='Banks held the gold.\n\nHanna held the banks.\n\nPolitics held Hanna.'
+[03-indent] dur=4.29s lead=- trail=0.09 internal=[0.29s@1.23, 0.28s@2.69] :: indented
+           text='Banks held the gold.\n  Hanna held the banks.\n  Politics held Hanna.'
+[04-1896-bare] dur=2.82s lead=- trail=0.09 internal=[0.27s@0.90, 0.06s@2.47] :: bare year
+           text='1896.'
+[04-1896-in] dur=3.46s lead=- trail=0.11 internal=[0.15s@0.99, 0.05s@2.32, 0.25s@2.54] :: 'In 1896,'
+           text='In 1896, he won.'
+[04-1896-the-year] dur=3.16s lead=- trail=0.09 internal=[0.28s@1.34, 0.06s@2.82] :: 'The year 1896'
+           text='The year 1896.'
+[04-1896-words] dur=1.71s lead=- trail=0.11 internal=[-] :: spelled out
+           text='Eighteen ninety-six.'
+[04-1880-in] dur=3.18s lead=- trail=0.11 internal=[0.14s@0.99, 0.26s@2.20] :: 1880 mid-sentence
+           text='In 1880, he ran.'
+[04-1867-bare] dur=2.86s lead=- trail=0.10 internal=[0.27s@0.92] :: 1867 bare
+           text='1867.'
+[04-1837-of] dur=3.39s lead=- trail=0.10 internal=[0.29s@1.48, 0.12s@2.46] :: 1837 mid-sentence
+           text='Born in 1837.'
+[04-25-cardinal] dur=1.58s lead=- trail=0.13 internal=[0.05s@0.80] :: 25 spelled out
+           text='Twenty-five percent.'
+[04-25-digits] dur=1.54s lead=- trail=0.11 internal=[-] :: 25 digits
+           text='25 percent.'
+[04-100-mil] dur=1.92s lead=- trail=0.10 internal=[0.09s@0.69] :: 100M words
+           text='One hundred million dollars.'
+[04-100mil-digits] dur=1.96s lead=- trail=0.09 internal=[0.13s@0.42] :: $100M digits
+           text='$100 million.'
+[05-coal-iron] dur=2.26s lead=- trail=0.09 internal=[0.21s@0.98, 0.07s@1.63] :: original failure
+           text='Daniel Rhodes. Coal, iron.'
+[05-coal-and-iron] dur=2.37s lead=- trail=0.10 internal=[0.22s@0.98] :: fixed
+           text='Daniel Rhodes. Coal and iron.'
+[05-salt-pepper] dur=2.13s lead=- trail=0.09 internal=[0.20s@0.85, 0.07s@1.47] :: salt pepper
+           text='John Smith. Salt, pepper.'
+[05-salt-and-pepper] dur=2.24s lead=- trail=0.10 internal=[0.20s@0.81, 0.05s@1.42] :: salt and pepper
+           text='John Smith. Salt and pepper.'
+[05-wind-water] dur=2.43s lead=- trail=0.12 internal=[0.25s@0.92, 0.10s@1.65] :: wind water
+           text='Marcus Hanna. Wind, water.'
+[05-wind-and-water] dur=2.54s lead=- trail=0.12 internal=[0.22s@0.90, 0.15s@1.59] :: wind and water
+           text='Marcus Hanna. Wind and water.'
+[05-coal-iron-lower] dur=2.54s lead=- trail=0.11 internal=[0.23s@1.02] :: lowercase list (control)
+           text='He sold coal, iron, and steel.'
+[05-jp-morgan] dur=2.62s lead=- trail=0.10 internal=[0.17s@0.70] :: initials with periods
+           text='J.P. Morgan financed the trusts.'
+[05-jp-morgan-nodots] dur=2.56s lead=- trail=0.11 internal=[0.17s@1.05, 0.07s@1.71] :: initials no periods
+           text='JP Morgan financed the trusts.'
+[05-jp-morgan-spaced] dur=2.62s lead=- trail=0.10 internal=[0.17s@0.70] :: spaced initials
+           text='J. P. Morgan financed the trusts.'
+[06-george-1] dur=2.94s lead=0.05 trail=0.10 internal=[0.23s@1.50] :: first call
+           text='Hanna ran the campaign from a hotel room.'
+[06-george-2] dur=2.94s lead=0.05 trail=0.10 internal=[0.23s@1.50] :: second call (same text)
+           text='Hanna ran the campaign from a hotel room.'
+[06-george-ctx] dur=4.65s lead=- trail=0.09 internal=[0.06s@0.27, 0.14s@0.82, 0.05s@1.60, 0.37s@1.83] :: with leading context
+           text='It was eighteen ninety-six. Hanna ran the campaign from a hotel room.'
+[07-banks-comma] dur=2.15s lead=- trail=0.11 internal=[0.20s@1.09] :: leading-word comma
+           text='Banks, assessed at a quarter.'
+[07-banks-no-comma] dur=2.24s lead=- trail=0.12 internal=[0.05s@0.99, 0.21s@1.12] :: no comma
+           text='Banks assessed at a quarter.'
+[07-brokers-period] dur=2.43s lead=- trail=0.11 internal=[0.22s@1.22] :: period split
+           text='Brokers like him. He took a cut.'
+[07-brokers-comma] dur=2.39s lead=- trail=0.09 internal=[0.22s@1.19] :: comma merge
+           text='Brokers like him, he took a cut.'

@@ -1,0 +1,497 @@
+<template id="scene-03-machine-template">
+  <div data-composition-id="scene-03-machine" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face {
+        font-family: "Source Serif 4";
+        src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2");
+        font-weight: 900;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2");
+        font-weight: 400 700;
+        font-style: normal;
+      }
+      .s3-stage {
+        position: absolute;
+        inset: 0;
+        background-color: #0E0B08;
+        font-family: "Source Serif 4", serif;
+        color: #E8DEC8;
+        overflow: hidden;
+      }
+
+      /* Chapter mark */
+      #s3-chapter {
+        position: absolute;
+        top: 80px;
+        left: 96px;
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #C87533;
+        opacity: 0;
+        z-index: 10;
+        border-left: 2px solid #C87533;
+        padding-left: 18px;
+      }
+      #s3-chapter .num { color: #9A8E76; margin-right: 14px; }
+
+      /* Year stamp top right */
+      #s3-year {
+        position: absolute;
+        top: 80px;
+        right: 96px;
+        font-family: "Roboto Mono", monospace;
+        font-size: 28px;
+        font-weight: 500;
+        color: #9A8E76;
+        letter-spacing: 0.2em;
+        opacity: 0;
+        z-index: 10;
+      }
+      #s3-year .num { color: #C87533; font-weight: 700; }
+
+      /* Cleveland panorama */
+      #s3-cleveland {
+        position: absolute;
+        top: 220px;
+        left: 96px;
+        width: 1728px;
+        height: 540px;
+        object-fit: cover;
+        opacity: 0;
+        filter: sepia(0.4) contrast(1.1) brightness(0.78);
+        border: 1px solid rgba(200,117,51,0.5);
+        z-index: 4;
+      }
+
+      /* Company name overlay */
+      #s3-company {
+        position: absolute;
+        top: 270px;
+        left: 144px;
+        z-index: 6;
+        opacity: 0;
+        background: rgba(14,11,8,0.88);
+        border-left: 4px solid #C87533;
+        padding: 28px 36px;
+      }
+      #s3-company .lead {
+        font-family: "Roboto Mono", monospace;
+        font-size: 18px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 14px;
+      }
+      #s3-company .name {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 88px;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: #E8DEC8;
+        margin-bottom: 12px;
+      }
+      #s3-company .name .accent { color: #C87533; }
+      #s3-company .desc {
+        font-family: "Source Serif 4", serif;
+        font-style: italic;
+        font-size: 28px;
+        color: #C87533;
+      }
+
+      /* Chokepoint label */
+      #s3-chokepoint {
+        position: absolute;
+        bottom: 200px;
+        left: 96px;
+        z-index: 6;
+        opacity: 0;
+      }
+      #s3-chokepoint .word1, #s3-chokepoint .word2 {
+        display: block;
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+      }
+      #s3-chokepoint .word1 {
+        font-size: 96px;
+        color: #E8DEC8;
+      }
+      #s3-chokepoint .word2 {
+        font-size: 96px;
+        color: #C03A2C;
+        font-style: italic;
+      }
+      #s3-chokepoint .verdict {
+        margin-top: 24px;
+        font-family: "Roboto Mono", monospace;
+        font-size: 28px;
+        color: #C87533;
+        letter-spacing: 0.05em;
+      }
+
+      /* Acquisitions list — second beat */
+      #s3-acquisitions {
+        position: absolute;
+        inset: 0;
+        z-index: 8;
+        opacity: 0;
+        background-color: #0E0B08;
+        padding: 120px 96px 80px;
+        display: flex;
+        flex-direction: column;
+      }
+      #s3-acquisitions .header {
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 32px;
+        border-bottom: 1px solid #C87533;
+        padding-bottom: 16px;
+      }
+      #s3-acquisitions .header .num {
+        color: #C87533;
+        margin-right: 18px;
+      }
+      #s3-acquisitions .list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 80px;
+        margin-top: 24px;
+      }
+      .s3-acq {
+        opacity: 0;
+        display: grid;
+        grid-template-columns: 80px 1fr auto;
+        align-items: baseline;
+        gap: 28px;
+        border-bottom: 1px solid #2a2520;
+        padding: 22px 0 24px;
+        min-height: 100px;
+      }
+      .s3-acq .marker {
+        font-family: "Roboto Mono", monospace;
+        font-size: 28px;
+        font-weight: 700;
+        color: #C87533;
+        font-variant-numeric: tabular-nums;
+      }
+      .s3-acq .name {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: #E8DEC8;
+      }
+      .s3-acq .kind {
+        font-family: "Roboto Mono", monospace;
+        font-size: 18px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #9A8E76;
+      }
+
+      /* The temperature line */
+      #s3-temperature {
+        position: absolute;
+        bottom: 88px;
+        left: 96px;
+        right: 96px;
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 56px;
+        color: #E8DEC8;
+        line-height: 1.2;
+        opacity: 0;
+        z-index: 9;
+      }
+      #s3-temperature .accent { color: #C87533; }
+
+      /* The thesis frame — closing of scene 3 */
+      #s3-thesis {
+        position: absolute;
+        inset: 0;
+        z-index: 12;
+        opacity: 0;
+        background-color: #0E0B08;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 120px;
+      }
+      #s3-thesis .frame {
+        max-width: 1500px;
+        text-align: center;
+      }
+      #s3-thesis .step {
+        margin-bottom: 28px;
+        opacity: 0;
+      }
+      #s3-thesis .step .label {
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 14px;
+      }
+      #s3-thesis .step .text {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 64px;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: #E8DEC8;
+      }
+      #s3-thesis .step.power-2 .text { color: #9A8E76; }
+      #s3-thesis .step.power-1 .text { color: #C87533; font-style: italic; }
+      #s3-thesis .step.power-1 .text .accent { color: #C03A2C; font-style: normal; font-weight: 900; }
+      #s3-thesis .conclusion {
+        margin-top: 56px;
+        opacity: 0;
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 96px;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: #C87533;
+      }
+      #s3-thesis .conclusion .pre {
+        display: block;
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 14px;
+      }
+    </style>
+
+    <div class="s3-stage">
+      <div id="s3-chapter"><span class="num">III</span>The Machine Behind The Man</div>
+      <div id="s3-year">YEAR &#160;<span class="num">1867</span></div>
+
+      <!-- Cleveland background panorama -->
+      <img id="s3-cleveland" src="../assets/cleveland-1870.jpg" alt="Cleveland circa 1870">
+
+      <!-- Company callout -->
+      <div id="s3-company">
+        <div class="lead">A coal and iron brokerage</div>
+        <div class="name">M. A. <span class="accent">Hanna &amp; Co.</span></div>
+        <div class="desc">Where Lake Erie ore boats met Pittsburgh steel.</div>
+      </div>
+
+      <!-- Chokepoint -->
+      <div id="s3-chokepoint">
+        <span class="word1">Cleveland</span>
+        <span class="word2">was the chokepoint.</span>
+        <div class="verdict">AND HANNA SAT ON IT.</div>
+      </div>
+
+      <!-- Acquisitions list -->
+      <div id="s3-acquisitions">
+        <div class="header"><span class="num">II.</span>By 1880, the empire</div>
+        <div class="list">
+          <div class="s3-acq" id="s3-acq-1">
+            <div class="marker">i</div>
+            <div class="name">The Cleveland Herald</div>
+            <div class="kind">Newspaper</div>
+          </div>
+          <div class="s3-acq" id="s3-acq-2">
+            <div class="marker">ii</div>
+            <div class="name">An Opera House</div>
+            <div class="kind">Theater</div>
+          </div>
+          <div class="s3-acq" id="s3-acq-3">
+            <div class="marker">iii</div>
+            <div class="name">Banking Interests</div>
+            <div class="kind">Finance</div>
+          </div>
+          <div class="s3-acq" id="s3-acq-4">
+            <div class="marker">iv</div>
+            <div class="name">A Streetcar Line</div>
+            <div class="kind">Transit</div>
+          </div>
+        </div>
+        <div id="s3-temperature">
+          When Mark Hanna walked into a room,<br>
+          the room <span class="accent">changed temperature.</span>
+        </div>
+      </div>
+
+      <!-- Thesis: power hierarchy -->
+      <div id="s3-thesis">
+        <div class="frame">
+          <div class="step power-2">
+            <div class="label">The second-most powerful thing in America</div>
+            <div class="text">Money.</div>
+          </div>
+          <div class="step power-1">
+            <div class="label">The most powerful thing</div>
+            <div class="text">Who <span class="accent">decided</span> where the money went.</div>
+          </div>
+          <div class="conclusion">
+            <span class="pre">No one had ever run it like a business.</span>
+            Not&#160;Yet.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // BEAT MAP (relative to scene-03 start at root t=136s)
+      // 0     "By 1867"
+      // 5.4   "coal and iron brokerage"
+      // 9.7   "Lake Erie"
+      // 12    "Pittsburgh steel"
+      // 13.3  "Cleveland was the chokepoint"
+      // 15.4  "Hanna sat on it"
+      // 22.2  "He took a cut"
+      // 23.5  "Then he bought the newspaper"
+      // 25.9  "theater"
+      // 27.1  "banking"
+      // 28.6  "streetcar"
+      // 30.3  "By 1880"
+      // 34.5  "the room changed temperature"
+      // 36.7  "he was bored"
+      // 49.4  "money was the second"
+      // 54.3  "who decided where the money went"
+      // 56.2  "That was politics"
+      // 57.8  "no one had ever run it like a business"
+      // 60.1  "Not yet"
+
+      // Phase 1: Cleveland scene + company (0 → 22)
+      tl.fromTo("#s3-chapter",
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
+        0.3
+      );
+      tl.fromTo("#s3-year",
+        { opacity: 0, x: 30 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
+        0.5
+      );
+
+      tl.fromTo("#s3-cleveland",
+        { opacity: 0, scale: 1.05 },
+        { opacity: 0.85, scale: 1.0, duration: 1.4, ease: "power3.out" },
+        0.5
+      );
+      // Slow ken-burns over the photo
+      tl.to("#s3-cleveland", { scale: 1.08, duration: 20, ease: "none", overwrite: "auto" }, 1.9);
+
+      // M.A. Hanna & Co. card lands on "coal and iron brokerage" (5.4s)
+      tl.fromTo("#s3-company",
+        { opacity: 0, x: -40 },
+        { opacity: 1, x: 0, duration: 0.9, ease: "power3.out" },
+        4.5
+      );
+
+      // Chokepoint lands on 13.3
+      tl.fromTo("#s3-chokepoint",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        12.7
+      );
+      tl.fromTo("#s3-chokepoint .word2",
+        { color: "#E8DEC8" },
+        { color: "#C03A2C", duration: 0.5, ease: "power2.inOut" },
+        13.5
+      );
+
+      // Phase 2: Acquisitions reveal — Cleveland fades, list slides up (22.5 → 49)
+      tl.to(["#s3-cleveland", "#s3-company", "#s3-chokepoint"], {
+        opacity: 0, duration: 0.8, ease: "power2.in"
+      }, 22.0);
+      tl.set(["#s3-cleveland", "#s3-company", "#s3-chokepoint"], { visibility: "hidden" }, 22.9);
+
+      tl.set("#s3-acquisitions", { opacity: 1 }, 22.9);
+
+      // List items appear with the narration:
+      // 23.5 "newspaper"
+      // 25.9 "theater"
+      // 27.1 "banking"
+      // 28.6 "streetcar"
+      tl.fromTo("#s3-acq-1", { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 23.3);
+      tl.fromTo("#s3-acq-2", { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 25.7);
+      tl.fromTo("#s3-acq-3", { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 26.9);
+      tl.fromTo("#s3-acq-4", { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 28.4);
+
+      // Update header to "By 1880" at 30.3
+      tl.fromTo("#s3-temperature",
+        {
+          opacity: 0,
+          y: -120,
+          x: 0
+        },
+        {
+          opacity: 1,
+          y: -140,
+          duration: 1.0,
+          ease: "power3.out",
+          x: 0
+        },
+        33.5
+      );
+
+      // Phase 3: Thesis frame (49 → 60)
+      tl.to("#s3-acquisitions", { opacity: 0, duration: 0.7, ease: "power2.in" }, 48.5);
+      tl.set("#s3-acquisitions", { visibility: "hidden" }, 49.3);
+
+      tl.set("#s3-thesis", { opacity: 1 }, 49.3);
+
+      // step 2: "Money" lands on 49.4 ("money was the second")
+      tl.fromTo("#s3-thesis .step.power-2",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        49.4
+      );
+
+      // step 1: "Who decided" lands on 54.3 ("who decided where the money went")
+      tl.fromTo("#s3-thesis .step.power-1",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        53.7
+      );
+
+      // Conclusion lands on 60.1 ("Not yet")
+      tl.fromTo("#s3-thesis .conclusion",
+        { opacity: 0, scale: 0.92, letterSpacing: "0.05em" },
+        { opacity: 1, scale: 1, letterSpacing: "-0.02em", duration: 1.0, ease: "expo.out" },
+        59.3
+      );
+
+      window.__timelines["scene-03-machine"] = tl;
+    </script>
+  </div>
+</template>

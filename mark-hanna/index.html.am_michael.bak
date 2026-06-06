@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Hanna — Episode 01</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Source Serif 4";
+        src: url("assets/fonts/SourceSerif4-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Black.woff2") format("woff2");
+        font-weight: 900;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("assets/fonts/RobotoMono-Regular.woff2") format("woff2");
+        font-weight: 400 700;
+        font-style: normal;
+      }
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background-color: #0E0B08;
+        font-family: "Source Serif 4", serif;
+        color: #E8DEC8;
+      }
+
+      #stage {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background-color: #0E0B08;
+      }
+
+      .scene-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      /* Global vignette */
+      #vignette {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 200;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(14, 11, 8, 0) 38%,
+          rgba(14, 11, 8, 0.55) 88%,
+          rgba(14, 11, 8, 0.85) 100%
+        );
+      }
+
+      /* Global film grain */
+      @keyframes grain-shift {
+        0%, 100% { transform: translate(0, 0); }
+        12% { transform: translate(-2%, -1%); }
+        24% { transform: translate(1%, -2%); }
+        36% { transform: translate(-1%, 1%); }
+        48% { transform: translate(2%, 0); }
+        60% { transform: translate(0, 2%); }
+        72% { transform: translate(-2%, 1%); }
+        84% { transform: translate(1%, -1%); }
+      }
+
+      #grain {
+        position: absolute;
+        top: -10%; left: -10%;
+        width: 120%; height: 120%;
+        pointer-events: none;
+        z-index: 199;
+        opacity: 0.10;
+        background-image:
+          repeating-radial-gradient(
+            circle at 20% 30%,
+            rgba(232, 222, 200, 0.20) 0px,
+            rgba(232, 222, 200, 0.20) 1px,
+            transparent 1px,
+            transparent 3px
+          ),
+          repeating-radial-gradient(
+            circle at 70% 80%,
+            rgba(200, 117, 51, 0.12) 0px,
+            rgba(200, 117, 51, 0.12) 1px,
+            transparent 1px,
+            transparent 4px
+          );
+        animation: grain-shift 0.5s steps(1) infinite;
+        mix-blend-mode: overlay;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="mark-hanna-ep01" data-width="1920" data-height="1080" data-start="0" data-duration="270">
+      <!-- Scene 01: Cold Open (0 - 60s) -->
+      <div id="scene-01" class="scene-layer clip" data-composition-id="scene-01-cold-open" data-composition-src="compositions/scene-01-cold-open.html" data-start="0" data-duration="60.5" data-track-index="1"></div>
+
+      <!-- Scene 02: Who Was This Man (60 - 136.5s, 76.5s) — overlap 0.5s for crossfade -->
+      <div id="scene-02" class="scene-layer clip" data-composition-id="scene-02-who-was" data-composition-src="compositions/scene-02-who-was.html" data-start="60" data-duration="76.5" data-track-index="2"></div>
+
+      <!-- Scene 03: The Machine (136 - 197.5s, 61.5s) -->
+      <div id="scene-03" class="scene-layer clip" data-composition-id="scene-03-machine" data-composition-src="compositions/scene-03-machine.html" data-start="136" data-duration="61.5" data-track-index="3"></div>
+
+      <!-- Scene 04: Finding McKinley (197 - 270s, 73s) -->
+      <div id="scene-04" class="scene-layer clip" data-composition-id="scene-04-finding-mckinley" data-composition-src="compositions/scene-04-finding-mckinley.html" data-start="197" data-duration="73" data-track-index="4"></div>
+
+      <!-- Captions overlay (full duration) -->
+      <div id="captions" class="scene-layer clip" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="270" data-track-index="50" style="z-index: 150;"></div>
+
+      <!-- Global film grain -->
+      <div id="grain"></div>
+      <!-- Global vignette -->
+      <div id="vignette"></div>
+
+      <!-- Narration audio -->
+      <audio id="narration" data-start="0" data-duration="270" data-track-index="100" src="assets/narration.wav"></audio>
+
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        // Crossfade transitions between scenes (0.5s overlap)
+        // Scene 01: 0 → 60.5 (last 0.5s fades out)
+        tl.set("#scene-01", { opacity: 1 }, 0);
+        tl.to("#scene-01", { opacity: 0, duration: 0.5, ease: "sine.inOut" }, 60.0);
+
+        // Scene 02: 60 → 136.5 (fades in 0 → 0.5; fades out 76 → 76.5)
+        tl.set("#scene-02", { opacity: 0 }, 0);
+        tl.to("#scene-02", { opacity: 1, duration: 0.5, ease: "sine.inOut" }, 60.0);
+        tl.to("#scene-02", { opacity: 0, duration: 0.5, ease: "sine.inOut" }, 136.0);
+
+        // Scene 03: 136 → 197.5 (fades in 136 → 136.5; fades out 197 → 197.5)
+        tl.set("#scene-03", { opacity: 0 }, 0);
+        tl.to("#scene-03", { opacity: 1, duration: 0.5, ease: "sine.inOut" }, 136.0);
+        tl.to("#scene-03", { opacity: 0, duration: 0.5, ease: "sine.inOut" }, 197.0);
+
+        // Scene 04: 197 → 270 (fades in 197 → 197.5; final fade-out at end)
+        tl.set("#scene-04", { opacity: 0 }, 0);
+        tl.to("#scene-04", { opacity: 1, duration: 0.5, ease: "sine.inOut" }, 197.0);
+        tl.to("#scene-04", { opacity: 0, duration: 1.0, ease: "sine.inOut" }, 268.5);
+
+        window.__timelines["mark-hanna-ep01"] = tl;
+      </script>
+    </div>
+  </body>
+</html>

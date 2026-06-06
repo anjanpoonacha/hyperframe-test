@@ -1,0 +1,594 @@
+<template id="scene-04-finding-mckinley-template">
+  <div
+    data-composition-id="scene-04-finding-mckinley"
+    data-width="1920"
+    data-height="1080"
+    style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;"
+  >
+    <style>
+      @font-face {
+        font-family: "Source Serif 4";
+        src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2");
+        font-weight: 900;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2");
+        font-weight: 400 700;
+        font-style: normal;
+      }
+      .s4-stage {
+        position: absolute;
+        inset: 0;
+        background-color: #0E0B08;
+        font-family: "Source Serif 4", serif;
+        color: #E8DEC8;
+        overflow: hidden;
+      }
+
+      /* Chapter mark */
+      #s4-chapter {
+        position: absolute;
+        top: 80px;
+        left: 96px;
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #C87533;
+        opacity: 0;
+        z-index: 20;
+        border-left: 2px solid #C87533;
+        padding-left: 18px;
+      }
+      #s4-chapter .num { color: #9A8E76; margin-right: 14px; }
+
+      /* The big setup card: 1888 / Chicago / Convention */
+      #s4-setup {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0E0B08;
+      }
+      #s4-setup .card {
+        text-align: center;
+        max-width: 1500px;
+        padding: 0 80px;
+      }
+      #s4-setup .preface {
+        font-family: "Roboto Mono", monospace;
+        font-size: 24px;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 56px;
+        opacity: 0;
+      }
+      #s4-setup .year {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 280px;
+        line-height: 0.9;
+        letter-spacing: -0.04em;
+        color: #C87533;
+        margin-bottom: 32px;
+        opacity: 0;
+        font-variant-numeric: tabular-nums;
+      }
+      #s4-setup .meta {
+        font-family: "Roboto Mono", monospace;
+        font-size: 32px;
+        font-weight: 500;
+        letter-spacing: 0.3em;
+        color: #E8DEC8;
+        text-transform: uppercase;
+        opacity: 0;
+      }
+      #s4-setup .meta .sep { color: #C87533; margin: 0 24px; }
+
+      /* Convention floor photo */
+      #s4-convention {
+        position: absolute;
+        top: 200px;
+        left: 96px;
+        right: 96px;
+        height: 760px;
+        opacity: 0;
+        z-index: 6;
+        background-color: #1a1410;
+      }
+      #s4-convention img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: sepia(0.4) contrast(1.05) brightness(0.78);
+        border: 1px solid rgba(200,117,51,0.5);
+      }
+      #s4-convention .overlay {
+        position: absolute;
+        bottom: 56px;
+        left: 56px;
+        background: rgba(14,11,8,0.92);
+        border-left: 4px solid #C87533;
+        padding: 32px 40px;
+        max-width: 800px;
+      }
+      #s4-convention .overlay .label {
+        font-family: "Roboto Mono", monospace;
+        font-size: 18px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 12px;
+      }
+      #s4-convention .overlay .title {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 64px;
+        line-height: 1.0;
+        letter-spacing: -0.02em;
+        color: #E8DEC8;
+        margin-bottom: 14px;
+      }
+      #s4-convention .overlay .title .accent { color: #C87533; }
+      #s4-convention .overlay .role {
+        font-family: "Source Serif 4", serif;
+        font-style: italic;
+        font-size: 28px;
+        color: #C87533;
+      }
+
+      /* Sherman vote count */
+      #s4-sherman {
+        position: absolute;
+        inset: 0;
+        z-index: 9;
+        opacity: 0;
+        background-color: #0E0B08;
+        padding: 100px 96px 140px;
+      }
+      #s4-sherman .header {
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 32px;
+        border-bottom: 1px solid #C87533;
+        padding-bottom: 16px;
+      }
+      #s4-sherman .header .num { color: #C87533; margin-right: 18px; }
+      #s4-sherman .candidate {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 76px;
+        line-height: 1.0;
+        letter-spacing: -0.02em;
+        color: #E8DEC8;
+        margin-bottom: 8px;
+      }
+      #s4-sherman .candidate .role {
+        font-family: "Source Serif 4", serif;
+        font-style: italic;
+        font-size: 28px;
+        color: #9A8E76;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        display: block;
+        margin-top: 8px;
+      }
+      #s4-sherman .ballot-row {
+        margin-top: 56px;
+        display: grid;
+        grid-template-columns: 220px 1fr 200px;
+        align-items: center;
+        gap: 32px;
+        padding: 18px 0;
+        border-bottom: 1px solid #2a2520;
+        opacity: 0;
+      }
+      #s4-sherman .ballot-row .lbl {
+        font-family: "Roboto Mono", monospace;
+        font-size: 28px;
+        font-weight: 500;
+        color: #9A8E76;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      #s4-sherman .ballot-row .bar {
+        height: 18px;
+        background: #2a2520;
+        position: relative;
+        overflow: hidden;
+      }
+      #s4-sherman .ballot-row .bar .fill {
+        position: absolute;
+        top: 0; left: 0; bottom: 0;
+        width: 0%;
+        background: linear-gradient(90deg, #C87533 0%, #C03A2C 100%);
+      }
+      #s4-sherman .ballot-row .val {
+        font-family: "Roboto Mono", monospace;
+        font-size: 36px;
+        font-weight: 700;
+        color: #E8DEC8;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      #s4-sherman .ballot-row.peak .val { color: #C87533; }
+      #s4-sherman .ballot-row.bottom .val { color: #C03A2C; }
+      /* Verdict is lifted out of flow so it never collides with the
+         captions safe-zone (cap-stage runs ~y930..1048 when 2 lines wrap).
+         Bottom-anchor at 200px → verdict bottom = y880, top = y732.
+         The ballot rows fade out when the verdict comes in, so the
+         vertical space they were occupying is the verdict's stage. */
+      #s4-sherman .verdict {
+        position: absolute;
+        left: 96px;
+        right: 96px;
+        bottom: 200px;
+        margin-top: 0;
+        text-align: center;
+        opacity: 0;
+      }
+      #s4-sherman .verdict .pre {
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 12px;
+      }
+      #s4-sherman .verdict .lost {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 900;
+        font-size: 80px;
+        color: #C03A2C;
+        letter-spacing: -0.02em;
+      }
+
+      /* The McKinley discovery — final beat */
+      #s4-discovery {
+        position: absolute;
+        inset: 0;
+        z-index: 12;
+        opacity: 0;
+        background-color: #0E0B08;
+      }
+      #s4-discovery .grid {
+        display: grid;
+        grid-template-columns: 720px 1fr;
+        height: 100%;
+      }
+      #s4-discovery .photo {
+        position: relative;
+        overflow: hidden;
+      }
+      #s4-discovery .photo img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: sepia(0.3) contrast(1.05) brightness(0.85);
+      }
+      #s4-discovery .photo .cap {
+        position: absolute;
+        bottom: 32px;
+        left: 32px;
+        font-family: "Roboto Mono", monospace;
+        font-size: 18px;
+        color: #E8DEC8;
+        letter-spacing: 0.1em;
+        background: rgba(14,11,8,0.85);
+        padding: 10px 14px;
+        border-left: 2px solid #C87533;
+      }
+      #s4-discovery .text {
+        padding: 100px 96px 100px 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 32px;
+      }
+      #s4-discovery .text .label {
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        opacity: 0;
+      }
+      #s4-discovery .text .name {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 120px;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        color: #E8DEC8;
+        opacity: 0;
+      }
+      #s4-discovery .text .name .last { color: #C87533; }
+      #s4-discovery .text .role {
+        font-family: "Roboto Mono", monospace;
+        font-size: 24px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #C87533;
+        opacity: 0;
+      }
+      #s4-discovery .text .quote {
+        margin-top: 40px;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 56px;
+        line-height: 1.2;
+        color: #E8DEC8;
+        opacity: 0;
+      }
+      #s4-discovery .text .quote .accent { color: #C87533; font-weight: 900; font-style: normal; }
+      #s4-discovery .text .quote .blood { color: #C03A2C; font-weight: 900; font-style: normal; }
+    </style>
+
+    <div class="s4-stage">
+      <div id="s4-chapter"><span class="num">IV</span>Finding McKinley</div>
+
+      <!-- Setup: 1888 / Chicago / Convention -->
+      <div id="s4-setup">
+        <div class="card">
+          <div class="preface">The Year Was</div>
+          <div class="year">1888</div>
+          <div class="meta">REPUBLICAN&nbsp;NATIONAL&nbsp;CONVENTION<span class="sep">·</span>CHICAGO</div>
+        </div>
+      </div>
+
+      <!-- Convention floor + Hanna identification -->
+      <div id="s4-convention">
+        <img src="../assets/convention-1888.jpg" alt="1888 Republican National Convention" />
+        <div class="overlay">
+          <div class="label">Mark Hanna arrived not as a candidate</div>
+          <div class="title">As a <span class="accent">Kingmaker.</span></div>
+          <div class="role">His man: John Sherman, Ohio senator.</div>
+        </div>
+      </div>
+
+      <!-- Sherman ballot collapse -->
+      <div id="s4-sherman">
+        <div class="header"><span class="num">III.</span>The Sherman Campaign — Ballot by Ballot</div>
+        <div class="candidate">JOHN SHERMAN<span class="role">U.S. Senator from Ohio · Treasury veteran</span></div>
+
+        <div class="ballot-row peak" id="s4-bal-1">
+          <div class="lbl">Ballot 1</div>
+          <div class="bar"><div class="fill"></div></div>
+          <div class="val">0</div>
+        </div>
+        <div class="ballot-row" id="s4-bal-2">
+          <div class="lbl">Ballot 4</div>
+          <div class="bar"><div class="fill"></div></div>
+          <div class="val">0</div>
+        </div>
+        <div class="ballot-row" id="s4-bal-3">
+          <div class="lbl">Ballot 7</div>
+          <div class="bar"><div class="fill"></div></div>
+          <div class="val">0</div>
+        </div>
+        <div class="ballot-row bottom" id="s4-bal-4">
+          <div class="lbl">Ballot 8</div>
+          <div class="bar"><div class="fill"></div></div>
+          <div class="val">—</div>
+        </div>
+
+        <div class="verdict">
+          <div class="pre">Nomination went to Benjamin Harrison.</div>
+          <div class="lost">Hanna&nbsp;lost.</div>
+        </div>
+      </div>
+
+      <!-- McKinley discovery -->
+      <div id="s4-discovery">
+        <div class="grid">
+          <div class="photo" data-layout-allow-overflow>
+            <img src="../assets/mckinley-1896.jpg" alt="William McKinley" />
+            <div class="cap">WILLIAM McKINLEY · CONGRESSMAN, CANTON, OHIO</div>
+          </div>
+          <div class="text">
+            <div class="label">A 45-year-old congressman from Canton</div>
+            <div class="name">William<br/><span class="last">McKinley.</span></div>
+            <div class="role">Chair of the Resolutions Committee</div>
+            <div class="quote">
+              He didn't know it yet.<br/>
+              But he had just <span class="accent">found his</span> <span class="blood">president.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // BEAT MAP (relative to scene-04 start at root t=197s)
+      // 0.3   "year was 1888"
+      // 2.7   "Republican National Convention"
+      // 5.2   "Chicago"
+      // 6.0   "Mark Hanna arrived"
+      // 8.8   "kingmaker"
+      // 10.4  "John Sherman"
+      // 26.2  "first ballot at"
+      // 27.3  "229" lands
+      // 29.4  "bled out"
+      // 32.9  "Benjamin Harrison"
+      // 34.2  "the eighth"
+      // 35.2  "Hanna lost"
+      // 37    "congressman"
+      // 41.2  "Canton"
+      // 43.7  "resolutions committee"
+      // 50.1  "walked to the microphone"
+      // 51.7  "refused"
+      // 57.6  "loyalty was rare"
+      // 61.6  "almost extinct"
+      // 63.8  "William McKinley"
+      // 65.1  "Hanna walked across"
+      // 70.96 "found his president"
+
+      // Phase 1: 1888 / Chicago setup
+      tl.fromTo("#s4-chapter",
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
+        0.23
+      );
+
+      tl.set("#s4-setup", { opacity: 1 }, 0.38);
+      tl.fromTo("#s4-setup .preface",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        0.38
+      );
+      tl.fromTo("#s4-setup .year",
+        { opacity: 0, scale: 1.2, letterSpacing: "0.05em" },
+        { opacity: 1, scale: 1, letterSpacing: "-0.04em", duration: 1.2, ease: "power3.out" },
+        0.53
+      );
+      tl.fromTo("#s4-setup .meta",
+        { opacity: 0, letterSpacing: "0.5em" },
+        { opacity: 1, letterSpacing: "0.3em", duration: 1.0, ease: "power3.out" },
+        1.98
+      );
+
+      // Phase 2: Convention floor on "Mark Hanna arrived" (6.0s)
+      tl.to("#s4-setup", { opacity: 0, duration: 0.8, ease: "power2.in" }, 4.48);
+      tl.set("#s4-setup", { visibility: "hidden" }, 5.28);
+
+      tl.fromTo("#s4-convention",
+        { opacity: 0, scale: 1.05 },
+        { opacity: 1, scale: 1.0, duration: 1.0, ease: "power3.out" },
+        4.66
+      );
+      tl.to("#s4-convention", { scale: 1.06, duration: 17, ease: "none", overwrite: "auto" }, 5.55);
+
+      // "Kingmaker" overlay lands on 8.8s
+      tl.fromTo("#s4-convention .overlay",
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
+        6.28
+      );
+
+      // Phase 3: Sherman ballot collapse (24 → 36)
+      tl.to("#s4-convention", { opacity: 0, duration: 0.8, ease: "power2.in" }, 20.9);
+      tl.set("#s4-convention", { visibility: "hidden" }, 21.73);
+
+      tl.set("#s4-sherman", { opacity: 1 }, 21.73);
+
+      // Ballot 1 (peak) lands on "229 votes" (27.3s)
+      tl.fromTo("#s4-bal-1", { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 22.74);
+      tl.to("#s4-bal-1 .fill", {
+        width: "55%", duration: 1.0, ease: "power2.out"
+      }, 23.2);
+      // count up the value
+      tl.to("#s4-bal-1 .val", {
+        innerHTML: 229, duration: 1.2, ease: "power2.out", snap: { innerHTML: 1 }
+      }, 23.38);
+
+      // Ballots 2, 3, 4 — bleed out (28 → 32)
+      tl.fromTo("#s4-bal-2", { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 24.86);
+      tl.to("#s4-bal-2 .fill", { width: "38%", duration: 0.7, ease: "power2.out" }, 25.09);
+      tl.to("#s4-bal-2 .val", { innerHTML: 161, duration: 0.8, ease: "power2.out", snap: { innerHTML: 1 } }, 25.09);
+
+      tl.fromTo("#s4-bal-3", { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 25.65);
+      tl.to("#s4-bal-3 .fill", { width: "22%", duration: 0.7, ease: "power2.out" }, 25.88);
+      tl.to("#s4-bal-3 .val", { innerHTML: 93, duration: 0.8, ease: "power2.out", snap: { innerHTML: 1 } }, 25.88);
+
+      tl.fromTo("#s4-bal-4", { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 26.98);
+      // ballot 8 = 0, no fill animation needed
+
+      // Hanna lost lands on 35.2
+      // Fade the ballot stack first so the verdict has the lower half of
+      // the panel to itself — verdict is now bottom-anchored at y732..880
+      // and would otherwise overlap bal-4 (ends at y854).
+      tl.to("#s4-sherman .ballot-row, #s4-sherman .header, #s4-sherman .candidate",
+        { opacity: 0.18, duration: 0.6, ease: "power2.inOut" },
+        30.2
+      );
+      tl.fromTo("#s4-sherman .verdict",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        30.63
+      );
+
+      // Phase 4: McKinley discovery (38 → 73)
+      tl.to("#s4-sherman", { opacity: 0, duration: 0.8, ease: "power2.in" }, 33.4);
+      tl.set("#s4-sherman", { visibility: "hidden" }, 34.14);
+
+      tl.set("#s4-discovery", { opacity: 1 }, 34.14);
+      tl.fromTo("#s4-discovery .photo img",
+        { scale: 1.1, x: -20 },
+        { scale: 1.0, x: 0, duration: 1.5, ease: "power3.out" },
+        34.32
+      );
+      // slow ken burns
+      tl.to("#s4-discovery .photo img", { scale: 1.06, duration: 28, ease: "none", overwrite: "auto" }, 35.71);
+
+      tl.fromTo("#s4-discovery .photo .cap",
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        35.25
+      );
+
+      // Label on "congressman from Canton" (40.1)
+      tl.fromTo("#s4-discovery .text .label",
+        { opacity: 0, x: 20 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
+        35.71
+      );
+
+      // Name lands on "William McKinley" (63.8)
+      tl.fromTo("#s4-discovery .text .name",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+        56.02
+      );
+
+      // Role on "Chair of the Resolutions Committee" -> already fired earlier, but show now
+      tl.fromTo("#s4-discovery .text .role",
+        { opacity: 0, x: 20 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
+        58.38
+      );
+
+      // Final quote lands on "found his president" (70.96)
+      tl.fromTo("#s4-discovery .text .quote",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+        60.1
+      );
+      tl.to("#s4-discovery .text .quote .blood", {
+        scale: 1.08, duration: 0.6, ease: "expo.out", transformOrigin: "left center"
+      }, 62.69);
+
+      window.__timelines["scene-04-finding-mckinley"] = tl;
+    </script>
+  </div>
+</template>

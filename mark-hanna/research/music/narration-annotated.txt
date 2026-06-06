@@ -1,0 +1,188 @@
+# narration-annotated.txt
+
+> Source: ../../narration.txt (97 lines, 4335 bytes), copied 2026-06-06
+> Locked cut: 238.36s, 4 scenes (cold-open, who-was, machine, finding-mckinley)
+> Marker source: research/music/PLAN.md §3.2 cue palette + §3.3 structural placement
+>
+> Markers (one per beat / sentence cluster):
+>   [silence]         — pre-title, cold-open drone or dead air; no melody
+>   [titlecard]       — Cue A states itself in full ~6-8s, then ducks under VO
+>   [mechanism]       — Cue A: structural fact about the 1896 machinery; ducked under VO
+>   [weight]          — Cue B: human cost / person / wage / vote / death; thin under B-roll
+>   [indictment]      — dry voice + room tone (§3.2 "the absence of a cue is the cue")
+>   [dry]             — the SINGLE most important sentence in the section; music exits before it
+>   [silent-reveal]   — THE one whole-piece silent-reveal beat; full music drop 1-2s before, dry, re-enter on a single low piano note (transformed Cue A)
+>   [sting]           — 1-2s motif sting at section transition (one stinger family for the whole piece)
+>   [coda]            — Cue C over end card
+>
+> Constraints honoured:
+>   - One [dry] per section (4 sections → 4 [dry] lines).
+>   - Exactly one [silent-reveal] in the whole piece (line 81, "Hanna lost.").
+>   - Indictment beats (§3.2) are unscored by definition; flagged separately so the editor doesn't accidentally lay Cue B over them.
+>   - Section starts get Cue A on a mechanism beat; Cue A exits before the section's [dry] line; Cue B floats only over weight beats.
+>   - Stings live AT the scene cuts in index.html: 53.01s, 119.46s, 173.12s.
+
+================================================================================
+SCENE 1 — COLD OPEN  (0.00 – 53.51s, lines 1-25)
+================================================================================
+
+[silence]                       Lines 1-7 — establish in dead air / single low drone, no melody.
+1| The cartoon ran in every Hearst paper in America.
+2|
+3| A fat man, in a suit covered in dollar signs, smoking a cigar the size of his forearm.
+4|
+5| The caption changed every week. The man did not.
+6|
+7| His name was Mark Hanna.
+
+[titlecard]                     Lines 9-11 — Cue A states itself in full ~6-8s over the title card, then ducks.
+9|  And in eighteen ninety-six, he did something no one had ever done at that scale.
+10|
+11| He turned the American presidential election into a corporate purchase order.
+
+[mechanism]                     Lines 13-19 — Cue A continues ducked under the figures barrage; this IS the machine being named.
+13| Three and a half million dollars raised. Twenty times what his opponent spent.
+15| Banks assessed at a quarter of a percent of capital. Railroads, shaken down personally. Standard Oil, two hundred and fifty thousand dollars. JP Morgan, two hundred and fifty thousand dollars.
+17| Half a million voters, transported by train, to shake one man's hand.
+19| Two hundred million pieces of campaign literature, printed and mailed.
+
+[weight]                        Line 21 — Cue B enters thin: the human contrast (the orator who could move a crowd).
+21| The opposition had a thirty-six year old preacher who could move a crowd to tears.
+
+[dry]   *** SECTION 1 CLIMAX ***  Line 23 — Cue A and Cue B both OUT before this line. Three words. Dry voice + room tone.
+23| Hanna had a ledger.
+
+[indictment]                    Line 25 — still dry; this is the section's verdict, not its hook. Stays unscored into the section transition.
+25| And when November came, the ledger won.
+
+[sting] @ 53.01s — single motif sting at scene cut to "who was" (one family, see PLAN §3.2 row 4).
+
+================================================================================
+SCENE 2 — WHO WAS  (53.01 – 119.96s, lines 27-69)
+================================================================================
+
+[mechanism]                     Lines 27-31 — Cue A re-enters quietly under the origin setup; this is the structural backstory of the man-who-became-the-machine.
+27| He wasn't born with money. He was born in a grocery.
+29| New Lisbon, Ohio. Eighteen thirty-seven.
+31| His father, Doctor Leonard Hanna, was a country physician who ran a wholesale grocery on the side. Flour, salt, dry goods to Ohio farmers.
+
+[mechanism]                     Lines 33-39 — Cleveland + Western Reserve + Rockefeller foreshadow. Still Cue A.
+33| When Mark was fifteen, the family moved to Cleveland. He enrolled at Western Reserve College.
+35| In his class, was a quiet, awkward boy who would grow up to control ninety percent of the oil refining capacity in the United States.
+37| His name was John D. Rockefeller.
+39| The two would orbit each other for the next forty years.
+
+[mechanism]                     Lines 41-43 — Hanna's actual education (the price of things). Cue A continuing forward motion.
+41| Hanna lasted one year at Western Reserve before he quit. Not because he was failing. Because he had already figured out something the professors couldn't teach. The real education, was in the price of things.
+43| He went back to the store. Worked the floor. Watched how men negotiated. Watched who paid on time and who didn't. Watched which suppliers had leverage, and which ones begged.
+
+[weight]                        Lines 45-49 — Cue B floats in: civil war, marriage, father-in-law's coal-and-iron money. Persons named, brief swap.
+45| Then the Civil War came. He served briefly. Came home.
+47| And married a woman named Charlotte Rhodes.
+49| Her father was Daniel Rhodes. Coal and iron. One of the men quietly getting rich off everything Cleveland was becoming.
+
+[mechanism]                     Lines 51-57 — Cue A returns: building MA Hanna & Co., the Cleveland chokepoint, the cut on every ton of ore.
+51| Hanna walked into that business, and never walked out.
+53| By eighteen sixty-seven, Marcus Alonzo Hanna had built MA Hanna and Company. A coal and iron brokerage, sitting at the exact pivot point where Lake Erie ore boats unloaded for the Pittsburgh steel mills.
+55| Cleveland was the chokepoint. And Hanna sat on it.
+57| Every ton of iron ore that crossed Lake Erie in the eighteen seventies, passed through brokers like him, he took a cut.
+
+[mechanism]                     Lines 59-61 — empire expansion. Cue A still on; this is the last mechanism beat before the philosophical pivot.
+59| Then he bought the newspaper, the Cleveland Herald. Then a theater. Then banking interests. Then a streetcar line.
+61| By eighteen eighty, he controlled enough of Cleveland that when he walked into a room, the room changed temperature.
+
+[weight]                        Line 63 — Cue B brief: his interior state (boredom is the human pivot to ambition). Cue A exits here.
+63| And he was bored. Not with money, he had money. Bored with the ceiling.
+
+[mechanism]                     Line 65 — final mechanism beat sets up the [dry]. Cue B should also be out by mid-line; bed is sparse.
+65| Because Hanna had figured out, watching the men who supplied his coal, the politicians who regulated his railroads, the judges who settled his contracts, that money was the second most powerful thing in America.
+
+[dry]   *** SECTION 2 CLIMAX ***  Line 67 — the philosophical reveal. ALL music out. Dry voice + room tone.
+67| The most powerful thing, was who decided where the money went.
+
+[indictment]                    Line 69 — verdict on the gap Hanna saw. Stays dry into transition.
+69| That was politics. And no one had ever run it like a business. Not yet.
+
+[sting] @ 119.46s — scene cut to "machine".
+
+================================================================================
+SCENE 3 — MACHINE  (119.46 – 173.62s, lines 71-91)
+================================================================================
+
+[mechanism]                     Lines 71-77 — Cue A enters firmly: 1888 RNC, kingmaker, Sherman, working the floor, trading delegates. This is the machinery in motion.
+71| The year was eighteen eighty-eight. The Republican National Convention. Chicago.
+73| Mark Hanna arrived not as a candidate, but as a kingmaker.
+75| His man was John Sherman. Ohio senator. Treasury veteran. The establishment choice.
+77| Hanna worked the convention floor for six days. Trading delegates. Promising postmasterships. Calling in markers from Ohio to Pennsylvania.
+
+[weight]                        Line 79 — Cue B: the count, the bleed-out. Vote figures = §3.2 weight trigger.
+79| Sherman peaked on the first ballot at two hundred and twenty-nine votes. Then he bled out. Ballot after ballot, until the nomination went to Benjamin Harrison on the eighth.
+
+[silent-reveal] *** THE ONE FOR THE WHOLE PIECE *** Line 81 — full music drop 1-2s BEFORE this line; dry voice + room tone; re-enter ~1.5s after on a single low piano note (transformed Cue A) per PLAN §3.3.
+81| Hanna lost.
+
+  Reasoning for picking line 81 as the silent-reveal:
+   • Two words. Maximum density-per-second when the bed is gone.
+   • Total narrative reversal — the man we've watched build a machine for 40 lines just lost. The structural inversion is the whole reason the next reveal (McKinley) lands.
+   • Falls roughly 60% into runtime (~135s of 238s) — the canonical mid-act-3 silence position in P1's reference cuts.
+   • Re-entry on a single low piano note (transformed Cue A, per §3.3) is exactly what the cut needs to start the McKinley arc on motion-not-mood.
+
+[mechanism]                     Lines 83-89 — Cue A re-enters as a single low piano note (transformed) and slowly rebuilds: the McKinley setup.
+83| But he saw something that week he would never forget.
+85| A forty-five year old congressman from Canton, Ohio had been chairing the resolutions committee.
+87| When delegates began breaking toward him as a dark-horse alternative, the congressman walked to the microphone, and refused.
+89| He told the convention he was bound to Sherman. And he sat down.
+
+[dry]   *** SECTION 3 CLIMAX ***  Line 91 — section's most important factual claim (loyalty as the rare commodity that triggered Hanna's pivot). Music out before the line.
+91| That kind of loyalty was rare in eighteen eighty-eight politics. It was almost extinct.
+
+[sting] @ 173.12s — scene cut to "finding mckinley".
+
+================================================================================
+SCENE 4 — FINDING MCKINLEY  (173.12 – 238.36s, lines 93-97)
+================================================================================
+
+[weight]                        Line 93 — Cue B (single muted-cornet line per §3.2) enters under the name reveal: a person is being named.
+93| His name was William McKinley.
+
+[weight]                        Line 95 — still Cue B, the physical action across the floor; the single human gesture that closes the arc.
+95| Hanna walked across the floor, and introduced himself.
+
+[dry]   *** SECTION 4 CLIMAX ***  Line 97 — closing line of the narration. Music out before the line; line plays in dry voice + room tone.
+97| He didn't know it yet. But he had just found his president.
+
+[coda]                          AFTER line 97, into the static end card / fade-to-black: Cue C plays over end card.
+                                Per PLAN §4 NEEDS HUMAN DECISION: editor cuts both the full-volume and thinned-reharmonization Cue C variants on the locked end card and picks one. Do not synthesize a default.
+
+================================================================================
+MARKER ROLL-UP  (for the editor's reference)
+================================================================================
+
+[dry] sentences (one per section, exactly four):
+  L23  "Hanna had a ledger."
+  L67  "The most powerful thing, was who decided where the money went."
+  L91  "That kind of loyalty was rare in eighteen eighty-eight politics. It was almost extinct."
+  L97  "He didn't know it yet. But he had just found his president."
+
+[silent-reveal] (one only, whole piece):
+  L81  "Hanna lost."
+
+Cue A "mechanism" entry beats:
+  L9 (titlecard), L13, L27, L33, L41, L51, L59, L65, L71, L77, L83 (re-entry after silent-reveal)
+
+Cue B "weight" entry beats:
+  L21, L45, L63, L79, L93, L95
+
+[indictment] (unscored by §3.2):
+  L25, L69
+
+[sting] cuts (one stinger family throughout):
+  53.01s (after L25), 119.46s (after L69), 173.12s (after L91)
+
+[coda] Cue C: end card only, post-L97. Editor audition required (§4).
+
+Unscored runtime check (§5 method): solo the music bus, sum non-silent regions >−60 dBFS,
+target 40–60% of 238.36s unscored = 95.3–143.0s of music-off in the final mix.
+With the marker plan above: cold-open silence (~12s) + 4 dry climax windows (~6s each = ~24s)
++ silent-reveal window (~3s) + dry indictment beats (~6s + ~5s) + intra-section pad-outs ≈ ~95–110s,
+which lands inside the 40–60% target without further pruning.
