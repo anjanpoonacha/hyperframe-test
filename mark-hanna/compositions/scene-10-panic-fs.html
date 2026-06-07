@@ -1,0 +1,144 @@
+<template id="scene-10-panic-fs-template">
+  <div data-composition-id="scene-10-panic-fs" data-width="1920" data-height="1080" data-duration="120" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+@font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+@font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+@font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+.fs-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+.fs-stage * { box-sizing:border-box; }
+
+.fs-chapter { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; z-index:30; }
+.fs-chapter .roman { font-family:"Playfair Display",serif; font-weight:700; font-size:96px; color:#9A8E76; font-style:italic; letter-spacing:0.08em; }
+.fs-chapter .title { margin-top:18px; font-family:"Source Serif 4",serif; font-style:italic; font-size:56px; color:#E8DEC8; letter-spacing:0.04em; }
+
+.fs-bg-photo { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); max-width:1400px; max-height:880px; opacity:0; z-index:5; filter:sepia(0.22) contrast(1.05) brightness(0.92) saturate(0.85); box-shadow:0 30px 80px rgba(0,0,0,0.6); border:1px solid rgba(200,117,51,0.35); }
+.fs-bg-photo.full { max-width:1920px; max-height:1080px; }
+.fs-bg-photo.left { left:30%; }
+.fs-bg-photo.right { left:70%; }
+
+.fs-hero { position:absolute; left:50%; transform:translateX(-50%); width:1600px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; line-height:1.15; letter-spacing:-0.01em; color:#E8DEC8; opacity:0; z-index:22; }
+.fs-hero.italic { font-family:"Source Serif 4",serif; font-style:italic; font-weight:400; }
+.fs-hero.amber { color:#C87533; }
+.fs-hero.blood { color:#C03A2C; }
+.fs-hero.cream { color:#E8DEC8; }
+
+.fs-mono { font-family:"Roboto Mono",monospace; font-variant-numeric:tabular-nums; }
+
+.fs-ledger { position:absolute; left:50%; transform:translateX(-50%); width:1280px; padding:48px 64px; background:#E8DEC8; color:#0E0B08; font-family:"Roboto Mono",monospace; font-size:30px; line-height:1.7; opacity:0; z-index:24; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+.fs-ledger .row { display:flex; justify-content:space-between; opacity:0; transform:translateY(8px); }
+.fs-ledger .row .amt { font-weight:700; }
+
+.fs-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.55) 88%, rgba(14,11,8,0.85) 100%); opacity:1; }
+.fs-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.20) 0, rgba(232,222,200,0.20) 1px, transparent 1px, transparent 3px), repeating-radial-gradient(circle at 70% 80%, rgba(200,117,51,0.12) 0, rgba(200,117,51,0.12) 1px, transparent 1px, transparent 4px); mix-blend-mode:overlay; }
+
+/* Hand-tuned scene 10 specifics */
+#s10-news { position:absolute; top:8%; left:50%; transform:translateX(-50%); width:1500px; padding:64px 80px; background:#E8DEC8; color:#0E0B08; opacity:0; z-index:24; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+#s10-news .topline { font-family:"Roboto Mono",monospace; font-size:18px; color:#9A8E76; letter-spacing:0.3em; margin-bottom:18px; text-transform:uppercase; }
+#s10-news .headline { font-family:"Playfair Display",serif; font-weight:900; font-size:118px; line-height:1.04; color:#0E0B08; }
+#s10-news .subhead { font-family:"Roboto Mono",monospace; font-size:30px; letter-spacing:0.25em; color:#0E0B08; margin-top:20px; opacity:0; }
+#s10-news .liab { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#0E0B08; margin-top:14px; }
+#s10-blackout { position:absolute; inset:0; background:#0E0B08; opacity:0; z-index:95; }
+#s10-ida-plate { position:absolute; top:50%; left:75%; transform:translate(-50%,-50%); width:760px; opacity:0; z-index:22; padding:32px 40px; border-left:2px solid #C87533; }
+#s10-ida-plate .ida-img { display:block; width:520px; height:auto; max-height:560px; object-fit:cover; margin-bottom:18px; filter:sepia(0.22) contrast(1.05) brightness(0.92) saturate(0.85); box-shadow:0 20px 60px rgba(0,0,0,0.6); border:1px solid rgba(200,117,51,0.35); }
+#s10-ida-plate .ida-name { font-family:"Playfair Display",serif; font-weight:700; font-size:54px; color:#E8DEC8; line-height:1.1; margin-bottom:18px; }
+#s10-ida-plate .ida-body { font-family:"Source Serif 4",serif; font-style:italic; font-size:30px; color:#E8DEC8; line-height:1.4; }
+</style>
+    <div class="fs-stage">
+      <div class="fs-chapter" id="s10-chap"><div class="roman">X</div><div class="title">THE PANIC. 1893.</div></div>
+
+      <!-- Newspaper composite — Cleveland Plain Dealer style. -->
+      <div id="s10-news">
+        <div class="topline">CLEVELAND PLAIN DEALER · 1893</div>
+        <div class="headline">M&#x27;KINLEY FACING<br>FINANCIAL RUIN</div>
+        <div class="subhead">1,500 BUSINESSES UNDER. 640 BANKS FAIL.</div>
+        <div class="liab">Liabilities, $130,000.</div>
+      </div>
+
+      <!-- Hard cut to black flash @28-28.8s. -->
+      <div id="s10-blackout"></div>
+
+      <!-- "I am a beggar." italic plate, letter-spacing tighten on enter. Vertically centered. -->
+      <div class="fs-hero italic cream" id="s10-beggar" style="top:50%; transform:translate(-50%,-50%); font-size:96px; letter-spacing:0.05em;">&ldquo;I am a beggar.&rdquo;</div>
+
+      <!-- 2-pane: McKinley portrait LEFT (cols 1-6), Ida typography plate RIGHT (cols 7-12). -->
+      <img class="fs-bg-photo left" id="s10-mck" src="../assets/mckinley-1896.jpg" alt="" style="top:50%; left:25%; max-width:680px; max-height:780px;">
+      <div id="s10-ida-plate">
+        <!-- Ida Saxton McKinley portrait (LoC LCCN 2001704076 / Frances Benjamin Johnston, ca.1890; via Wikimedia Commons mirror, PD-US-expired). -->
+        <img class="ida-img" src="../assets/ida-mckinley.jpg" alt="">
+        <div class="ida-name">IDA SAXTON<br>McKINLEY</div>
+        <div class="ida-body">Chronically ill. Often bedridden. Kept off the campaign trail by her health.</div>
+      </div>
+
+      <!-- Rescue ledger — small, IBM Plex Mono Newsprint Cream on Ink Black. -->
+      <div class="fs-ledger" id="s10-rescue" style="top:18%; width:1180px; background:rgba(14,11,8,0.92); color:#E8DEC8; border:1px solid #C87533; box-shadow:none;">
+        <div style="font-family:Roboto Mono,monospace; font-size:22px; color:#9A8E76; letter-spacing:0.25em; margin-bottom:24px; text-transform:uppercase;">RESCUE</div>
+        <div class="row"><span>WALKER NOTES</span><span class="amt">absorbed by Cleveland/NY syndicate, March 1893</span></div>
+        <div class="row"><span>MCKINLEY signed</span><span class="amt">nothing</span></div>
+        <div class="row"><span>MCKINLEY owed</span><span class="amt">nothing</span></div>
+      </div>
+
+      <!-- Verdict pair — crossfade in (no y-rise per shot board). -->
+      <div class="fs-hero blood" id="s10-v1" style="top:54%; font-size:96px;">The candidate was now a debt.</div>
+      <div class="fs-hero amber" id="s10-v2" style="top:68%; font-size:96px;">And Hanna held the paper.</div>
+
+      <div class="fs-grain"></div>
+      <div class="fs-vignette"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 10 — THE PANIC  (120 s) — HAND-TUNED per SHOT_BOARDS.md §scene 10
+      // Newspaper push-in (with sub-headline reveal at +4s) → hard cut to black →
+      // "I am a beggar" italic with letter-spacing tighten → 2-pane Ida/McKinley →
+      // ledger plate write-in (1.0s/line) → crossfade verdict pair.
+
+      // Take ownership of transforms from CSS (GSAP-CSS conflict guard).
+      gsap.set("#s10-mck", { xPercent: -50, yPercent: -50, scale: 0.85 });
+
+      // Chapter card.
+      tl.fromTo("#s10-chap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+      tl.to("#s10-chap", { opacity: 0, duration: 0.5, ease: "power2.in" }, 1.2);
+
+      // Newspaper composite enters from y-60, push-in 1.00 → 1.05 over 25s.
+      tl.fromTo("#s10-news", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 1.2);
+      tl.fromTo("#s10-news", { scale: 1.0 }, { scale: 1.05, duration: 25.0, ease: "sine.inOut" }, 2.2);
+      // Sub-headline animates in below at @4s.
+      tl.fromTo("#s10-news .subhead", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 4.0);
+
+      // Hard cut to black @28-28.8s — 0.6s held black.
+      tl.to("#s10-blackout", { opacity: 1, duration: 0.3, ease: "power3.out" }, 27.8);
+      tl.to("#s10-news", { opacity: 0, duration: 0.0 }, 28.0);
+      tl.to("#s10-blackout", { opacity: 0, duration: 0.5, ease: "power2.in" }, 28.6);
+
+      // "I am a beggar" — letter-spacing tighten 0.05 → -0.02 (0.7s power3.out). HELD 8s.
+      tl.fromTo("#s10-beggar", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.out" }, 28.8);
+      tl.to("#s10-beggar", { letterSpacing: "-0.02em", duration: 0.7, ease: "power3.out" }, 28.8);
+      tl.to("#s10-beggar", { opacity: 0, duration: 0.5, ease: "power2.in" }, 36.5);
+
+      // 2-pane Ida + McKinley enter @37s. McKinley cols 1-6 fades in; Ida plate slides
+      // in from screen-right (cols 7-12). Held 12s.
+      tl.to("#s10-mck", { opacity: 1.0, duration: 1.0, ease: "power3.out" }, 37.0);
+      tl.fromTo("#s10-mck", { scale: 0.85 }, { scale: 0.872, duration: 12.0, ease: "sine.inOut" }, 37.0);
+      tl.fromTo("#s10-ida-plate", { opacity: 0, x: 240 }, { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" }, 37.0);
+      tl.to("#s10-mck", { opacity: 0, duration: 0.6, ease: "power2.in" }, 49.0);
+      tl.to("#s10-ida-plate", { opacity: 0, duration: 0.5, ease: "power2.in" }, 49.0);
+
+      // Rescue ledger writes in @50s, one line every 1.0s.
+      tl.fromTo("#s10-rescue", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 50.0);
+      tl.to("#s10-rescue .row", { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 1.0 }, 50.6);
+      tl.to("#s10-rescue", { opacity: 0, y: 40, duration: 0.8, ease: "power2.in" }, 74.0);
+
+      // Verdict pair — CROSSFADE in over 1.0s (no y-rise per shot board KF @75).
+      // Both lines fade in together; second line +0.4s for staggered emphasis. Held 5s.
+      tl.fromTo("#s10-v1", { opacity: 0 }, { opacity: 1, duration: 1.0, ease: "power2.inOut" }, 75.0);
+      tl.fromTo("#s10-v2", { opacity: 0 }, { opacity: 1, duration: 1.0, ease: "power2.inOut" }, 75.4);
+      tl.to("#s10-v1", { opacity: 0, duration: 0.6, ease: "power2.in" }, 119.0);
+      tl.to("#s10-v2", { opacity: 0, duration: 0.6, ease: "power2.in" }, 119.0);
+
+      window.__timelines["scene-10-panic-fs"] = tl;
+    </script>
+  </div>
+</template>
