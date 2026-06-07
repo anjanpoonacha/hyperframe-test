@@ -32,3 +32,10 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # Finder (MacOS) folder config
 .DS_Store
+
+# Manual .bak snapshots — git history supersedes these.
+# Policy: rely on commits/branches/tags, not sibling .bak files.
+# Archive needed snapshots to a branch (e.g. archive/<topic>) before deleting.
+*.bak
+*.bak.*
+*.bak/
