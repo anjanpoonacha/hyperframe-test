@@ -26,7 +26,7 @@
       #s15-til .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
       #s15-til .row:last-of-type { border-bottom:1px solid #3A2E20; }
       #s15-til .row .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
-      #s15-til .row .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.45; }
+      #s15-til .row .v { font-family:"Source Serif 4",serif; font-size:36px; color:#E8DEC8; line-height:1.4; }
       #s15-til .row .v em { color:#D4B679; font-style:italic; }
       #s15-til .row .v strong { font-family:"Playfair Display",serif; font-weight:700; color:#C03A2C; }
 
@@ -42,6 +42,8 @@
       #s15-ban .firm .verdict { text-align:right; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#C03A2C; text-transform:uppercase; }
       #s15-ban .summary { position:absolute; top:760px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:42px; color:#C03A2C; letter-spacing:-0.01em; opacity:0; }
       #s15-ban .summary em { color:#E8DEC8; }
+      .s15-stage > .summary-pin { position:absolute; top:760px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:42px; color:#C03A2C; letter-spacing:-0.01em; opacity:0; z-index:15; }
+      .s15-stage > .summary-pin em { color:#E8DEC8; }
 
       /* PHASE 4: SIGNING STATEMENT (46-58s) */
       #s15-sig { position:absolute; inset:0; opacity:0; z-index:13; }
@@ -73,7 +75,7 @@
         <div class="label">The Wall Goes Up</div>
         <div class="when">January 26, <em>1907</em></div>
         <div class="what">Theodore Roosevelt signs <em>the Tillman Act</em>.</div>
-        <div class="who">— eleven years after Hanna invented the system it outlawed.</div>
+        <div class="who">— 11 years after Hanna invented the system it outlawed.</div>
       </div>
 
       <!-- PHASE 2: TILLMAN -->
@@ -97,8 +99,9 @@
           <div class="firm" data-firm="3"><div class="name"><em>The Railroads</em></div><div class="verdict">Could Not Pay</div></div>
           <div class="firm" data-firm="4"><div class="name"><em>The Insurance Companies</em></div><div class="verdict">Could Not Pay</div></div>
         </div>
-        <div class="summary">The system that elected McKinley twice &mdash; <em>now a crime</em>.</div>
       </div>
+
+      <div class="summary-pin">The system that elected McKinley twice &mdash; <em>now a crime</em>.</div>
 
       <!-- PHASE 4: SIGNING STATEMENT -->
       <div id="s15-sig">
@@ -133,7 +136,7 @@
       const tl = gsap.timeline({ paused: true });
 
       // ═════════════════════════════════════════════════════════════════
-      // BEAT MAP — section 15 The Tillman Act (74.667s)
+      // BEAT MAP — section 15 The Tillman Act (75.167s)
       // Word anchors verified vs assets/narration/transcript.json (offset = 1639.709)
       //   +0.40   "On January twenty-sixth, nineteen oh seven"        PHASE 1
       //   +4.57   "Tillman Act"
@@ -142,12 +145,18 @@
       //  +26.00   pivot to what it banned                            PHASE 3
       //  +27.50   "The exact mechanism Hanna had pioneered"
       //  +38.79   "federal felony eleven years after he invented it"
-      //  +50.66   "system that had elected"
-      //  +46.00   pivot to signing statement                         PHASE 4
-      //  +54.53   "did not name Hanna"
-      //  +58.00   pivot to endurance                                 PHASE 5
+      //  +42.01   "Standard Oil could not legally pay"
+      //  +45.33   "Carnegie Steel could not"
+      //  +47.94   "the railroads could not"
+      //  +48.53   "The insurance companies could not"
+      //  +50.53   "The system that had elected McKinley twice"
+      //  +53.24   "crime." → summary-pin exits
+      //  +53.50   pivot to signing statement                         PHASE 4
+      //  +54.03   "Roosevelt did not name Hanna"
+      //  +57.89   "He did not need to."
+      //  +62.00   pivot to endurance                                 PHASE 5
       //  +63.15   "most consequential"
-      //  +71.00   "one hundred and three years"
+      //  +73.73   "one hundred and three years"
       // ═════════════════════════════════════════════════════════════════
 
       // ─── PHASE 1: SIGNED (0-12s) ───
@@ -175,28 +184,38 @@
       // ─── PHASE 3: WHAT IT BANNED (26-46s) ───
       tl.set("#s15-ban", { opacity: 1, visibility: "visible" }, 26.0);
       tl.fromTo("#s15-ban .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 26.4);
-      tl.fromTo("#s15-ban .firm[data-firm='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 30.5);
-      tl.fromTo("#s15-ban .firm[data-firm='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 32.0);
-      tl.fromTo("#s15-ban .firm[data-firm='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 33.5);
-      tl.fromTo("#s15-ban .firm[data-firm='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 35.0);
-      tl.fromTo("#s15-ban .summary", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 39.5);
+      tl.fromTo("#s15-ban .firm[data-firm='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 42.0);
+      tl.fromTo("#s15-ban .firm[data-firm='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 45.3);
+      tl.fromTo("#s15-ban .firm[data-firm='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 47.3);
+      tl.fromTo("#s15-ban .firm[data-firm='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 49.0);
 
-      tl.to("#s15-ban", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 45.5);
-      tl.set("#s15-ban", { visibility: "hidden" }, 46.0);
+      tl.to("#s15-ban", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 50.5);
+      tl.set("#s15-ban", { visibility: "hidden" }, 51.0);
 
-      // ─── PHASE 4: SIGNING STATEMENT (46-58s) ───
-      tl.set("#s15-sig", { opacity: 1, visibility: "visible" }, 46.0);
-      tl.fromTo("#s15-sig .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 46.5);
-      tl.fromTo("#s15-sig .verdict", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.0, ease: "expo.out" }, 50.5);
+      // Summary pin — synced to narration "The system that had elected McKinley twice was now a crime."
+      // Word timings (data-start 1637.960): "The" 1690.24 = +52.28, "system" 1690.37 = +52.41,
+      // "crime." ends ~1693.45 = +55.49, next sentence "Roosevelt did not name Hanna" begins
+      // 1693.74 = +55.78. Fade-in starts on "The" so the line is mid-reveal as "system" lands;
+      // fade-out begins right after "crime." so it clears before the next sentence.
+      // Lives outside #s15-ban so Phase 3's exit at 45.5–46s doesn't kill it. Sits at top:760px,
+      // clear of Phase 4's head (top:240px) and verdict (top:540px).
+      tl.fromTo(".s15-stage > .summary-pin", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 52.28);
+      tl.to(".s15-stage > .summary-pin", { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: "auto" }, 55.55);
+      tl.set(".s15-stage > .summary-pin", { visibility: "hidden" }, 56.0);
 
-      tl.to("#s15-sig", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 57.5);
-      tl.set("#s15-sig", { visibility: "hidden" }, 58.0);
+      // ─── PHASE 4: SIGNING STATEMENT (53.5-62s) ───
+      tl.set("#s15-sig", { opacity: 1, visibility: "visible" }, 53.5);
+      tl.fromTo("#s15-sig .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 53.8);
+      tl.fromTo("#s15-sig .verdict", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.0, ease: "expo.out" }, 57.5);
 
-      // ─── PHASE 5: ENDURANCE (58-end) ───
-      tl.set("#s15-end", { opacity: 1, visibility: "visible" }, 58.0);
-      tl.fromTo("#s15-end .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 58.4);
-      tl.fromTo("#s15-end .stats", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 62.5);
-      tl.fromTo("#s15-end .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 70.5);
+      tl.to("#s15-sig", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 61.5);
+      tl.set("#s15-sig", { visibility: "hidden" }, 62.0);
+
+      // ─── PHASE 5: ENDURANCE (62-end) ───
+      tl.set("#s15-end", { opacity: 1, visibility: "visible" }, 62.0);
+      tl.fromTo("#s15-end .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 62.4);
+      tl.fromTo("#s15-end .stats", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 66.5);
+      tl.fromTo("#s15-end .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 72.5);
 
       // FINAL EXIT before 74.667
       tl.to("#s15-end", { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: "auto" }, 74.0);
