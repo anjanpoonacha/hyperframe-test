@@ -9,6 +9,11 @@
       .s9-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
       .s9-stage * { box-sizing:border-box; }
 
+      /* PHASE 0: BRIDGE — "He thanked Hanna for two decades." (0–4s) */
+      #s9-bridge { position:absolute; inset:0; opacity:0; z-index:9; }
+      #s9-bridge .l { position:absolute; top:440px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:72px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.15; opacity:0; }
+      #s9-bridge .l em { color:#C87533; font-style:italic; }
+
       /* PHASE 1: THE INVITATION (0–22s) */
       #s9-invite { position:absolute; inset:0; opacity:0; z-index:10; }
       #s9-invite .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; opacity:0; }
@@ -113,6 +118,11 @@
     </style>
 
     <div class="s9-stage">
+      <!-- PHASE 0: BRIDGE -->
+      <div id="s9-bridge">
+        <div class="l">He thanked Hanna for <em>two decades</em>.</div>
+      </div>
+
       <!-- PHASE 1: INVITATION -->
       <div id="s9-invite">
         <div class="label">Four Nights After</div>
@@ -286,15 +296,22 @@
       // +124.74  "Each reporter went home with a gold medal"              home
       // ═════════════════════════════════════════════════════════════════
 
-      // ─── PHASE 1: INVITATION (0–22s) ───
+      // ─── PHASE 0: BRIDGE (0–4s) "He thanked Hanna for two decades." ───
+      tl.set("#s9-bridge", { opacity: 1, visibility: "visible" }, 0);
+      tl.fromTo("#s9-bridge .l",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.05);
+      tl.to("#s9-bridge .l", { opacity: 0, duration: 0.5, ease: "power2.in" }, 3.6);
+      tl.set("#s9-bridge", { visibility: "hidden", opacity: 0 }, 4.1);
+
+      // ─── PHASE 1: INVITATION (4–22s) ───
       tl.fromTo("#s9-invite",
-        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.4);
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.2);
       tl.fromTo("#s9-invite .label",
-        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.6);
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 4.4);
       tl.fromTo("#s9-invite .head",
-        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 1.0);
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 4.7);
       tl.fromTo("#s9-invite .meta",
-        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 2.5);
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 5.5);
       tl.fromTo("#s9-invite .count",
         { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 11.0);
 
