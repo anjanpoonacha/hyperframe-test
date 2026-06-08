@@ -1,0 +1,592 @@
+<template id="scene-07-education-of-voters-template">
+  <div data-composition-id="scene-07-education-of-voters" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s7-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s7-stage * { box-sizing:border-box; }
+
+      /* ========== PHASE 1: EDUCATION (0–8s) ========== */
+      /* L6: ~280px tall → top:400 puts midpoint y=540 */
+      #s7-edu-intro { position:absolute; top:400px; left:0; width:100%; text-align:center; opacity:0; z-index:10; }
+      #s7-edu-intro .label { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; margin-bottom:32px; }
+      #s7-edu-intro .head { font-family:"Playfair Display",serif; font-weight:900; font-size:144px; line-height:1.0; letter-spacing:-0.02em; color:#E8DEC8; }
+      #s7-edu-intro .head .quote { color:#C87533; font-style:italic; font-weight:700; }
+      #s7-edu-intro .sub { font-family:"Source Serif 4",serif; font-style:italic; font-size:38px; color:#D4B679; margin-top:36px; line-height:1.4; max-width:1500px; margin-left:auto; margin-right:auto; opacity:0; }
+
+      /* ========== PHASE 2: 200 MILLION (8–22s) ========== */
+      #s7-tonnage { position:absolute; top:200px; left:0; width:100%; text-align:center; opacity:0; z-index:11; }
+      #s7-tonnage .header { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; margin-bottom:32px; }
+      #s7-tonnage .body { font-family:"Source Serif 4",serif; font-size:34px; color:#E8DEC8; max-width:1500px; margin:0 auto 48px; line-height:1.4; opacity:0; }
+      #s7-tonnage .num { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; color:#C87533; line-height:0.95; letter-spacing:-0.04em; opacity:0; font-variant-numeric:tabular-nums; }
+      #s7-tonnage .num .word { font-size:80px; color:#E8DEC8; letter-spacing:0.06em; display:block; margin-top:48px; line-height:1.0; }
+      #s7-tonnage .compare { font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; margin-top:36px; max-width:1400px; margin-left:auto; margin-right:auto; line-height:1.4; opacity:0; }
+      #s7-tonnage .pop { font-family:"Roboto Mono",monospace; font-size:28px; color:#E8DEC8; letter-spacing:0.1em; }
+      #s7-tonnage .ratio { color:#C87533; }
+
+      /* ========== PHASE 3: LANGUAGES (24–43s) ========== */
+      #s7-langs { position:absolute; top:120px; left:50%; width:1700px; opacity:0; z-index:12; }
+      #s7-langs .header { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:18px; }
+      #s7-langs .head-line { font-family:"Playfair Display",serif; font-weight:900; font-size:84px; color:#E8DEC8; text-align:center; letter-spacing:-0.02em; margin-bottom:48px; line-height:1.0; }
+      #s7-langs .head-line em { font-style:italic; color:#C87533; font-weight:700; }
+      #s7-langs .grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:28px 80px; padding:0 60px; }
+      #s7-langs .row { display:grid; grid-template-columns:280px 1fr; gap:36px; align-items:baseline; opacity:0; padding:18px 0; border-bottom:1px solid #3A2E20; }
+      #s7-langs .row .lang { font-family:"Playfair Display",serif; font-weight:900; font-size:46px; color:#C87533; letter-spacing:-0.01em; line-height:1.0; }
+      #s7-langs .row .who { font-family:"Source Serif 4",serif; font-size:26px; color:#D4B679; line-height:1.35; }
+      #s7-langs .row.combo .lang { font-size:38px; line-height:1.05; }
+
+      /* ========== PHASE 4: ENGLISH VARIANTS (43–57s) ========== */
+      #s7-variants { position:absolute; top:160px; left:0; width:100%; opacity:0; z-index:13; }
+      #s7-variants .header { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:14px; }
+      #s7-variants .head-line { font-family:"Source Serif 4",serif; font-style:italic; font-size:38px; color:#E8DEC8; text-align:center; max-width:1400px; margin:0 auto 56px; line-height:1.4; }
+      #s7-variants .head-line em { color:#C87533; font-style:italic; }
+      #s7-variants .stack { display:flex; flex-direction:column; align-items:center; gap:18px; }
+      #s7-variants .item { font-family:"Playfair Display",serif; font-weight:700; font-size:54px; color:#E8DEC8; letter-spacing:-0.01em; opacity:0; line-height:1.05; text-align:center; }
+      #s7-variants .item.split { font-size:42px; line-height:1.2; max-width:1500px; }
+      #s7-variants .item.split .a { color:#D4B679; }
+      #s7-variants .item.split .b { color:#C87533; }
+      #s7-variants .verdict { font-family:"Source Serif 4",serif; font-style:italic; font-size:34px; color:#C87533; text-align:center; margin-top:42px; opacity:0; max-width:1500px; margin-left:auto; margin-right:auto; line-height:1.35; }
+
+      /* ========== PHASE 5: 1400 SPEAKERS (59–73s) ========== */
+      #s7-speakers-stage { position:absolute; inset:0; opacity:0; z-index:14; }
+      #s7-speakers-num { position:absolute; top:240px; left:0; width:100%; text-align:center; }
+      #s7-speakers-num .label { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; margin-bottom:24px; }
+      #s7-speakers-num .num { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; color:#C87533; line-height:0.95; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; }
+      #s7-speakers-num .desc { font-family:"Source Serif 4",serif; font-size:38px; color:#E8DEC8; margin-top:18px; line-height:1.3; }
+      #s7-speakers-jobs { position:absolute; top:660px; left:0; width:100%; text-align:center; opacity:0; }
+      #s7-speakers-jobs .row { display:flex; justify-content:center; gap:48px; font-family:"Source Serif 4",serif; font-size:28px; color:#D4B679; flex-wrap:wrap; max-width:1400px; margin:0 auto; }
+      #s7-speakers-jobs .row .pill { padding:10px 26px; border:1px solid #3A2E20; border-radius:8px; opacity:0; background:rgba(232,222,200,0.04); }
+      #s7-speakers-jobs .row .pill em { color:#C87533; font-style:italic; }
+
+      /* ========== PHASE 6: CANDIDATE STAYED HOME (73–86s) ========== */
+      #s7-mck-stage { position:absolute; inset:0; opacity:0; z-index:15; }
+      #s7-mck-stage .label { position:absolute; top:170px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; opacity:0; }
+      #s7-mck-stage .head { position:absolute; top:260px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:140px; color:#E8DEC8; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s7-mck-stage .quote-block { position:absolute; top:480px; left:50%; transform:translateX(-50%); width:1500px; text-align:center; opacity:0; }
+      #s7-mck-stage .quote-block .q { font-family:"Source Serif 4",serif; font-style:italic; font-size:42px; color:#D4B679; line-height:1.45; }
+      #s7-mck-stage .quote-block .q em { color:#E8DEC8; }
+      #s7-mck-stage .pivot { position:absolute; top:740px; left:50%; transform:translateX(-50%); width:1500px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:54px; color:#C87533; letter-spacing:-0.01em; line-height:1.15; opacity:0; }
+      #s7-mck-stage .pivot em { font-style:italic; color:#E8DEC8; }
+
+      /* ========== PHASE 7: THE FRONT PORCH (86–110s) ========== */
+      #s7-porch-stage { position:absolute; inset:0; opacity:0; z-index:16; }
+      #s7-porch-bg { position:absolute; top:60px; left:50%; transform:translateX(-50%); width:1400px; height:760px; opacity:0; border-radius:4px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.6); border:1px solid rgba(200,117,51,0.4); }
+      #s7-porch-bg img { width:100%; height:100%; object-fit:cover; object-position:center 30%; filter:sepia(0.35) contrast(1.05) brightness(0.65) saturate(0.7); }
+      #s7-porch-bg .vignette { position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 30%, rgba(14,11,8,0.55) 75%, rgba(14,11,8,0.92) 100%); }
+      #s7-porch-tag { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:20px; letter-spacing:0.4em; color:#C87533; text-transform:uppercase; opacity:0; }
+      /* Stats panel under photo, BUT outside caption zone — top:780 max (stop at 870) */
+      #s7-porch-stats { position:absolute; top:300px; left:120px; width:540px; opacity:0; padding:32px 36px; background:rgba(14,11,8,0.82); border:1px solid #C87533; }
+      #s7-porch-stats .label { font-family:"Roboto Mono",monospace; font-size:18px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; margin-bottom:18px; }
+      #s7-porch-stats .city { font-family:"Playfair Display",serif; font-weight:900; font-size:64px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.0; }
+      #s7-porch-stats .meta { font-family:"Source Serif 4",serif; font-size:24px; color:#D4B679; margin-top:14px; line-height:1.4; }
+      #s7-porch-stats .meta em { color:#C87533; font-style:italic; }
+      #s7-porch-pivot { position:absolute; top:760px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:46px; color:#E8DEC8; letter-spacing:-0.01em; opacity:0; }
+      #s7-porch-pivot em { color:#C87533; font-style:italic; }
+      #s7-porch-shake { position:absolute; top:760px; left:0; width:100%; text-align:center; opacity:0; }
+      #s7-porch-shake .row { display:flex; justify-content:center; gap:64px; font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; }
+      #s7-porch-shake .row .l { opacity:0; }
+      #s7-porch-shake .row .l em { color:#C87533; font-style:italic; }
+
+      /* ========== PHASE 8: 750,000 (109–116s) ========== */
+      #s7-yard { position:absolute; top:300px; left:0; width:100%; text-align:center; opacity:0; z-index:17; }
+      #s7-yard .label { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; margin-bottom:24px; }
+      #s7-yard .num { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; color:#C87533; letter-spacing:-0.04em; line-height:0.95; font-variant-numeric:tabular-nums; }
+      #s7-yard .alt { font-family:"Source Serif 4",serif; font-style:italic; font-size:38px; color:#D4B679; margin-top:18px; line-height:1.35; opacity:0; }
+      #s7-yard .alt em { color:#E8DEC8; }
+
+      /* ========== PHASE 9: BRYAN ON TRAINS (114–152s) ========== */
+      #s7-bryan-stage { position:absolute; inset:0; opacity:0; z-index:18; }
+      #s7-bryan-bg { position:absolute; top:60px; left:120px; width:680px; height:760px; opacity:0; }
+      #s7-bryan-bg img { width:100%; height:100%; object-fit:cover; object-position:center 25%; filter:sepia(0.3) contrast(1.1) brightness(0.7) saturate(0.7); border-radius:4px; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+      #s7-bryan-stage .label { position:absolute; top:80px; right:120px; width:980px; text-align:left; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#C03A2C; text-transform:uppercase; opacity:0; }
+      #s7-bryan-stage .name { position:absolute; top:130px; right:120px; width:980px; text-align:left; font-family:"Playfair Display",serif; font-weight:900; font-size:96px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.0; opacity:0; }
+      #s7-bryan-stage .strap { position:absolute; top:360px; right:120px; width:980px; text-align:left; font-family:"Source Serif 4",serif; font-style:italic; font-size:30px; color:#D4B679; line-height:1.45; opacity:0; }
+      #s7-bryan-stage .quote { position:absolute; top:500px; right:120px; width:980px; text-align:left; font-family:"Playfair Display",serif; font-weight:700; font-size:54px; color:#C87533; line-height:1.15; letter-spacing:-0.01em; opacity:0; }
+      #s7-bryan-stage .quote em { font-style:italic; color:#E8DEC8; }
+      #s7-bryan-stage .silence { position:absolute; top:710px; right:120px; width:980px; text-align:left; font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; line-height:1.4; opacity:0; }
+      #s7-bryan-stage .silence em { color:#E8DEC8; }
+
+      /* Bryan tour stats — overlaid bottom strip in clean canvas */
+      #s7-bryan-tour { position:absolute; top:280px; left:0; width:100%; text-align:center; opacity:0; z-index:19; }
+      #s7-bryan-tour .label { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#C03A2C; text-transform:uppercase; margin-bottom:30px; }
+      #s7-bryan-tour .grid { display:flex; justify-content:center; gap:120px; }
+      #s7-bryan-tour .stat { opacity:0; }
+      #s7-bryan-tour .stat .num { font-family:"Playfair Display",serif; font-weight:900; font-size:200px; color:#C87533; line-height:0.95; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; }
+      #s7-bryan-tour .stat .word { font-family:"Source Serif 4",serif; font-size:30px; color:#E8DEC8; letter-spacing:0.04em; margin-top:12px; line-height:1.3; }
+      #s7-bryan-tour .praise { font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#E8DEC8; max-width:1500px; margin:50px auto 0; letter-spacing:-0.01em; line-height:1.2; opacity:0; }
+      #s7-bryan-tour .praise em { color:#C87533; font-style:italic; }
+
+      /* ========== PHASE 10: MAN VS MACHINE (153–176s) ========== */
+      #s7-vs-stage { position:absolute; inset:0; opacity:0; z-index:20; }
+      #s7-vs-stage .head { position:absolute; top:120px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:42px; color:#D4B679; opacity:0; max-width:1500px; margin:0 auto; line-height:1.4; }
+      #s7-vs-stage .head em { color:#C87533; }
+      /* table grid: 3 rows × 2 cols, header row at top */
+      #s7-vs-stage .table { position:absolute; top:280px; left:50%; transform:translateX(-50%); width:1660px; }
+      #s7-vs-stage .header-row { display:grid; grid-template-columns:1fr 1fr; gap:0; padding:0 30px; margin-bottom:14px; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; text-transform:uppercase; opacity:0; }
+      #s7-vs-stage .header-row .left { color:#C03A2C; }
+      #s7-vs-stage .header-row .right { color:#C87533; }
+      #s7-vs-stage .row { display:grid; grid-template-columns:1fr 60px 1fr; align-items:center; gap:0; padding:24px 30px; border-top:1px solid #3A2E20; opacity:0; }
+      #s7-vs-stage .row:last-child { border-bottom:1px solid #3A2E20; }
+      #s7-vs-stage .row .cell { font-family:"Playfair Display",serif; font-weight:700; font-size:38px; line-height:1.15; letter-spacing:-0.01em; }
+      #s7-vs-stage .row .cell.bryan { color:#D4B679; }
+      #s7-vs-stage .row .cell.hanna { color:#E8DEC8; }
+      #s7-vs-stage .row .cell .num { color:#C87533; font-family:"Playfair Display",serif; font-weight:900; }
+      #s7-vs-stage .row .vs { font-family:"Roboto Mono",monospace; font-size:22px; color:#9A8E76; text-align:center; letter-spacing:0.2em; }
+
+      /* ========== PHASE 11: COIN FLIP (170–178s) ========== */
+      #s7-verdict { position:absolute; top:380px; left:0; width:100%; text-align:center; opacity:0; z-index:21; }
+      #s7-verdict .l1 { font-family:"Source Serif 4",serif; font-style:italic; font-size:42px; color:#D4B679; margin-bottom:32px; line-height:1.4; }
+      #s7-verdict .head { font-family:"Playfair Display",serif; font-weight:900; font-size:128px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.0; opacity:0; }
+      #s7-verdict .head .accent { color:#C87533; font-style:italic; font-weight:700; }
+      #s7-verdict .cliff { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#C87533; margin-top:40px; line-height:1.4; opacity:0; }
+
+      .s7-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.4) 88%, rgba(14,11,8,0.78) 100%); }
+      .s7-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px), repeating-radial-gradient(circle at 70% 80%, rgba(200,117,51,0.10) 0, rgba(200,117,51,0.10) 1px, transparent 1px, transparent 4px); mix-blend-mode:overlay; }
+
+      /* x-translate fix: many absolute children use left:50% — need transform on stage children */
+      #s7-formula, #s7-langs, #s7-verdict-dual,
+      #s7-tonnage, #s7-langs, #s7-variants, #s7-yard {
+        /* will be xPercent:-50 set via gsap */
+      }
+    </style>
+
+    <div class="s7-stage">
+
+      <!-- PHASE 1: EDUCATION -->
+      <div id="s7-edu-intro">
+        <div class="label">The Campaign</div>
+        <div class="head">An <span class="quote">"Education."</span></div>
+        <div class="sub">Educating <strong>76 million Americans</strong> in four months means industrial scale.</div>
+      </div>
+
+      <!-- PHASE 2: 200 MILLION -->
+      <div id="s7-tonnage">
+        <div class="header">Republican National Committee · June–November 1896</div>
+        <div class="body">The RNC printed pamphlets in the four months between June and November.</div>
+        <div class="num">200,000,000<span class="word">PAMPHLETS</span></div>
+        <div class="compare">
+          <span class="pop">Population of America in 1896: <strong>76 million</strong>.</span><br>
+          Hanna mailed every adult voter the equivalent of <span class="ratio">four pamphlets each.</span>
+        </div>
+      </div>
+
+      <!-- PHASE 3: LANGUAGES -->
+      <div id="s7-langs">
+        <div class="header">The Literature</div>
+        <div class="head-line">Multilingual. <em>By design.</em></div>
+        <div class="grid">
+          <div class="row" data-row="1"><div class="lang">German</div><div class="who">Pennsylvania &amp; Wisconsin farmers</div></div>
+          <div class="row" data-row="2"><div class="lang">Yiddish</div><div class="who">New York garment workers</div></div>
+          <div class="row" data-row="3"><div class="lang">Spanish</div><div class="who">The Southwest</div></div>
+          <div class="row" data-row="4"><div class="lang">Italian</div><div class="who">The Eastern cities</div></div>
+          <div class="row combo" data-row="5"><div class="lang">Polish · Czech<br>Swedish · Norwegian</div><div class="who">The Upper Midwest</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 4: VARIANTS -->
+      <div id="s7-variants">
+        <div class="header">English-Language Variants</div>
+        <div class="head-line">In <em>dozens</em> of variants — one for every kind of voter.</div>
+        <div class="stack">
+          <div class="item" data-item="1">Railway workers.</div>
+          <div class="item" data-item="2">Factory hands.</div>
+          <div class="item" data-item="3">Shopkeepers.</div>
+          <div class="item split" data-item="4">Farmers in <span class="a">silver-mining</span> states &mdash; one version. <br>Farmers in <span class="b">gold-standard</span> states &mdash; a different one.</div>
+        </div>
+        <div class="verdict">The campaign tracked <em>which version was sent to which county.</em></div>
+      </div>
+
+      <!-- PHASE 5: 1400 SPEAKERS -->
+      <div id="s7-speakers-stage">
+        <div id="s7-speakers-num">
+          <div class="label">Hanna Deployed</div>
+          <div class="num">1,400</div>
+          <div class="desc">Surrogate speakers — <em>paid, scheduled, and on-message.</em></div>
+        </div>
+        <div id="s7-speakers-jobs">
+          <div class="row">
+            <div class="pill" data-job="1">He paid their <em>travel</em>.</div>
+            <div class="pill" data-job="2">Coordinated their <em>schedules</em>.</div>
+            <div class="pill" data-job="3">Kept them <em>on message</em>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 6: STAYED HOME -->
+      <div id="s7-mck-stage">
+        <div class="label">The Candidate</div>
+        <div class="head">Stayed Home.</div>
+        <div class="quote-block">
+          <div class="q">McKinley refused to travel.<br>A presidential nominee, he said, <em>"should not beg for votes on a railroad platform."</em></div>
+        </div>
+        <div class="pivot">So Hanna brought <em>the field</em> to him.</div>
+      </div>
+
+      <!-- PHASE 7: FRONT PORCH -->
+      <div id="s7-porch-stage">
+        <div id="s7-porch-bg">
+          <img src="../assets/mckinley-front-porch-1896.jpg" alt="">
+          <div class="vignette"></div>
+        </div>
+        <div id="s7-porch-tag">McKinley · Canton, Ohio · 1896</div>
+        <div id="s7-porch-stats">
+          <div class="label">The Front Porch</div>
+          <div class="city">Canton, Ohio</div>
+          <div class="meta">Population <em>30,000</em>.<br>About <em>300 miles</em> from Washington.<br>His hometown since the Civil War.<br><br>Pennsylvania Railroad. Baltimore &amp; Ohio.<br>A dozen lines offered <em>special excursion fares</em>.</div>
+        </div>
+        <div id="s7-porch-pivot">Voters arrived from <em>Maine</em> &nbsp;&middot;&nbsp; <em>Nebraska</em> &nbsp;&middot;&nbsp; everywhere between.</div>
+        <div id="s7-porch-shake">
+          <div class="row">
+            <div class="l" data-l="1">McKinley spoke from his lawn.</div>
+            <div class="l" data-l="2">He shook <em>every hand.</em></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 8: 750,000 -->
+      <div id="s7-yard">
+        <div class="label">By Election Day</div>
+        <div class="num">750,000</div>
+        <div class="alt">Three quarters of a million Americans had stood in <em>McKinley's front yard</em>.</div>
+      </div>
+
+      <!-- PHASE 9: BRYAN -->
+      <div id="s7-bryan-stage">
+        <div id="s7-bryan-bg"><img src="../assets/bryan-1896.jpg" alt=""></div>
+        <div class="label">William Jennings Bryan · The Opposition</div>
+        <div class="name">Bryan,<br>meanwhile, <em>traveled.</em></div>
+        <div class="strap">"Cross of Gold" speech — Democratic Convention, Chicago, July 9, 1896.<br>The youngest major-party nominee in American history.</div>
+        <div class="quote">"You shall not crucify mankind <em>upon a cross of gold.</em>"</div>
+        <div class="silence">The convention floor went silent for <em>five seconds</em> — then erupted.</div>
+      </div>
+
+      <div id="s7-bryan-tour">
+        <div class="label">Four Months · The Tour</div>
+        <div class="grid">
+          <div class="stat" data-s="1"><div class="num">600</div><div class="word">SPEECHES</div></div>
+          <div class="stat" data-s="2"><div class="num">27</div><div class="word">STATES</div></div>
+          <div class="stat" data-s="3"><div class="num">36</div><div class="word">YEARS OLD</div></div>
+        </div>
+        <div class="praise">Magnificent in person. Could fill a stadium <em>with his voice alone.</em></div>
+      </div>
+
+      <!-- PHASE 10: MAN VS MACHINE -->
+      <div id="s7-vs-stage">
+        <div class="head">Hanna's response was <em>tonnage,</em> not eloquence.</div>
+        <div class="table">
+          <div class="header-row">
+            <div class="left">BRYAN</div>
+            <div class="right">HANNA</div>
+          </div>
+          <div class="row" data-row="1">
+            <div class="cell bryan">Crowds of <span class="num">10,000</span></div>
+            <div class="vs">vs.</div>
+            <div class="cell hanna"><span class="num">200M</span> pieces of mail</div>
+          </div>
+          <div class="row" data-row="2">
+            <div class="cell bryan"><span class="num">600</span> speeches</div>
+            <div class="vs">vs.</div>
+            <div class="cell hanna"><span class="num">1,400</span> speakers</div>
+          </div>
+          <div class="row" data-row="3">
+            <div class="cell bryan">One rally <span class="num">per town</span></div>
+            <div class="vs">vs.</div>
+            <div class="cell hanna">One in <span class="num">every precinct</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 11: VERDICT -->
+      <div id="s7-verdict">
+        <div class="l1">The contest was not between two campaigners.</div>
+        <div class="head">A man &mdash; <span class="accent">vs. a machine.</span></div>
+        <div class="cliff">On November 3rd the country would tell them which it preferred.</div>
+      </div>
+
+      <div class="s7-grain"></div>
+      <div class="s7-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 07 The Education of the Voters (178.32s)
+      // Word anchors verified against assets/transcript.json (offset = 596.025)
+      //   +0.86  "Hanna called the campaign an education."        PHASE 1 OPEN
+      //   +3.18  "Educating 76 million Americans"                  sub line
+      //   +8.25  "RNC printed 200M pamphlets"                      PHASE 2
+      //  +14.53  "200 MILLION."                                    slam
+      //  +15.89  "American population in 1896 was 76 million"      compare line
+      //  +20.44  "Hanna mailed every adult voter four pamphlets"
+      //  +24.62  "literature was multilingual"                     PHASE 3
+      //  +26.58  German                                            row 1
+      //  +30.34  Yiddish                                           row 2
+      //  +33.32  Spanish                                           row 3
+      //  +35.74  Italian                                           row 4
+      //  +38.34  Polish/Czech/Swedish/Norwegian                    row 5
+      //  +42.65  "English-language pamphlets dozens of variants"   PHASE 4
+      //  +45.98  Railway workers                                   item 1
+      //  +47.53  Factory hands                                     item 2
+      //  +49.13  Shopkeepers                                       item 3
+      //  +50.62  silver-mining / gold-standard farmers split       item 4
+      //  +56.25  "tracked which version sent to which county"      verdict
+      //  +59.50  "1,400 surrogate speakers"                        PHASE 5
+      //  +62.42  paid travel                                       pill 1
+      //  +63.70  schedules                                         pill 2
+      //  +65.63  on message                                        pill 3
+      //  +73.24  "candidate stayed home"                           PHASE 6
+      //  +76.65  "should not beg for votes on a railroad platform" quote
+      //  +83.46  "Hanna brought the field to him"                  pivot
+      //  +85.39  PA Railroad / B&O excursion fares                 PHASE 7 — porch bg
+      //  +99.82  "voters arrived from Maine and Nebraska"          porch pivot
+      // +106.13  "spoke from his lawn"                             shake row
+      // +109.42  "750K Americans had stood in front yard"          PHASE 8
+      // +114.36  "Bryan, meanwhile, traveled"                      PHASE 9
+      // +127.50  Cross of Gold demand                              quote
+      // +135.13  "crucify mankind upon a cross of gold"            payoff line
+      // +141.98  "next four months on trains"                      tour stats
+      // +153.50  "tonnage, not eloquence"                          PHASE 10
+      // +156.25  Bryan-thundered / Hanna-mail                      row 1
+      // +162.06  Bryan-600 / Hanna-1400                            row 2
+      // +166.68  Bryan-rally-per-town / every-precinct             row 3
+      // +171.01  "not between two campaigners"                     verdict
+      // +173.74  "man and a machine"                               head
+      // ═════════════════════════════════════════════════════════════════
+
+      // x-percent setup for left:50% containers
+      gsap.set("#s7-langs", { xPercent: -50 });
+
+      // ─── PHASE 1: EDUCATION (0–8s) ───
+      tl.fromTo("#s7-edu-intro",
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        0.6
+      );
+      tl.fromTo("#s7-edu-intro .sub",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        2.9
+      );
+      // Exits before tonnage lands at 7.95 (R2.1)
+      tl.to("#s7-edu-intro", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 7.4);
+      tl.set("#s7-edu-intro", { visibility: "hidden" }, 7.95);
+
+      // ─── PHASE 2: 200 MILLION (8–22s) ───
+      tl.set("#s7-tonnage", { opacity: 1, visibility: "visible" }, 7.9);
+      tl.fromTo("#s7-tonnage",
+        { y: 14 }, { y: 0, duration: 0.8, ease: "power3.out" }, 7.95);
+      tl.fromTo("#s7-tonnage .header",
+        { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 8.0);
+      tl.fromTo("#s7-tonnage .body",
+        { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 8.4);
+      // Big "200,000,000" slam timed to "200 MILLION." word (14.53)
+      tl.fromTo("#s7-tonnage .num",
+        { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1.0, duration: 0.9, ease: "expo.out" }, 14.4);
+      // Population compare line at 15.89
+      tl.fromTo("#s7-tonnage .compare",
+        { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 15.85);
+
+      // Tonnage exits before languages lands at 24.0
+      tl.to("#s7-tonnage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 23.4);
+      tl.set("#s7-tonnage", { visibility: "hidden" }, 24.0);
+
+      // ─── PHASE 3: LANGUAGES (24–43s) ───
+      tl.set("#s7-langs", { opacity: 1, visibility: "visible" }, 24.0);
+      tl.fromTo("#s7-langs",
+        { y: 14 }, { y: 0, duration: 0.7, ease: "power3.out" }, 24.0);
+      tl.fromTo("#s7-langs .header",
+        { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 24.1);
+      tl.fromTo("#s7-langs .head-line",
+        { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 24.5);
+      // Each row anchored to language word
+      tl.fromTo("#s7-langs .row[data-row='1']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 26.5);
+      tl.fromTo("#s7-langs .row[data-row='2']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 30.3);
+      tl.fromTo("#s7-langs .row[data-row='3']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 33.3);
+      tl.fromTo("#s7-langs .row[data-row='4']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 35.7);
+      tl.fromTo("#s7-langs .row[data-row='5']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 38.3);
+
+      // Languages exit before variants lands
+      tl.to("#s7-langs", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 41.9);
+      tl.set("#s7-langs", { visibility: "hidden" }, 42.5);
+
+      // ─── PHASE 4: VARIANTS (43–58s) ───
+      tl.set("#s7-variants", { opacity: 1, visibility: "visible" }, 42.5);
+      tl.fromTo("#s7-variants",
+        { y: 14 }, { y: 0, duration: 0.7, ease: "power3.out" }, 42.5);
+      tl.fromTo("#s7-variants .header",
+        { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 42.6);
+      tl.fromTo("#s7-variants .head-line",
+        { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 43.0);
+      tl.fromTo("#s7-variants .item[data-item='1']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 45.95);
+      tl.fromTo("#s7-variants .item[data-item='2']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 47.5);
+      tl.fromTo("#s7-variants .item[data-item='3']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 49.1);
+      tl.fromTo("#s7-variants .item[data-item='4']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 50.6);
+      tl.fromTo("#s7-variants .verdict",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 56.2);
+
+      // Variants exits before speakers lands
+      tl.to("#s7-variants", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 58.4);
+      tl.set("#s7-variants", { visibility: "hidden" }, 59.0);
+
+      // ─── PHASE 5: 1400 SPEAKERS (59–73s) ───
+      tl.set("#s7-speakers-stage", { opacity: 1, visibility: "visible" }, 59.0);
+      tl.fromTo("#s7-speakers-num",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 59.4);
+      tl.fromTo("#s7-speakers-num .num",
+        { scale: 0.88 }, { scale: 1.0, duration: 0.9, ease: "expo.out" }, 59.5);
+      tl.fromTo("#s7-speakers-jobs",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 62.2);
+      tl.fromTo("#s7-speakers-jobs .pill[data-job='1']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 62.4);
+      tl.fromTo("#s7-speakers-jobs .pill[data-job='2']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 63.7);
+      tl.fromTo("#s7-speakers-jobs .pill[data-job='3']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 65.6);
+
+      // Speakers exits before mck-stage at 73.0
+      tl.to("#s7-speakers-stage", { opacity: 0, duration: 0.7, ease: "power2.in", overwrite: "auto" }, 71.9);
+      tl.set("#s7-speakers-stage", { visibility: "hidden" }, 72.6);
+
+      // ─── PHASE 6: STAYED HOME (73–86s) ───
+      tl.set("#s7-mck-stage", { opacity: 1, visibility: "visible" }, 72.6);
+      tl.fromTo("#s7-mck-stage .label",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 73.1);
+      tl.fromTo("#s7-mck-stage .head",
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 73.2);
+      tl.fromTo("#s7-mck-stage .quote-block",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 76.6);
+      tl.fromTo("#s7-mck-stage .pivot",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 83.4);
+
+      // Mck exits before porch lands at 86.4
+      tl.to("#s7-mck-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 85.7);
+      tl.set("#s7-mck-stage", { visibility: "hidden" }, 86.3);
+
+      // ─── PHASE 7: FRONT PORCH (86–110s) ───
+      tl.set("#s7-porch-stage", { opacity: 1, visibility: "visible" }, 86.3);
+      tl.fromTo("#s7-porch-bg",
+        { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1.0, duration: 1.2, ease: "power3.out" }, 86.4);
+      tl.fromTo("#s7-porch-tag",
+        { opacity: 0 }, { opacity: 1, duration: 0.6 }, 87.0);
+      tl.fromTo("#s7-porch-stats",
+        { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }, 88.0);
+
+      // Stats exit before pivot row lands at 99.85
+      tl.to("#s7-porch-stats", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 99.0);
+
+      tl.fromTo("#s7-porch-pivot",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 99.85);
+      // Pivot exits before shake row lands at 105.7
+      tl.to("#s7-porch-pivot", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 105.2);
+
+      tl.set("#s7-porch-shake", { opacity: 1 }, 105.7);
+      tl.fromTo("#s7-porch-shake .l[data-l='1']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 106.1);
+      tl.fromTo("#s7-porch-shake .l[data-l='2']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 107.9);
+
+      // Porch exits before yard lands at 109.45
+      tl.to("#s7-porch-stage", { opacity: 0, duration: 0.7, ease: "power2.in", overwrite: "auto" }, 108.7);
+      tl.set("#s7-porch-stage", { visibility: "hidden" }, 109.4);
+
+      // ─── PHASE 8: 750,000 (109–116s) ───
+      tl.set("#s7-yard", { opacity: 1, visibility: "visible" }, 109.3);
+      tl.fromTo("#s7-yard",
+        { y: 12 }, { y: 0, duration: 0.7, ease: "power3.out" }, 109.4);
+      tl.fromTo("#s7-yard .label",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 109.4);
+      tl.fromTo("#s7-yard .num",
+        { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1.0, duration: 0.9, ease: "expo.out" }, 109.6);
+      tl.fromTo("#s7-yard .alt",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 111.6);
+
+      // Yard exits before bryan lands at 114.3
+      tl.to("#s7-yard", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 113.6);
+      tl.set("#s7-yard", { visibility: "hidden" }, 114.2);
+
+      // ─── PHASE 9: BRYAN (114–152s) ───
+      tl.set("#s7-bryan-stage", { opacity: 1, visibility: "visible" }, 114.2);
+      tl.fromTo("#s7-bryan-bg",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" }, 114.3);
+      tl.fromTo("#s7-bryan-stage .label",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 114.6);
+      tl.fromTo("#s7-bryan-stage .name",
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 114.7);
+      tl.fromTo("#s7-bryan-stage .strap",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 116.5);
+      tl.fromTo("#s7-bryan-stage .quote",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 134.9);
+      tl.fromTo("#s7-bryan-stage .silence",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 138.1);
+
+      // Bryan stage exits before tour lands at 141.5
+      tl.to("#s7-bryan-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 140.9);
+      tl.set("#s7-bryan-stage", { visibility: "hidden" }, 141.5);
+
+      // Bryan tour stats: trains at 141.98, 600/27/36 at later anchors
+      tl.set("#s7-bryan-tour", { opacity: 1, visibility: "visible" }, 141.5);
+      tl.fromTo("#s7-bryan-tour",
+        { y: 14 }, { y: 0, duration: 0.7, ease: "power3.out" }, 141.5);
+      tl.fromTo("#s7-bryan-tour .label",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 141.9);
+      tl.fromTo("#s7-bryan-tour .stat[data-s='1']",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 144.2);
+      tl.fromTo("#s7-bryan-tour .stat[data-s='2']",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 145.6);
+      tl.fromTo("#s7-bryan-tour .stat[data-s='3']",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 149.4);
+      tl.fromTo("#s7-bryan-tour .praise",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 147.3);
+
+      // Tour exits before vs-stage lands at 153.0
+      tl.to("#s7-bryan-tour", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 152.4);
+      tl.set("#s7-bryan-tour", { visibility: "hidden" }, 153.0);
+
+      // ─── PHASE 10: MAN VS MACHINE (153–170s) ───
+      tl.set("#s7-vs-stage", { opacity: 1, visibility: "visible" }, 153.0);
+      tl.fromTo("#s7-vs-stage .head",
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 153.4);
+      tl.fromTo("#s7-vs-stage .header-row",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 155.9);
+      tl.fromTo("#s7-vs-stage .row[data-row='1']",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 156.2);
+      tl.fromTo("#s7-vs-stage .row[data-row='2']",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 162.0);
+      tl.fromTo("#s7-vs-stage .row[data-row='3']",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 166.6);
+
+      // VS exits before verdict lands at 170.6
+      tl.to("#s7-vs-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 170.0);
+      tl.set("#s7-vs-stage", { visibility: "hidden" }, 170.6);
+
+      // ─── PHASE 11: VERDICT (170–178s) ───
+      tl.set("#s7-verdict", { opacity: 1, visibility: "visible" }, 170.6);
+      tl.fromTo("#s7-verdict .l1",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 171.0);
+      tl.fromTo("#s7-verdict .head",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 173.6);
+      tl.fromTo("#s7-verdict .cliff",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 175.5);
+
+      // SCENE-WIDE EXIT (R2.6 — fade then visibility:hidden BEFORE clip boundary at 178.32)
+      tl.to("#s7-verdict", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 177.6);
+      tl.set("#s7-verdict", { visibility: "hidden", opacity: 0 }, 178.2);
+
+      window.__timelines["scene-07-education-of-voters"] = tl;
+    </script>
+  </div>
+</template>

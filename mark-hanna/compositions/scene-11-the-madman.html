@@ -1,0 +1,437 @@
+<template id="scene-11-the-madman-template">
+  <div data-composition-id="scene-11-the-madman" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s11-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s11-stage * { box-sizing:border-box; }
+
+      /* PHASE 1: SEVENTH YEAR (0–4s) */
+      #s11-seventh { position:absolute; inset:0; opacity:0; z-index:10; }
+      #s11-seventh .body { position:absolute; top:380px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:64px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.2; opacity:0; }
+      #s11-seventh .body em { color:#C87533; font-style:italic; }
+      #s11-seventh .body .small { display:block; font-size:36px; font-family:"Source Serif 4",serif; font-weight:400; font-style:italic; color:#D4B679; margin-top:18px; }
+
+      /* PHASE 2: THE LINE (4–9s) */
+      #s11-line { position:absolute; inset:0; opacity:0; z-index:11; }
+      #s11-line .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s11-line .quote { position:absolute; top:240px; left:50%; transform:translateX(-50%); width:1700px; padding:48px 56px; background:rgba(232,222,200,0.04); border-left:4px solid #C03A2C; opacity:0; }
+      #s11-line .quote .q { font-family:"Playfair Display",serif; font-weight:700; font-size:60px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.2; }
+      #s11-line .quote .q em { color:#C03A2C; font-style:italic; }
+      #s11-line .quote .attrib { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-top:32px; }
+
+      /* PHASE 3: THE SETTING (9–23s) */
+      #s11-setting { position:absolute; inset:0; opacity:0; z-index:12; }
+      #s11-setting .stack { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1700px; }
+      #s11-setting .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:36px; padding:18px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s11-setting .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s11-setting .row .l { font-family:"Roboto Mono",monospace; font-size:20px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s11-setting .row .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.4; }
+      #s11-setting .row .v em { color:#D4B679; font-style:italic; }
+      #s11-setting .row .v strong { font-family:"Playfair Display",serif; font-weight:700; color:#E8DEC8; }
+
+      /* PHASE 4: THE MADMAN (23–27s) */
+      #s11-tr { position:absolute; inset:0; opacity:0; z-index:13; }
+      #s11-tr .label { position:absolute; top:160px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; opacity:0; }
+      #s11-tr .name { position:absolute; top:240px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:160px; color:#E8DEC8; letter-spacing:-0.04em; line-height:0.95; opacity:0; }
+      #s11-tr .name em { color:#C87533; font-style:italic; }
+      #s11-tr .tag { position:absolute; top:540px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; opacity:0; }
+
+      /* PHASE 5: HOBART DIES (27–48s) */
+      #s11-hobart { position:absolute; inset:0; opacity:0; z-index:14; }
+      #s11-hobart .label { position:absolute; top:130px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s11-hobart .head { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1600px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#E8DEC8; letter-spacing:-0.01em; line-height:1.2; opacity:0; }
+      #s11-hobart .head em { color:#D4B679; font-style:italic; }
+      #s11-hobart .death { position:absolute; top:430px; left:0; width:100%; text-align:center; opacity:0; }
+      #s11-hobart .death .when { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.4em; color:#C03A2C; text-transform:uppercase; }
+      #s11-hobart .death .verb { font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:96px; color:#C03A2C; letter-spacing:-0.02em; line-height:1.0; margin-top:18px; }
+      #s11-hobart .seat { position:absolute; top:660px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:34px; color:#E8DEC8; opacity:0; }
+      #s11-hobart .seat em { color:#C87533; }
+
+      /* PHASE 6: PLATT VS TR (48–80s) */
+      #s11-platt { position:absolute; inset:0; opacity:0; z-index:15; }
+      #s11-platt .label { position:absolute; top:130px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s11-platt .head { position:absolute; top:190px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:54px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.15; opacity:0; }
+      #s11-platt .head em { color:#D4B679; font-style:italic; }
+      #s11-platt .cards { position:absolute; top:330px; left:50%; transform:translateX(-50%); display:flex; gap:32px; }
+      #s11-platt .card { width:540px; padding:28px 32px; background:rgba(232,222,200,0.04); border:1px solid #3A2E20; opacity:0; }
+      #s11-platt .card.tr { border-color:#C87533; }
+      #s11-platt .card.platt { border-color:#9A8E76; }
+      #s11-platt .card .tag { font-family:"Roboto Mono",monospace; font-size:18px; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:14px; }
+      #s11-platt .card.tr .tag { color:#C87533; }
+      #s11-platt .card.platt .tag { color:#9A8E76; }
+      #s11-platt .card .name { font-family:"Playfair Display",serif; font-weight:700; font-size:32px; color:#E8DEC8; line-height:1.15; margin-bottom:12px; letter-spacing:-0.01em; }
+      #s11-platt .card .desc { font-family:"Source Serif 4",serif; font-size:20px; color:#D4B679; line-height:1.45; }
+      #s11-platt .card .desc em { color:#E8DEC8; font-style:italic; }
+      #s11-platt .coffin { position:absolute; top:740px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:46px; color:#C03A2C; opacity:0; letter-spacing:-0.01em; }
+      #s11-platt .coffin em { color:#E8DEC8; }
+
+      /* PHASE 7: HANNA HORRIFIED (81–108s) */
+      #s11-horror { position:absolute; inset:0; opacity:0; z-index:16; }
+      #s11-horror .head { position:absolute; top:130px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:80px; color:#C03A2C; letter-spacing:-0.02em; opacity:0; line-height:1.0; }
+      #s11-horror .body { position:absolute; top:260px; left:50%; transform:translateX(-50%); width:1600px; text-align:center; font-family:"Source Serif 4",serif; font-size:30px; color:#E8DEC8; line-height:1.4; opacity:0; }
+      #s11-horror .body em { color:#D4B679; font-style:italic; }
+      /* Two-column compare */
+      #s11-horror .compare { position:absolute; top:430px; left:50%; transform:translateX(-50%); display:flex; gap:48px; }
+      #s11-horror .col { width:660px; padding:28px 32px; opacity:0; }
+      #s11-horror .col.h { border:1px solid #C87533; background:rgba(200,117,51,0.05); }
+      #s11-horror .col.r { border:1px solid #C03A2C; background:rgba(192,58,44,0.05); }
+      #s11-horror .col .who { font-family:"Roboto Mono",monospace; font-size:18px; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:14px; }
+      #s11-horror .col.h .who { color:#C87533; }
+      #s11-horror .col.r .who { color:#C03A2C; }
+      #s11-horror .col .l { font-family:"Source Serif 4",serif; font-size:24px; color:#E8DEC8; line-height:1.4; margin-bottom:8px; }
+      #s11-horror .col .l em { color:#D4B679; font-style:italic; }
+      #s11-horror .verdict { position:absolute; top:780px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:30px; color:#D4B679; opacity:0; max-width:1700px; margin:0 auto; line-height:1.4; }
+      #s11-horror .verdict em { color:#C03A2C; }
+
+      /* PHASE 8: CONVENTION (108–125s) */
+      #s11-conv { position:absolute; inset:0; opacity:0; z-index:17; }
+      #s11-conv .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s11-conv .when { position:absolute; top:200px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:80px; color:#C87533; letter-spacing:-0.02em; line-height:1.0; opacity:0; }
+      #s11-conv .stack { position:absolute; top:340px; left:50%; transform:translateX(-50%); width:1600px; }
+      #s11-conv .row { display:grid; grid-template-columns:200px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s11-conv .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s11-conv .row .l { font-family:"Roboto Mono",monospace; font-size:18px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s11-conv .row .v { font-family:"Source Serif 4",serif; font-size:24px; color:#E8DEC8; line-height:1.4; }
+      #s11-conv .row .v em { color:#D4B679; font-style:italic; }
+      #s11-conv .row .v strong { font-family:"Playfair Display",serif; font-weight:700; }
+      #s11-conv .verdict { position:absolute; top:760px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:46px; color:#E8DEC8; opacity:0; letter-spacing:-0.01em; }
+      #s11-conv .verdict em { color:#C87533; }
+
+      /* PHASE 9: HE SAID IT (125–145s) */
+      #s11-said { position:absolute; inset:0; opacity:0; z-index:18; }
+      #s11-said .body { position:absolute; top:160px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.4; opacity:0; }
+      #s11-said .body em { color:#D4B679; font-style:italic; }
+      #s11-said .verdict { position:absolute; top:340px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:54px; color:#E8DEC8; line-height:1.25; opacity:0; letter-spacing:-0.01em; }
+      #s11-said .verdict em { color:#C03A2C; font-style:italic; }
+      /* Big quote callout */
+      #s11-said .qbox { position:absolute; top:540px; left:50%; transform:translateX(-50%); width:1700px; padding:40px 56px; background:rgba(192,58,44,0.06); border-left:4px solid #C03A2C; opacity:0; }
+      #s11-said .qbox .q { font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:54px; color:#C03A2C; line-height:1.2; letter-spacing:-0.02em; }
+      #s11-said .qbox .q em { color:#E8DEC8; font-style:italic; }
+      #s11-said .qbox .small { font-family:"Roboto Mono",monospace; font-size:20px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-top:24px; }
+
+      /* PHASE 10: NOMINATION + CLOSER (145–166s) */
+      #s11-final { position:absolute; inset:0; opacity:0; z-index:19; }
+      #s11-final .head { position:absolute; top:130px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s11-final .when { position:absolute; top:190px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#E8DEC8; letter-spacing:-0.01em; opacity:0; line-height:1.1; }
+      #s11-final .when em { color:#D4B679; font-style:italic; }
+      #s11-final .stats { position:absolute; top:330px; left:50%; transform:translateX(-50%); display:flex; justify-content:center; gap:80px; opacity:0; }
+      #s11-final .stats .s { text-align:center; padding:24px 32px; border:1px solid #3A2E20; min-width:380px; }
+      #s11-final .stats .s .lbl { font-family:"Roboto Mono",monospace; font-size:18px; letter-spacing:0.3em; color:#C87533; text-transform:uppercase; margin-bottom:12px; }
+      #s11-final .stats .s .v { font-family:"Playfair Display",serif; font-weight:900; font-size:60px; color:#E8DEC8; line-height:1.0; letter-spacing:-0.02em; }
+      #s11-final .stats .s .desc { font-family:"Source Serif 4",serif; font-style:italic; font-size:20px; color:#D4B679; margin-top:8px; }
+      #s11-final .verdict { position:absolute; top:580px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:140px; color:#C87533; letter-spacing:-0.04em; line-height:1.0; opacity:0; font-style:italic; }
+      #s11-final .verdict em { color:#E8DEC8; font-style:italic; }
+      #s11-final .signoff { position:absolute; top:780px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; opacity:0; }
+
+      .s11-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.4) 88%, rgba(14,11,8,0.78) 100%); }
+      .s11-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px); mix-blend-mode:overlay; }
+    </style>
+
+    <div class="s11-stage">
+      <!-- PHASE 1: SEVENTH YEAR -->
+      <div id="s11-seventh">
+        <div class="body">For the <em>seventh</em>, he was the second most powerful.<span class="small">— and that is when the trouble began.</span></div>
+      </div>
+
+      <!-- PHASE 2: THE LINE -->
+      <div id="s11-line">
+        <div class="label">June 21, 1900 · Convention Floor · Philadelphia</div>
+        <div class="quote">
+          <div class="q">"Don't any of you realize there's only <em>one life</em> between this <em>madman</em> and the presidency?"</div>
+          <div class="attrib">— Mark Hanna · Loud enough to be heard across the room</div>
+        </div>
+      </div>
+
+      <!-- PHASE 3: SETTING -->
+      <div id="s11-setting">
+        <div class="stack">
+          <div class="row" data-row="1">
+            <div class="l">When</div>
+            <div class="v"><strong>June 21, 1900</strong> &mdash; on the convention floor in Philadelphia.</div>
+          </div>
+          <div class="row" data-row="2">
+            <div class="l">Volume</div>
+            <div class="v">Loud enough to be heard <em>across the room</em>.</div>
+          </div>
+          <div class="row" data-row="3">
+            <div class="l">Coverage</div>
+            <div class="v">Reporters quoted it <em>that afternoon</em>.</div>
+          </div>
+          <div class="row" data-row="4">
+            <div class="l">By Week's End</div>
+            <div class="v">The line had reached <strong>every major paper in the country</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4: TR -->
+      <div id="s11-tr">
+        <div class="label">The Madman In Question</div>
+        <div class="name">Theodore <em>Roosevelt.</em></div>
+        <div class="tag">— age 41 · governor of New York · Rough Rider · reformer.</div>
+      </div>
+
+      <!-- PHASE 5: HOBART DIES -->
+      <div id="s11-hobart">
+        <div class="label">Autumn 1899 · The Trouble Began</div>
+        <div class="head">Vice President Garrett Hobart &mdash; Hanna's <em>closest ally</em> inside the McKinley administration, the man Hanna had personally selected for the 1896 ticket &mdash;</div>
+        <div class="death">
+          <div class="when">November 21, 1899</div>
+          <div class="verb">died.</div>
+        </div>
+        <div class="seat">McKinley was seeking a second term. <em>The vice presidency was open.</em></div>
+      </div>
+
+      <!-- PHASE 6: PLATT VS TR -->
+      <div id="s11-platt">
+        <div class="label">The Maneuver</div>
+        <div class="head">Senator <em>Thomas Platt</em> wanted Roosevelt <em>gone</em>.</div>
+        <div class="cards">
+          <div class="card platt" data-card="1">
+            <div class="tag">Platt · Boss of New York</div>
+            <div class="name">The machine that ran the state.</div>
+            <div class="desc">Two years trying to dispose of <em>their reform governor</em>.</div>
+          </div>
+          <div class="card tr" data-card="2">
+            <div class="tag">Roosevelt · 41 · Reformer</div>
+            <div class="name">Rough Rider · former NYC police commissioner.</div>
+            <div class="desc">Loudest voice for <em>civil-service reform</em> in the GOP. Spent his term breaking up Platt's <em>patronage system</em>.</div>
+          </div>
+        </div>
+        <div class="coffin">The vice presidency was a <em>gilded coffin</em>. Platt began maneuvering to make it Roosevelt's.</div>
+      </div>
+
+      <!-- PHASE 7: HORROR -->
+      <div id="s11-horror">
+        <div class="head">Hanna was <em>horrified.</em></div>
+        <div class="body">He had spent four years building a relationship with McKinley that <em>defined American politics</em>. The vice president was <em>one bullet from the presidency</em>.</div>
+        <div class="compare">
+          <div class="col h" data-col="1">
+            <div class="who">Hanna's politics</div>
+            <div class="l"><em>Transactional.</em></div>
+            <div class="l">He inherited the corporate alliances.<br>He <em>kept</em> them.</div>
+          </div>
+          <div class="col r" data-col="2">
+            <div class="who">Roosevelt</div>
+            <div class="l"><em>Did not do deals.</em></div>
+            <div class="l">Picked fights and refused to fund them.<br>Would <em>break</em> the alliances that funded the party.</div>
+          </div>
+        </div>
+        <div class="verdict">Not because Roosevelt was a bad man. Because Roosevelt was <em>a moralist.</em></div>
+      </div>
+
+      <!-- PHASE 8: CONVENTION -->
+      <div id="s11-conv">
+        <div class="label">Republican National Convention · Philadelphia</div>
+        <div class="when">Opened June 19, 1900</div>
+        <div class="stack">
+          <div class="row" data-row="1">
+            <div class="l">Day 1</div>
+            <div class="v">Roosevelt arrives as <em>the Western delegation's favorite</em>.</div>
+          </div>
+          <div class="row" data-row="2">
+            <div class="l">New York</div>
+            <div class="v">Platt had <strong>already pledged</strong>.</div>
+          </div>
+          <div class="row" data-row="3">
+            <div class="l">Pennsylvania</div>
+            <div class="v"><em>Followed.</em></div>
+          </div>
+          <div class="row" data-row="4">
+            <div class="l">Day 2</div>
+            <div class="v">Roosevelt had <strong>momentum</strong>. The nomination was going to happen.</div>
+          </div>
+        </div>
+        <div class="verdict">Hanna stood on the floor &mdash; watching the votes accumulate.</div>
+      </div>
+
+      <!-- PHASE 9: HE SAID IT -->
+      <div id="s11-said">
+        <div class="body">He had built the Republican party's machinery. He chaired its committee. <em>And he could not stop the convention</em> from nominating &mdash; for vice president of the United States &mdash; a man he believed would <em>destroy everything the party stood for.</em></div>
+        <div class="verdict">That was when he said it.<br><em>The line that would follow him for the rest of his life.</em></div>
+        <div class="qbox">
+          <div class="q">"Don't any of you realize there's only one life between this <em>madman</em> and the presidency?"</div>
+          <div class="small">— On the convention floor · Philadelphia · June 21, 1900</div>
+        </div>
+      </div>
+
+      <!-- PHASE 10: FINAL -->
+      <div id="s11-final">
+        <div class="head">November 1900</div>
+        <div class="when">McKinley accepted. Hanna campaigned for <em>the ticket anyway</em>.</div>
+        <div class="stats">
+          <div class="s" data-stat="1">
+            <div class="lbl">1896 · McKinley/Hobart</div>
+            <div class="v">Won.</div>
+            <div class="desc">over Bryan</div>
+          </div>
+          <div class="s" data-stat="2">
+            <div class="lbl">1900 · McKinley/Roosevelt</div>
+            <div class="v">Won by more.</div>
+            <div class="desc">a wider margin</div>
+          </div>
+        </div>
+        <div class="verdict">Hanna was <em>right.</em></div>
+        <div class="signoff">— end of episode</div>
+      </div>
+
+      <div class="s11-grain"></div>
+      <div class="s11-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 11 The Madman (165.50s)
+      // Word anchors verified vs assets/transcript.json (offset = 1111.655)
+      //   +0.85  "For the seventh he was the second most powerful"      PHASE 1
+      //   +4.46  "don't any of you realize... madman... presidency"     PHASE 2
+      //   +8.87  "Mark Hanna said it convention floor Philadelphia"     PHASE 3
+      //  +14.35  "loud enough to be heard across the room"              row 2
+      //  +16.90  "reporters quoted it that afternoon"                    row 3
+      //  +19.23  "by end of week reached every major paper"             row 4
+      //  +23.73  "the madman in question was Theodore Roosevelt"        PHASE 4
+      //  +27.01  "trouble started in 1899"                              PHASE 5
+      //  +29.49  "VP Garrett Hobart Hanna's closest ally..."            head
+      //  +44.18  "McKinley seeking second term"                          
+      //  +46.55  "vice presidency was open"                              seat line
+      //  +48.73  "NY Republican machine Thomas Platt..."                PHASE 6
+      //  +59.75  "rough rider Spanish-American war NYC commissioner"    
+      //  +68.62  "spent his term breaking up corrupt patronage Platt"   
+      //  +74.87  "Platt wanted him gone"                                
+      //  +76.42  "vice presidency was a gilded coffin"                   coffin
+      //  +81.59  "Hanna was horrified"                                  PHASE 7
+      //  +82.99  "spent 4 years building relationship McKinley"         body
+      //  +88.27  "VP one bullet from presidency... not bad man moralist" compare
+      //  +97.59  "Hanna's politics were transactional"                   col h
+      //  +99.87  "Roosevelt did not do deals"                            col r
+      // +101.83  "picked fights refused to fund them"                    
+      // +104.14  "would inherit corporate alliances and break them"      verdict
+      // +108.16  "RNC opened Philadelphia June 19 1900"                  PHASE 8
+      // +113.37  "Roosevelt arrived as western delegation's favorite"   row 1
+      // +116.51  "Platt had already pledged NY"                          row 2
+      // +118.35  "Pennsylvania followed"                                 row 3
+      // +119.94  "by second day momentum nomination going to happen"    row 4
+      // +124.70  "Hanna stood on Philadelphia floor watching votes"     verdict
+      // +128.42  "had built the Republican party's machinery"           PHASE 9
+      // +130.81  "chaired its committee couldn't stop the convention"   body
+      // +140.90  "that was when he said it line that would follow him"  verdict
+      // +145.27  "convention nominated Roosevelt for VP June 21 1900"   PHASE 10
+      // +152.67  "McKinley accepted"                                     when
+      // +152.87  "Hanna campaigned for the ticket anyway"               
+      // +155.14  "won by wider margin than McKinley/Hobart in 1896"     stats
+      // +163.38  "Hanna was right"                                       verdict
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1 (0–4s) ───
+      tl.fromTo("#s11-seventh", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+      tl.fromTo("#s11-seventh .body", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.6);
+
+      tl.to("#s11-seventh", { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: "auto" }, 4.0);
+      tl.set("#s11-seventh", { visibility: "hidden" }, 4.4);
+
+      // ─── PHASE 2: THE LINE (4–9s) ───
+      tl.set("#s11-line", { opacity: 1, visibility: "visible" }, 4.4);
+      tl.fromTo("#s11-line .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 4.5);
+      tl.fromTo("#s11-line .quote", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 4.6);
+
+      tl.to("#s11-line", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 8.4);
+      tl.set("#s11-line", { visibility: "hidden" }, 8.85);
+
+      // ─── PHASE 3: SETTING (9–23s) ───
+      tl.set("#s11-setting", { opacity: 1, visibility: "visible" }, 8.85);
+      tl.fromTo("#s11-setting .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 8.9);
+      tl.fromTo("#s11-setting .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 14.35);
+      tl.fromTo("#s11-setting .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 16.9);
+      tl.fromTo("#s11-setting .row[data-row='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 19.23);
+
+      tl.to("#s11-setting", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 23.2);
+      tl.set("#s11-setting", { visibility: "hidden" }, 23.7);
+
+      // ─── PHASE 4: TR (23–27s) ───
+      tl.set("#s11-tr", { opacity: 1, visibility: "visible" }, 23.7);
+      tl.fromTo("#s11-tr .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 23.75);
+      tl.fromTo("#s11-tr .name", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 23.8);
+      tl.fromTo("#s11-tr .tag", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 25.5);
+
+      tl.to("#s11-tr", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 26.5);
+      tl.set("#s11-tr", { visibility: "hidden" }, 27.0);
+
+      // ─── PHASE 5: HOBART (27–48s) ───
+      tl.set("#s11-hobart", { opacity: 1, visibility: "visible" }, 27.0);
+      tl.fromTo("#s11-hobart .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 27.05);
+      tl.fromTo("#s11-hobart .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 29.5);
+      tl.fromTo("#s11-hobart .death", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1.0, duration: 0.8, ease: "expo.out" }, 38.0);
+      tl.fromTo("#s11-hobart .seat", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 46.5);
+
+      tl.to("#s11-hobart", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 48.2);
+      tl.set("#s11-hobart", { visibility: "hidden" }, 48.7);
+
+      // ─── PHASE 6: PLATT (48–80s) ───
+      tl.set("#s11-platt", { opacity: 1, visibility: "visible" }, 48.7);
+      tl.fromTo("#s11-platt .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 48.75);
+      tl.fromTo("#s11-platt .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 48.8);
+      tl.fromTo("#s11-platt .card[data-card='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 51.0);
+      tl.fromTo("#s11-platt .card[data-card='2']", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 59.7);
+      tl.fromTo("#s11-platt .coffin", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 76.4);
+
+      tl.to("#s11-platt", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 80.5);
+      tl.set("#s11-platt", { visibility: "hidden" }, 81.0);
+
+      // ─── PHASE 7: HORROR (81–108s) ───
+      tl.set("#s11-horror", { opacity: 1, visibility: "visible" }, 81.0);
+      tl.fromTo("#s11-horror .head", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 81.55);
+      tl.fromTo("#s11-horror .body", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 82.95);
+      tl.fromTo("#s11-horror .col[data-col='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 97.55);
+      tl.fromTo("#s11-horror .col[data-col='2']", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 99.85);
+      tl.fromTo("#s11-horror .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 104.1);
+
+      tl.to("#s11-horror", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 107.5);
+      tl.set("#s11-horror", { visibility: "hidden" }, 108.0);
+
+      // ─── PHASE 8: CONVENTION (108–125s) ───
+      tl.set("#s11-conv", { opacity: 1, visibility: "visible" }, 108.0);
+      tl.fromTo("#s11-conv .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 108.05);
+      tl.fromTo("#s11-conv .when", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 108.15);
+      tl.fromTo("#s11-conv .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 113.35);
+      tl.fromTo("#s11-conv .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 116.5);
+      tl.fromTo("#s11-conv .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 118.35);
+      tl.fromTo("#s11-conv .row[data-row='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 119.95);
+      tl.fromTo("#s11-conv .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 124.7);
+
+      tl.to("#s11-conv", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 127.5);
+      tl.set("#s11-conv", { visibility: "hidden" }, 128.0);
+
+      // ─── PHASE 9: HE SAID IT (128–145s) ───
+      tl.set("#s11-said", { opacity: 1, visibility: "visible" }, 128.0);
+      tl.fromTo("#s11-said .body", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 128.4);
+      tl.fromTo("#s11-said .verdict", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 140.9);
+      tl.fromTo("#s11-said .qbox", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 142.5);
+
+      tl.to("#s11-said", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 144.7);
+      tl.set("#s11-said", { visibility: "hidden" }, 145.2);
+
+      // ─── PHASE 10: FINAL (145–166s) ───
+      tl.set("#s11-final", { opacity: 1, visibility: "visible" }, 145.2);
+      tl.fromTo("#s11-final .head", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 145.25);
+      tl.fromTo("#s11-final .when", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 145.3);
+      tl.fromTo("#s11-final .stats", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 152.5);
+      tl.fromTo("#s11-final .stats .s[data-stat='1']", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1.0, duration: 0.7, ease: "expo.out" }, 152.7);
+      tl.fromTo("#s11-final .stats .s[data-stat='2']", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1.0, duration: 0.7, ease: "expo.out" }, 155.1);
+      tl.fromTo("#s11-final .verdict", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.2, ease: "expo.out" }, 163.4);
+      tl.fromTo("#s11-final .signoff", { opacity: 0 }, { opacity: 0.8, duration: 0.6 }, 164.5);
+
+      // FINAL EXIT before 165.50
+      tl.to("#s11-final", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 165.0);
+      tl.set("#s11-final", { visibility: "hidden", opacity: 0 }, 165.50);
+
+      window.__timelines["scene-11-the-madman"] = tl;
+    </script>
+  </div>
+</template>

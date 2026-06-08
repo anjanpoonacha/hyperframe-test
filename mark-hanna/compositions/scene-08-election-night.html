@@ -1,0 +1,393 @@
+<template id="scene-08-election-night-template">
+  <div data-composition-id="scene-08-election-night" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s8-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s8-stage * { box-sizing:border-box; }
+
+      /* ========== PHASE 1: POLLS CLOSE TIMELINE (0–22s) ========== */
+      #s8-night { position:absolute; inset:0; opacity:0; z-index:10; }
+      #s8-night .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; opacity:0; }
+      #s8-night .head { position:absolute; top:200px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:96px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.0; opacity:0; }
+      #s8-night .head em { font-style:italic; color:#C87533; font-weight:700; }
+      /* Timeline list — single column, with time tags on left */
+      #s8-night .tl { position:absolute; top:380px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s8-night .tl .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-bottom:1px solid #3A2E20; opacity:0; }
+      #s8-night .tl .row .t { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.18em; color:#C87533; text-transform:uppercase; }
+      #s8-night .tl .row .e { font-family:"Source Serif 4",serif; font-size:34px; color:#E8DEC8; line-height:1.3; }
+      #s8-night .tl .row .e em { color:#D4B679; font-style:italic; }
+
+      /* ========== PHASE 2: THE NUMBERS (22–52s) ========== */
+      #s8-numbers { position:absolute; inset:0; opacity:0; z-index:11; }
+      #s8-numbers .label { position:absolute; top:130px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; opacity:0; }
+      #s8-numbers .ec-stage { position:absolute; top:210px; left:50%; transform:translateX(-50%); width:1500px; opacity:0; }
+      #s8-numbers .ec-row { display:grid; grid-template-columns:1fr 80px 1fr; align-items:center; gap:24px; }
+      #s8-numbers .col { text-align:center; }
+      #s8-numbers .col .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:14px; }
+      #s8-numbers .col .who.win { color:#C87533; }
+      #s8-numbers .col .num { font-family:"Playfair Display",serif; font-weight:900; font-size:200px; line-height:0.95; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; }
+      #s8-numbers .col .num.win { color:#C87533; }
+      #s8-numbers .col .num.lose { color:#7A8A6E; }
+      #s8-numbers .col .word { font-family:"Source Serif 4",serif; font-size:24px; color:#D4B679; margin-top:8px; }
+      #s8-numbers .vs { text-align:center; font-family:"Roboto Mono",monospace; font-size:24px; color:#9A8E76; letter-spacing:0.3em; }
+      /* Popular-vote row + margin band */
+      #s8-numbers .pop { position:absolute; top:520px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; opacity:0; }
+      #s8-numbers .pop .header { font-family:"Roboto Mono",monospace; font-size:20px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; margin-bottom:18px; }
+      #s8-numbers .pop .grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+      #s8-numbers .pop .grid .col { text-align:center; padding:18px 0; border-top:1px solid #3A2E20; border-bottom:1px solid #3A2E20; opacity:0; }
+      #s8-numbers .pop .grid .col .name { font-family:"Roboto Mono",monospace; font-size:20px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:10px; }
+      #s8-numbers .pop .grid .col .amt { font-family:"Playfair Display",serif; font-weight:900; font-size:64px; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
+      #s8-numbers .pop .grid .col.win .amt { color:#C87533; }
+      #s8-numbers .pop .grid .col.lose .amt { color:#D4B679; }
+      #s8-numbers .pop .margin { font-family:"Source Serif 4",serif; font-style:italic; font-size:30px; color:#E8DEC8; margin-top:36px; opacity:0; }
+      #s8-numbers .pop .margin em { color:#C87533; font-style:italic; }
+      #s8-numbers .turnout { position:absolute; top:830px; left:0; width:100%; text-align:center; opacity:0; }
+      #s8-numbers .turnout .l { font-family:"Source Serif 4",serif; font-size:24px; color:#D4B679; line-height:1.35; max-width:1500px; margin:0 auto; }
+      #s8-numbers .turnout .l strong { color:#C87533; font-weight:700; }
+
+      /* ========== PHASE 3: THE MAP (52–69s) ========== */
+      #s8-states { position:absolute; inset:0; opacity:0; z-index:12; }
+      #s8-states .label { position:absolute; top:130px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; opacity:0; }
+      #s8-states .head { position:absolute; top:200px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:84px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.0; opacity:0; }
+      #s8-states .head em { color:#C87533; font-style:italic; }
+      #s8-states .stack { position:absolute; top:340px; left:50%; transform:translateX(-50%); width:1600px; }
+      #s8-states .row { display:grid; grid-template-columns:560px 60px 1fr; align-items:center; gap:28px; padding:18px 0; border-bottom:1px solid #3A2E20; opacity:0; }
+      #s8-states .row .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#C87533; text-transform:uppercase; }
+      #s8-states .row .by { font-family:"Source Serif 4",serif; font-style:italic; font-size:24px; color:#9A8E76; text-align:center; }
+      #s8-states .row .scope { font-family:"Source Serif 4",serif; font-size:30px; color:#E8DEC8; line-height:1.35; }
+      #s8-states .row .scope em { color:#D4B679; font-style:italic; }
+      #s8-states .row.bryan .who { color:#C03A2C; }
+      #s8-states .row.bryan .scope { color:#D4B679; }
+
+      /* ========== PHASE 4: PUBLIC TELEGRAM (69–87s) ========== */
+      #s8-telegram { position:absolute; top:80px; left:50%; width:1300px; opacity:0; z-index:13; background:#E8DEC8; color:#0E0B08; padding:60px 80px; box-shadow:0 30px 80px rgba(0,0,0,0.6); border:1px solid rgba(200,117,51,0.4); }
+      #s8-telegram .head { display:flex; justify-content:space-between; padding-bottom:24px; border-bottom:1px solid #0E0B08; margin-bottom:36px; font-family:"Roboto Mono",monospace; font-size:18px; letter-spacing:0.2em; text-transform:uppercase; color:#0E0B08; }
+      #s8-telegram .public-tag { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#C03A2C; text-transform:uppercase; margin-bottom:24px; }
+      #s8-telegram .quote { font-family:"Source Serif 4",serif; font-size:30px; line-height:1.55; opacity:0; }
+      #s8-telegram .quote em { color:#3A2E20; font-style:italic; }
+      #s8-telegram .footer { font-family:"Roboto Mono",monospace; font-size:18px; color:#3A2E20; letter-spacing:0.2em; margin-top:32px; padding-top:24px; border-top:1px solid #0E0B08; opacity:0; }
+
+      /* ========== PHASE 5: PRIVATE LETTER (87–107s) ========== */
+      #s8-private { position:absolute; top:80px; left:50%; width:1300px; opacity:0; z-index:14; background:#1A1410; color:#E8DEC8; padding:60px 80px; box-shadow:0 30px 80px rgba(0,0,0,0.6); border:1px solid #C87533; }
+      #s8-private .head { display:flex; justify-content:space-between; padding-bottom:24px; border-bottom:1px solid #C87533; margin-bottom:32px; font-family:"Roboto Mono",monospace; font-size:18px; letter-spacing:0.2em; text-transform:uppercase; color:#C87533; }
+      #s8-private .pull { font-family:"Playfair Display",serif; font-weight:700; font-size:60px; line-height:1.15; letter-spacing:-0.01em; color:#C87533; margin-bottom:36px; opacity:0; }
+      #s8-private .pull em { font-style:italic; color:#E8DEC8; }
+      #s8-private .body { font-family:"Source Serif 4",serif; font-style:italic; font-size:28px; line-height:1.55; color:#D4B679; opacity:0; }
+      #s8-private .body em { color:#E8DEC8; }
+
+      /* ========== PHASE 6: TWENTY YEARS (107–126s) ========== */
+      #s8-years { position:absolute; inset:0; opacity:0; z-index:15; }
+      #s8-years .head { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:160px; color:#C87533; letter-spacing:-0.04em; line-height:0.95; opacity:0; }
+      #s8-years .head .word { display:block; font-size:64px; color:#E8DEC8; letter-spacing:0.04em; margin-top:14px; line-height:1.0; }
+      /* Timeline of meetings */
+      #s8-years .tl { position:absolute; top:430px; left:50%; transform:translateX(-50%); width:1700px; }
+      #s8-years .tl .row { display:grid; grid-template-columns:200px 1fr; align-items:baseline; gap:36px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s8-years .tl .row:last-child { border-bottom:1px solid #3A2E20; }
+      #s8-years .tl .row .y { font-family:"Playfair Display",serif; font-weight:900; font-size:54px; color:#C87533; letter-spacing:-0.02em; }
+      #s8-years .tl .row .e { font-family:"Source Serif 4",serif; font-size:26px; color:#E8DEC8; line-height:1.4; }
+      #s8-years .tl .row .e em { color:#D4B679; font-style:italic; }
+      /* Closer */
+      #s8-years .closer { position:absolute; top:780px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:42px; color:#E8DEC8; letter-spacing:-0.01em; opacity:0; }
+
+      .s8-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.4) 88%, rgba(14,11,8,0.78) 100%); }
+      .s8-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px), repeating-radial-gradient(circle at 70% 80%, rgba(200,117,51,0.10) 0, rgba(200,117,51,0.10) 1px, transparent 1px, transparent 4px); mix-blend-mode:overlay; }
+    </style>
+
+    <div class="s8-stage">
+      <!-- PHASE 1: POLLS CLOSE -->
+      <div id="s8-night">
+        <div class="label">November 3, 1896 · The Polls Close</div>
+        <div class="head">Election Night.</div>
+        <div class="tl">
+          <div class="row" data-row="1">
+            <div class="t">06:00 PM · East</div>
+            <div class="e">Polls close. First returns from <em>Connecticut · New Hampshire</em>.</div>
+          </div>
+          <div class="row" data-row="2">
+            <div class="t">Early evening</div>
+            <div class="e">McKinley running ahead of <em>every Republican forecast</em>.</div>
+          </div>
+          <div class="row" data-row="3">
+            <div class="t">By midnight</div>
+            <div class="e">The Northeast had broken for him.</div>
+          </div>
+          <div class="row" data-row="4">
+            <div class="t">02:00 AM</div>
+            <div class="e">The Midwest had followed.</div>
+          </div>
+          <div class="row" data-row="5">
+            <div class="t">By dawn</div>
+            <div class="e">Only the silver-mining West still in question.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2: THE NUMBERS -->
+      <div id="s8-numbers">
+        <div class="label">The Result</div>
+        <div class="ec-stage">
+          <div class="ec-row">
+            <div class="col">
+              <div class="who win">McKinley · Electoral</div>
+              <div class="num win">271</div>
+              <div class="word">electoral votes</div>
+            </div>
+            <div class="vs">vs.</div>
+            <div class="col">
+              <div class="who">Bryan · Electoral</div>
+              <div class="num lose">176</div>
+              <div class="word">electoral votes</div>
+            </div>
+          </div>
+        </div>
+        <div class="pop">
+          <div class="header">Popular Vote</div>
+          <div class="grid">
+            <div class="col win" data-col="1"><div class="name">McKinley</div><div class="amt">7,105,076</div></div>
+            <div class="col lose" data-col="2"><div class="name">Bryan</div><div class="amt">6,370,897</div></div>
+          </div>
+          <div class="margin">Margin: <em>over 700,000 votes</em> &mdash; McKinley won by <em>5.3 percentage points</em>.</div>
+        </div>
+        <div class="turnout">
+          <div class="l">Total turnout: <strong>13.9 million voters</strong> &mdash; the highest <strong>by share of eligible voters</strong> in any American presidential election since the Civil War.</div>
+        </div>
+      </div>
+
+      <!-- PHASE 3: THE MAP -->
+      <div id="s8-states">
+        <div class="label">Where the Votes Came From</div>
+        <div class="head">McKinley swept the <em>industrial North.</em></div>
+        <div class="stack">
+          <div class="row" data-row="1">
+            <div class="who">Illinois · Indiana · Ohio</div>
+            <div class="by">by</div>
+            <div class="scope"><em>Tens of thousands</em></div>
+          </div>
+          <div class="row" data-row="2">
+            <div class="who">New York · New Jersey · Pennsylvania</div>
+            <div class="by">by</div>
+            <div class="scope"><em>Hundreds of thousands</em></div>
+          </div>
+          <div class="row" data-row="3">
+            <div class="who">Every Northeastern state</div>
+            <div class="by">·</div>
+            <div class="scope">Swept.</div>
+          </div>
+          <div class="row" data-row="4">
+            <div class="who">Midwestern industrial belt</div>
+            <div class="by">·</div>
+            <div class="scope">Swept.</div>
+          </div>
+          <div class="row bryan" data-row="5">
+            <div class="who">Bryan</div>
+            <div class="by">won</div>
+            <div class="scope">The South · The Plains · Silver-mining West &mdash; <em>and lost everything else.</em></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4: PUBLIC TELEGRAM -->
+      <div id="s8-telegram">
+        <div class="head">
+          <span>Western Union · Cleveland → Canton</span>
+          <span>NOV 5, 1896</span>
+        </div>
+        <div class="public-tag">FOR PUBLIC RELEASE</div>
+        <div class="quote">"The people in their majesty, ignoring party lines, have declared their <em>detestation of repudiation and dishonor.</em> The victory is not to party or section, but of and for <em>the whole American people.</em>"</div>
+        <div class="footer">— McKinley to Hanna</div>
+      </div>
+
+      <!-- PHASE 5: PRIVATE LETTER -->
+      <div id="s8-private">
+        <div class="head">
+          <span>The Private Letter That Followed</span>
+          <span>To Hanna · Alone</span>
+        </div>
+        <div class="pull">"Was there ever such <em>unselfish devotion</em> before?"</div>
+        <div class="body">"Your unfaltering and increasing friendship through more than <em>twenty years</em> has been to me an encouragement and a source of strength, which I am sure you have never realized, but which I have constantly felt &mdash; and for which <em>I thank you from the bottom of my heart.</em>"</div>
+      </div>
+
+      <!-- PHASE 6: TWENTY YEARS -->
+      <div id="s8-years">
+        <div class="head">20<span class="word">YEARS.</span></div>
+        <div class="tl">
+          <div class="row" data-row="1">
+            <div class="y">1876</div>
+            <div class="e">They had met. McKinley a young congressman. Hanna <em>a young industrialist looking for a candidate.</em></div>
+          </div>
+          <div class="row" data-row="2">
+            <div class="y">1888</div>
+            <div class="e">The convention &mdash; <em>twelve years into the friendship.</em></div>
+          </div>
+          <div class="row" data-row="3">
+            <div class="y">1896</div>
+            <div class="e">The campaign &mdash; <em>the eighth year of the project.</em></div>
+          </div>
+        </div>
+        <div class="closer">McKinley remembered the math. <em>He thanked him.</em></div>
+      </div>
+
+      <div class="s8-grain"></div>
+      <div class="s8-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 08 Election Night (126.68s)
+      // Word anchors verified against assets/transcript.json (offset = 774.345)
+      //   +1.65   "polls closed in the East at 6 PM Nov 3, 1896"     row 1
+      //   +6.81   "first returns from Connecticut/NH"                row 1 (combined with above) / row 2 anchor
+      //   +9.77   "McKinley running ahead of every Republican fcast" row 2
+      //  +13.01   "By midnight, Northeast had broken for him"        row 3
+      //  +15.62   "By 2 in the morning, Midwest followed"            row 4
+      //  +18.39   "By dawn, silver-mining West still in question"    row 5
+      //  +22.74   "271 electoral votes"                              PHASE 2 ec
+      //  +26.39   "Bryan took 176"                                   ec lose
+      //  +28.77   "Popular vote was 7,105,076 to 6,370,897"          pop grid
+      //  +37.05   "won by 5.3 percentage points"                     margin line
+      //  +42.38   "total turnout 13.9 million voters... since Civil War" turnout line
+      //  +52.07   "Illinois Indiana Ohio by tens of thousands"       PHASE 3 row 1
+      //  +55.74   "NY/NJ/PA by hundreds of thousands"                row 2
+      //  +60.13   "every Northeastern state"                          row 3
+      //  +62.19   "Midwestern industrial belt"                        row 4
+      //  +64.69   "Bryan won South, Plains, Silver West, lost rest"   row 5
+      //  +69.86   "McKinley sent Hanna a telegram on Nov 5"          PHASE 4 telegram
+      //  +75.39   "people in their majesty..."                        quote
+      //  +87.10   "private letter that followed was different"       PHASE 5 private
+      //  +89.41   "was there ever such unselfish devotion before?"   pull
+      //  +93.95   "your unfaltering and increasing friendship..."    body
+      // +106.89   "Twenty years."                                    PHASE 6
+      // +107.81   "they had met in 1876"                              row 1
+      // +115.77   "1888 convention 12 years into friendship"          row 2
+      // +120.33   "1896 campaign was 8th year of project"             row 3
+      // +124.53   "McKinley remembered the math. He thanked"          closer
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1: POLLS CLOSE (0–22s) ───
+      tl.fromTo("#s8-night",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.4);
+      tl.fromTo("#s8-night .label",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.6);
+      tl.fromTo("#s8-night .head",
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.9);
+      tl.fromTo("#s8-night .tl .row[data-row='1']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 1.7);
+      tl.fromTo("#s8-night .tl .row[data-row='2']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 9.8);
+      tl.fromTo("#s8-night .tl .row[data-row='3']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 13.05);
+      tl.fromTo("#s8-night .tl .row[data-row='4']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 15.65);
+      tl.fromTo("#s8-night .tl .row[data-row='5']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 18.4);
+
+      // Night exits before numbers lands at 22.4
+      tl.to("#s8-night", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 21.8);
+      tl.set("#s8-night", { visibility: "hidden" }, 22.4);
+
+      // ─── PHASE 2: THE NUMBERS (22–52s) ───
+      tl.set("#s8-numbers", { opacity: 1, visibility: "visible" }, 22.4);
+      tl.fromTo("#s8-numbers .label",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 22.5);
+      tl.fromTo("#s8-numbers .ec-stage",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 22.6);
+      // 271 lands at 22.74; 176 at 26.39 — keep both cells visible from start, animate counter
+      tl.fromTo("#s8-numbers .ec-stage .col:nth-child(1) .num",
+        { scale: 0.88 }, { scale: 1.0, duration: 0.9, ease: "expo.out" }, 22.74);
+      tl.fromTo("#s8-numbers .ec-stage .col:nth-child(3) .num",
+        { scale: 0.88 }, { scale: 1.0, duration: 0.9, ease: "expo.out" }, 26.39);
+
+      tl.fromTo("#s8-numbers .pop",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 28.7);
+      tl.fromTo("#s8-numbers .pop .grid .col[data-col='1']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 29.0);
+      tl.fromTo("#s8-numbers .pop .grid .col[data-col='2']",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 32.6);
+      tl.fromTo("#s8-numbers .pop .margin",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 37.0);
+
+      tl.fromTo("#s8-numbers .turnout",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 42.3);
+
+      // Numbers exits before states lands at 51.5
+      tl.to("#s8-numbers", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 51.0);
+      tl.set("#s8-numbers", { visibility: "hidden" }, 51.6);
+
+      // ─── PHASE 3: THE MAP (52–69s) ───
+      tl.set("#s8-states", { opacity: 1, visibility: "visible" }, 51.6);
+      tl.fromTo("#s8-states .label",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 51.7);
+      tl.fromTo("#s8-states .head",
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 51.9);
+      tl.fromTo("#s8-states .row[data-row='1']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 52.1);
+      tl.fromTo("#s8-states .row[data-row='2']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 55.75);
+      tl.fromTo("#s8-states .row[data-row='3']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 60.15);
+      tl.fromTo("#s8-states .row[data-row='4']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 62.2);
+      tl.fromTo("#s8-states .row[data-row='5']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 64.7);
+
+      // States exits before telegram lands
+      tl.to("#s8-states", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 69.0);
+      tl.set("#s8-states", { visibility: "hidden" }, 69.6);
+
+      // ─── PHASE 4: TELEGRAM (69–87s) ───
+      // Telegram has left:50% — need xPercent -50 once
+      gsap.set("#s8-telegram", { xPercent: -50 });
+      tl.set("#s8-telegram", { opacity: 1, visibility: "visible" }, 69.6);
+      tl.fromTo("#s8-telegram",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 69.7);
+      tl.fromTo("#s8-telegram .quote",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 75.3);
+      tl.fromTo("#s8-telegram .footer",
+        { opacity: 0 }, { opacity: 1, duration: 0.5 }, 84.5);
+
+      // Telegram exits before private letter
+      tl.to("#s8-telegram", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 86.4);
+      tl.set("#s8-telegram", { visibility: "hidden" }, 87.0);
+
+      // ─── PHASE 5: PRIVATE LETTER (87–107s) ───
+      gsap.set("#s8-private", { xPercent: -50 });
+      tl.set("#s8-private", { opacity: 1, visibility: "visible" }, 87.0);
+      tl.fromTo("#s8-private",
+        { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 87.1);
+      tl.fromTo("#s8-private .pull",
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 89.4);
+      tl.fromTo("#s8-private .body",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 93.9);
+
+      // Private exits before years lands at 106.7
+      tl.to("#s8-private", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 106.1);
+      tl.set("#s8-private", { visibility: "hidden" }, 106.7);
+
+      // ─── PHASE 6: TWENTY YEARS (107–126s) ───
+      tl.set("#s8-years", { opacity: 1, visibility: "visible" }, 106.7);
+      tl.fromTo("#s8-years .head",
+        { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1.0, duration: 0.9, ease: "expo.out" }, 106.85);
+      tl.fromTo("#s8-years .tl .row[data-row='1']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 107.8);
+      tl.fromTo("#s8-years .tl .row[data-row='2']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 115.75);
+      tl.fromTo("#s8-years .tl .row[data-row='3']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 120.3);
+      tl.fromTo("#s8-years .closer",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 124.5);
+
+      // SCENE-WIDE EXIT before clip boundary at 126.68
+      tl.to("#s8-years", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 125.95);
+      tl.set("#s8-years", { visibility: "hidden", opacity: 0 }, 126.55);
+
+      window.__timelines["scene-08-election-night"] = tl;
+    </script>
+  </div>
+</template>
