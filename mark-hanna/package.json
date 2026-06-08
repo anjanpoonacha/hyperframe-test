@@ -9,5 +9,8 @@
     "inspect": "npx --yes hyperframes@latest inspect",
     "check": "npx --yes hyperframes@latest lint && npx --yes hyperframes@latest validate && npx --yes hyperframes@latest inspect",
     "render": "npx --yes hyperframes@latest render"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.14"
   }
 }

@@ -39,3 +39,38 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 *.bak
 *.bak.*
 *.bak/
+
+# HyperFrames generated/cache artifacts (re-creatable from source)
+.thumbnails/
+.waveform-cache/
+preview/
+qa/
+
+# Quarantined / archived / deprecated assets — kept on disk for safety, not git.
+_quarantine/
+_v1_archive/
+assets/narration/_v3-backup/
+assets/narration/_v3_wavs_DEPRECATED/
+assets/narration/v4/wavs/_quarantine/
+
+# Large binary renders & masters — re-derive via scripts/audio-concat.ts + render pipeline.
+*.wav
+*.mp4
+!assets/narration/v4/wavs/*.wav
+
+# Noise files from debug sessions
+DEFERRED_CHECKS.md
+MISTAKES.md
+RECONCILIATION.md
+RELEASE_NOTE.md
+STYLE_REUSE_AUDIT.md
+assets/transcript.v4.json
+assets/transcript.v4.log
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Snapshot frames (re-derive via npx hyperframes snapshot)
+snapshots/frame-*.png
+snapshots/contact-sheet.jpg

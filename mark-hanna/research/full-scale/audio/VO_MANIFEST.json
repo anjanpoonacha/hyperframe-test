@@ -1,0 +1,420 @@
+[
+  {
+    "scene": 1,
+    "title": "THE CARTOON",
+    "window": "0:00-0:45",
+    "duration": "45 s",
+    "chunks": 4,
+    "silence_seconds": 4.6,
+    "word_count": 41,
+    "emotion": "recognition, then unease. The cartoon is familiar; the name lands like an accusation.",
+    "files": {
+      "plan": "scene-01-narration.md",
+      "tts_text": "scene-01-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-01.wav",
+      "duration_seconds": 12.405,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 2,
+    "title": "THE LEDGER",
+    "window": "0:45-3:30",
+    "duration": "2:45",
+    "chunks": 7,
+    "silence_seconds": 2.5999999999999996,
+    "word_count": 126,
+    "emotion": "uncomfortable scale. Numbers as physical objects.",
+    "files": {
+      "plan": "scene-02-narration.md",
+      "tts_text": "scene-02-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-02.wav",
+      "duration_seconds": 37.46,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 3,
+    "title": "NEW LISBON, OHIO. 1837.",
+    "window": "3:30-5:00",
+    "duration": "1:30",
+    "chunks": 3,
+    "silence_seconds": 0.4,
+    "word_count": 55,
+    "emotion": "small. Beginnings as small.",
+    "files": {
+      "plan": "scene-03-narration.md",
+      "tts_text": "scene-03-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-03.wav",
+      "duration_seconds": 18.16,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 4,
+    "title": "THE BOY AT THE NEXT DESK",
+    "window": "5:00-6:00",
+    "duration": "1:00",
+    "chunks": 3,
+    "silence_seconds": 0.6,
+    "word_count": 42,
+    "emotion": "recognition; the long shadow.",
+    "files": {
+      "plan": "scene-04-narration.md",
+      "tts_text": "scene-04-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-04.wav",
+      "duration_seconds": 12.532,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 5,
+    "title": "THE PRICE OF THINGS",
+    "window": "6:00-7:30",
+    "duration": "1:30",
+    "chunks": 1,
+    "silence_seconds": 0,
+    "word_count": 75,
+    "emotion": "education through the eye, not the book.",
+    "files": {
+      "plan": "scene-05-narration.md",
+      "tts_text": "scene-05-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-05.wav",
+      "duration_seconds": 20.404,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 6,
+    "title": "CHARLOTTE",
+    "window": "7:30-8:30",
+    "duration": "1:00",
+    "chunks": 2,
+    "silence_seconds": 0.8,
+    "word_count": 27,
+    "emotion": "the only love beat. Quiet. Permission to feel.",
+    "files": {
+      "plan": "scene-06-narration.md",
+      "tts_text": "scene-06-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-06.wav",
+      "duration_seconds": 8.798,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 7,
+    "title": "THE CHOKEPOINT",
+    "window": "8:30-10:00",
+    "duration": "1:30",
+    "chunks": 3,
+    "silence_seconds": 0.4,
+    "word_count": 111,
+    "emotion": "geometric inevitability. The position was the prize.",
+    "files": {
+      "plan": "scene-07-narration.md",
+      "tts_text": "scene-07-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-07.wav",
+      "duration_seconds": 31.655,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 8,
+    "title": "THE THESIS",
+    "window": "10:00-11:30",
+    "duration": "1:30",
+    "chunks": 7,
+    "silence_seconds": 2.4000000000000004,
+    "word_count": 74,
+    "emotion": "a man crossing a line.",
+    "files": {
+      "plan": "scene-08-narration.md",
+      "tts_text": "scene-08-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-08.wav",
+      "duration_seconds": 20.007,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 9,
+    "title": "CHICAGO, 1888",
+    "window": "11:30-14:00",
+    "duration": "2:30",
+    "chunks": 9,
+    "silence_seconds": 2.8,
+    "word_count": 177,
+    "emotion": "the lesson. Loyalty as a rare object.",
+    "files": {
+      "plan": "scene-09-narration.md",
+      "tts_text": "scene-09-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-09.wav",
+      "duration_seconds": 53.545,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 10,
+    "title": "THE PANIC",
+    "window": "14:00-16:00",
+    "duration": "2:00",
+    "chunks": 7,
+    "silence_seconds": 2.0,
+    "word_count": 163,
+    "emotion": "the candidate is mortal. The patron decides what mortality costs.",
+    "files": {
+      "plan": "scene-10-narration.md",
+      "tts_text": "scene-10-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-10.wav",
+      "duration_seconds": 47.182,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 11,
+    "title": "THE MECHANISM",
+    "window": "16:00-17:45",
+    "duration": "1:45",
+    "chunks": 7,
+    "silence_seconds": 1.8,
+    "word_count": 79,
+    "emotion": "the math is on screen. Nothing is hidden any more.",
+    "files": {
+      "plan": "scene-11-narration.md",
+      "tts_text": "scene-11-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-11.wav",
+      "duration_seconds": 24.911,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 12,
+    "title": "THE FRONT PORCH",
+    "window": "17:45-18:30",
+    "duration": "45 s",
+    "chunks": 5,
+    "silence_seconds": 1.0,
+    "word_count": 69,
+    "emotion": "delivery as theater; scale as choreography.",
+    "files": {
+      "plan": "scene-12-narration.md",
+      "tts_text": "scene-12-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-12.wav",
+      "duration_seconds": 20.267,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 13,
+    "title": "CROSS OF GOLD",
+    "window": "18:30-19:30",
+    "duration": "1:00",
+    "chunks": 6,
+    "silence_seconds": 1.6,
+    "word_count": 78,
+    "emotion": "contrast. The thing the ledger is buying *against*.",
+    "files": {
+      "plan": "scene-13-narration.md",
+      "tts_text": "scene-13-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-13.wav",
+      "duration_seconds": 22.211,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 14,
+    "title": "TWO HUNDRED MILLION",
+    "window": "19:30-20:15",
+    "duration": "45 s",
+    "chunks": 1,
+    "silence_seconds": 0,
+    "word_count": 44,
+    "emotion": "asymmetric warfare made visible.",
+    "files": {
+      "plan": "scene-14-narration.md",
+      "tts_text": "scene-14-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-14.wav",
+      "duration_seconds": 15.948,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 15,
+    "title": "NOVEMBER 3, 1896",
+    "window": "20:15-20:45",
+    "duration": "30 s",
+    "chunks": 2,
+    "silence_seconds": 1.5,
+    "word_count": 7,
+    "emotion": "resolution as quiet.",
+    "files": {
+      "plan": "scene-15-narration.md",
+      "tts_text": "scene-15-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-15.wav",
+      "duration_seconds": 2.244,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 16,
+    "title": "SENATOR HANNA. AND THE COWBOY.",
+    "window": "20:45-22:00",
+    "duration": "1:15",
+    "chunks": 11,
+    "silence_seconds": 3.2,
+    "word_count": 173,
+    "emotion": "dramatic irony. We know what the room doesn't.",
+    "files": {
+      "plan": "scene-16-narration.md",
+      "tts_text": "scene-16-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-16.wav",
+      "duration_seconds": 51.121,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 17,
+    "title": "BUFFALO",
+    "window": "22:00-23:00",
+    "duration": "1:00",
+    "chunks": 6,
+    "silence_seconds": 3.5,
+    "word_count": 72,
+    "emotion": "the random event the ledger could not budget.",
+    "files": {
+      "plan": "scene-17-narration.md",
+      "tts_text": "scene-17-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-17.wav",
+      "duration_seconds": 24.467,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 18,
+    "title": "TYPHOID",
+    "window": "23:00-23:30",
+    "duration": "30 s",
+    "chunks": 3,
+    "silence_seconds": 0.4,
+    "word_count": 43,
+    "emotion": "a small ending for a large life.",
+    "files": {
+      "plan": "scene-18-narration.md",
+      "tts_text": "scene-18-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-18.wav",
+      "duration_seconds": 14.192,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  },
+  {
+    "scene": 19,
+    "title": "THE INHERITANCE",
+    "window": "23:30-24:00",
+    "duration": "30 s",
+    "chunks": 6,
+    "silence_seconds": 1.6,
+    "word_count": 73,
+    "emotion": "the template. The thesis closing.",
+    "files": {
+      "plan": "scene-19-narration.md",
+      "tts_text": "scene-19-narration.txt"
+    },
+    "rendered": {
+      "wav_path": "assets/scenes/scene-19.wav",
+      "duration_seconds": 21.581,
+      "voice": "kokoro bm_george",
+      "post_processing": "atempo=1.18, loudnorm I=-16:TP=-1.5:LRA=11",
+      "sample_rate": 48000,
+      "channels": 1
+    }
+  }
+]

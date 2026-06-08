@@ -9,7 +9,7 @@
 - V1 Spell every year out: `eighteen ninety-six`, never `1896`.
 - V2 No commas after a single-word opener: `Banks paid` not `Banks, paid`.
 - V3 Replace staccato lists with connectors: `Coal and iron` not `Coal, iron`.
-- V4 No initials with periods: `JP Morgan` not `J.P. Morgan`, `M A Hanna` not `M.A. Hanna`.
+- V4 No initials with periods: `JP Morgan` not `J.P. Morgan`, `MA Hanna` not `M.A. Hanna`. Strip the dots between initials so Kokoro reads them as a flowing bigram rather than as separate clipped letters with pause-storms between. **Verify with the user's ear, not whisper round-trip** — whisper auto-inserts periods on transcription (`MA` → `M.A.`) which makes the round-trip look like Kokoro re-inserted them, but the actual audio is clean. Source for §05: `MA Hanna and Company` works (user-confirmed). Same pattern: `JP Morgan`, `US Senate`, `Washington DC`. The previous V4 wording incorrectly said "no initials anywhere" based on whisper round-trip evidence — that was wrong; the rule is just "no periods between initials."
 - V5 Voice is locked. No `--speed` flag, no voice swap mid-rebuild.
 - V6 Long-form: split narration per scene (re-render = 1-2 min, not 10-15).
 - V7 Punctuation does NOT control pacing. Pacing comes from manifest silences.
@@ -68,6 +68,7 @@
 - L3 Top margin to first element ≤ 150px (unless airy is intentional and defended).
 - L4 All elements fully inside 1920×1080 at hold AND during every tween.
 - L5 Ken-burns peak scale stays inside canvas. Cap source dims, don't allow overflow.
+- L6 When a phase has only ONE block (no headline+body separation), vertically center it on canvas (midpoint y≈540). Don't bottom-anchor (top:660+) or top-anchor (top:200) without a second element to balance against.
 
 ## A — Audio pipeline
 
@@ -75,6 +76,18 @@
 - A2 Audio change = caption regen. Period.
 - A3 Verify VO collisions against the actual master wav (`silencedetect`), NOT the preview transcript.
 - A4 Renders predate fixes unless re-rendered. Don't visually verify against an old MP4.
+- A5 **One source of truth per asset.** Section wavs live ONLY in `assets/narration/v4/wavs/`. Never `assets/narration/wavs/` (legacy v3) — that path was deprecated, but if the manifest's relative chunk path is `wavs/foo.wav` instead of `v4/wavs/foo.wav` it silently resolves to the wrong file. Manifest paths must include the `v4/` prefix. **Symptom**: re-rendering a section wav fixes the audio but the master still sounds broken — the concat is reading from the stale path. **Fix**: grep manifest for `"chunk": "wavs/` (without `v4/`); all chunks must have `v4/` prefix. Quarantined dir is `assets/narration/_v3_wavs_DEPRECATED/`.
+- A6 **Master file naming: keep it canonical, never proliferate versions.** When a re-render produces a bad master, FIX the source then OVERWRITE `narration.fullscale.wav`. Do NOT create `narration.v5.wav`, `narration.v6.wav`, etc. — version proliferation creates "which file is the index.html actually pointing at" confusion that compounds for hours. Stale variants moved to `_quarantine/` under the project root.
+- A7 **Master file regen recipe (after section wav change):**
+  ```bash
+  bun scripts/audio-concat.ts                        # concats v4/wavs/* → narration.fullscale.wav
+  npx hyperframes transcribe narration.fullscale.wav --model small.en --json > /tmp/t.json
+  cp $(jq -r .transcriptPath /tmp/t.json) assets/transcript.json
+  python3 scripts/align-captions-to-source.py        # source-text override (fixes whisper Hannah→Hanna etc.)
+  python3 scripts/make-captions.py --skip-whisper    # regenerates caption-groups.json + captions.html
+  ```
+- A8 **No loudnorm on Kokoro masters.** The two-pass loudnorm with `linear=true` was found to corrupt audio at chunk boundaries (despite "linear" promise). Kokoro output is already at consistent loudness — just ffmpeg-resample 24kHz → 48kHz with no filter. audio-concat.ts does this correctly as of 2026-06-08.
+- A9 **filter_complex concat, NOT concat-demuxer.** The concat demuxer corrupted boundaries between Kokoro 24kHz chunks + anullsrc silence chunks (specific to 24kHz pcm_s16le). filter_complex `concat=n=N:v=0:a=1` produces clean output. audio-concat.ts uses filter_complex as of 2026-06-08.
 
 ## R — Runtime contract (CHANNEL.md §3)
 

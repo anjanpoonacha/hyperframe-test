@@ -1,0 +1,536 @@
+[
+  {
+    "scene": 1,
+    "header": "### SCENE 1 — 0:00–0:45 (45 s) — THE CARTOON",
+    "paragraphs": [
+      "The cartoon ran in every Hearst paper in America.",
+      "A fat man, in a suit covered in dollar signs, smoking a cigar the size of his forearm.",
+      "The caption changed every week. The man did not.",
+      "His name was Mark Hanna."
+    ],
+    "silences": [
+      {
+        "afterParagraph": -1,
+        "seconds": 4
+      },
+      {
+        "afterParagraph": 2,
+        "seconds": 0.6
+      }
+    ]
+  },
+  {
+    "scene": 2,
+    "header": "### SCENE 2 — 0:45–3:30 (2:45) — THE LEDGER",
+    "paragraphs": [
+      "And in eighteen ninety-six, he did something no one had ever done at that scale.",
+      "He turned the American presidential election into a corporate purchase order.",
+      "Three and a half million dollars raised. Twenty times what his opponent spent.",
+      "Banks assessed at a quarter of a percent of capital. Railroads, shaken down personally. Standard Oil, two hundred and fifty thousand dollars. JP Morgan, two hundred and fifty thousand dollars.",
+      "Half a million voters, transported by train, to shake one man's hand.",
+      "Two hundred million pieces of campaign literature, printed and mailed.",
+      "The opposition had a thirty-six year old preacher who could move a crowd to tears.",
+      "Hanna had a ledger.",
+      "And when November came, the ledger won.",
+      "To understand how — we go back fifty-nine years."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 1,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 7,
+        "seconds": 1.2
+      },
+      {
+        "afterParagraph": 8,
+        "seconds": 0.8
+      }
+    ]
+  },
+  {
+    "scene": 3,
+    "header": "### SCENE 3 — 3:30–5:00 (1:30) — NEW LISBON, OHIO. 1837.",
+    "paragraphs": [
+      "He wasn't born with money. He was born in a grocery.",
+      "New Lisbon, Ohio. Eighteen thirty-seven.",
+      "His father, Doctor Leonard Hanna, was a country physician who ran a wholesale grocery on the side. Flour, salt, dry goods to Ohio farmers.",
+      "When Mark was fifteen, the family moved to Cleveland. He enrolled at Western Reserve College."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 1,
+        "seconds": 0.4
+      }
+    ]
+  },
+  {
+    "scene": 4,
+    "header": "### SCENE 4 — 5:00–6:00 (1:00) — THE BOY AT THE NEXT DESK",
+    "paragraphs": [
+      "In his class, was a quiet, awkward boy who would grow up to control ninety percent of the oil refining capacity in the United States.",
+      "His name was John D. Rockefeller.",
+      "The two would orbit each other for the next forty years."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 0,
+        "seconds": 0.6
+      }
+    ]
+  },
+  {
+    "scene": 5,
+    "header": "### SCENE 5 — 6:00–7:30 (1:30) — THE PRICE OF THINGS",
+    "paragraphs": [
+      "Hanna lasted one year at Western Reserve before he quit. Not because he was failing. Because he had already figured out something the professors couldn't teach. The real education, was in the price of things.",
+      "He went back to the store. Worked the floor. Watched how men negotiated. Watched who paid on time and who didn't. Watched which suppliers had leverage, and which ones begged.",
+      "Then the Civil War came. He served briefly. Came home."
+    ],
+    "silences": []
+  },
+  {
+    "scene": 6,
+    "header": "### SCENE 6 — 7:30–8:30 (1:00) — CHARLOTTE",
+    "paragraphs": [
+      "And married a woman named Charlotte Rhodes.",
+      "Her father was Daniel Rhodes. Coal and iron. One of the men quietly getting rich off everything Cleveland was becoming."
+    ],
+    "silences": [
+      {
+        "afterParagraph": -1,
+        "seconds": 0.8
+      }
+    ]
+  },
+  {
+    "scene": 7,
+    "header": "### SCENE 7 — 8:30–10:00 (1:30) — THE CHOKEPOINT",
+    "paragraphs": [
+      "Hanna walked into that business, and never walked out.",
+      "By eighteen sixty-seven, Marcus Alonzo Hanna had built MA Hanna and Company. A coal and iron brokerage, sitting at the exact pivot point where Lake Erie ore boats unloaded for the Pittsburgh steel mills.",
+      "Cleveland was the chokepoint. And Hanna sat on it.",
+      "Every ton of iron ore that crossed Lake Erie in the eighteen seventies, passed through brokers like him, he took a cut.",
+      "Then he bought the newspaper, the Cleveland Herald. Then a theater. Then banking interests. Then a streetcar line.",
+      "By eighteen eighty, he controlled enough of Cleveland that when he walked into a room, the room changed temperature."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 0,
+        "seconds": 0.4
+      }
+    ]
+  },
+  {
+    "scene": 8,
+    "header": "### SCENE 8 — 10:00–11:30 (1:30) — THE THESIS",
+    "paragraphs": [
+      "By eighteen eighty, Hanna was bored.",
+      "Not with money. He had money.",
+      "Bored with the ceiling.",
+      "Because he had figured out something. Watching the men who supplied his coal. The politicians who regulated his railroads. The judges who settled his contracts.",
+      "Money was the second most powerful thing in America.",
+      "The most powerful thing was who decided where the money went.",
+      "That was politics. And no one had ever run politics like a business.",
+      "Not yet."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 0,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 2,
+        "seconds": 0.8
+      },
+      {
+        "afterParagraph": 3,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 4,
+        "seconds": 1.2
+      },
+      {
+        "afterParagraph": 5,
+        "seconds": 0.8
+      },
+      {
+        "afterParagraph": 6,
+        "seconds": 0.4
+      }
+    ]
+  },
+  {
+    "scene": 9,
+    "header": "### SCENE 9 — 11:30–14:00 (2:30) — CHICAGO, 1888",
+    "paragraphs": [
+      "The year was eighteen eighty-eight. The Republican National Convention. Chicago.",
+      "Mark Hanna arrived not as a candidate, but as a kingmaker.",
+      "His man was John Sherman. Ohio senator. Treasury veteran. The establishment choice.",
+      "Hanna worked the convention floor for six days. Trading delegates. Promising postmasterships. Calling in markers from Ohio to Pennsylvania.",
+      "Sherman peaked on the first ballot at two hundred and twenty-nine votes. Then he bled out. Ballot after ballot, until the nomination went to Benjamin Harrison on the eighth.",
+      "Hanna lost.",
+      "But he saw something that week he would never forget.",
+      "A forty-five year old congressman from Canton, Ohio had been chairing the resolutions committee.",
+      "When delegates began breaking toward him as a dark-horse alternative, the congressman walked to the microphone, and refused.",
+      "He told the convention he was bound to Sherman. And he sat down.",
+      "That kind of loyalty was rare in eighteen eighty-eight politics. It was almost extinct.",
+      "His name was William McKinley.",
+      "Hanna walked across the floor, and introduced himself.",
+      "He didn't know it yet. But he had just found his president."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 4,
+        "seconds": 0.8
+      },
+      {
+        "afterParagraph": 9,
+        "seconds": 1
+      },
+      {
+        "afterParagraph": 10,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 12,
+        "seconds": 0.4
+      }
+    ]
+  },
+  {
+    "scene": 10,
+    "header": "### SCENE 10 — 14:00–16:00 (2:00) — THE PANIC",
+    "paragraphs": [
+      "In February eighteen ninety-three, McKinley nearly went bankrupt.",
+      "The Panic.",
+      "Banks collapse from New York to San Francisco. Six hundred and forty banks fail in a single year.",
+      "Fifteen thousand businesses go under.",
+      "One of those businesses belonged to a man named Robert Walker, in Youngstown, Ohio. Walker was a friend of McKinley's. McKinley had co-signed Walker's notes — out of loyalty.",
+      "The same loyalty Hanna had watched at the Chicago microphone — five years earlier.",
+      "When Walker collapsed, the notes came due against McKinley.",
+      "One hundred and thirty thousand dollars.",
+      "The governor of Ohio could not pay. He told his friends he would not solicit help. He would not be a beggar.",
+      "So Mark Hanna did it for him. Without asking.",
+      "Inside three weeks, a syndicate of Cleveland and New York industrialists — Hanna at the center — quietly absorbed every note.",
+      "McKinley signed nothing. Owed nothing.",
+      "He knew, only later, who had paid.",
+      "The candidate was now a debt.",
+      "And Hanna held the paper."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 0,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 2,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 3,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 4,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 5,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 6,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 7,
+        "seconds": 0.8
+      },
+      {
+        "afterParagraph": 8,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 9,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 11,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 12,
+        "seconds": 0.8
+      },
+      {
+        "afterParagraph": 13,
+        "seconds": 0.4
+      }
+    ]
+  },
+  {
+    "scene": 11,
+    "header": "### SCENE 11 — 16:00–17:45 (1:45) — THE MECHANISM",
+    "paragraphs": [
+      "Here is how the ledger worked.",
+      "Every national bank in America was assessed at a quarter of one percent of its paid-in capital. Not asked. Assessed.",
+      "Every railroad, by line-mile.",
+      "Standard Oil — two hundred and fifty thousand dollars.",
+      "JP Morgan — two hundred and fifty thousand dollars.",
+      "New York Life. Equitable. Metropolitan Life. The big three insurers, fifty thousand each, billed to policy holders.",
+      "Three and a half million dollars.",
+      "Twenty times what William Jennings Bryan would raise."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 0,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 2,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 5,
+        "seconds": 0.8
+      }
+    ]
+  },
+  {
+    "scene": 12,
+    "header": "### SCENE 12 — 17:45–18:30 (45 s) — THE FRONT PORCH",
+    "paragraphs": [
+      "Bryan tours.",
+      "McKinley does not.",
+      "McKinley sits on his front porch in Canton, Ohio.",
+      "His wife is too ill to be left alone.",
+      "Hanna has decided that staying still is more presidential than running.",
+      "Hanna brings the country to the porch.",
+      "Half a million voters. By train. To Canton.",
+      "Each one shakes McKinley's hand. Each one goes home and tells a story."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 0,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 5,
+        "seconds": 0.6
+      }
+    ]
+  },
+  {
+    "scene": 13,
+    "header": "### SCENE 13 — 18:30–19:30 (1:00) — CROSS OF GOLD",
+    "paragraphs": [
+      "The opposition had a thirty-six year old preacher who could move a crowd to tears.",
+      "William Jennings Bryan walked into the Democratic convention an unknown congressman from Nebraska. He walked out, the nominee.",
+      "On one speech.",
+      "The crowd in Chicago carried him on their shoulders. The newspapers wrote that one speech, two thousand words long, had broken thirty-six years of party silence.",
+      "Hanna read the speech in Cleveland that night, and went, the next morning, to the bank."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 0,
+        "seconds": 1
+      },
+      {
+        "afterParagraph": 2,
+        "seconds": 1.5
+      },
+      {
+        "afterParagraph": 3,
+        "seconds": 0.6
+      }
+    ]
+  },
+  {
+    "scene": 14,
+    "header": "### SCENE 14 — 19:30–20:15 (45 s) — TWO HUNDRED MILLION",
+    "paragraphs": [
+      "Two hundred million pieces of campaign literature, printed and mailed.",
+      "One thousand four hundred speakers under contract. Pamphlets in German, in Polish, in Yiddish, in Italian.",
+      "Bryan rode eighteen thousand miles by rail. Spoke to five million people in person.",
+      "Hanna mailed a country."
+    ],
+    "silences": []
+  },
+  {
+    "scene": 15,
+    "header": "### SCENE 15 — 20:15–20:45 (30 s) — NOVEMBER 3, 1896",
+    "paragraphs": [
+      "And when November came, the ledger won."
+    ],
+    "silences": [
+      {
+        "afterParagraph": -1,
+        "seconds": 1.5
+      }
+    ]
+  },
+  {
+    "scene": 16,
+    "header": "### SCENE 16 — 20:45–22:00 (1:15) — SENATOR HANNA. AND THE COWBOY.",
+    "paragraphs": [
+      "Hanna takes McKinley's old Senate seat in Ohio. He runs the senate the way he ran a brokerage.",
+      "McKinley wins again in nineteen hundred. The same ledger. The same machinery.",
+      "The vice-president on the second ticket is Garret Hobart, of New Jersey. A reliable man. A quiet man.",
+      "Hobart dies in office in November of eighteen ninety-nine.",
+      "The seat is open.",
+      "The New York Republican machine has a problem. Their reformist governor is a war hero. He is a moralist. He keeps breaking their patronage rings. They want him out of New York.",
+      "They suggest the vice-presidency. The vice-presidency in nineteen hundred is widely understood to be a coffin.",
+      "Mark Hanna sees what is coming. He tries to stop it.",
+      "\"Don't any of you realize there's only one life between this madman and the Presidency?\"",
+      "They do not listen.",
+      "The madman is Theodore Roosevelt."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 1,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 4,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 6,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 7,
+        "seconds": 0.8
+      },
+      {
+        "afterParagraph": 8,
+        "seconds": 0.8
+      }
+    ]
+  },
+  {
+    "scene": 17,
+    "header": "### SCENE 17 — 22:00–23:35 (1:35) — BUFFALO",
+    "paragraphs": [
+      "Buffalo. September sixth, nineteen hundred and one.",
+      "William McKinley shook hands at the Pan-American Exposition.",
+      "A young man in line stepped forward. He had a handkerchief over his right hand.",
+      "Beneath the handkerchief was a revolver.",
+      "Two shots.",
+      "The first round caught a coat button. The second struck the stomach.",
+      "McKinley died eight days later. Two-fifteen in the morning. September fourteenth.",
+      "Theodore Roosevelt was sworn in that afternoon. In a borrowed library on Delaware Avenue.",
+      "Mark Hanna's project ended.",
+      "Eight years before Mark Hanna did."
+    ],
+    "silences": [
+      {
+        "afterParagraph": -1,
+        "seconds": 1.5
+      },
+      {
+        "afterParagraph": 0,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 1,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 2,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 3,
+        "seconds": 0.8
+      },
+      {
+        "afterParagraph": 4,
+        "seconds": 2.5
+      },
+      {
+        "afterParagraph": 5,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 6,
+        "seconds": 1
+      },
+      {
+        "afterParagraph": 7,
+        "seconds": 1.2
+      },
+      {
+        "afterParagraph": 8,
+        "seconds": 0.4
+      }
+    ]
+  },
+  {
+    "scene": 18,
+    "header": "### SCENE 18 — 23:35–24:25 (50 s) — TYPHOID",
+    "paragraphs": [
+      "In nineteen oh four, Mark Hanna ran against Roosevelt for the Republican nomination.",
+      "He had the donors. He had the senate.",
+      "He did not have the time.",
+      "Typhoid fever took him on February fifteenth, nineteen oh four. In his home on Lafayette Square. He was sixty-six years old.",
+      "The man who built the modern American campaign died before he could solve the one variable he never modelled.",
+      "The cowboy.",
+      "Roosevelt walked the nomination."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 0,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 1,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 2,
+        "seconds": 1
+      },
+      {
+        "afterParagraph": 3,
+        "seconds": 1.2
+      },
+      {
+        "afterParagraph": 4,
+        "seconds": 0.4
+      },
+      {
+        "afterParagraph": 5,
+        "seconds": 0.8
+      }
+    ]
+  },
+  {
+    "scene": 19,
+    "header": "### SCENE 19 — 24:25–25:00 (35 s) — THE INHERITANCE",
+    "paragraphs": [
+      "The man you've seen in a thousand cartoons — the dollar suit, the cigar — invented something that outlived him by a hundred and twenty years.",
+      "The assessment system. The corporate mail. The candidate as product. The convention as choreography.",
+      "Every American presidential campaign since nineteen hundred has used a piece of his ledger. Most use the whole thing.",
+      "His name was Mark Hanna.",
+      "The cartoon ran in every Hearst paper in America."
+    ],
+    "silences": [
+      {
+        "afterParagraph": 1,
+        "seconds": 0.6
+      },
+      {
+        "afterParagraph": 2,
+        "seconds": 1
+      },
+      {
+        "afterParagraph": 3,
+        "seconds": 2
+      }
+    ]
+  }
+]

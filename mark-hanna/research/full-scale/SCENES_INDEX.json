@@ -1,0 +1,116 @@
+[
+  {
+    "idx": 1,
+    "composition_id": "scene-01-cartoon-fs",
+    "duration": 45,
+    "file": "scene-01-cartoon-fs.html"
+  },
+  {
+    "idx": 2,
+    "composition_id": "scene-02-ledger-fs",
+    "duration": 165,
+    "file": "scene-02-ledger-fs.html"
+  },
+  {
+    "idx": 3,
+    "composition_id": "scene-03-new-lisbon-fs",
+    "duration": 90,
+    "file": "scene-03-new-lisbon-fs.html"
+  },
+  {
+    "idx": 4,
+    "composition_id": "scene-04-rockefeller-fs",
+    "duration": 60,
+    "file": "scene-04-rockefeller-fs.html"
+  },
+  {
+    "idx": 5,
+    "composition_id": "scene-05-price-fs",
+    "duration": 90,
+    "file": "scene-05-price-fs.html"
+  },
+  {
+    "idx": 6,
+    "composition_id": "scene-06-charlotte-fs",
+    "duration": 60,
+    "file": "scene-06-charlotte-fs.html"
+  },
+  {
+    "idx": 7,
+    "composition_id": "scene-07-chokepoint-fs",
+    "duration": 90,
+    "file": "scene-07-chokepoint-fs.html"
+  },
+  {
+    "idx": 8,
+    "composition_id": "scene-08-thesis-fs",
+    "duration": 90,
+    "file": "scene-08-thesis-fs.html"
+  },
+  {
+    "idx": 9,
+    "composition_id": "scene-09-chicago-1888-fs",
+    "duration": 150,
+    "file": "scene-09-chicago-1888-fs.html"
+  },
+  {
+    "idx": 10,
+    "composition_id": "scene-10-panic-fs",
+    "duration": 120,
+    "file": "scene-10-panic-fs.html"
+  },
+  {
+    "idx": 11,
+    "composition_id": "scene-11-mechanism-fs",
+    "duration": 105,
+    "file": "scene-11-mechanism-fs.html"
+  },
+  {
+    "idx": 12,
+    "composition_id": "scene-12-front-porch-fs",
+    "duration": 45,
+    "file": "scene-12-front-porch-fs.html"
+  },
+  {
+    "idx": 13,
+    "composition_id": "scene-13-cross-of-gold-fs",
+    "duration": 60,
+    "file": "scene-13-cross-of-gold-fs.html"
+  },
+  {
+    "idx": 14,
+    "composition_id": "scene-14-two-hundred-million-fs",
+    "duration": 45,
+    "file": "scene-14-two-hundred-million-fs.html"
+  },
+  {
+    "idx": 15,
+    "composition_id": "scene-15-election-night-fs",
+    "duration": 30,
+    "file": "scene-15-election-night-fs.html"
+  },
+  {
+    "idx": 16,
+    "composition_id": "scene-16-cowboy-fs",
+    "duration": 75,
+    "file": "scene-16-cowboy-fs.html"
+  },
+  {
+    "idx": 17,
+    "composition_id": "scene-17-buffalo-fs",
+    "duration": 60,
+    "file": "scene-17-buffalo-fs.html"
+  },
+  {
+    "idx": 18,
+    "composition_id": "scene-18-typhoid-fs",
+    "duration": 30,
+    "file": "scene-18-typhoid-fs.html"
+  },
+  {
+    "idx": 19,
+    "composition_id": "scene-19-inheritance-fs",
+    "duration": 30,
+    "file": "scene-19-inheritance-fs.html"
+  }
+]

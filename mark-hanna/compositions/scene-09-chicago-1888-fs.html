@@ -1,0 +1,181 @@
+<template id="scene-09-chicago-1888-fs-template">
+  <div data-composition-id="scene-09-chicago-1888-fs" data-width="1920" data-height="1080" data-duration="150" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+@font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+@font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+@font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+.fs-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+.fs-stage * { box-sizing:border-box; }
+
+.fs-chapter { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; z-index:30; }
+.fs-chapter .roman { font-family:"Playfair Display",serif; font-weight:700; font-size:96px; color:#9A8E76; font-style:italic; letter-spacing:0.08em; }
+.fs-chapter .title { margin-top:18px; font-family:"Source Serif 4",serif; font-style:italic; font-size:56px; color:#E8DEC8; letter-spacing:0.04em; }
+
+.fs-bg-photo { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); max-width:1400px; max-height:880px; opacity:0; z-index:5; filter:sepia(0.22) contrast(1.05) brightness(0.92) saturate(0.85); box-shadow:0 30px 80px rgba(0,0,0,0.6); border:1px solid rgba(200,117,51,0.35); }
+.fs-bg-photo.full { max-width:1920px; max-height:1080px; }
+.fs-bg-photo.left { left:30%; }
+.fs-bg-photo.right { left:70%; }
+
+.fs-strap { position:absolute; top:120px; left:50%; transform:translateX(-50%); font-family:"Roboto Mono",monospace; font-size:22px; font-weight:500; color:#9A8E76; letter-spacing:0.18em; text-transform:uppercase; opacity:0; z-index:20; padding:12px 28px; border-top:1px solid #C87533; border-bottom:1px solid #C87533; }
+
+.fs-year-strap { position:absolute; top:54px; left:64px; font-family:"Roboto Mono",monospace; font-size:28px; color:#9A8E76; letter-spacing:0.2em; opacity:0; z-index:20; }
+
+.fs-name { position:absolute; top:48%; left:50%; transform:translate(-50%,-50%); text-align:center; font-family:"Playfair Display",serif; font-weight:900; line-height:0.95; opacity:0; z-index:25; text-shadow:0 4px 20px rgba(0,0,0,0.5); }
+.fs-name .accent { color:#C87533; }
+
+.fs-hero { position:absolute; left:50%; transform:translateX(-50%); width:1600px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; line-height:1.15; letter-spacing:-0.01em; color:#E8DEC8; opacity:0; z-index:22; }
+.fs-hero.italic { font-family:"Source Serif 4",serif; font-style:italic; font-weight:400; }
+.fs-hero.amber { color:#C87533; }
+.fs-hero.blood { color:#C03A2C; }
+.fs-hero.cream { color:#E8DEC8; }
+
+.fs-verdict { position:absolute; bottom:200px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:900; letter-spacing:-0.02em; opacity:0; z-index:26; }
+.fs-verdict.amber { color:#C87533; }
+.fs-verdict.cream { color:#E8DEC8; }
+.fs-verdict.blood { color:#C03A2C; }
+.fs-verdict.italic { font-family:"Source Serif 4",serif; font-style:italic; font-weight:400; }
+
+.fs-mono { font-family:"Roboto Mono",monospace; font-variant-numeric:tabular-nums; }
+
+.fs-ledger { position:absolute; left:50%; transform:translateX(-50%); width:1280px; padding:48px 64px; background:#E8DEC8; color:#0E0B08; font-family:"Roboto Mono",monospace; font-size:30px; line-height:1.7; opacity:0; z-index:24; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+.fs-ledger .row { display:flex; justify-content:space-between; opacity:0; transform:translateY(8px); }
+.fs-ledger .row .amt { font-weight:700; }
+
+.fs-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.55) 88%, rgba(14,11,8,0.85) 100%); opacity:1; }
+.fs-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.20) 0, rgba(232,222,200,0.20) 1px, transparent 1px, transparent 3px), repeating-radial-gradient(circle at 70% 80%, rgba(200,117,51,0.12) 0, rgba(200,117,51,0.12) 1px, transparent 1px, transparent 4px); mix-blend-mode:overlay; }
+
+/* Hand-tuned scene 9 specifics */
+#s9-sherman-tag { position:absolute; top:80px; right:64px; font-family:"Roboto Mono",monospace; font-size:28px; color:#9A8E76; letter-spacing:0.18em; opacity:0; z-index:21; }
+#s9-mck-letter { display:inline-block; }
+#s9-blackout { position:absolute; inset:0; background:#0E0B08; opacity:0; z-index:95; }
+</style>
+    <div class="fs-stage">
+      <div class="fs-chapter" id="s9-chap"><div class="roman">IX</div><div class="title">CHICAGO, 1888</div></div>
+
+      <!-- Convention image: full bleed, push-in 1.2-20s, pull-out 20-60s. -->
+      <img class="fs-bg-photo" id="s9-conv" src="../assets/convention-1888.jpg" alt="" style="top:50%; left:50%;">
+
+      <div class="fs-strap" id="s9-strap">REPUBLICAN NATIONAL CONVENTION · CHICAGO · JUNE 1888</div>
+
+      <!-- Big Sherman name plate (10-14s). -->
+      <div class="fs-name" id="s9-sherman" style="top:35%; font-size:96px; letter-spacing:-0.02em;"><span class="first">JOHN</span> <span class="last accent">SHERMAN</span></div>
+
+      <!-- Small Sherman corner-pin tag (14-60s, dimmed at 42s). -->
+      <div id="s9-sherman-tag">SHERMAN, JOHN — OHIO · TREAS.</div>
+
+      <!-- Vote tally crawl (28-60s) — left margin, mono tabular. -->
+      <div class="fs-ledger" id="s9-ballots" style="top:22%; left:6%; transform:none; width:520px; background:rgba(14,11,8,0.78); color:#E8DEC8; border:1px solid #C87533; box-shadow:none; padding:32px 40px; font-size:26px;">
+        <div class="row"><span>BALLOT 1</span><span class="fs-mono">229  Sherman</span></div>
+        <div class="row"><span>BALLOT 2</span><span class="fs-mono">244  Sherman</span></div>
+        <div class="row"><span>BALLOT 3</span><span class="fs-mono">230  Sherman</span></div>
+        <div class="row"><span>BALLOT 4</span><span class="fs-mono">235  Sherman</span></div>
+        <div class="row"><span>BALLOT 5</span><span class="fs-mono">244  Sherman</span></div>
+        <div class="row"><span>BALLOT 6</span><span class="fs-mono">230  Sherman</span></div>
+        <div class="row"><span>BALLOT 7</span><span class="fs-mono">231  Sherman</span></div>
+        <div class="row" id="s9-ballot-final" style="color:#C03A2C;"><span>BALLOT 8</span><span class="fs-mono">---  Harrison nominated</span></div>
+      </div>
+
+      <!-- Hard cut to black flash @60-61s. -->
+      <div id="s9-blackout"></div>
+
+      <!-- McKinley name plate (61s) with letter-spacing tighten. Per-letter wrap for animation. -->
+      <div class="fs-name" id="s9-mck" style="top:32%; font-size:132px;"><span class="first">WILLIAM</span> <span class="last accent">McKINLEY</span></div>
+
+      <div class="fs-hero cream italic" id="s9-mck-sub" style="top:46%; font-size:36px;">Congressman, 17th District, Ohio. 45 years old.</div>
+
+      <!-- McKinley portrait, cols 4-9 below name (centered, top 70%). -->
+      <img class="fs-bg-photo" id="s9-mck-img" src="../assets/mckinley-1896.jpg" alt="" style="top:70%; left:50%;">
+
+      <!-- Loyalty pull-quote @100s, held to 128s. -->
+      <div class="fs-hero italic cream" id="s9-loyal" style="top:84%; font-size:46px;">&ldquo;That kind of loyalty was rare in eighteen eighty-eight politics. It was almost extinct.&rdquo;</div>
+
+      <!-- Verdict @130s, held 5s. -->
+      <div class="fs-verdict amber" id="s9-verdict" style="font-size:96px;">He had just found his president.</div>
+
+      <div class="fs-grain"></div>
+      <div class="fs-vignette"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 9 — CHICAGO, 1888  (150 s) — HAND-TUNED per SHOT_BOARDS.md §scene 9
+      // Push-in convention → Sherman name → Sherman corner-pin shrink to tag →
+      // ballot tally crawl + floor dim → hard cut to black → McKinley name (letter-spacing
+      // tighten) → portrait push-in → loyalty pull-quote → verdict.
+
+      // Take ownership of transforms from CSS (GSAP-CSS conflict guard).
+      gsap.set("#s9-conv", { xPercent: -50, yPercent: -50, scale: 1.0 });
+      gsap.set("#s9-mck-img", { xPercent: -50, yPercent: -50, scale: 0.70 });
+      gsap.set("#s9-sherman", { xPercent: -50, yPercent: -50, scale: 1.0 });
+
+      // Chapter card.
+      tl.fromTo("#s9-chap", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+        tl.to("#s9-chap", { opacity: 0, duration: 0.5, ease: "power2.in" }, 1.2);
+
+      // Convention image: enter, push-in 1.2-20s, hold, pull-out 20-60s.
+      tl.to("#s9-conv", { opacity: 1.0, duration: 0.8, ease: "power3.out" }, 1.2);
+      tl.fromTo("#s9-conv", { scale: 1.0 }, { scale: 1.04, duration: 18.0, ease: "sine.inOut" }, 1.2);
+      tl.to("#s9-conv", { scale: 1.00, duration: 40.0, ease: "sine.inOut" }, 20.0);
+      // Floor dim at 42s as Sherman tag dims.
+      tl.to("#s9-conv", { filter: "sepia(0.22) contrast(1.05) brightness(0.55) saturate(0.7)", duration: 6.0, ease: "power2.inOut" }, 42.0);
+      tl.to("#s9-conv", { opacity: 0, duration: 0.4, ease: "power2.in" }, 60.0);
+
+      // Strap.
+      tl.to("#s9-strap", { opacity: 1, duration: 0.6, ease: "power3.out" }, 4.0);
+      tl.to("#s9-strap", { opacity: 0, duration: 0.4, ease: "power2.in" }, 58.0);
+
+      // Big Sherman plate enters @10s, holds 4s, exits to corner.
+      tl.set("#s9-sherman", { opacity: 1 }, 10.0);
+      tl.fromTo("#s9-sherman .first", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 10.0);
+      tl.fromTo("#s9-sherman .last", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 10.4);
+      // Corner-pin shrink: big plate exits up-right and shrinks; tag fades in upper-right.
+      tl.to("#s9-sherman", { opacity: 0, duration: 1.0, ease: "power2.in" }, 14.0);
+      tl.fromTo("#s9-sherman", { x: 0, y: 0, scale: 1.0 }, { x: 600, y: -120, scale: 0.3, duration: 1.0, ease: "power2.in" }, 14.0);
+      tl.to("#s9-sherman-tag", { opacity: 1, duration: 0.6, ease: "power3.out" }, 14.6);
+      // Sherman tag dims to 30% at 42s, exits at 60s.
+      tl.to("#s9-sherman-tag", { opacity: 0.30, duration: 4.0, ease: "power2.inOut" }, 42.0);
+      tl.to("#s9-sherman-tag", { opacity: 0, duration: 0.4, ease: "power2.in" }, 59.5);
+
+      // Ballot tally crawl: enters 28s, one row every 1.4s, ballot 8 in Blood Oxide.
+      tl.fromTo("#s9-ballots", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 28.0);
+      tl.to("#s9-ballots .row", { opacity: 1, y: 0, duration: 0.4, ease: "power2.out", stagger: 1.4 }, 28.3);
+      // Ballot 8 stamp pulse.
+      tl.fromTo("#s9-ballot-final", { scale: 1.0 }, { scale: 1.06, duration: 0.3, ease: "power2.out" }, 28.3 + 7 * 1.4);
+      tl.to("#s9-ballot-final", { scale: 1.0, duration: 0.3, ease: "power2.in" }, 28.6 + 7 * 1.4);
+      tl.to("#s9-ballots", { opacity: 0, duration: 0.5 }, 58.0);
+
+      // Hard cut to black @60-61s — full opacity flash, then fades for McKinley plate to land.
+      tl.to("#s9-blackout", { opacity: 1, duration: 0.3, ease: "power3.out" }, 59.7);
+      tl.to("#s9-blackout", { opacity: 0, duration: 0.6, ease: "power2.in" }, 61.0);
+
+      // McKinley plate @61s with letter-spacing tighten 0.05 → −0.02 (0.7s power3.out).
+      tl.set("#s9-mck", { opacity: 1, letterSpacing: "0.05em" }, 61.0);
+      tl.fromTo("#s9-mck .first", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 61.0);
+      tl.fromTo("#s9-mck .last", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 61.4);
+      tl.to("#s9-mck", { letterSpacing: "-0.02em", duration: 1.4, ease: "power3.out" }, 61.0);
+      tl.to("#s9-mck", { opacity: 0, duration: 0.6, ease: "power2.in" }, 128.0);
+
+      // Sub-line +0.4s.
+      tl.fromTo("#s9-mck-sub", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 61.4);
+      tl.to("#s9-mck-sub", { opacity: 0, duration: 0.5, ease: "power2.in" }, 128.0);
+
+      // McKinley portrait @67s, push-in 1.00 → 1.02 over 35s.
+      tl.to("#s9-mck-img", { opacity: 1.0, duration: 0.8, ease: "power3.out" }, 67.0);
+      tl.fromTo("#s9-mck-img", { scale: 0.70 }, { scale: 0.728, duration: 35.0, ease: "sine.inOut" }, 67.0);
+      tl.to("#s9-mck-img", { opacity: 0, duration: 0.5, ease: "power2.in" }, 128.0);
+
+      // Loyalty pull-quote @100s, held 4s through 128s exit.
+      tl.fromTo("#s9-loyal", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 100.0);
+      tl.to("#s9-loyal", { opacity: 0, duration: 0.5, ease: "power2.in" }, 128.0);
+
+      // Verdict @130s, anchored bottom 200px, held 5s.
+      tl.fromTo("#s9-verdict", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 130.0);
+      tl.to("#s9-verdict", { opacity: 0, duration: 0.6, ease: "power2.in" }, 149.0);
+
+      window.__timelines["scene-09-chicago-1888-fs"] = tl;
+    </script>
+  </div>
+</template>

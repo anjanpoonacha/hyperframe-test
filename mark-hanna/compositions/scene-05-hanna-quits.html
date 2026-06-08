@@ -1,0 +1,930 @@
+<template id="scene-05-hanna-quits-template">
+  <div data-composition-id="scene-05-hanna-quits" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face {
+        font-family: "Source Serif 4";
+        src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2");
+        font-weight: 400; font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+        font-weight: 700; font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2");
+        font-weight: 900; font-style: normal;
+      }
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2");
+        font-weight: 400 700; font-style: normal;
+      }
+      .s5-stage {
+        position: absolute; inset: 0;
+        background-color: #0E0B08;
+        font-family: "Source Serif 4", serif;
+        color: #E8DEC8;
+        overflow: hidden;
+      }
+
+      /* ─── PHASE 1: RESIGNATION — Jan 1895 stamp + 57yo + handoff ─── */
+      #s5-resig-stage {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 11; opacity: 0;
+      }
+      #s5-resig-stamp {
+        position: absolute;
+        top: 200px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Roboto Mono", monospace;
+        font-size: 28px; letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: #C87533;
+        opacity: 0;
+      }
+      #s5-resig-headline {
+        position: absolute;
+        top: 280px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 116px;
+        line-height: 1.05; letter-spacing: -0.02em;
+        color: #E8DEC8;
+        opacity: 0;
+      }
+      #s5-resig-headline .accent { color: #C03A2C; font-style: italic; }
+
+      #s5-resig-meta {
+        position: absolute;
+        top: 480px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Source Serif 4", serif;
+        font-size: 38px;
+        line-height: 1.45;
+        color: #D4B679;
+        opacity: 0;
+      }
+      #s5-resig-meta .age { color: #E8DEC8; font-weight: 700; }
+
+      #s5-resig-handoff {
+        position: absolute;
+        top: 680px; left: 96px;
+        width: 1728px;
+        z-index: 12; opacity: 0;
+      }
+      .s5-handoff-row {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        align-items: baseline;
+        gap: 50px;
+        padding: 14px 40px;
+        border-bottom: 1px solid #3A2E20;
+        opacity: 0;
+      }
+      .s5-handoff-row .when {
+        font-family: "Roboto Mono", monospace;
+        font-size: 20px; letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #C87533;
+      }
+      .s5-handoff-row .what {
+        font-family: "Playfair Display", serif;
+        font-weight: 700; font-size: 36px;
+        line-height: 1.2;
+        color: #E8DEC8;
+      }
+      .s5-handoff-row .what .accent { color: #C03A2C; font-style: italic; }
+
+      /* ─── PHASE 2: WALKED AWAY → NEW YORK ─── */
+      #s5-newyork-stage {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 11; opacity: 0;
+      }
+      #s5-walkaway {
+        position: absolute;
+        top: 380px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 132px;
+        font-style: italic;
+        letter-spacing: -0.03em;
+        color: #C03A2C;
+        opacity: 0;
+      }
+      #s5-newyork-card {
+        position: absolute;
+        top: 580px; left: 0;
+        width: 100%; text-align: center;
+        opacity: 0;
+      }
+      #s5-newyork-card .arrow {
+        font-family: "Roboto Mono", monospace;
+        font-size: 32px; letter-spacing: 0.4em;
+        color: #9A8E76;
+        margin-bottom: 22px;
+      }
+      #s5-newyork-card .city {
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 96px;
+        letter-spacing: -0.02em;
+        color: #E8DEC8;
+      }
+      #s5-newyork-card .where {
+        margin-top: 18px;
+        font-family: "Source Serif 4", serif;
+        font-style: italic; font-size: 30px;
+        color: #D4B679;
+      }
+
+      /* ─── PHASE 3: DUAL HQ — Hanna NY + Dawes Chicago ─── */
+      #s5-dualhq {
+        position: absolute;
+        top: 220px; left: 96px;
+        width: 1728px; height: 580px;
+        z-index: 12; opacity: 0;
+      }
+      .s5-dualhq-header {
+        text-align: center;
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px; letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: #C87533;
+        margin-bottom: 50px;
+        opacity: 0;
+      }
+      .s5-dualhq-grid {
+        display: grid;
+        grid-template-columns: 1fr 60px 1fr;
+        align-items: center;
+        gap: 40px;
+      }
+      .s5-hq-pane {
+        opacity: 0;
+        text-align: center;
+        padding: 36px 24px;
+        border-top: 2px solid #C87533;
+        border-bottom: 1px solid #3A2E20;
+      }
+      .s5-hq-pane .role {
+        font-family: "Roboto Mono", monospace;
+        font-size: 18px; letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 18px;
+      }
+      .s5-hq-pane .name {
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 64px;
+        line-height: 1.05;
+        color: #E8DEC8;
+        margin-bottom: 14px;
+        letter-spacing: -0.015em;
+      }
+      .s5-hq-pane .where {
+        font-family: "Source Serif 4", serif;
+        font-style: italic; font-size: 28px;
+        color: #D4B679;
+        margin-bottom: 16px;
+      }
+      .s5-hq-pane .duty {
+        font-family: "Playfair Display", serif;
+        font-weight: 700; font-size: 32px;
+        color: #C87533;
+        font-style: italic;
+      }
+      .s5-vs {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 36px;
+        color: #9A8E76;
+        text-align: center;
+      }
+
+      /* ─── PHASE 4: MAKING LISTS — bankers / railroads / corp heads ─── */
+      #s5-lists {
+        position: absolute;
+        top: 200px; left: 96px;
+        width: 1728px; height: 760px;
+        z-index: 12; opacity: 0;
+      }
+      .s5-lists-header {
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 88px;
+        letter-spacing: -0.02em;
+        font-style: italic;
+        color: #C87533;
+        margin-bottom: 60px;
+        opacity: 0;
+      }
+      .s5-lists-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+      .s5-list-col {
+        opacity: 0;
+        text-align: center;
+        padding: 30px 20px;
+        border-top: 1px solid #C87533;
+      }
+      .s5-list-col .label {
+        font-family: "Roboto Mono", monospace;
+        font-size: 18px; letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 18px;
+      }
+      .s5-list-col .who {
+        font-family: "Playfair Display", serif;
+        font-weight: 700; font-size: 40px;
+        line-height: 1.2;
+        color: #E8DEC8;
+        margin-bottom: 14px;
+      }
+      .s5-list-col .where {
+        font-family: "Source Serif 4", serif;
+        font-style: italic; font-size: 24px;
+        color: #D4B679;
+      }
+
+      #s5-novel-line {
+        position: absolute;
+        top: 800px; left: 96px;
+        width: 1728px; text-align: center;
+        font-family: "Source Serif 4", serif;
+        font-style: italic; font-size: 32px;
+        line-height: 1.35;
+        color: #D4B679;
+        opacity: 0;
+      }
+      #s5-novel-line .accent { color: #C87533; font-weight: 700; font-style: normal; }
+
+      /* ─── PHASE 5: NETWORK THESIS — Wall Street, 57yo, wanted at 35 ─── */
+      #s5-network {
+        position: absolute;
+        top: 250px; left: 96px;
+        width: 1728px; text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 700; font-size: 64px;
+        line-height: 1.3; letter-spacing: -0.015em;
+        color: #E8DEC8;
+        opacity: 0;
+        z-index: 13;
+      }
+      #s5-network .line { display: block; margin-top: 24px; opacity: 0; }
+      #s5-network .accent { color: #C87533; font-style: italic; }
+      #s5-network .wanted { color: #D4B679; }
+
+      #s5-time-budget {
+        position: absolute;
+        top: 480px; left: 96px;
+        /* True vertical center — cells run y=480-740, midpoint y=610 (canvas center y=540, captions y=950+) */
+        width: 1728px;
+        z-index: 14; opacity: 0;
+      }
+      .s5-time-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .s5-time-cell {
+        text-align: center;
+        opacity: 0;
+        padding: 30px 20px;
+        border-top: 2px solid #C87533;
+      }
+      .s5-time-cell .label {
+        font-family: "Roboto Mono", monospace;
+        font-size: 20px; letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 18px;
+      }
+      .s5-time-cell .num {
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 128px;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+      .s5-time-cell.had .num     { color: #E8DEC8; }
+      .s5-time-cell.believed .num { color: #C03A2C; }
+      .s5-time-cell .what {
+        margin-top: 14px;
+        font-family: "Source Serif 4", serif;
+        font-style: italic; font-size: 24px;
+        color: #D4B679;
+      }
+
+      /* ─── PHASE 6: ST LOUIS RNC + CHAIRMAN ─── */
+      #s5-rnc-stage {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 12; opacity: 0;
+      }
+      #s5-rnc-date {
+        position: absolute;
+        top: 140px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Roboto Mono", monospace;
+        font-size: 26px; letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: #C87533;
+        opacity: 0;
+      }
+      #s5-rnc-headline {
+        position: absolute;
+        top: 200px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 88px;
+        line-height: 1.05; letter-spacing: -0.02em;
+        color: #E8DEC8;
+        opacity: 0;
+      }
+      #s5-rnc-headline .accent { color: #C87533; }
+
+      #s5-vote-card {
+        position: absolute;
+        top: 380px; left: 50%;
+        /* M9: GSAP centers via xPercent */
+        width: 1100px;
+        opacity: 0;
+        z-index: 13;
+        text-align: center;
+      }
+      #s5-vote-card .label {
+        font-family: "Roboto Mono", monospace;
+        font-size: 22px; letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        margin-bottom: 22px;
+      }
+      #s5-vote-card .vote {
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 144px;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+        color: #C87533;
+        margin-bottom: 22px;
+      }
+      #s5-vote-card .vote .vs { color: #9A8E76; font-size: 64px; padding: 0 18px; }
+      #s5-vote-card .vote .opp { color: #E8DEC8; }
+      #s5-vote-card .winner {
+        font-family: "Playfair Display", serif;
+        font-weight: 700; font-size: 48px;
+        color: #E8DEC8;
+        font-style: italic;
+      }
+
+      #s5-irony {
+        position: absolute;
+        top: 750px; left: 96px;
+        width: 1728px; text-align: center;
+        font-family: "Source Serif 4", serif;
+        font-style: italic; font-size: 30px;
+        line-height: 1.35;
+        color: #D4B679;
+        opacity: 0;
+      }
+      #s5-irony .strike { color: #9A8E76; }
+      #s5-irony .truth { color: #C87533; font-weight: 700; font-style: normal; }
+
+      /* CHAIRMAN landing */
+      #s5-chairman-stage {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 13; opacity: 0;
+      }
+      #s5-chairman-eyebrow {
+        position: absolute;
+        top: 240px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Roboto Mono", monospace;
+        font-size: 24px; letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        opacity: 0;
+      }
+      #s5-chairman-title {
+        position: absolute;
+        top: 320px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 168px;
+        letter-spacing: -0.025em;
+        color: #C87533;
+        line-height: 1.0;
+        opacity: 0;
+      }
+      #s5-chairman-meta {
+        position: absolute;
+        top: 540px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Source Serif 4", serif;
+        font-style: italic; font-size: 32px;
+        color: #E8DEC8;
+        opacity: 0;
+      }
+      #s5-chairman-meta .accent { color: #C03A2C; font-weight: 700; font-style: normal; }
+
+      /* The closing budget cards */
+      #s5-budget {
+        position: absolute;
+        top: 640px; left: 96px;
+        width: 1728px;
+        z-index: 14; opacity: 0;
+      }
+      .s5-budget-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+      .s5-budget-cell {
+        opacity: 0;
+        text-align: center;
+        padding: 26px 16px;
+        border-top: 2px solid #C03A2C;
+      }
+      .s5-budget-cell .num {
+        font-family: "Playfair Display", serif;
+        font-weight: 900; font-size: 96px;
+        line-height: 1;
+        color: #C03A2C;
+        margin-bottom: 14px;
+        font-variant-numeric: tabular-nums;
+      }
+      .s5-budget-cell .what {
+        font-family: "Roboto Mono", monospace;
+        font-size: 18px; letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #E8DEC8;
+        line-height: 1.3;
+      }
+    </style>
+
+    <div class="s5-stage">
+
+      <!-- PHASE 1: RESIGNATION -->
+      <div id="s5-resig-stage">
+        <div id="s5-resig-stamp">January &#160;·&#160; 1895</div>
+        <div id="s5-resig-headline">
+          Hanna <span class="accent">walked away.</span>
+        </div>
+        <div id="s5-resig-meta">
+          <span class="age">57 years old.</span><br>
+          Resigned from active management of M.A. Hanna &amp; Company.
+        </div>
+        <div id="s5-resig-handoff">
+          <div class="s5-handoff-row" data-row="1">
+            <div class="when">Iron &amp; coal</div>
+            <div class="what">Handed to <span class="accent">his brother and his cousins</span>.</div>
+          </div>
+          <div class="s5-handoff-row" data-row="2">
+            <div class="when">His name on the door</div>
+            <div class="what">Stayed. <span class="accent">In title only.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2: WALKED AWAY → NYC -->
+      <div id="s5-newyork-stage">
+        <div id="s5-walkaway">He walked away from business.</div>
+        <div id="s5-newyork-card">
+          <div class="arrow">→</div>
+          <div class="city">NEW YORK</div>
+          <div class="where">Offices rented in Manhattan.</div>
+        </div>
+      </div>
+
+      <!-- PHASE 3: DUAL HQ -->
+      <div id="s5-dualhq">
+        <div class="s5-dualhq-header">Two Headquarters</div>
+        <div class="s5-dualhq-grid">
+          <div class="s5-hq-pane left">
+            <div class="role">New York</div>
+            <div class="name">Mark Hanna</div>
+            <div class="where">Manhattan office</div>
+            <div class="duty">Ran the money.</div>
+          </div>
+          <div class="s5-vs">·</div>
+          <div class="s5-hq-pane right">
+            <div class="role">Chicago</div>
+            <div class="name">Charles Dawes</div>
+            <div class="where">Field operation</div>
+            <div class="duty">Young Ohio attorney.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4: LISTS -->
+      <div id="s5-lists">
+        <div class="s5-lists-header">He began making lists.</div>
+        <div class="s5-lists-grid">
+          <div class="s5-list-col" data-col="1">
+            <div class="label">Bankers</div>
+            <div class="who">Wall Street</div>
+            <div class="where">New York</div>
+          </div>
+          <div class="s5-list-col" data-col="2">
+            <div class="label">Railroad presidents</div>
+            <div class="who">Trunk lines</div>
+            <div class="where">Chicago</div>
+          </div>
+          <div class="s5-list-col" data-col="3">
+            <div class="label">Corporation heads</div>
+            <div class="who">Steel, oil, capital</div>
+            <div class="where">Pittsburgh → St Louis</div>
+          </div>
+        </div>
+      </div>
+      <div id="s5-novel-line">
+        Names that had <span class="accent">never</span> appeared on a campaign ledger before.
+      </div>
+
+      <!-- PHASE 5: NETWORK THESIS -->
+      <div id="s5-network">
+        <span class="line">In a Wall Street office at <span class="accent">57</span>,</span>
+        <span class="line">he was building <span class="wanted">the network he had wanted at 35</span>,</span>
+        <span class="line">and had never been in a position to construct.</span>
+      </div>
+
+      <div id="s5-time-budget">
+        <div class="s5-time-pair">
+          <div class="s5-time-cell had" data-cell="had">
+            <div class="label">He had</div>
+            <div class="num">4</div>
+            <div class="what">years to do it</div>
+          </div>
+          <div class="s5-time-cell believed" data-cell="believed">
+            <div class="label">He believed he had</div>
+            <div class="num">3</div>
+            <div class="what">years</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 6: ST LOUIS RNC + CHAIRMAN -->
+      <div id="s5-rnc-stage">
+        <div id="s5-rnc-date">June 16 &#160;·&#160; 1896 &#160;·&#160; St. Louis</div>
+        <div id="s5-rnc-headline">
+          The first ballot. <span class="accent">McKinley.</span>
+        </div>
+        <div id="s5-vote-card">
+          <div class="label">Republican Nomination</div>
+          <div class="vote">661 <span class="vs">to</span> <span class="opp">84</span></div>
+          <div class="winner">William McKinley, nominated.</div>
+        </div>
+        <div id="s5-irony">
+          A candidate on paper for <span class="strike">11 days</span>.
+          <br>
+          Hanna's candidate for <span class="truth">8 years</span>.
+        </div>
+      </div>
+
+      <!-- CHAIRMAN LANDING -->
+      <div id="s5-chairman-stage">
+        <div id="s5-chairman-eyebrow">June 19 &#160;·&#160; 1896</div>
+        <div id="s5-chairman-title">CHAIRMAN.</div>
+        <div id="s5-chairman-meta">
+          The Republican National Committee elects Mark Hanna its <span class="accent">Chairman</span>.
+        </div>
+
+        <div id="s5-budget">
+          <div class="s5-budget-grid">
+            <div class="s5-budget-cell" data-budget="1">
+              <div class="num">4</div>
+              <div class="what">months</div>
+            </div>
+            <div class="s5-budget-cell" data-budget="2">
+              <div class="num">$$$</div>
+              <div class="what">every dollar raised<br>or spent</div>
+            </div>
+            <div class="s5-budget-cell" data-budget="3">
+              <div class="num">∞</div>
+              <div class="what">a country to<br>organize</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 05 Hanna Quits His Life (95.4s)
+      // Scene-relative time (parent root: 305.97s)
+      //  +1.0s   "January"                          — RESIGNATION stamp
+      //  +1.6s   "1895"
+      //  +7.0s   "57 years old"                     — meta line
+      //  +8.9s   "iron and coal"                    — handoff row 1
+      // +10.7s   "brother and cousins"
+      // +12.7s   "name off the door"                — handoff row 2
+      // +15.1s   "walked away from business"        — Phase 2 walkaway
+      // +17.4s   "moved to New York City"
+      // +19.7s   "Manhattan"                        — NYC card lands
+      // +22.6s   "Chicago"                          — Phase 3 DUAL HQ in
+      // +25.1s   "Charles Dawes"                    — Dawes pane
+      // +29.9s   "began making lists"               — Phase 4 LISTS
+      // +31.4s   "bankers in New York"              — col 1
+      // +33.3s   "railroad presidents"              — col 2
+      // +35.99s  "corporation heads"                — col 3
+      // +37.25s  "Pittsburgh"
+      // +43.7s   "campaign ledger"                  — novel line
+      // +46.6s   "Wall Street"                      — Phase 5 NETWORK
+      // +49.6s   "network he had wanted at 35"
+      // +54.2s   "four years to do it"              — TIME BUDGET cells
+      // +56.5s   "believed he had three"
+      // +57.0s   "Republican National Convention"   — Phase 6 RNC
+      // +59.1s   "St Louis on June 16, 1896"
+      // +63.6s   "first ballot"
+      // +66.0s   "William McKinley nominated"
+      // +69.7s   "vote was 661 to 84"               — vote card lands
+      // +72.3s   "candidate on paper for 11 days"
+      // +75.6s   "candidate for 8 years"
+      // +78.3s   "Republican National Committee elected Hanna its Chairman"  — CHAIRMAN
+      // +83.2s   "controlled every dollar"
+      // +89.1s   "four months"                      — budget cells
+      // +90.7s   "country to organize"
+      // +92.7s   "no one had ever tried at scale"   — close
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1: RESIGNATION (0.5–14.5s) ───
+      tl.set("#s5-resig-stage", { opacity: 1, visibility: "visible" }, 0.4);
+
+      tl.fromTo("#s5-resig-stamp",
+        { opacity: 0, letterSpacing: "0.8em" },
+        { opacity: 1, letterSpacing: "0.5em", duration: 0.9, ease: "power2.out" },
+        0.5
+      );
+      tl.fromTo("#s5-resig-headline",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+        0.7
+      );
+      tl.fromTo("#s5-resig-meta",
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        6.5
+      );
+
+      // Handoff rows
+      tl.set("#s5-resig-handoff", { opacity: 1, visibility: "visible" }, 8.5);
+      tl.fromTo('.s5-handoff-row[data-row="1"]',
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
+        8.7
+      );
+      tl.fromTo('.s5-handoff-row[data-row="2"]',
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
+        12.5
+      );
+
+      // P1: Phase 1 EXITS before Phase 2 enters (R2)
+      tl.to("#s5-resig-stage",
+        { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
+        14.5
+      );
+      tl.set("#s5-resig-stage", { visibility: "hidden" }, 15.2);
+
+      // ─── PHASE 2: WALKED AWAY → NYC (15–22s) ───
+      tl.set("#s5-newyork-stage", { opacity: 1, visibility: "visible" }, 14.8);
+
+      // Walkaway line lands at +15.1s ("walked away from business")
+      tl.fromTo("#s5-walkaway",
+        { opacity: 0, scale: 0.94 },
+        { opacity: 1, scale: 1.0, duration: 1.0, ease: "expo.out" },
+        14.9
+      );
+      // NYC card lands at +17.4s / +19.7s
+      tl.fromTo("#s5-newyork-card",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        17.0
+      );
+
+      // Walkaway exits before dual HQ (R2)
+      tl.to("#s5-newyork-stage",
+        { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
+        21.7
+      );
+      tl.set("#s5-newyork-stage", { visibility: "hidden" }, 22.4);
+
+      // ─── PHASE 3: DUAL HQ (22–29s) ───
+      tl.set("#s5-dualhq", { opacity: 1, visibility: "visible" }, 22.0);
+
+      tl.fromTo(".s5-dualhq-header",
+        { opacity: 0, letterSpacing: "0.7em" },
+        { opacity: 1, letterSpacing: "0.4em", duration: 0.8, ease: "power2.out" },
+        22.2
+      );
+      // Hanna NY pane left at +22.6s ("Chicago" anchor) — NY first
+      tl.fromTo(".s5-hq-pane.left",
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, duration: 0.9, ease: "power3.out" },
+        22.7
+      );
+      tl.fromTo(".s5-vs",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, ease: "power2.out" },
+        24.5
+      );
+      // Dawes Chicago pane right at +25.1s ("Charles Dawes")
+      tl.fromTo(".s5-hq-pane.right",
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 0.9, ease: "power3.out" },
+        24.9
+      );
+
+      // P1: Dual HQ EXITS before Lists (R2)
+      tl.to("#s5-dualhq",
+        { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
+        29.0
+      );
+      tl.set("#s5-dualhq", { visibility: "hidden" }, 29.7);
+
+      // ─── PHASE 4: LISTS (29.5–46s) ───
+      tl.set("#s5-lists", { opacity: 1, visibility: "visible" }, 29.5);
+
+      // Header at +29.9s ("began making lists")
+      tl.fromTo(".s5-lists-header",
+        { opacity: 0, scale: 0.94 },
+        { opacity: 1, scale: 1.0, duration: 1.0, ease: "expo.out" },
+        29.7
+      );
+
+      // Cols staggered
+      tl.fromTo('.s5-list-col[data-col="1"]',
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        31.0
+      );
+      tl.fromTo('.s5-list-col[data-col="2"]',
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        33.0
+      );
+      tl.fromTo('.s5-list-col[data-col="3"]',
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        35.7
+      );
+
+      // Novel-line "names that never appeared on a campaign ledger" at +43.7s
+      tl.fromTo("#s5-novel-line",
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        43.0
+      );
+
+      // P1: LISTS EXITS before Network thesis (R2)
+      tl.to(["#s5-lists", "#s5-novel-line"],
+        { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
+        45.7
+      );
+      tl.set(["#s5-lists", "#s5-novel-line"], { visibility: "hidden" }, 46.4);
+
+      // ─── PHASE 5: NETWORK THESIS (46–54s) — anchored on Wall Street office +46.6 ───
+      tl.set("#s5-network", { opacity: 1, visibility: "visible" }, 46.0);
+
+      // Lines staggered — all 3 visible by +50s for a 4s hold
+      tl.fromTo('#s5-network .line:nth-child(1)',
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        46.5
+      );
+      tl.fromTo('#s5-network .line:nth-child(2)',
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        48.0
+      );
+      tl.fromTo('#s5-network .line:nth-child(3)',
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        50.0
+      );
+
+      // Network EXITS overlapping with time budget enter (cross-fade)
+      tl.to("#s5-network",
+        { opacity: 0, duration: 0.7, ease: "power2.in", overwrite: "auto" },
+        53.5
+      );
+      tl.set("#s5-network", { visibility: "hidden" }, 54.3);
+
+      // ─── PHASE 5B: TIME BUDGET (53.7–58.5s) — anchored on "four years" +54.2 ───
+      tl.set("#s5-time-budget", { opacity: 1, visibility: "visible" }, 53.5);
+      // Cross-fade overlap with network exit — both at 50% briefly is OK here
+      // because they're at different y positions (network y=250, budget y=660)
+      tl.fromTo('.s5-time-cell.had',
+        { opacity: 0, x: -40 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
+        53.7
+      );
+      tl.fromTo('.s5-time-cell.believed',
+        { opacity: 0, x: 40 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
+        56.0
+      );
+
+      // Time budget EXITS overlapping with RNC stage enter (cross-fade)
+      tl.to("#s5-time-budget",
+        { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
+        58.5
+      );
+      tl.set("#s5-time-budget", { visibility: "hidden" }, 59.1);
+
+      // ─── PHASE 6A: ST LOUIS RNC (58.7–77s) — anchored on "St Louis June 16, 1896" +59.1 ───
+      tl.set("#s5-rnc-stage", { opacity: 1, visibility: "visible" }, 58.7);
+
+      // Date stamp lands on +59.1s ("Saint Louis on June 16, 1896")
+      tl.fromTo("#s5-rnc-date",
+        { opacity: 0, letterSpacing: "0.8em" },
+        { opacity: 1, letterSpacing: "0.5em", duration: 0.9, ease: "power2.out" },
+        58.7
+      );
+      // Headline lands earlier so audio-visual stays in sync — "first ballot" anchor +63.6
+      tl.fromTo("#s5-rnc-headline",
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        62.0
+      );
+
+      // Vote card lands at +69.7s ("661 to 84") — T2 xPercent
+      tl.fromTo("#s5-vote-card",
+        { opacity: 0, xPercent: -50, y: 30 },
+        { opacity: 1, xPercent: -50, y: 0, duration: 1.0, ease: "expo.out" },
+        69.0
+      );
+
+      // Irony 11 days vs 8 years lands +72.3s / +75.6s
+      tl.fromTo("#s5-irony",
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        71.8
+      );
+
+      // P1: RNC stage EXITS before Chairman landing (R2)
+      tl.to("#s5-rnc-stage",
+        { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
+        77.4
+      );
+      tl.set("#s5-rnc-stage", { visibility: "hidden" }, 78.1);
+
+      // ─── PHASE 6B: CHAIRMAN landing (77.5–95s) ───
+      tl.set("#s5-chairman-stage", { opacity: 1, visibility: "visible" }, 77.7);
+
+      tl.fromTo("#s5-chairman-eyebrow",
+        { opacity: 0, letterSpacing: "0.8em" },
+        { opacity: 1, letterSpacing: "0.5em", duration: 0.9, ease: "power2.out" },
+        78.0
+      );
+      // CHAIRMAN landing at +78.3s
+      tl.fromTo("#s5-chairman-title",
+        { opacity: 0, scale: 0.85, letterSpacing: "0.05em" },
+        { opacity: 1, scale: 1, letterSpacing: "-0.025em", duration: 1.1, ease: "expo.out" },
+        78.3
+      );
+      tl.fromTo("#s5-chairman-meta",
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        80.0
+      );
+
+      // Budget cells stagger across "4 months / every dollar / country to organize" (+89.1s, +83.2s, +90.7s)
+      tl.set("#s5-budget", { opacity: 1, visibility: "visible" }, 83.0);
+      tl.fromTo('.s5-budget-cell[data-budget="2"]',
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        83.0
+      );
+      tl.fromTo('.s5-budget-cell[data-budget="1"]',
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        88.7
+      );
+      tl.fromTo('.s5-budget-cell[data-budget="3"]',
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        90.5
+      );
+
+      // Scene end exit (avoids leak into scene-06 — R2 cross-scene)
+      tl.to("#s5-chairman-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 94.5);
+      tl.set("#s5-chairman-stage", { visibility: "hidden", opacity: 0 }, 95.3);
+
+      window.__timelines["scene-05-hanna-quits"] = tl;
+    </script>
+  </div>
+</template>

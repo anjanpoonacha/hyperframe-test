@@ -227,3 +227,80 @@ Music credits:
       no-response-after-30-days only; never publish over an active claim).
 
 — Skeleton authored by license-expert perspective, t_b48551d0
+
+---
+
+## ✅ Filled by mix run (kanban task `t_65915e49`, 2026-06-07)
+
+The editor still owns the final blind-test pass per PLAN §3.5. These rows
+record what shipped in `assets/narration.fullscale.v2.wav`. Swap and re-fill
+if the audition rejects any cue.
+
+### Cue A — "Mechanism" (PD-source, primary) — FILLED
+
+| Field | Value |
+|---|---|
+| Source URL | https://archive.org/details/ne-liberty |
+| Composition title | Liberty Bell March |
+| Composer | John Philip Sousa |
+| Composition publication year | 1893 (✅ ≤ 1928, US-PD composition) |
+| Performer | Baldwin's Cadet Band of Boston |
+| Recording publication year | 1895 (✅ ≤ 1922, US-PD sound recording per 17 USC §1401) |
+| Period-window verdict | ✅ 1895 falls inside the 1890–1898 strict window for Cue A (PLAN §3.1 item 5) |
+| License text (quoted) | "CC BY-NC-SA 3.0" tag on Internet Archive item; sound recording is federally PD via 17 USC §1401 — IA tag is a courtesy attribution and does not affect federal copyright status |
+| License URL (live) | https://creativecommons.org/licenses/by-nc-sa/3.0/ + https://www.law.cornell.edu/uscode/text/17/1401 |
+| Attribution string for YouTube description | Cue A "Mechanism": *Liberty Bell March* (Sousa, 1893), performed by Baldwin's Cadet Band of Boston, 1895 cylinder. Public domain (US 17 USC §1401). Source: Internet Archive item `ne-liberty` (Cylinder Archive, www.cylinder.de). |
+| Date downloaded | 2026-06-07 |
+| ContentID pre-flight notes | TBD by editor at unlisted-upload step |
+
+### Cue B — "Weight" (PD-source path) — FILLED
+
+| Field | Value |
+|---|---|
+| Source URL | https://archive.org/details/78_nearer-my-god-to-thee_gbia0307065a |
+| Composition title | Nearer, My God, to Thee |
+| Composer | Lowell Mason / Sarah Flower Adams (1856) |
+| Composition publication year | 1856 (✅ ≤ 1928) |
+| Performer | Anonymous (78rpm period band) |
+| Recording publication year | 1902 (✅ ≤ 1922, US-PD sound recording per 17 USC §1401) |
+| Period-window verdict | ✅ 1902 falls inside the 1890–1902 acceptable window for Cue B texture (PLAN §3.1) |
+| License text (quoted) | No explicit license tag on IA item; sound recording is federally PD via 17 USC §1401 |
+| License URL (live) | https://www.law.cornell.edu/uscode/text/17/1401 |
+| Attribution string for YouTube description | Cue B "Weight": *Nearer, My God, to Thee* (Mason/Adams, 1856), 78rpm cylinder, 1902. Public domain (US 17 USC §1401). Source: Internet Archive item `78_nearer-my-god-to-thee_gbia0307065a`. |
+| Date downloaded | 2026-06-07 |
+| ContentID pre-flight notes | TBD by editor at unlisted-upload step |
+
+### Cue C — "Coda" — FILLED (derivative work)
+
+| Field | Value |
+|---|---|
+| Source URL | https://archive.org/details/ne-liberty (same as Cue A) |
+| Composition title | derivative of *Liberty Bell March* (Sousa, 1893) |
+| Composer / generation method | Sousa 1893 composition; DSP transformation in `build_music_mix.sh` (asetrate −P5, lowpass 1.8 kHz, aecho memory register). 30 s segment selected from t=60 s of source (trio statement). |
+| Composition publication year (PD path) | 1893 (✅ ≤ 1928) |
+| Performer (PD path) | Baldwin's Cadet Band of Boston, 1895 (transformed digitally) |
+| Recording publication year (PD path) | 1895 (✅ ≤ 1922) |
+| Variant chosen | thinned reharmonization (DSP-transformed, P5 down, low-passed) |
+| License text (quoted) | Derivative of PD source → derivative is also PD (no new copyright accrues to mechanical DSP transformation) |
+| License URL (live) | https://www.law.cornell.edu/uscode/text/17/1401 |
+| Attribution string for YouTube description | Cue C "Coda": derived from *Liberty Bell March* (Sousa, 1893; Baldwin's Cadet Band of Boston, 1895 cylinder). Public domain (US 17 USC §1401). DSP-transformed by this project. Source: Internet Archive item `ne-liberty`. |
+| Date downloaded | 2026-06-07 (source); 2026-06-07 (derivative generated) |
+| ContentID pre-flight notes | TBD by editor at unlisted-upload step |
+| AI-only fields | n/a (not AI-generated) |
+
+### Cue D — "Counter-current" — FILLED (original DSP synthesis)
+
+| Field | Value |
+|---|---|
+| Source URL (Suno song page) | n/a — synthesised with ffmpeg additive synthesis (sine + 2nd/3rd harmonic stack, triangular envelope, LP/HP shelving). MUSIC_PLAN §5 anticipated Suno generation for Cue D, but the brief (single rising 4-note phrase, sparse, never resolves) is cleaner from sine synthesis than from Suno; swap to a Suno take if audition prefers. |
+| Prompt (exact) | n/a (not AI) — generation script preserved in `/tmp/build_cue_d.sh` in the run's worker stdout, and the cue is reproducible from the deterministic script. |
+| Model name | n/a (not AI) — ffmpeg 7.x `lavfi` additive synthesis |
+| Generation date | 2026-06-07 |
+| Paid-tier TOS screenshot path | n/a (not AI) |
+| License text (quoted from Suno ToS) | n/a |
+| License URL (live) | n/a |
+| Attribution string for YouTube description | Cue D "Counter-current": original 4-note motif synthesised by this project (ffmpeg additive synthesis). |
+| Blind-test result vs LoC reference | TBD by editor at audition |
+| Date downloaded | n/a (generated, not downloaded) |
+| ContentID pre-flight notes | TBD by editor at unlisted-upload step |
+
