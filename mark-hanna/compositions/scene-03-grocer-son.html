@@ -381,7 +381,9 @@
       }
       #s3-bryan-warning {
         position: absolute;
-        top: 770px; left: 96px;
+        top: 820px; left: 96px;
+        /* Gap from name (top:690 + 64px font ≈ bottom y=760) widened to ~60px breathing room.
+           top:820 + ~30px font + line-height 1.35 = bottom y≈878 (R1: stays under safe-zone y=880). */
         width: 1728px; text-align: center;
         font-family: "Source Serif 4", serif;
         font-style: italic; font-size: 28px;
@@ -824,8 +826,9 @@
       );
       // Hold to scene end (102.6s) — exit handled by parent crossfade
 
-      // Hard-kill at clip boundary (gsap_exit_missing_hard_kill)
-      tl.set("#s3-bryan-stage", { opacity: 1 }, 102.5);
+      // Scene end: fade Bryan stage out before clip boundary (avoids leak into scene-04)
+      tl.to("#s3-bryan-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 101.6);
+      tl.set("#s3-bryan-stage", { visibility: "hidden", opacity: 0 }, 102.4);
 
       window.__timelines["scene-03-grocer-son"] = tl;
     </script>
