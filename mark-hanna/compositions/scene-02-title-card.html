@@ -1,0 +1,162 @@
+<template id="scene-02-title-card-template">
+  <div data-composition-id="scene-02-title-card" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face {
+        font-family: "Source Serif 4";
+        src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2");
+        font-weight: 400; font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+        font-weight: 700; font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2");
+        font-weight: 900; font-style: normal;
+      }
+      @font-face {
+        font-family: "Roboto Mono";
+        src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2");
+        font-weight: 400 700; font-style: normal;
+      }
+      .s2-stage {
+        position: absolute; inset: 0;
+        background-color: #0E0B08;
+        font-family: "Source Serif 4", serif;
+        color: #E8DEC8;
+        overflow: hidden;
+      }
+
+      /* Eyebrow rule lines (top + bottom) */
+      .s2-rule {
+        position: absolute;
+        left: 50%;
+        transform-origin: left center;
+        height: 1px;
+        background: #C87533;
+        width: 0;  /* animated */
+      }
+      #s2-rule-top    { top: 380px; }
+      #s2-rule-bottom { top: 880px; }
+
+      /* Eyebrow tag */
+      #s2-eyebrow {
+        position: absolute;
+        top: 330px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Roboto Mono", "Courier New", monospace;
+        font-size: 22px; font-weight: 500;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: #9A8E76;
+        opacity: 0;
+      }
+
+      /* Main title — three lines, last line accent */
+      #s2-title {
+        position: absolute;
+        top: 430px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 116px;
+        line-height: 1.18;
+        letter-spacing: -0.02em;
+        color: #E8DEC8;
+      }
+      #s2-title .line {
+        display: block;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      #s2-title .line.accent {
+        color: #C87533;
+        font-style: italic;
+      }
+
+      /* Sub-rule below title */
+      #s2-sub {
+        position: absolute;
+        top: 920px; left: 0;
+        width: 100%; text-align: center;
+        font-family: "Roboto Mono", monospace;
+        font-size: 24px;
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: #C87533;
+        opacity: 0;
+      }
+    </style>
+
+    <div class="s2-stage">
+      <div class="s2-rule" id="s2-rule-top"></div>
+      <div id="s2-eyebrow">An American Audacity Documentary</div>
+
+      <div id="s2-title">
+        <span class="line">How One Man Bought</span>
+        <span class="line accent">the Presidency</span>
+        <span class="line">in 1896</span>
+      </div>
+
+      <div class="s2-rule" id="s2-rule-bottom"></div>
+      <div id="s2-sub">Episode 01</div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 02 title card (4.5s) — visual-only, no audio
+      // ═════════════════════════════════════════════════════════════════
+      // Per researcher spec (HyperNormalisation, Fog of War, Grizzly Man):
+      // 4-second flash card. 0.5s reveal in / 3.5s hold / 0.5s exit.
+      // Stays still and confident — no busy animation.
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── 0.0–0.5s: REVEAL ───
+      // Rules expand from center (typographic care)
+      tl.fromTo(["#s2-rule-top", "#s2-rule-bottom"],
+        { width: 0, x: 0 },
+        { width: 720, x: -360, duration: 0.5, ease: "power3.out" },
+        0.0
+      );
+
+      // Eyebrow + sub fade in
+      tl.fromTo(["#s2-eyebrow", "#s2-sub"],
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+        0.1
+      );
+
+      // Title lines stagger in (line 1, line 2 accent, line 3)
+      tl.fromTo("#s2-title .line",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 },
+        0.15
+      );
+
+      // ─── 0.5–4.0s: HOLD (still, confident, no movement) ───
+      // Nothing animates here. The card breathes.
+
+      // ─── 4.0–4.5s: EXIT ───
+      // Everything fades out together (overwrite:auto so reveal tweens don't conflict)
+      tl.to("#s2-eyebrow", { opacity: 0, duration: 0.45, ease: "power2.in", overwrite: "auto" }, 4.0);
+      tl.to("#s2-title .line", { opacity: 0, duration: 0.45, ease: "power2.in", overwrite: "auto" }, 4.0);
+      tl.to("#s2-sub", { opacity: 0, duration: 0.45, ease: "power2.in", overwrite: "auto" }, 4.0);
+      tl.to(["#s2-rule-top", "#s2-rule-bottom"],
+        { width: 0, duration: 0.45, ease: "power2.in", overwrite: "auto" },
+        4.0
+      );
+
+      // Hard-kill at clip boundary (4.5s local = 99s parent) — prevents non-linear-seek
+      // visibility leak per hyperframes gsap_exit_missing_hard_kill pitfall
+      tl.set(["#s2-eyebrow", "#s2-title .line", "#s2-sub"], { opacity: 0 }, 4.5);
+      tl.set(["#s2-rule-top", "#s2-rule-bottom"], { width: 0 }, 4.5);
+
+      window.__timelines["scene-02-title-card"] = tl;
+    </script>
+  </div>
+</template>

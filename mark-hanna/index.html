@@ -65,21 +65,26 @@
     </style>
   </head>
   <body>
-    <div id="stage" data-composition-id="mark-hanna-s01-preview" data-width="1920" data-height="1080" data-start="0" data-duration="94.5">
+    <div id="stage" data-composition-id="mark-hanna-s01-preview" data-width="1920" data-height="1080" data-start="0" data-duration="99">
 
       <!-- Section 01: Cold Open (0–94.23s) -->
       <div id="scene-01" class="scene-layer clip" data-composition-id="scene-01-cold-open"
            data-composition-src="compositions/scene-01-cold-open.html"
            data-start="0" data-duration="94.23" data-track-index="1"></div>
 
-      <!-- Captions overlay (full master, but only first 94s plays in preview) -->
+      <!-- Section 02: Title card (94.5–99s, 4.5s flash, visual-only) -->
+      <div id="scene-02" class="scene-layer clip" data-composition-id="scene-02-title-card"
+           data-composition-src="compositions/scene-02-title-card.html"
+           data-start="94.5" data-duration="4.5" data-track-index="2"></div>
+
+      <!-- Captions overlay (full master, but only first 99s plays in preview) -->
       <div id="captions" class="scene-layer clip" data-composition-id="captions"
            data-composition-src="compositions/captions.html"
-           data-start="0" data-duration="94.23" data-track-index="50"></div>
+           data-start="0" data-duration="99" data-track-index="50"></div>
 
-      <!-- Section 01 narration audio -->
-      <audio id="narration" data-start="0" data-duration="94.23" data-track-index="100"
-             src="assets/narration/v4/wavs/01-cold-open.wav"></audio>
+      <!-- Section 01+02 narration audio (cold open audio + 4.5s silence for title card) -->
+      <audio id="narration" data-start="0" data-duration="99" data-track-index="100"
+             src="assets/narration/narration.fullscale.wav"></audio>
 
       <!-- Global film grain + vignette -->
       <div id="grain"></div>
