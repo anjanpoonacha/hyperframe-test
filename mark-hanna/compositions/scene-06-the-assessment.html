@@ -13,37 +13,37 @@
       /* L6: vertically centered on canvas. mech-intro spans ~280px → top:400 puts midpoint y=540 */
       #s6-mech-intro { position:absolute; top:400px; left:0; width:100%; text-align:center; opacity:0; z-index:10; }
       #s6-mech-intro .label { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; margin-bottom:32px; }
-      #s6-mech-intro .head { font-family:"Playfair Display",serif; font-weight:900; font-size:128px; line-height:1.05; letter-spacing:-0.02em; color:#E8DEC8; }
+      #s6-mech-intro .head { font-family:"Playfair Display",serif; font-weight:900; font-size:128px; line-height: 1.0; letter-spacing: -0.03em; color:#E8DEC8; }
       #s6-mech-intro .head .accent { color:#C87533; font-style:italic; font-weight:700; }
       #s6-mech-intro .sub { font-family:"Source Serif 4",serif; font-style:italic; font-size:42px; color:#D4B679; margin-top:36px; line-height:1.35; opacity:0; }
 
       #s6-formula { position:absolute; top:160px; left:50%; width:1500px; opacity:0; z-index:11; }
       #s6-formula .header { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:28px; }
-      #s6-formula .when { font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; text-align:center; margin-bottom:48px; line-height:1.4; }
+      #s6-formula .when { font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; text-align:center; margin-bottom:48px; line-height: 1.45; }
       #s6-formula .punch-row { display:flex; align-items:center; justify-content:center; gap:48px; margin-bottom:64px; }
-      #s6-formula .punch-num { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; color:#C87533; line-height:1; letter-spacing:-0.04em; opacity:0; }
-      #s6-formula .punch-text { font-family:"Source Serif 4",serif; font-size:36px; color:#E8DEC8; max-width:540px; line-height:1.35; opacity:0; }
+      #s6-formula .punch-num { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; color:#C87533; line-height: 0.9; letter-spacing:-0.04em; opacity:0; }
+      #s6-formula .punch-text { font-family:"Source Serif 4",serif; font-size:36px; color:#E8DEC8; max-width:540px; line-height: 1.4; opacity:0; }
       #s6-formula .punch-text em { color:#D4B679; font-style:italic; }
       #s6-formula .examples { display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:0 80px; }
       #s6-formula .ex { opacity:0; padding:24px 0; border-top:1px solid #3A2E20; border-bottom:1px solid #3A2E20; }
-      #s6-formula .ex .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:14px; }
+      #s6-formula .ex .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing: 0.2em; color:#9A8E76; text-transform:uppercase; margin-bottom:14px; }
       #s6-formula .ex .cap { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; margin-bottom:8px; }
-      #s6-formula .ex .owed { font-family:"Playfair Display",serif; font-weight:900; font-size:56px; color:#C87533; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
+      #s6-formula .ex .owed { font-family:"Playfair Display",serif; font-weight: 700; font-size:56px; color:#C87533; letter-spacing: -0.015em; font-variant-numeric:tabular-nums; }
 
       /* L6: 2 lines × 60px ≈ 130px tall → top:475 puts midpoint y=540 */
       #s6-verdict-dual { position:absolute; top:475px; left:0; width:100%; text-align:center; opacity:0; z-index:12; }
-      #s6-verdict-dual .line { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height:1.5; opacity:0; }
+      #s6-verdict-dual .line { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height: 1.4; opacity:0; }
       #s6-verdict-dual .line.large { color:#E8DEC8; font-weight:400; }
 
       /* ========== PHASE 2: THE LETTER (28–44s) ========== */
       #s6-not-request { position:absolute; top:380px; left:0; width:100%; text-align:center; opacity:0; z-index:13; }
       #s6-not-request .a { font-family:"Source Serif 4",serif; font-size:56px; color:#E8DEC8; line-height:1.3; max-width:1500px; margin:0 auto; }
-      #s6-not-request .b { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C03A2C; letter-spacing:-0.02em; margin-top:48px; line-height:1; opacity:0; text-transform:uppercase; }
+      #s6-not-request .b { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C03A2C; letter-spacing: -0.04em; margin-top:48px; line-height: 0.95; opacity:0; text-transform:uppercase; }
 
       /* The letter card — a stylized note. L6 centered: ~500px tall → top:290 puts midpoint y=540 */
       #s6-letter { position:absolute; top:290px; left:50%; width:1100px; opacity:0; z-index:14; background:#E8DEC8; color:#0E0B08; padding:64px 80px; box-shadow:0 30px 80px rgba(0,0,0,0.6); border:1px solid rgba(200,117,51,0.4); }
-      #s6-letter .letterhead { display:flex; justify-content:space-between; padding-bottom:24px; border-bottom:1px solid #0E0B08; margin-bottom:36px; font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.2em; text-transform:uppercase; color:#0E0B08; }
-      #s6-letter .body-line { font-family:"Source Serif 4",serif; font-size:32px; line-height:1.6; opacity:0; transform:translateY(8px); }
+      #s6-letter .letterhead { display:flex; justify-content:space-between; padding-bottom:24px; border-bottom:1px solid #0E0B08; margin-bottom:36px; font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing: 0.25em; text-transform:uppercase; color:#0E0B08; }
+      #s6-letter .body-line { font-family:"Source Serif 4",serif; font-size:32px; line-height: 1.45; opacity:0; transform:translateY(8px); }
       #s6-letter .body-line.amount { font-family:"Playfair Display",serif; font-weight:700; font-size:42px; color:#C03A2C; }
 
       /* ========== PHASE 3: STANDARD OIL FIRST (44–76s) ========== */
@@ -58,15 +58,15 @@
       /* Standard Oil stamp now lives on the LEFT, away from photo */
       #s6-so-stamp { position:absolute; top:160px; left:120px; width:780px; opacity:0; z-index:16; }
       #s6-so-stamp .label { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.4em; color:#C87533; text-transform:uppercase; margin-bottom:18px; }
-      #s6-so-stamp .name { font-family:"Playfair Display",serif; font-weight:900; font-size:96px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1; }
+      #s6-so-stamp .name { font-family:"Playfair Display",serif; font-weight:900; font-size:96px; color:#E8DEC8; letter-spacing: -0.025em; line-height: 1.05; }
       #s6-so-stamp .name .accent { color:#C87533; }
-      #s6-so-stamp .first { font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; margin-top:24px; line-height:1.4; max-width:760px; }
+      #s6-so-stamp .first { font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; margin-top:24px; line-height: 1.45; max-width:760px; }
 
       /* Donor card now under the so-stamp on the LEFT (photo lives on right). top:680 so it sits below stamp */
       #s6-rockefeller-card { position:absolute; top:680px; left:120px; opacity:0; z-index:17; text-align:left; width:780px; padding-top:24px; border-top:1px solid #C87533; }
-      #s6-rockefeller-card .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:14px; }
-      #s6-rockefeller-card .full { font-family:"Playfair Display",serif; font-weight:900; font-size:56px; color:#E8DEC8; line-height:1.0; letter-spacing:-0.02em; margin-bottom:12px; display:inline; }
-      #s6-rockefeller-card .bio { font-family:"Source Serif 4",serif; font-size:28px; color:#D4B679; line-height:1.45; opacity:0; margin-top:14px; }
+      #s6-rockefeller-card .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing: 0.2em; color:#9A8E76; text-transform:uppercase; margin-bottom:14px; }
+      #s6-rockefeller-card .full { font-family:"Playfair Display",serif; font-weight: 700; font-size:56px; color:#E8DEC8; line-height: 1.15; letter-spacing: -0.015em; margin-bottom:12px; display:inline; }
+      #s6-rockefeller-card .bio { font-family:"Source Serif 4",serif; font-size:28px; color:#D4B679; line-height: 1.5; opacity:0; margin-top:14px; }
       #s6-rockefeller-card .bio em { color:#E8DEC8; font-style:italic; }
 
       /* Center hero card vertically (top:300 + ~440px tall ⇒ midpoint y≈520, well above caption zone) */
@@ -74,24 +74,24 @@
       #s6-contribution .label { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; margin-bottom:14px; }
       #s6-contribution .amount { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C87533; line-height:0.95; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; }
       #s6-contribution .modern { font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; margin-top:18px; opacity:0; }
-      #s6-contribution .record { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.3em; color:#C03A2C; text-transform:uppercase; margin-top:24px; padding-top:18px; border-top:1px solid #C03A2C; opacity:0; max-width:1400px; }
+      #s6-contribution .record { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing: 0.25em; color:#C03A2C; text-transform:uppercase; margin-top:24px; padding-top:18px; border-top:1px solid #C03A2C; opacity:0; max-width:1400px; }
 
       /* L6: 2 lines × 60px ≈ 120px tall → top:480 puts midpoint y=540 */
       #s6-quiet { position:absolute; top:480px; left:0; width:100%; text-align:center; opacity:0; z-index:19; }
-      #s6-quiet .l { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height:1.5; opacity:0; }
+      #s6-quiet .l { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height: 1.4; opacity:0; }
 
       #s6-staccato { position:absolute; top:380px; left:0; width:100%; text-align:center; opacity:0; z-index:20; }
-      #s6-staccato .l { font-family:"Playfair Display",serif; font-weight:700; font-size:96px; color:#E8DEC8; line-height:1.25; letter-spacing:-0.01em; opacity:0; }
+      #s6-staccato .l { font-family:"Playfair Display",serif; font-weight: 900; font-size:96px; color:#E8DEC8; line-height: 1.05; letter-spacing: -0.025em; opacity:0; }
       #s6-staccato .l.last { color:#C87533; font-style:italic; font-weight:400; font-family:"Source Serif 4",serif; font-size:56px; margin-top:36px; }
 
       /* ========== PHASE 4: THE CASCADE (76–94s) ========== */
       #s6-cascade { position:absolute; top:140px; left:50%; width:1500px; opacity:0; z-index:21; }
       #s6-cascade .header { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:48px; }
       #s6-cascade .row { display:flex; align-items:baseline; gap:48px; padding:18px 32px; opacity:0; border-bottom:1px solid #3A2E20; }
-      #s6-cascade .row .who { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.3em; color:#C87533; text-transform:uppercase; min-width:280px; }
+      #s6-cascade .row .who { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing: 0.25em; color:#C87533; text-transform:uppercase; min-width:280px; }
       #s6-cascade .row .what { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; flex:1; }
       #s6-cascade .row .what em { color:#D4B679; font-style:italic; }
-      #s6-cascade .closer { text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height:1.45; margin-top:48px; padding-top:36px; border-top:2px solid #C87533; opacity:0; max-width:1280px; margin-left:auto; margin-right:auto; }
+      #s6-cascade .closer { text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height: 1.4; margin-top:48px; padding-top:36px; border-top:2px solid #C87533; opacity:0; max-width:1280px; margin-left:auto; margin-right:auto; }
       #s6-cascade .closer em { color:#C87533; font-weight:700; font-style:normal; font-family:"Playfair Display",serif; }
 
       /* ========== PHASE 5: THE LEDGER (94–117s) — CLIMAX ========== */
@@ -99,30 +99,30 @@
       #s6-total { position:absolute; top:240px; left:0; width:100%; text-align:center; }
       #s6-total .label { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; margin-bottom:24px; opacity:0; }
       #s6-total .when { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; margin-bottom:32px; opacity:0; }
-      #s6-total .hero { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; line-height:0.95; letter-spacing:-0.04em; color:#C87533; font-variant-numeric:tabular-nums; opacity:0; }
+      #s6-total .hero { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; line-height: 0.9; letter-spacing:-0.04em; color:#C87533; font-variant-numeric:tabular-nums; opacity:0; }
       #s6-total .alt { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; margin-top:32px; opacity:0; }
       #s6-total .alt em { color:#E8DEC8; font-weight:400; }
-      #s6-total .verdict { font-family:"Source Serif 4",serif; font-size:32px; color:#E8DEC8; margin-top:36px; max-width:1280px; margin-left:auto; margin-right:auto; line-height:1.4; opacity:0; }
+      #s6-total .verdict { font-family:"Source Serif 4",serif; font-size:32px; color:#E8DEC8; margin-top:36px; max-width:1280px; margin-left:auto; margin-right:auto; line-height: 1.45; opacity:0; }
 
       /* Bryan compare strip */
       #s6-compare { position:absolute; top:200px; left:50%; width:1500px; opacity:0; z-index:23; }
       #s6-compare .frame { display:grid; grid-template-columns:1fr auto 1fr; gap:48px; align-items:center; padding:48px 64px; border-top:2px solid #C87533; border-bottom:2px solid #C87533; background:rgba(232,222,200,0.03); }
       #s6-compare .col { text-align:center; }
-      #s6-compare .col .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:18px; }
+      #s6-compare .col .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing: 0.2em; color:#9A8E76; text-transform:uppercase; margin-bottom:18px; }
       #s6-compare .col .who.hanna { color:#C87533; }
-      #s6-compare .col .amt { font-family:"Playfair Display",serif; font-weight:900; font-size:96px; line-height:1; letter-spacing:-0.03em; font-variant-numeric:tabular-nums; }
+      #s6-compare .col .amt { font-family:"Playfair Display",serif; font-weight:900; font-size:96px; line-height: 1.05; letter-spacing: -0.025em; font-variant-numeric:tabular-nums; }
       #s6-compare .col .amt.hanna { color:#C87533; }
       #s6-compare .col .amt.bryan { color:#9A8E76; }
       #s6-compare .col .note { font-family:"Source Serif 4",serif; font-style:italic; font-size:28px; color:#9A8E76; margin-top:14px; }
       #s6-compare .vs { font-family:"Roboto Mono",monospace; font-size:42px; color:#3A2E20; letter-spacing:0.3em; }
       #s6-compare .stamp { text-align:center; margin-top:64px; opacity:0; }
-      #s6-compare .stamp .num { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; color:#C03A2C; line-height:1; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; }
+      #s6-compare .stamp .num { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; color:#C03A2C; line-height: 0.9; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; }
       #s6-compare .stamp .word { font-family:"Source Serif 4",serif; font-style:italic; font-size:42px; color:#E8DEC8; margin-top:18px; }
       #s6-compare .stamp .word em { color:#C03A2C; font-weight:700; font-style:normal; font-family:"Playfair Display",serif; }
 
       /* "Money was not graft" pivot — L6 single-block centered on canvas */
       #s6-not-graft { position:absolute; top:475px; left:0; width:100%; text-align:center; opacity:0; z-index:24; }
-      #s6-not-graft .l { font-family:"Source Serif 4",serif; font-size:32px; color:#D4B679; line-height:1.5; opacity:0; }
+      #s6-not-graft .l { font-family:"Source Serif 4",serif; font-size:32px; color:#D4B679; line-height: 1.45; opacity:0; }
       #s6-not-graft .l em { color:#E8DEC8; font-weight:400; font-style:italic; }
 
       /* ========== PHASE 6: THE MACHINE (118–143s) ========== */
@@ -130,32 +130,32 @@
       #s6-list-stage .header { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:48px; }
       #s6-list-stage .grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:24px 36px; padding:0 48px; }
       #s6-list-stage .item { font-family:"Playfair Display",serif; font-weight:700; font-size:42px; color:#E8DEC8; text-align:center; padding:24px 12px; border-top:1px solid #3A2E20; border-bottom:1px solid #3A2E20; opacity:0; letter-spacing:-0.01em; }
-      #s6-list-stage .verdict { text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; margin-top:64px; line-height:1.45; opacity:0; max-width:1320px; margin-left:auto; margin-right:auto; }
+      #s6-list-stage .verdict { text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; margin-top:64px; line-height: 1.4; opacity:0; max-width:1320px; margin-left:auto; margin-right:auto; }
       #s6-list-stage .verdict em { color:#C87533; font-weight:700; font-style:normal; font-family:"Playfair Display",serif; }
 
       #s6-point { position:absolute; top:430px; left:0; width:100%; text-align:center; opacity:0; z-index:26; }
-      #s6-point .l { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C87533; letter-spacing:-0.03em; line-height:1; }
+      #s6-point .l { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C87533; letter-spacing: -0.04em; line-height: 0.95; }
 
       #s6-machine { position:absolute; top:200px; left:0; width:100%; opacity:0; z-index:27; }
-      #s6-machine .head { font-family:"Playfair Display",serif; font-weight:900; font-size:96px; color:#E8DEC8; text-align:center; letter-spacing:-0.02em; line-height:1.1; margin-bottom:48px; max-width:1500px; margin-left:auto; margin-right:auto; }
+      #s6-machine .head { font-family:"Playfair Display",serif; font-weight:900; font-size:96px; color:#E8DEC8; text-align:center; letter-spacing: -0.025em; line-height: 1.05; margin-bottom:48px; max-width:1500px; margin-left:auto; margin-right:auto; }
       #s6-machine .head .accent { color:#C87533; }
-      #s6-machine .desc { font-family:"Source Serif 4",serif; font-size:32px; line-height:1.5; color:#D4B679; max-width:1400px; margin:0 auto; text-align:center; opacity:0; }
+      #s6-machine .desc { font-family:"Source Serif 4",serif; font-size:32px; line-height: 1.45; color:#D4B679; max-width:1400px; margin:0 auto; text-align:center; opacity:0; }
       #s6-machine .desc strong { color:#E8DEC8; font-weight:400; font-style:italic; }
       #s6-machine .tax { text-align:center; margin-top:60px; opacity:0; }
-      #s6-machine .tax .word { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C03A2C; letter-spacing:-0.03em; line-height:1; text-transform:uppercase; }
+      #s6-machine .tax .word { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C03A2C; letter-spacing: -0.04em; line-height: 0.95; text-transform:uppercase; }
 
       /* ========== PHASE 7: STAKES (143–183s) ========== */
       #s6-stakes-stage { position:absolute; top:160px; left:0; width:100%; opacity:0; z-index:28; }
       #s6-stakes-stage .why-block { text-align:center; margin-bottom:64px; }
-      #s6-stakes-stage .why-block .l { font-family:"Source Serif 4",serif; font-size:36px; color:#E8DEC8; line-height:1.55; max-width:1500px; margin:0 auto 22px; opacity:0; }
+      #s6-stakes-stage .why-block .l { font-family:"Source Serif 4",serif; font-size:36px; color:#E8DEC8; line-height: 1.4; max-width:1500px; margin:0 auto 22px; opacity:0; }
       #s6-stakes-stage .why-block .l em { color:#D4B679; font-style:italic; }
-      #s6-stakes-stage .why-block .alt { font-family:"Playfair Display",serif; font-weight:700; font-size:56px; color:#C03A2C; letter-spacing:-0.02em; margin-top:36px; opacity:0; }
+      #s6-stakes-stage .why-block .alt { font-family:"Playfair Display",serif; font-weight:700; font-size:56px; color:#C03A2C; letter-spacing: -0.015em; margin-top:36px; opacity:0; }
       #s6-stakes-stage .why-block .alt em { color:#E8DEC8; font-style:italic; font-weight:400; font-family:"Source Serif 4",serif; }
 
       /* Bryan + cross-of-gold quote */
       #s6-bryan-quote { position:absolute; top:140px; left:0; width:100%; opacity:0; z-index:29; }
       #s6-bryan-quote .label { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:28px; }
-      #s6-bryan-quote .head { font-family:"Playfair Display",serif; font-weight:900; font-size:72px; color:#E8DEC8; text-align:center; letter-spacing:-0.02em; line-height:1.2; margin-bottom:48px; max-width:1500px; margin-left:auto; margin-right:auto; }
+      #s6-bryan-quote .head { font-family:"Playfair Display",serif; font-weight: 800; font-size:72px; color:#E8DEC8; text-align:center; letter-spacing:-0.02em; line-height: 1.1; margin-bottom:48px; max-width:1500px; margin-left:auto; margin-right:auto; }
       #s6-bryan-quote .head .accent { color:#C87533; font-style:italic; font-weight:400; font-family:"Source Serif 4",serif; }
 
       #s6-dollar-half { position:absolute; top:380px; left:0; width:100%; opacity:0; z-index:30; }
@@ -163,23 +163,23 @@
       #s6-dollar-half .dollar { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; line-height:0.9; color:#C87533; letter-spacing:-0.04em; }
       #s6-dollar-half .arrow { font-family:"Roboto Mono",monospace; font-size:56px; color:#9A8E76; }
       #s6-dollar-half .half { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; line-height:0.9; color:#C03A2C; letter-spacing:-0.04em; opacity:0; }
-      #s6-dollar-half .caption { text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; max-width:1400px; margin:0 auto; line-height:1.45; opacity:0; }
+      #s6-dollar-half .caption { text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; max-width:1400px; margin:0 auto; line-height: 1.4; opacity:0; }
       #s6-dollar-half .caption em { color:#E8DEC8; font-style:italic; }
 
       #s6-end-of-world { position:absolute; top:0; left:0; width:100%; height:1080px; display:flex; align-items:center; justify-content:center; opacity:0; z-index:31; background:rgba(14,11,8,0.85); }
-      #s6-end-of-world .l { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C03A2C; letter-spacing:-0.03em; line-height:1; text-align:center; }
+      #s6-end-of-world .l { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C03A2C; letter-spacing: -0.04em; line-height: 0.95; text-align:center; }
 
       /* ========== PHASE 8: CODA (183–197s) ========== */
       #s6-coda { position:absolute; top:280px; left:0; width:100%; text-align:center; opacity:0; z-index:32; }
       #s6-coda .l1 { font-family:"Source Serif 4",serif; font-size:42px; color:#D4B679; line-height:1.45; max-width:1500px; margin:0 auto 48px; opacity:0; }
       #s6-coda .change-row { display:flex; justify-content:center; gap:64px; margin-bottom:60px; opacity:0; }
       #s6-coda .change-row .col { text-align:center; }
-      #s6-coda .change-row .lbl { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:18px; }
-      #s6-coda .change-row .word { font-family:"Playfair Display",serif; font-weight:900; font-size:96px; letter-spacing:-0.03em; line-height:1; }
+      #s6-coda .change-row .lbl { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing: 0.2em; color:#9A8E76; text-transform:uppercase; margin-bottom:18px; }
+      #s6-coda .change-row .word { font-family:"Playfair Display",serif; font-weight:900; font-size:96px; letter-spacing: -0.025em; line-height: 1.05; }
       #s6-coda .change-row .col.changed .word { color:#9A8E76; text-decoration:line-through; text-decoration-color:#C87533; text-decoration-thickness:4px; }
       #s6-coda .change-row .col.same .word { color:#C03A2C; }
       #s6-coda .l2 { font-family:"Source Serif 4",serif; font-size:32px; color:#E8DEC8; max-width:1500px; margin:0 auto 32px; opacity:0; }
-      #s6-coda .cliff { font-family:"Playfair Display",serif; font-weight:700; font-size:72px; color:#C87533; letter-spacing:-0.02em; line-height:1.15; opacity:0; }
+      #s6-coda .cliff { font-family:"Playfair Display",serif; font-weight: 800; font-size:72px; color:#C87533; letter-spacing:-0.02em; line-height: 1.1; opacity:0; }
 
       /* Background grain & vignette (always on) */
       .s6-grain { position:absolute; inset:-10%; pointer-events:none; z-index:80; opacity:0.08; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px), repeating-radial-gradient(circle at 70% 80%, rgba(200,117,51,0.12) 0, rgba(200,117,51,0.12) 1px, transparent 1px, transparent 4px); mix-blend-mode:overlay; }
