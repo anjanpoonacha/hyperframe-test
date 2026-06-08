@@ -1,0 +1,822 @@
+<template id="scene-06-the-assessment-template">
+  <div data-composition-id="scene-06-the-assessment" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s6-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s6-stage * { box-sizing:border-box; }
+
+      /* ========== PHASE 1: THE MECHANISM (0–28s) ========== */
+      /* L6: vertically centered on canvas. mech-intro spans ~280px → top:400 puts midpoint y=540 */
+      #s6-mech-intro { position:absolute; top:400px; left:0; width:100%; text-align:center; opacity:0; z-index:10; }
+      #s6-mech-intro .label { font-family:"Roboto Mono",monospace; font-size:26px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; margin-bottom:32px; }
+      #s6-mech-intro .head { font-family:"Playfair Display",serif; font-weight:900; font-size:128px; line-height:1.05; letter-spacing:-0.02em; color:#E8DEC8; }
+      #s6-mech-intro .head .accent { color:#C87533; font-style:italic; font-weight:700; }
+      #s6-mech-intro .sub { font-family:"Source Serif 4",serif; font-style:italic; font-size:42px; color:#D4B679; margin-top:36px; line-height:1.35; opacity:0; }
+
+      #s6-formula { position:absolute; top:160px; left:50%; width:1500px; opacity:0; z-index:11; }
+      #s6-formula .header { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:28px; }
+      #s6-formula .when { font-family:"Source Serif 4",serif; font-style:italic; font-size:34px; color:#D4B679; text-align:center; margin-bottom:48px; line-height:1.4; }
+      #s6-formula .punch-row { display:flex; align-items:center; justify-content:center; gap:48px; margin-bottom:64px; }
+      #s6-formula .punch-num { font-family:"Playfair Display",serif; font-weight:900; font-size:240px; color:#C87533; line-height:1; letter-spacing:-0.04em; opacity:0; }
+      #s6-formula .punch-text { font-family:"Source Serif 4",serif; font-size:36px; color:#E8DEC8; max-width:540px; line-height:1.35; opacity:0; }
+      #s6-formula .punch-text em { color:#D4B679; font-style:italic; }
+      #s6-formula .examples { display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:0 80px; }
+      #s6-formula .ex { opacity:0; padding:24px 0; border-top:1px solid #3A2E20; border-bottom:1px solid #3A2E20; }
+      #s6-formula .ex .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:14px; }
+      #s6-formula .ex .cap { font-family:"Source Serif 4",serif; font-size:30px; color:#E8DEC8; margin-bottom:8px; }
+      #s6-formula .ex .owed { font-family:"Playfair Display",serif; font-weight:900; font-size:64px; color:#C87533; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
+
+      /* L6: 2 lines × 60px ≈ 130px tall → top:475 puts midpoint y=540 */
+      #s6-verdict-dual { position:absolute; top:475px; left:0; width:100%; text-align:center; opacity:0; z-index:12; }
+      #s6-verdict-dual .line { font-family:"Source Serif 4",serif; font-style:italic; font-size:38px; color:#D4B679; line-height:1.5; opacity:0; }
+      #s6-verdict-dual .line.large { color:#E8DEC8; font-weight:400; }
+
+      /* ========== PHASE 2: THE LETTER (28–44s) ========== */
+      #s6-not-request { position:absolute; top:380px; left:0; width:100%; text-align:center; opacity:0; z-index:13; }
+      #s6-not-request .a { font-family:"Source Serif 4",serif; font-size:52px; color:#E8DEC8; line-height:1.3; max-width:1500px; margin:0 auto; }
+      #s6-not-request .b { font-family:"Playfair Display",serif; font-weight:900; font-size:200px; color:#C03A2C; letter-spacing:-0.02em; margin-top:48px; line-height:1; opacity:0; text-transform:uppercase; }
+
+      /* The letter card — a stylized note. L6 centered: ~500px tall → top:290 puts midpoint y=540 */
+      #s6-letter { position:absolute; top:290px; left:50%; width:1100px; opacity:0; z-index:14; background:#E8DEC8; color:#0E0B08; padding:64px 80px; box-shadow:0 30px 80px rgba(0,0,0,0.6); border:1px solid rgba(200,117,51,0.4); }
+      #s6-letter .letterhead { display:flex; justify-content:space-between; padding-bottom:24px; border-bottom:1px solid #0E0B08; margin-bottom:36px; font-family:"Roboto Mono",monospace; font-size:18px; letter-spacing:0.2em; text-transform:uppercase; color:#0E0B08; }
+      #s6-letter .body-line { font-family:"Source Serif 4",serif; font-size:34px; line-height:1.6; opacity:0; transform:translateY(8px); }
+      #s6-letter .body-line.amount { font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#C03A2C; }
+
+      /* ========== PHASE 3: STANDARD OIL FIRST (44–76s) ========== */
+      #s6-rockefeller-stage { position:absolute; inset:0; opacity:0; z-index:15; }
+      /* Photo dimensions: 1495×2048 portrait. Container 1920×880 with object-position:center top
+       * shows top portion of photo (face). Photo placed in centered window (max-width 720) on RIGHT half
+       * so left half stays clean for Standard Oil text. Vignette/blur centered behind text. */
+      #s6-rockefeller-bg { position:absolute; top:60px; right:120px; width:680px; height:760px; opacity:0; }
+      #s6-rockefeller-bg img { width:100%; height:100%; object-fit:cover; object-position:center top; filter:sepia(0.4) contrast(1.1) brightness(0.55) saturate(0.7); border-radius:4px; }
+      #s6-rockefeller-bg .vignette { position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 35%, rgba(14,11,8,0.6) 80%, rgba(14,11,8,0.95) 100%); }
+
+      /* Standard Oil stamp now lives on the LEFT, away from photo */
+      #s6-so-stamp { position:absolute; top:160px; left:120px; width:780px; opacity:0; z-index:16; }
+      #s6-so-stamp .label { font-family:"Roboto Mono",monospace; font-size:20px; letter-spacing:0.4em; color:#C87533; text-transform:uppercase; margin-bottom:18px; }
+      #s6-so-stamp .name { font-family:"Playfair Display",serif; font-weight:900; font-size:108px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1; }
+      #s6-so-stamp .name .accent { color:#C87533; }
+      #s6-so-stamp .first { font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; margin-top:24px; line-height:1.4; max-width:760px; }
+
+      /* Donor card now under the so-stamp on the LEFT (photo lives on right). top:680 so it sits below stamp */
+      #s6-rockefeller-card { position:absolute; top:680px; left:120px; opacity:0; z-index:17; text-align:left; width:780px; padding-top:24px; border-top:1px solid #C87533; }
+      #s6-rockefeller-card .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:14px; }
+      #s6-rockefeller-card .full { font-family:"Playfair Display",serif; font-weight:900; font-size:56px; color:#E8DEC8; line-height:1.0; letter-spacing:-0.02em; margin-bottom:12px; display:inline; }
+      #s6-rockefeller-card .bio { font-family:"Source Serif 4",serif; font-size:24px; color:#D4B679; line-height:1.45; opacity:0; margin-top:14px; }
+      #s6-rockefeller-card .bio em { color:#E8DEC8; font-style:italic; }
+
+      /* Center hero card vertically (top:300 + ~440px tall ⇒ midpoint y≈520, well above caption zone) */
+      #s6-contribution { position:absolute; top:300px; left:120px; opacity:0; z-index:18; width:1680px; }
+      #s6-contribution .label { font-family:"Roboto Mono",monospace; font-size:20px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; margin-bottom:14px; }
+      #s6-contribution .amount { font-family:"Playfair Display",serif; font-weight:900; font-size:200px; color:#C87533; line-height:0.95; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; }
+      #s6-contribution .modern { font-family:"Source Serif 4",serif; font-style:italic; font-size:34px; color:#D4B679; margin-top:18px; opacity:0; }
+      #s6-contribution .record { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.3em; color:#C03A2C; text-transform:uppercase; margin-top:24px; padding-top:18px; border-top:1px solid #C03A2C; opacity:0; max-width:1400px; }
+
+      /* L6: 2 lines × 60px ≈ 120px tall → top:480 puts midpoint y=540 */
+      #s6-quiet { position:absolute; top:480px; left:0; width:100%; text-align:center; opacity:0; z-index:19; }
+      #s6-quiet .l { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height:1.5; opacity:0; }
+
+      #s6-staccato { position:absolute; top:380px; left:0; width:100%; text-align:center; opacity:0; z-index:20; }
+      #s6-staccato .l { font-family:"Playfair Display",serif; font-weight:700; font-size:88px; color:#E8DEC8; line-height:1.25; letter-spacing:-0.01em; opacity:0; }
+      #s6-staccato .l.last { color:#C87533; font-style:italic; font-weight:400; font-family:"Source Serif 4",serif; font-size:54px; margin-top:36px; }
+
+      /* ========== PHASE 4: THE CASCADE (76–94s) ========== */
+      #s6-cascade { position:absolute; top:140px; left:50%; width:1500px; opacity:0; z-index:21; }
+      #s6-cascade .header { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:48px; }
+      #s6-cascade .row { display:flex; align-items:baseline; gap:48px; padding:18px 32px; opacity:0; border-bottom:1px solid #3A2E20; }
+      #s6-cascade .row .who { font-family:"Roboto Mono",monospace; font-size:20px; letter-spacing:0.3em; color:#C87533; text-transform:uppercase; min-width:280px; }
+      #s6-cascade .row .what { font-family:"Source Serif 4",serif; font-size:30px; color:#E8DEC8; flex:1; }
+      #s6-cascade .row .what em { color:#D4B679; font-style:italic; }
+      #s6-cascade .closer { text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:38px; color:#D4B679; line-height:1.45; margin-top:48px; padding-top:36px; border-top:2px solid #C87533; opacity:0; max-width:1280px; margin-left:auto; margin-right:auto; }
+      #s6-cascade .closer em { color:#C87533; font-weight:700; font-style:normal; font-family:"Playfair Display",serif; }
+
+      /* ========== PHASE 5: THE LEDGER (94–117s) — CLIMAX ========== */
+      #s6-total-stage { position:absolute; inset:0; opacity:0; z-index:22; }
+      #s6-total { position:absolute; top:240px; left:0; width:100%; text-align:center; }
+      #s6-total .label { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; margin-bottom:24px; opacity:0; }
+      #s6-total .when { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; margin-bottom:32px; opacity:0; }
+      #s6-total .hero { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; line-height:0.95; letter-spacing:-0.04em; color:#C87533; font-variant-numeric:tabular-nums; opacity:0; }
+      #s6-total .alt { font-family:"Source Serif 4",serif; font-style:italic; font-size:38px; color:#D4B679; margin-top:32px; opacity:0; }
+      #s6-total .alt em { color:#E8DEC8; font-weight:400; }
+      #s6-total .verdict { font-family:"Source Serif 4",serif; font-size:34px; color:#E8DEC8; margin-top:36px; max-width:1280px; margin-left:auto; margin-right:auto; line-height:1.4; opacity:0; }
+
+      /* Bryan compare strip */
+      #s6-compare { position:absolute; top:200px; left:50%; width:1500px; opacity:0; z-index:23; }
+      #s6-compare .frame { display:grid; grid-template-columns:1fr auto 1fr; gap:48px; align-items:center; padding:48px 64px; border-top:2px solid #C87533; border-bottom:2px solid #C87533; background:rgba(232,222,200,0.03); }
+      #s6-compare .col { text-align:center; }
+      #s6-compare .col .who { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:18px; }
+      #s6-compare .col .who.hanna { color:#C87533; }
+      #s6-compare .col .amt { font-family:"Playfair Display",serif; font-weight:900; font-size:108px; line-height:1; letter-spacing:-0.03em; font-variant-numeric:tabular-nums; }
+      #s6-compare .col .amt.hanna { color:#C87533; }
+      #s6-compare .col .amt.bryan { color:#9A8E76; }
+      #s6-compare .col .note { font-family:"Source Serif 4",serif; font-style:italic; font-size:24px; color:#9A8E76; margin-top:14px; }
+      #s6-compare .vs { font-family:"Roboto Mono",monospace; font-size:42px; color:#3A2E20; letter-spacing:0.3em; }
+      #s6-compare .stamp { text-align:center; margin-top:64px; opacity:0; }
+      #s6-compare .stamp .num { font-family:"Playfair Display",serif; font-weight:900; font-size:240px; color:#C03A2C; line-height:1; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; }
+      #s6-compare .stamp .word { font-family:"Source Serif 4",serif; font-style:italic; font-size:48px; color:#E8DEC8; margin-top:18px; }
+      #s6-compare .stamp .word em { color:#C03A2C; font-weight:700; font-style:normal; font-family:"Playfair Display",serif; }
+
+      /* "Money was not graft" pivot — L6 single-block centered on canvas */
+      #s6-not-graft { position:absolute; top:475px; left:0; width:100%; text-align:center; opacity:0; z-index:24; }
+      #s6-not-graft .l { font-family:"Source Serif 4",serif; font-size:34px; color:#D4B679; line-height:1.5; opacity:0; }
+      #s6-not-graft .l em { color:#E8DEC8; font-weight:400; font-style:italic; }
+
+      /* ========== PHASE 6: THE MACHINE (118–143s) ========== */
+      #s6-list-stage { position:absolute; top:160px; left:50%; width:1600px; opacity:0; z-index:25; }
+      #s6-list-stage .header { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:48px; }
+      #s6-list-stage .grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:24px 36px; padding:0 48px; }
+      #s6-list-stage .item { font-family:"Playfair Display",serif; font-weight:700; font-size:42px; color:#E8DEC8; text-align:center; padding:24px 12px; border-top:1px solid #3A2E20; border-bottom:1px solid #3A2E20; opacity:0; letter-spacing:-0.01em; }
+      #s6-list-stage .verdict { text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; margin-top:64px; line-height:1.45; opacity:0; max-width:1320px; margin-left:auto; margin-right:auto; }
+      #s6-list-stage .verdict em { color:#C87533; font-weight:700; font-style:normal; font-family:"Playfair Display",serif; }
+
+      #s6-point { position:absolute; top:430px; left:0; width:100%; text-align:center; opacity:0; z-index:26; }
+      #s6-point .l { font-family:"Playfair Display",serif; font-weight:900; font-size:160px; color:#C87533; letter-spacing:-0.03em; line-height:1; }
+
+      #s6-machine { position:absolute; top:200px; left:0; width:100%; opacity:0; z-index:27; }
+      #s6-machine .head { font-family:"Playfair Display",serif; font-weight:900; font-size:96px; color:#E8DEC8; text-align:center; letter-spacing:-0.02em; line-height:1.1; margin-bottom:48px; max-width:1500px; margin-left:auto; margin-right:auto; }
+      #s6-machine .head .accent { color:#C87533; }
+      #s6-machine .desc { font-family:"Source Serif 4",serif; font-size:32px; line-height:1.5; color:#D4B679; max-width:1400px; margin:0 auto; text-align:center; opacity:0; }
+      #s6-machine .desc strong { color:#E8DEC8; font-weight:400; font-style:italic; }
+      #s6-machine .tax { text-align:center; margin-top:60px; opacity:0; }
+      #s6-machine .tax .word { font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C03A2C; letter-spacing:-0.03em; line-height:1; text-transform:uppercase; }
+
+      /* ========== PHASE 7: STAKES (143–183s) ========== */
+      #s6-stakes-stage { position:absolute; top:160px; left:0; width:100%; opacity:0; z-index:28; }
+      #s6-stakes-stage .why-block { text-align:center; margin-bottom:64px; }
+      #s6-stakes-stage .why-block .l { font-family:"Source Serif 4",serif; font-size:36px; color:#E8DEC8; line-height:1.55; max-width:1500px; margin:0 auto 22px; opacity:0; }
+      #s6-stakes-stage .why-block .l em { color:#D4B679; font-style:italic; }
+      #s6-stakes-stage .why-block .alt { font-family:"Playfair Display",serif; font-weight:700; font-size:64px; color:#C03A2C; letter-spacing:-0.02em; margin-top:36px; opacity:0; }
+      #s6-stakes-stage .why-block .alt em { color:#E8DEC8; font-style:italic; font-weight:400; font-family:"Source Serif 4",serif; }
+
+      /* Bryan + cross-of-gold quote */
+      #s6-bryan-quote { position:absolute; top:140px; left:0; width:100%; opacity:0; z-index:29; }
+      #s6-bryan-quote .label { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.4em; color:#9A8E76; text-transform:uppercase; text-align:center; margin-bottom:28px; }
+      #s6-bryan-quote .head { font-family:"Playfair Display",serif; font-weight:900; font-size:72px; color:#E8DEC8; text-align:center; letter-spacing:-0.02em; line-height:1.2; margin-bottom:48px; max-width:1500px; margin-left:auto; margin-right:auto; }
+      #s6-bryan-quote .head .accent { color:#C87533; font-style:italic; font-weight:400; font-family:"Source Serif 4",serif; }
+
+      #s6-dollar-half { position:absolute; top:380px; left:0; width:100%; opacity:0; z-index:30; }
+      #s6-dollar-half .compute { display:flex; align-items:center; justify-content:center; gap:48px; margin-bottom:48px; }
+      #s6-dollar-half .dollar { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; line-height:0.9; color:#C87533; letter-spacing:-0.04em; }
+      #s6-dollar-half .arrow { font-family:"Roboto Mono",monospace; font-size:64px; color:#9A8E76; }
+      #s6-dollar-half .half { font-family:"Playfair Display",serif; font-weight:900; font-size:280px; line-height:0.9; color:#C03A2C; letter-spacing:-0.04em; opacity:0; }
+      #s6-dollar-half .caption { text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; max-width:1400px; margin:0 auto; line-height:1.45; opacity:0; }
+      #s6-dollar-half .caption em { color:#E8DEC8; font-style:italic; }
+
+      #s6-end-of-world { position:absolute; top:0; left:0; width:100%; height:1080px; display:flex; align-items:center; justify-content:center; opacity:0; z-index:31; background:rgba(14,11,8,0.85); }
+      #s6-end-of-world .l { font-family:"Playfair Display",serif; font-weight:900; font-size:160px; color:#C03A2C; letter-spacing:-0.03em; line-height:1; text-align:center; }
+
+      /* ========== PHASE 8: CODA (183–197s) ========== */
+      #s6-coda { position:absolute; top:280px; left:0; width:100%; text-align:center; opacity:0; z-index:32; }
+      #s6-coda .l1 { font-family:"Source Serif 4",serif; font-size:42px; color:#D4B679; line-height:1.45; max-width:1500px; margin:0 auto 48px; opacity:0; }
+      #s6-coda .change-row { display:flex; justify-content:center; gap:64px; margin-bottom:60px; opacity:0; }
+      #s6-coda .change-row .col { text-align:center; }
+      #s6-coda .change-row .lbl { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-bottom:18px; }
+      #s6-coda .change-row .word { font-family:"Playfair Display",serif; font-weight:900; font-size:108px; letter-spacing:-0.03em; line-height:1; }
+      #s6-coda .change-row .col.changed .word { color:#9A8E76; text-decoration:line-through; text-decoration-color:#C87533; text-decoration-thickness:4px; }
+      #s6-coda .change-row .col.same .word { color:#C03A2C; }
+      #s6-coda .l2 { font-family:"Source Serif 4",serif; font-size:34px; color:#E8DEC8; max-width:1500px; margin:0 auto 32px; opacity:0; }
+      #s6-coda .cliff { font-family:"Playfair Display",serif; font-weight:700; font-size:72px; color:#C87533; letter-spacing:-0.02em; line-height:1.15; opacity:0; }
+
+      /* Background grain & vignette (always on) */
+      .s6-grain { position:absolute; inset:-10%; pointer-events:none; z-index:80; opacity:0.08; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px), repeating-radial-gradient(circle at 70% 80%, rgba(200,117,51,0.12) 0, rgba(200,117,51,0.12) 1px, transparent 1px, transparent 4px); mix-blend-mode:overlay; }
+      .s6-vignette { position:absolute; inset:0; pointer-events:none; z-index:81; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 40%, rgba(14,11,8,0.5) 88%, rgba(14,11,8,0.85) 100%); }
+    </style>
+
+    <div class="s6-stage">
+      <!-- PHASE 1: THE MECHANISM -->
+      <div id="s6-mech-intro">
+        <div class="label">The Mechanism</div>
+        <div class="head"><span class="accent">Simple.</span></div>
+        <div class="sub">And entirely unprecedented in American politics.</div>
+      </div>
+
+      <div id="s6-formula">
+        <div class="header">The Formula &#160;·&#160; July 1896</div>
+        <div class="when">Banks and corporations would be assessed for the campaign in proportion to their capital.</div>
+        <div class="punch-row">
+          <div class="punch-num">¼%</div>
+          <div class="punch-text">of paid-in <em>capital</em><br>owed to the campaign.</div>
+        </div>
+        <div class="examples">
+          <div class="ex">
+            <div class="who">Bank</div>
+            <div class="cap">$20,000,000 in capital</div>
+            <div class="owed">→ $50,000</div>
+          </div>
+          <div class="ex">
+            <div class="who">Railroad</div>
+            <div class="cap">$200,000,000 in capital</div>
+            <div class="owed">→ $500,000</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="s6-verdict-dual">
+        <div class="line">Small enough to feel like a tax.</div>
+        <div class="line large">Large enough to fund a continent.</div>
+      </div>
+
+      <!-- PHASE 2: THE LETTER -->
+      <div id="s6-not-request">
+        <div class="a">Hanna's approach was not a request.</div>
+        <div class="b">An Assessment.</div>
+      </div>
+
+      <div id="s6-letter">
+        <div class="letterhead">
+          <span>Republican Headquarters</span>
+          <span>1896</span>
+        </div>
+        <div class="body-line">It told the firm what its share was.</div>
+        <div class="body-line">It named a date.</div>
+        <div class="body-line amount">It named an amount.</div>
+        <div class="body-line">It included payment instructions.</div>
+      </div>
+
+      <!-- PHASE 3: STANDARD OIL FIRST -->
+      <div id="s6-rockefeller-stage">
+        <div id="s6-rockefeller-bg">
+          <img src="../assets/rockefeller.jpg" alt="John D. Rockefeller, c. 1885">
+          <div class="vignette"></div>
+        </div>
+        <div id="s6-so-stamp">
+          <div class="label">Paid First</div>
+          <div class="name">Standard <span class="accent">Oil</span></div>
+          <div class="first">9 of every 10 gallons of refined American oil.</div>
+        </div>
+        <div id="s6-rockefeller-card">
+          <div class="who">The Donor</div>
+          <span class="full">John D. Rockefeller</span>
+          <div class="bio">Hanna's high-school classmate at <em>Cleveland Central</em>, forty-three years earlier.</div>
+        </div>
+        <div id="s6-contribution">
+          <div class="label">Contribution</div>
+          <div class="amount">$250,000</div>
+          <div class="modern">≈ $9,000,000 in today's money.</div>
+          <div class="record">Largest single political contribution in American history at the time.</div>
+        </div>
+      </div>
+
+      <div id="s6-quiet">
+        <div class="l">It came without a public announcement.</div>
+        <div class="l">Without a public acknowledgment.</div>
+      </div>
+
+      <div id="s6-staccato">
+        <div class="l">Rockefeller paid.</div>
+        <div class="l">Hanna recorded the receipt.</div>
+        <div class="l last">Both men understood what had been bought.</div>
+      </div>
+
+      <!-- PHASE 4: THE CASCADE -->
+      <div id="s6-cascade">
+        <div class="header">By August 1896 &#160;·&#160; The Northeast Paid</div>
+        <div class="row" data-row="1"><div class="who">Carnegie Steel</div><div class="what">paid <em>second</em>.</div></div>
+        <div class="row" data-row="2"><div class="who">Other Steel Firms</div><div class="what">followed.</div></div>
+        <div class="row" data-row="3"><div class="who">Railroads</div><div class="what">Pennsylvania &#160;·&#160; New York Central &#160;·&#160; Baltimore &amp; Ohio</div></div>
+        <div class="row" data-row="4"><div class="who">Insurance</div><div class="what">New York Life &#160;·&#160; Equitable &#160;·&#160; Mutual</div></div>
+        <div class="row" data-row="5"><div class="who">Banks</div><div class="what">paid.</div></div>
+        <div class="closer">Every major financial institution in the Northeast had <em>paid its assessment</em>.</div>
+      </div>
+
+      <!-- PHASE 5: THE LEDGER -->
+      <div id="s6-total-stage">
+        <div id="s6-total">
+          <div class="label">Total Raised &#160;·&#160; 1896</div>
+          <div class="when">at least</div>
+          <div class="hero">$3,500,000</div>
+          <div class="alt">Some estimates run to <em>$10,000,000</em>.</div>
+          <div class="verdict">Either figure dwarfed every previous American campaign.</div>
+        </div>
+      </div>
+
+      <div id="s6-compare">
+        <div class="frame">
+          <div class="col">
+            <div class="who hanna">Hanna · 1896</div>
+            <div class="amt hanna">$3,500,000</div>
+            <div class="note">at least</div>
+          </div>
+          <div class="vs">vs.</div>
+          <div class="col">
+            <div class="who">Bryan · 1896</div>
+            <div class="amt bryan">$300–675K</div>
+            <div class="note">estimated</div>
+          </div>
+        </div>
+        <div class="stamp">
+          <div class="num">20×</div>
+          <div class="word">Hanna outspent him <em>twenty to one</em>.</div>
+        </div>
+      </div>
+
+      <div id="s6-not-graft">
+        <div class="l">The money was not collected for graft.</div>
+        <div class="l"><em>Every dollar went into the campaign.</em></div>
+      </div>
+
+      <!-- PHASE 6: THE MACHINE -->
+      <div id="s6-list-stage">
+        <div class="header">Where the Money Went</div>
+        <div class="grid">
+          <div class="item">Pamphlets</div>
+          <div class="item">Posters</div>
+          <div class="item">Train Tickets</div>
+          <div class="item">Hotel Bills</div>
+          <div class="item">Telegrams</div>
+          <div class="item">Surrogate Speakers</div>
+          <div class="item">Mailings</div>
+          <div class="item">Billboards</div>
+        </div>
+        <div class="verdict">A <em>public-information operation</em>, not a slush fund.</div>
+      </div>
+
+      <div id="s6-point">
+        <div class="l">The point was scale.</div>
+      </div>
+
+      <div id="s6-machine">
+        <div class="head">What Hanna had built<br>was a <span class="accent">financial machine.</span></div>
+        <div class="desc">A system that connected the largest corporations in the country directly to the Republican National Committee — through a recurring assessment, <strong>payable on demand</strong>, owed in proportion to size.</div>
+        <div class="tax"><div class="word">A Tax.</div></div>
+      </div>
+
+      <!-- PHASE 7: STAKES -->
+      <div id="s6-stakes-stage">
+        <div class="why-block">
+          <div class="l">The companies paid because <em>Hanna told them to.</em></div>
+          <div class="l">He had been a businessman in Cleveland for thirty years and knew exactly which executive at which firm could authorize a check on which day.</div>
+          <div class="alt">And because the alternative was <em>Bryan winning.</em></div>
+        </div>
+      </div>
+
+      <div id="s6-bryan-quote">
+        <div class="label">Bryan · Free Silver</div>
+        <div class="head">Coin silver <span class="accent">alongside gold.</span></div>
+      </div>
+
+      <div id="s6-dollar-half">
+        <div class="compute">
+          <div class="dollar">$1</div>
+          <div class="arrow">→</div>
+          <div class="half">¢50</div>
+        </div>
+        <div class="caption">Every dollar in every American bank would buy <em>half as much</em> by Inauguration Day.<br>Every loan would come back in cheaper money.</div>
+      </div>
+
+      <div id="s6-end-of-world">
+        <div class="l">The end of their world.</div>
+      </div>
+
+      <!-- PHASE 8: CODA -->
+      <div id="s6-coda">
+        <div class="l1">After 1896, every major American political party copied the assessment system.</div>
+        <div class="change-row">
+          <div class="col changed"><div class="lbl">The names</div><div class="word">Changed.</div></div>
+          <div class="col same"><div class="lbl">The mechanism</div><div class="word">Did not.</div></div>
+        </div>
+        <div class="l2">Raising the money was the easy part.</div>
+        <div class="cliff">Hanna had four months to spend it.</div>
+      </div>
+
+      <div class="s6-grain"></div>
+      <div class="s6-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 06 The Assessment (197.21s)
+      // Scene-relative time (parent runtime adds data-start=398.815s)
+      // Word anchors verified against assets/transcript.json:
+      //   +0.11s   "The mechanism was simple"               PHASE 1 OPEN
+      //   +1.69s   "And entirely unprecedented"
+      //   +5.08s   "By July eighteen ninety-six..."         FORMULA card
+      //  +12.38s   "one-quarter of one percent"             FORMULA punch lands (¼%)
+      //  +14.91s   "A bank with twenty million"             EX1 row
+      //  +18.91s   "A railroad with two hundred million"    EX2 row
+      //  +22.67s   "Small enough to feel like a tax"        DUAL VERDICT A
+      //  +24.87s   "Large enough to fund a continent"       DUAL VERDICT B
+      //  +28.26s   "Hanna's approach was not a request"     PHASE 2 starts
+      //  +31.91s   "It was an assessment"                   BLOOD SLAM
+      //  +33.17s   "The letter from Republican HQ"          LETTER card
+      //  +40.08s   "It named a date"                        body-line stagger
+      //  +44.44s   "Standard Oil paid first"                PHASE 3 — Rockefeller bg
+      //  +46.93s   "Rockefeller paid first"                 name lands
+      //  +49.06s   "high-school classmate Cleveland"        bio strip
+      //  +57.02s   "two hundred and fifty thousand dollars" $250K count-up
+      //  +59.93s   "nine million dollars in modern money"   modern equiv
+      //  +62.82s   "largest single political contribution"  RECORD STAMP
+      //  +66.99s   "without a public announcement"          quiet block
+      //  +70.75s   "Rockefeller paid"                       staccato block
+      //  +75.82s   "Carnegie Steel paid second"             PHASE 4 cascade row 1
+      //  +79.52s   "Then the railroads"                     row 3
+      //  +84.44s   "Then the insurance houses"              row 4
+      //  +88.19s   "Then the banks"                         row 5
+      //  +89.31s   "every major financial institution"      cascade closer
+      //  +93.79s   "total raised at least three and a half"  PHASE 5 hero $3.5M
+      //  +96.96s   "estimates run to ten million"           alt
+      //  +99.25s   "dwarfed every previous campaign"        verdict
+      // +102.75s   "Bryan raised somewhere between"         BRYAN compare
+      // +111.81s   "Hanna outspent him twenty to one"       20× BLOOD STAMP
+      // +113.93s   "money was not collected for graft"      not-graft pivot
+      // +118.03s   "Pamphlets, posters, train tickets..."   PHASE 6 list grid stagger
+      // +124.22s   "public-information operation"           list verdict
+      // +127.94s   "The point was scale"                    POINT punch
+      // +129.46s   "financial machine"                      MACHINE head
+      // +131.90s   "system that connected... payable on demand"  desc
+      // +142.67s   "It was a tax"                           TAX BLOOD slam
+      // +143.82s   "companies paid because Hanna told them" PHASE 7 stakes
+      // +146.51s   "businessman in Cleveland for thirty"
+      // +155.39s   "alternative was Bryan winning"          alt slam
+      // +158.58s   "Bryan wanted to coin silver"            BRYAN QUOTE
+      // +163.43s   "every dollar would buy half as much"    DOLLAR HALVED
+      // +172.43s   "country's debts → country's losses"     caption
+      // +177.43s   "not a policy disagreement"
+      // +181.74s   "the end of their world"                 END-OF-WORLD slam
+      // +183.41s   "After 1896 every major party copied"    PHASE 8 coda
+      // +189.31s   "The names changed"                      change-row
+      // +191.05s   "The mechanism did not"                  change-row complement
+      // +192.70s   "easy part"
+      // +195.39s   "four months to spend it"                cliffhanger
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1: THE MECHANISM (0–28s) ───
+      // Open: "Simple." headline + sub
+      tl.fromTo("#s6-mech-intro",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        0.05
+      );
+      tl.fromTo("#s6-mech-intro .sub",
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+        1.6
+      );
+
+      // Mech-intro EXITS before formula card lands (P1: same-screen-position serial)
+      tl.to("#s6-mech-intro", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 4.4);
+      tl.set("#s6-mech-intro", { visibility: "hidden" }, 5.0);
+
+      // Formula card — header/when first, then punch row, then examples
+      tl.fromTo("#s6-formula",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+        5.0
+      );
+      tl.fromTo("#s6-formula .punch-num",
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1.0, duration: 0.7, ease: "expo.out" },
+        12.3
+      );
+      tl.fromTo("#s6-formula .punch-text",
+        { opacity: 0, x: 20 },
+        { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" },
+        12.7
+      );
+      tl.fromTo("#s6-formula .examples .ex:nth-child(1)",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        14.85
+      );
+      tl.fromTo("#s6-formula .examples .ex:nth-child(2)",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        18.85
+      );
+      // GSAP centers via xPercent (T1 rule)
+      tl.set("#s6-formula", { xPercent: -50 }, 0);
+
+      // Phase 1 EXIT: formula fades out BEFORE verdict lands (R2.1 same-position serial)
+      // Examples sit at y=600-720 which collides with verdict at y=780+
+      tl.to("#s6-formula", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 21.6);
+      tl.set("#s6-formula", { visibility: "hidden" }, 22.3);
+
+      // Dual verdict lines — full canvas, centered y=540 region (R7.4)
+      tl.set("#s6-verdict-dual", { opacity: 1, visibility: "visible" }, 22.5);
+      tl.fromTo("#s6-verdict-dual .line:nth-child(1)",
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        22.65
+      );
+      tl.fromTo("#s6-verdict-dual .line:nth-child(2)",
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        24.85
+      );
+
+      // Verdict EXITS before "not a request" (P1)
+      tl.to("#s6-verdict-dual", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 27.5);
+      tl.set("#s6-verdict-dual", { visibility: "hidden" }, 28.1);
+
+      // ─── PHASE 2: THE LETTER (28–44s) ───
+      tl.fromTo("#s6-not-request .a",
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        28.2
+      );
+      tl.set("#s6-not-request", { opacity: 1, visibility: "visible" }, 28.15);
+      tl.fromTo("#s6-not-request .b",
+        { opacity: 0, scale: 0.92 },
+        { opacity: 1, scale: 1.0, duration: 0.7, ease: "expo.out" },
+        31.85
+      );
+
+      // Not-request EXITS (full screen) → letter card lands
+      tl.to("#s6-not-request", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 32.5);
+      tl.set("#s6-not-request", { visibility: "hidden" }, 33.1);
+
+      // Letter card composes in
+      tl.set("#s6-letter", { xPercent: -50 }, 0);
+      tl.fromTo("#s6-letter",
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+        33.1
+      );
+      tl.fromTo("#s6-letter .body-line:nth-child(2)",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        38.0
+      );
+      tl.fromTo("#s6-letter .body-line:nth-child(3)",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        40.0
+      );
+      tl.fromTo("#s6-letter .body-line:nth-child(4)",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        41.1
+      );
+      tl.fromTo("#s6-letter .body-line:nth-child(5)",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        42.3
+      );
+
+      // Letter EXITS at 43.7s before Standard Oil bg (P1)
+      tl.to("#s6-letter", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 43.7);
+      tl.set("#s6-letter", { visibility: "hidden" }, 44.3);
+
+      // ─── PHASE 3: STANDARD OIL FIRST (44–76s) ───
+      tl.set("#s6-rockefeller-stage", { opacity: 1, visibility: "visible" }, 44.0);
+      tl.fromTo("#s6-rockefeller-bg",
+        { opacity: 0 },
+        { opacity: 1, duration: 1.0, ease: "power2.out" },
+        44.0
+      );
+      tl.fromTo("#s6-so-stamp",
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.9, ease: "power3.out" },
+        44.4
+      );
+      // Rockefeller name + bio land
+      tl.fromTo("#s6-rockefeller-card",
+        { opacity: 0, x: 30 },
+        { opacity: 1, x: 0, duration: 0.9, ease: "power3.out" },
+        46.9
+      );
+      tl.fromTo("#s6-rockefeller-card .bio",
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        49.0
+      );
+
+      // Standard Oil stamp + Rockefeller card + PHOTO BG all EXIT before $250K hero lands (R2.1 same-position-region serial)
+      // Audio "He contributed $250,000" at +57.02 — exit predecessors at 55.8 then enter at 57.0
+      tl.to(["#s6-so-stamp", "#s6-rockefeller-card", "#s6-rockefeller-bg"],
+        { opacity: 0, duration: 0.7, ease: "power2.in", overwrite: "auto" },
+        55.8
+      );
+      tl.set(["#s6-so-stamp", "#s6-rockefeller-card", "#s6-rockefeller-bg"], { visibility: "hidden" }, 56.7);
+
+      // $250K contribution lands at 57s on a clean canvas
+      tl.fromTo("#s6-contribution",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+        57.0
+      );
+      tl.fromTo("#s6-contribution .modern",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        59.9
+      );
+      tl.fromTo("#s6-contribution .record",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        62.8
+      );
+
+      // Phase 3 stage exits at 66.4s before "quiet" block lands at 66.99
+      tl.to("#s6-rockefeller-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 66.0);
+      tl.set("#s6-rockefeller-stage", { visibility: "hidden" }, 66.6);
+
+      // Quiet block (R7.4 single block centered y=780)
+      tl.set("#s6-quiet", { opacity: 1, visibility: "visible" }, 66.5);
+      tl.fromTo("#s6-quiet .l:nth-child(1)",
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        66.55
+      );
+      tl.fromTo("#s6-quiet .l:nth-child(2)",
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+        68.5
+      );
+
+      // Quiet exits at 70.0 before staccato lands at 70.75
+      tl.to("#s6-quiet", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 70.0);
+      tl.set("#s6-quiet", { visibility: "hidden" }, 70.5);
+
+      // Staccato block — short hammer lines
+      tl.set("#s6-staccato", { opacity: 1, visibility: "visible" }, 70.5);
+      tl.fromTo("#s6-staccato .l:nth-child(1)",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        70.7
+      );
+      tl.fromTo("#s6-staccato .l:nth-child(2)",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        71.9
+      );
+      tl.fromTo("#s6-staccato .l:nth-child(3)",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        73.55
+      );
+
+      // Staccato exits before cascade lands
+      tl.to("#s6-staccato", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 75.3);
+      tl.set("#s6-staccato", { visibility: "hidden" }, 75.8);
+
+      // ─── PHASE 4: THE CASCADE (76–94s) ───
+      tl.set("#s6-cascade", { xPercent: -50 }, 0);
+      tl.fromTo("#s6-cascade",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        75.7
+      );
+      // Stagger rows on actual word anchors
+      tl.fromTo("#s6-cascade .row[data-row='1']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 75.85);
+      tl.fromTo("#s6-cascade .row[data-row='2']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 77.85);
+      tl.fromTo("#s6-cascade .row[data-row='3']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 79.55);
+      tl.fromTo("#s6-cascade .row[data-row='4']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 84.45);
+      tl.fromTo("#s6-cascade .row[data-row='5']",
+        { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 88.2);
+      tl.fromTo("#s6-cascade .closer",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 89.4);
+
+      // Cascade exits at 92.8 before total lands at 93.79
+      tl.to("#s6-cascade", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 92.8);
+      tl.set("#s6-cascade", { visibility: "hidden" }, 93.4);
+
+      // ─── PHASE 5: THE LEDGER (93–117s) ───
+      tl.set("#s6-total-stage", { opacity: 1, visibility: "visible" }, 93.4);
+      tl.fromTo("#s6-total .label",
+        { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 93.5);
+      tl.fromTo("#s6-total .when",
+        { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 93.7);
+      tl.fromTo("#s6-total .hero",
+        { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1.0, duration: 0.9, ease: "expo.out" }, 93.85);
+      tl.fromTo("#s6-total .alt",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 96.95);
+      tl.fromTo("#s6-total .verdict",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 99.2);
+
+      // Total stage exits at 102.0 before Bryan compare lands at 102.75
+      tl.to("#s6-total-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 101.9);
+      tl.set("#s6-total-stage", { visibility: "hidden" }, 102.5);
+
+      // Bryan compare strip
+      tl.set("#s6-compare", { xPercent: -50 }, 0);
+      tl.fromTo("#s6-compare",
+        { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 102.6);
+      tl.fromTo("#s6-compare .stamp",
+        { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1.0, duration: 0.7, ease: "expo.out" }, 111.75);
+
+      // Compare EXITS BEFORE not-graft enters (R2.1 same-position serial — both occupy mid-canvas)
+      tl.to("#s6-compare", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 112.7);
+      tl.set("#s6-compare", { visibility: "hidden" }, 113.4);
+
+      // Not-graft pivot (now centered y=540, lands on clean canvas after compare exits)
+      tl.set("#s6-not-graft", { opacity: 1, visibility: "visible" }, 113.5);
+      tl.fromTo("#s6-not-graft .l:nth-child(1)",
+        { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 113.85);
+      tl.fromTo("#s6-not-graft .l:nth-child(2)",
+        { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 115.95);
+      tl.to("#s6-not-graft", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 117.0);
+      tl.set("#s6-not-graft", { visibility: "hidden" }, 117.5);
+
+      // ─── PHASE 6: THE MACHINE (118–143s) ───
+      tl.set("#s6-list-stage", { xPercent: -50 }, 0);
+      tl.fromTo("#s6-list-stage",
+        { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 117.8);
+
+      // 8-item grid stagger over 6.0s of "pamphlets, posters..."
+      tl.fromTo("#s6-list-stage .grid .item",
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", stagger: 0.7 },
+        118.0
+      );
+      tl.fromTo("#s6-list-stage .verdict",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 124.2);
+
+      // List exits with cross-fade into POINT (R2.5: different y region, but POINT slam is full-frame so no spatial overlap → still serial-then-enter)
+      tl.to("#s6-list-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 127.0);
+      tl.set("#s6-list-stage", { visibility: "hidden" }, 127.7);
+
+      // POINT — full-screen punch at 127.94. Land slightly before to avoid R2.7 dead-frame
+      tl.fromTo("#s6-point",
+        { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1.0, duration: 0.6, ease: "expo.out" }, 127.7);
+
+      // Point exits before machine lands
+      tl.to("#s6-point", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 129.0);
+      tl.set("#s6-point", { visibility: "hidden" }, 129.5);
+
+      // MACHINE block at 129.46
+      tl.fromTo("#s6-machine",
+        { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 129.4);
+      tl.fromTo("#s6-machine .desc",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 131.85);
+      tl.fromTo("#s6-machine .tax",
+        { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1.0, duration: 0.7, ease: "expo.out" }, 142.6);
+
+      // Machine exits at 143.4 before stakes
+      tl.to("#s6-machine", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 143.2);
+      tl.set("#s6-machine", { visibility: "hidden" }, 143.8);
+
+      // ─── PHASE 7: STAKES (143–183s) ───
+      tl.set("#s6-stakes-stage", { opacity: 1, visibility: "visible" }, 143.6);
+      tl.fromTo("#s6-stakes-stage .why-block .l:nth-child(1)",
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 143.75);
+      tl.fromTo("#s6-stakes-stage .why-block .l:nth-child(2)",
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 146.45);
+      tl.fromTo("#s6-stakes-stage .why-block .alt",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 155.3);
+
+      // Stakes exits before bryan-quote at 158.58
+      tl.to("#s6-stakes-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 158.0);
+      tl.set("#s6-stakes-stage", { visibility: "hidden" }, 158.6);
+
+      // Bryan quote
+      tl.fromTo("#s6-bryan-quote",
+        { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 158.5);
+
+      // Bryan quote exits before dollar-half lands at 163.43
+      tl.to("#s6-bryan-quote", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 162.8);
+      tl.set("#s6-bryan-quote", { visibility: "hidden" }, 163.4);
+
+      // DOLLAR HALVED (the visceral payoff of the silver-debasement risk)
+      tl.fromTo("#s6-dollar-half",
+        { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 163.4);
+      tl.fromTo("#s6-dollar-half .half",
+        { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.0, duration: 0.9, ease: "expo.out" }, 165.5);
+      tl.fromTo("#s6-dollar-half .caption",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 169.2);
+
+      // Dollar exits before "end of their world"
+      tl.to("#s6-dollar-half", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 180.7);
+      tl.set("#s6-dollar-half", { visibility: "hidden" }, 181.3);
+
+      // END OF WORLD slam
+      tl.fromTo("#s6-end-of-world",
+        { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.out" }, 181.5);
+      tl.fromTo("#s6-end-of-world .l",
+        { scale: 0.92 }, { scale: 1.0, duration: 0.7, ease: "expo.out" }, 181.5);
+
+      // Exits before coda
+      tl.to("#s6-end-of-world", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 183.0);
+      tl.set("#s6-end-of-world", { visibility: "hidden" }, 183.6);
+
+      // ─── PHASE 8: CODA (183–197s) ───
+      tl.set("#s6-coda", { opacity: 1, visibility: "visible" }, 183.3);
+      tl.fromTo("#s6-coda .l1",
+        { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 183.4);
+      tl.fromTo("#s6-coda .change-row",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 189.2);
+      tl.fromTo("#s6-coda .l2",
+        { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 192.6);
+      // Cliff line lands earlier (193.7 = audio "Hanna had four months") and holds visible right up to the boundary
+      tl.fromTo("#s6-coda .cliff",
+        { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 193.7);
+
+      // SCENE-WIDE EXIT (R2.6 — fade then visibility:hidden BEFORE clip boundary at 197.21)
+      // Hold until 196.7 then quick 0.4s fade so the "Hanna had four months to spend it" line stays visible across audio
+      tl.to("#s6-coda", { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: "auto" }, 196.7);
+      tl.set("#s6-coda", { visibility: "hidden", opacity: 0 }, 197.1);
+
+      window.__timelines["scene-06-the-assessment"] = tl;
+    </script>
+  </div>
+</template>

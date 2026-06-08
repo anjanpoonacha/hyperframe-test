@@ -715,214 +715,219 @@
         17.0
       );
 
-      // Walkaway exits before dual HQ (R2)
+      // NYC card exits BEFORE Dual HQ enters (R2.1 same-position serial).
+      // Audio "He set up a second headquarters in Chicago" lands at scene-rel 19.31 — exit at 18.4 to clear before pane reveal.
       tl.to("#s5-newyork-stage",
-        { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
-        21.7
+        { opacity: 0, duration: 0.7, ease: "power2.in", overwrite: "auto" },
+        18.4
       );
-      tl.set("#s5-newyork-stage", { visibility: "hidden" }, 22.4);
+      tl.set("#s5-newyork-stage", { visibility: "hidden" }, 19.2);
 
-      // ─── PHASE 3: DUAL HQ (22–29s) ───
-      tl.set("#s5-dualhq", { opacity: 1, visibility: "visible" }, 22.0);
+      // ─── PHASE 3: DUAL HQ (19.5–28.5s) — anchored on "second headquarters in Chicago" +19.31 ───
+      tl.set("#s5-dualhq", { opacity: 1, visibility: "visible" }, 19.3);
 
       tl.fromTo(".s5-dualhq-header",
         { opacity: 0, letterSpacing: "0.7em" },
         { opacity: 1, letterSpacing: "0.4em", duration: 0.8, ease: "power2.out" },
-        22.2
+        19.5
       );
-      // Hanna NY pane left at +22.6s ("Chicago" anchor) — NY first
+      // Hanna NY pane left at +20.0s (audio establishes NY first via prior "Manhattan" mention from §05 phase 2)
       tl.fromTo(".s5-hq-pane.left",
         { opacity: 0, x: -50 },
         { opacity: 1, x: 0, duration: 0.9, ease: "power3.out" },
-        22.7
+        20.0
       );
       tl.fromTo(".s5-vs",
         { opacity: 0 },
         { opacity: 1, duration: 0.5, ease: "power2.out" },
-        24.5
+        22.5
       );
-      // Dawes Chicago pane right at +25.1s ("Charles Dawes")
+      // Dawes Chicago pane right at +23.5s ("named Charles Dawes" audio anchor at 23.7)
       tl.fromTo(".s5-hq-pane.right",
         { opacity: 0, x: 50 },
         { opacity: 1, x: 0, duration: 0.9, ease: "power3.out" },
-        24.9
+        23.5
       );
 
-      // P1: Dual HQ EXITS before Lists (R2)
+      // P1: Dual HQ EXITS before Lists (R2). Audio "He began making lists" at 29.23
       tl.to("#s5-dualhq",
         { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
-        29.0
+        28.4
       );
-      tl.set("#s5-dualhq", { visibility: "hidden" }, 29.7);
+      tl.set("#s5-dualhq", { visibility: "hidden" }, 29.1);
 
-      // ─── PHASE 4: LISTS (29.5–46s) ───
-      tl.set("#s5-lists", { opacity: 1, visibility: "visible" }, 29.5);
+      // ─── PHASE 4: LISTS (29–42s) — anchored on "He began making lists" +29.23 ───
+      tl.set("#s5-lists", { opacity: 1, visibility: "visible" }, 29.0);
 
-      // Header at +29.9s ("began making lists")
+      // Header at +29.2s ("He began making lists")
       tl.fromTo(".s5-lists-header",
         { opacity: 0, scale: 0.94 },
         { opacity: 1, scale: 1.0, duration: 1.0, ease: "expo.out" },
-        29.7
+        29.2
       );
 
-      // Cols staggered
+      // Cols staggered to actual audio: bankers 29.23, railroads 30.95, corp heads 33.39
       tl.fromTo('.s5-list-col[data-col="1"]',
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        31.0
+        29.5
       );
       tl.fromTo('.s5-list-col[data-col="2"]',
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        33.0
+        31.0
       );
       tl.fromTo('.s5-list-col[data-col="3"]',
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        35.7
+        33.4
       );
 
-      // Novel-line "names that never appeared on a campaign ledger" at +43.7s
+      // Novel-line "names that never appeared on a campaign ledger" at +37.87
       tl.fromTo("#s5-novel-line",
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
-        43.0
+        37.9
       );
 
-      // P1: LISTS EXITS before Network thesis (R2)
+      // P1: LISTS EXITS before Network thesis (R2). Audio "building, in a Wall Street office at 57" at 42.27
       tl.to(["#s5-lists", "#s5-novel-line"],
         { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
-        45.7
+        41.6
       );
-      tl.set(["#s5-lists", "#s5-novel-line"], { visibility: "hidden" }, 46.4);
+      tl.set(["#s5-lists", "#s5-novel-line"], { visibility: "hidden" }, 42.3);
 
-      // ─── PHASE 5: NETWORK THESIS (46–54s) — anchored on Wall Street office +46.6 ───
-      tl.set("#s5-network", { opacity: 1, visibility: "visible" }, 46.0);
+      // ─── PHASE 5: NETWORK THESIS (42–52s) — anchored on Wall Street office +42.27 ───
+      tl.set("#s5-network", { opacity: 1, visibility: "visible" }, 42.0);
 
-      // Lines staggered — all 3 visible by +50s for a 4s hold
+      // Lines staggered — all 3 visible across "building... had wanted at 35... never been in position to construct"
       tl.fromTo('#s5-network .line:nth-child(1)',
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        46.5
+        42.5
       );
       tl.fromTo('#s5-network .line:nth-child(2)',
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        48.0
+        45.5
       );
       tl.fromTo('#s5-network .line:nth-child(3)',
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        50.0
+        48.5
       );
 
       // Network EXITS overlapping with time budget enter (cross-fade)
       tl.to("#s5-network",
-        { opacity: 0, duration: 0.7, ease: "power2.in", overwrite: "auto" },
-        53.5
+        { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
+        50.2
       );
-      tl.set("#s5-network", { visibility: "hidden" }, 54.3);
+      tl.set("#s5-network", { visibility: "hidden" }, 50.9);
 
-      // ─── PHASE 5B: TIME BUDGET (53.7–58.5s) — anchored on "four years" +54.2 ───
-      tl.set("#s5-time-budget", { opacity: 1, visibility: "visible" }, 53.5);
-      // Cross-fade overlap with network exit — both at 50% briefly is OK here
-      // because they're at different y positions (network y=250, budget y=660)
+      // ─── PHASE 5B: TIME BUDGET (50.5–53s) — anchored on "He had four years" +50.55 / "believed he had three" +51.95 ───
+      tl.set("#s5-time-budget", { opacity: 1, visibility: "visible" }, 50.4);
       tl.fromTo('.s5-time-cell.had',
         { opacity: 0, x: -40 },
         { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
-        53.7
+        50.5
       );
       tl.fromTo('.s5-time-cell.believed',
         { opacity: 0, x: 40 },
         { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" },
-        56.0
+        52.0
       );
 
       // Time budget EXITS overlapping with RNC stage enter (cross-fade)
       tl.to("#s5-time-budget",
         { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
-        58.5
+        53.0
       );
-      tl.set("#s5-time-budget", { visibility: "hidden" }, 59.1);
+      tl.set("#s5-time-budget", { visibility: "hidden" }, 53.7);
 
-      // ─── PHASE 6A: ST LOUIS RNC (58.7–77s) — anchored on "St Louis June 16, 1896" +59.1 ───
-      tl.set("#s5-rnc-stage", { opacity: 1, visibility: "visible" }, 58.7);
+      // ─── PHASE 6A: ST LOUIS RNC (53–73s) — anchored on "Convention opened in Saint Louis on June 16" +53.35 ───
+      tl.set("#s5-rnc-stage", { opacity: 1, visibility: "visible" }, 53.3);
 
-      // Date stamp lands on +59.1s ("Saint Louis on June 16, 1896")
+      // Date stamp lands on +53.35s ("Saint Louis on June 16, 1896")
       tl.fromTo("#s5-rnc-date",
         { opacity: 0, letterSpacing: "0.8em" },
         { opacity: 1, letterSpacing: "0.5em", duration: 0.9, ease: "power2.out" },
-        58.7
+        53.4
       );
-      // Headline lands earlier so audio-visual stays in sync — "first ballot" anchor +63.6
+      // Headline lands at +58.73 ("convention nominated William McKinley")
       tl.fromTo("#s5-rnc-headline",
         { opacity: 0, y: 24 },
         { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
-        62.0
+        58.7
       );
 
-      // Vote card lands at +69.7s ("661 to 84") — T2 xPercent
+      // Vote card lands at +64.99s ("vote was six hundred sixty-one to 84") — T2 xPercent
       tl.fromTo("#s5-vote-card",
         { opacity: 0, xPercent: -50, y: 30 },
         { opacity: 1, xPercent: -50, y: 0, duration: 1.0, ease: "expo.out" },
-        69.0
+        65.0
       );
 
-      // Irony 11 days vs 8 years lands +72.3s / +75.6s
+      // Irony 11 days vs 8 years lands +67.87 / +71.19
       tl.fromTo("#s5-irony",
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
-        71.8
+        67.9
       );
 
-      // P1: RNC stage EXITS before Chairman landing (R2)
+      // P1: RNC stage EXITS before Chairman landing (R2). Audio "RNC elected Hanna its Chairman" at 73.83
       tl.to("#s5-rnc-stage",
         { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" },
-        77.4
+        73.0
       );
-      tl.set("#s5-rnc-stage", { visibility: "hidden" }, 78.1);
+      tl.set("#s5-rnc-stage", { visibility: "hidden" }, 73.7);
 
-      // ─── PHASE 6B: CHAIRMAN landing (77.5–95s) ───
-      tl.set("#s5-chairman-stage", { opacity: 1, visibility: "visible" }, 77.7);
+      // ─── PHASE 6B: CHAIRMAN landing (73.5–92s) ───
+      tl.set("#s5-chairman-stage", { opacity: 1, visibility: "visible" }, 73.5);
 
       tl.fromTo("#s5-chairman-eyebrow",
         { opacity: 0, letterSpacing: "0.8em" },
         { opacity: 1, letterSpacing: "0.5em", duration: 0.9, ease: "power2.out" },
-        78.0
+        73.7
       );
-      // CHAIRMAN landing at +78.3s
+      // CHAIRMAN landing at +73.83s ("RNC elected Hanna its Chairman")
       tl.fromTo("#s5-chairman-title",
         { opacity: 0, scale: 0.85, letterSpacing: "0.05em" },
         { opacity: 1, scale: 1, letterSpacing: "-0.025em", duration: 1.1, ease: "expo.out" },
-        78.3
+        74.0
       );
+      // Meta sub-line lands with the controlled-every-dollar audio at +78.31
       tl.fromTo("#s5-chairman-meta",
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
-        80.0
+        78.3
       );
 
-      // Budget cells stagger across "4 months / every dollar / country to organize" (+89.1s, +83.2s, +90.7s)
-      tl.set("#s5-budget", { opacity: 1, visibility: "visible" }, 83.0);
+      // Budget cells anchored to actual audio:
+      //   "every dollar... June and November" = 78.31 → cell 2 ($$$)
+      //   "He had four months"               = 84.23 → cell 1 (4 MONTHS)
+      //   "country to organize"              = 85.71 → cell 3 (∞ COUNTRY)
+      tl.set("#s5-budget", { opacity: 1, visibility: "visible" }, 78.3);
       tl.fromTo('.s5-budget-cell[data-budget="2"]',
         { opacity: 0, y: 24 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        83.0
+        78.5
       );
       tl.fromTo('.s5-budget-cell[data-budget="1"]',
         { opacity: 0, y: 24 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        88.7
+        84.3
       );
       tl.fromTo('.s5-budget-cell[data-budget="3"]',
         { opacity: 0, y: 24 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        90.5
+        85.7
       );
 
       // Scene end exit (avoids leak into scene-06 — R2 cross-scene)
-      tl.to("#s5-chairman-stage", { opacity: 0, duration: 0.6, ease: "power2.in", overwrite: "auto" }, 94.5);
-      tl.set("#s5-chairman-stage", { visibility: "hidden", opacity: 0 }, 95.3);
+      // Hard scene-end exit: fade everything still visible BEFORE clip boundary at 92.45 (R2.6)
+      // Start fade earlier so canvas is mostly clear by clip end (avoids §06 entry stomping on a still-bright §05)
+      tl.to("#s5-chairman-stage", { opacity: 0, duration: 1.0, ease: "power2.in", overwrite: "auto" }, 90.5);
+      tl.set("#s5-chairman-stage", { visibility: "hidden", opacity: 0 }, 91.7);
 
       window.__timelines["scene-05-hanna-quits"] = tl;
     </script>
