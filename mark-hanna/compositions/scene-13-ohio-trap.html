@@ -1,0 +1,263 @@
+<template id="scene-13-ohio-trap-template">
+  <div data-composition-id="scene-13-ohio-trap" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s13-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s13-stage * { box-sizing:border-box; }
+
+      /* PHASE 1: SETUP (0-11s) */
+      #s13-setup { position:absolute; inset:0; opacity:0; z-index:10; }
+      #s13-setup .body { position:absolute; top:300px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:64px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s13-setup .body em { color:#C87533; font-style:italic; }
+      #s13-setup .meta { position:absolute; top:560px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; opacity:0; }
+
+      /* PHASE 2: COMPARE (11-32s) */
+      #s13-cmp { position:absolute; inset:0; opacity:0; z-index:11; }
+      #s13-cmp .head { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:56px; color:#E8DEC8; letter-spacing:-0.015em; opacity:0; }
+      #s13-cmp .head em { color:#C03A2C; }
+      #s13-cmp .grid { position:absolute; top:260px; left:50%; transform:translateX(-50%); width:1700px; }
+      #s13-cmp .row { display:grid; grid-template-columns:1fr 320px 1fr; gap:32px; padding:24px 0; border-top:1px solid #3A2E20; opacity:0; align-items:baseline; }
+      #s13-cmp .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s13-cmp .row .topic { text-align:center; font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#9A8E76; text-transform:uppercase; }
+      #s13-cmp .row .tr { text-align:right; font-family:"Source Serif 4",serif; font-size:30px; color:#E8DEC8; line-height:1.4; }
+      #s13-cmp .row .tr em { color:#C87533; font-style:italic; }
+      #s13-cmp .row .ha { text-align:left; font-family:"Source Serif 4",serif; font-size:30px; color:#E8DEC8; line-height:1.4; }
+      #s13-cmp .row .ha em { color:#C03A2C; font-style:italic; }
+      #s13-cmp .verdict { position:absolute; top:760px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; opacity:0; line-height:1.4; }
+
+      /* PHASE 3: WEIGHING (32-55s) */
+      #s13-weigh { position:absolute; inset:0; opacity:0; z-index:12; }
+      #s13-weigh .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s13-weigh .when { position:absolute; top:200px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:800; font-size:72px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.1; opacity:0; }
+      #s13-weigh .when em { color:#C87533; font-style:italic; }
+      #s13-weigh .stack { position:absolute; top:380px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s13-weigh .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s13-weigh .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s13-weigh .row .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s13-weigh .row .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.45; }
+      #s13-weigh .row .v em { color:#D4B679; font-style:italic; }
+
+      /* PHASE 4: TRAP (55-78s) */
+      #s13-trap { position:absolute; inset:0; opacity:0; z-index:13; }
+      #s13-trap .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s13-trap .head { position:absolute; top:210px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:56px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s13-trap .head em { color:#C87533; font-style:italic; }
+      #s13-trap .stack { position:absolute; top:430px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s13-trap .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s13-trap .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s13-trap .row .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s13-trap .row .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.45; }
+      #s13-trap .row .v em { color:#D4B679; font-style:italic; }
+      #s13-trap .row .v strong { font-family:"Playfair Display",serif; font-weight:700; color:#E8DEC8; }
+
+      /* PHASE 5: TR LETTER (78-118s) */
+      #s13-letter { position:absolute; inset:0; opacity:0; z-index:14; }
+      #s13-letter .head { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:48px; color:#D4B679; letter-spacing:-0.01em; opacity:0; line-height:1.2; }
+      #s13-letter .head em { color:#E8DEC8; }
+      #s13-letter .qbox { position:absolute; top:280px; left:50%; transform:translateX(-50%); width:1700px; padding:48px 64px; background:rgba(200,117,51,0.06); border-left:4px solid #C87533; opacity:0; }
+      #s13-letter .qbox .q { font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#E8DEC8; line-height:1.5; }
+      #s13-letter .qbox .q em { color:#D4B679; }
+      #s13-letter .qbox .q strong { font-family:"Playfair Display",serif; font-weight:700; font-style:italic; color:#C87533; }
+      #s13-letter .qbox .small { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-top:32px; }
+
+      /* PHASE 6: VOTE (118-138s) */
+      #s13-vote { position:absolute; inset:0; opacity:0; z-index:15; }
+      #s13-vote .setup { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height:1.4; opacity:0; }
+      #s13-vote .verb { position:absolute; top:380px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:160px; color:#C03A2C; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s13-vote .verb em { color:#E8DEC8; }
+      #s13-vote .reason { position:absolute; top:660px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#E8DEC8; opacity:0; }
+      #s13-vote .reason em { color:#C03A2C; }
+
+      /* PHASE 7: OUTPLAYED (138-end) */
+      #s13-end { position:absolute; inset:0; opacity:0; z-index:16; }
+      #s13-end .head { position:absolute; top:240px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:64px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s13-end .head em { color:#C03A2C; }
+      #s13-end .verdict { position:absolute; top:540px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:96px; color:#C87533; letter-spacing:-0.025em; line-height:1.0; opacity:0; }
+      #s13-end .verdict em { color:#E8DEC8; }
+
+      .s13-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.4) 88%, rgba(14,11,8,0.78) 100%); }
+      .s13-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px); mix-blend-mode:overlay; }
+    </style>
+
+    <div class="s13-stage">
+      <!-- PHASE 1: SETUP -->
+      <div id="s13-setup">
+        <div class="body">Hanna was <em>64</em>. Two and a half years left.</div>
+        <div class="meta">— a slow-motion confrontation with the man he could not stop.</div>
+      </div>
+
+      <!-- PHASE 2: COMPARE -->
+      <div id="s13-cmp">
+        <div class="head">They agreed on <em>almost nothing</em>.</div>
+        <div class="grid">
+          <div class="row" data-row="1">
+            <div class="tr">Wanted to <em>break them up</em>.</div>
+            <div class="topic">Trusts</div>
+            <div class="ha">Built his fortune <em>on them</em>.</div>
+          </div>
+          <div class="row" data-row="2">
+            <div class="tr">Wanted to <em>regulate them</em>.</div>
+            <div class="topic">Railroads</div>
+            <div class="ha">Sat on the boards of <em>three</em>.</div>
+          </div>
+          <div class="row" data-row="3">
+            <div class="tr">Wanted them <em>at the table</em>.</div>
+            <div class="topic">Labor</div>
+            <div class="ha">Spent forty years <em>keeping them off</em>.</div>
+          </div>
+        </div>
+        <div class="verdict">A party. A Cabinet. <em>Almost nothing else</em>.</div>
+      </div>
+
+      <!-- PHASE 3: WEIGHING -->
+      <div id="s13-weigh">
+        <div class="label">The Quiet Move</div>
+        <div class="when">Autumn <em>1903</em></div>
+        <div class="stack">
+          <div class="row" data-row="1"><div class="l">Public</div><div class="v">He <em>never said so publicly</em>.</div></div>
+          <div class="row" data-row="2"><div class="l">Organization</div><div class="v">He <em>never built one</em>.</div></div>
+          <div class="row" data-row="3"><div class="l">Confidants</div><div class="v">He told them he was <em>thinking about it</em>.</div></div>
+          <div class="row" data-row="4"><div class="l">Donors</div><div class="v">Let McKinley's funders know he was <em>available</em>.</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 4: TRAP -->
+      <div id="s13-trap">
+        <div class="label">The Trap</div>
+        <div class="head">Roosevelt and <em>Joseph Foraker</em> set one.</div>
+        <div class="stack">
+          <div class="row" data-row="1"><div class="l">Where</div><div class="v"><strong>Ohio Republican State Convention</strong> &mdash; Columbus.</div></div>
+          <div class="row" data-row="2"><div class="l">When</div><div class="v"><strong>October 1903</strong>.</div></div>
+          <div class="row" data-row="3"><div class="l">Resolution</div><div class="v">Endorsing Roosevelt's renomination &mdash; <em>a year early</em>.</div></div>
+          <div class="row" data-row="4"><div class="l">Purpose</div><div class="v">Force <em>Hanna's hand</em>.</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 5: TR LETTER -->
+      <div id="s13-letter">
+        <div class="head">Roosevelt's reply &mdash; <em>by letter</em>.</div>
+        <div class="qbox">
+          <div class="q">He was not requesting Hanna's support, he wrote. He was not requesting <em>anyone's</em> support. But he was confident that <strong>all loyal supporters of his administration</strong> would naturally vote for the resolution. <em>The decision, of course, was Hanna's.</em></div>
+          <div class="small">— Theodore Roosevelt to Mark Hanna · October 1903</div>
+        </div>
+      </div>
+
+      <!-- PHASE 6: VOTE -->
+      <div id="s13-vote">
+        <div class="setup">Voting against would have been <em>a public answer</em> to the question.</div>
+        <div class="verb">Yes.</div>
+        <div class="reason">He had <em>no choice</em>.</div>
+      </div>
+
+      <!-- PHASE 7: OUTPLAYED -->
+      <div id="s13-end">
+        <div class="head">Outplayed by a man he had <em>publicly called a madman</em>.</div>
+        <div class="verdict">Four months later &mdash; <em>dead</em>.</div>
+      </div>
+
+      <div class="s13-grain"></div>
+      <div class="s13-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 13 The Ohio Trap (145.216s)
+      // Word anchors verified vs assets/narration/transcript.json (offset = 1393.476)
+      //   +0.40   "Hanna was sixty-four years old"                    PHASE 1
+      //  +11.68   "Roosevelt and Hanna agreed on almost nothing"      PHASE 2
+      //  +15.53   "wanted to break up the trusts"
+      //  +20.10   "wanted to regulate the railroads"
+      //  +25.08   "wanted to give labor a seat"
+      //  +32.00   pivot to weighing                                   PHASE 3
+      //  +55.00   pivot to trap                                       PHASE 4
+      //  +62.82   "set a trap"
+      //  +78.00   pivot to letter                                     PHASE 5
+      // +103.00   "elegant political knives"
+      // +111.86   "supporters of his administration"
+      // +118.00   pivot to vote                                       PHASE 6
+      // +121.00   "Hanna voted yes"
+      // +122.78   "no choice"
+      // +138.00   pivot to outplayed                                  PHASE 7
+      // +143.48   "Four months later he was dead"
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1: SETUP (0-11s) ───
+      tl.fromTo("#s13-setup", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+      tl.fromTo("#s13-setup .body", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.6);
+      tl.fromTo("#s13-setup .meta", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 5.0);
+
+      tl.to("#s13-setup", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 10.5);
+      tl.set("#s13-setup", { visibility: "hidden" }, 11.0);
+
+      // ─── PHASE 2: COMPARE (11-32s) ───
+      tl.set("#s13-cmp", { opacity: 1, visibility: "visible" }, 11.0);
+      tl.fromTo("#s13-cmp .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 11.4);
+      tl.fromTo("#s13-cmp .row[data-row='1']", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 15.4);
+      tl.fromTo("#s13-cmp .row[data-row='2']", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 19.9);
+      tl.fromTo("#s13-cmp .row[data-row='3']", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 24.9);
+      tl.fromTo("#s13-cmp .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 29.5);
+
+      tl.to("#s13-cmp", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 31.5);
+      tl.set("#s13-cmp", { visibility: "hidden" }, 32.0);
+
+      // ─── PHASE 3: WEIGHING (32-55s) ───
+      tl.set("#s13-weigh", { opacity: 1, visibility: "visible" }, 32.0);
+      tl.fromTo("#s13-weigh .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 32.1);
+      tl.fromTo("#s13-weigh .when", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 32.4);
+      tl.fromTo("#s13-weigh .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 36.5);
+      tl.fromTo("#s13-weigh .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 40.0);
+      tl.fromTo("#s13-weigh .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 44.5);
+      tl.fromTo("#s13-weigh .row[data-row='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 49.0);
+
+      tl.to("#s13-weigh", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 54.5);
+      tl.set("#s13-weigh", { visibility: "hidden" }, 55.0);
+
+      // ─── PHASE 4: TRAP (55-78s) ───
+      tl.set("#s13-trap", { opacity: 1, visibility: "visible" }, 55.0);
+      tl.fromTo("#s13-trap .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 55.1);
+      tl.fromTo("#s13-trap .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 55.4);
+      tl.fromTo("#s13-trap .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 60.5);
+      tl.fromTo("#s13-trap .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 63.5);
+      tl.fromTo("#s13-trap .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 67.5);
+      tl.fromTo("#s13-trap .row[data-row='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 72.5);
+
+      tl.to("#s13-trap", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 77.5);
+      tl.set("#s13-trap", { visibility: "hidden" }, 78.0);
+
+      // ─── PHASE 5: TR LETTER (78-118s) ───
+      tl.set("#s13-letter", { opacity: 1, visibility: "visible" }, 78.0);
+      tl.fromTo("#s13-letter .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 78.3);
+      tl.fromTo("#s13-letter .qbox", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 80.5);
+
+      tl.to("#s13-letter", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 117.5);
+      tl.set("#s13-letter", { visibility: "hidden" }, 118.0);
+
+      // ─── PHASE 6: VOTE (118-138s) ───
+      tl.set("#s13-vote", { opacity: 1, visibility: "visible" }, 118.0);
+      tl.fromTo("#s13-vote .setup", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 118.4);
+      tl.fromTo("#s13-vote .verb", { opacity: 0, scale: 0.92, y: 12 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.0, ease: "expo.out" }, 120.7);
+      tl.fromTo("#s13-vote .reason", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 122.6);
+
+      tl.to("#s13-vote", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 137.5);
+      tl.set("#s13-vote", { visibility: "hidden" }, 138.0);
+
+      // ─── PHASE 7: OUTPLAYED (138-end) ───
+      tl.set("#s13-end", { opacity: 1, visibility: "visible" }, 138.0);
+      tl.fromTo("#s13-end .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 138.4);
+      tl.fromTo("#s13-end .verdict", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.2, ease: "expo.out" }, 142.8);
+
+      // FINAL EXIT before 145.216
+      tl.to("#s13-end", { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: "auto" }, 144.7);
+      tl.set("#s13-end", { visibility: "hidden", opacity: 0 }, 145.1);
+
+      window.__timelines["scene-13-ohio-trap"] = tl;
+    </script>
+  </div>
+</template>

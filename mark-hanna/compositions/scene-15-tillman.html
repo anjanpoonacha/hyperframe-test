@@ -1,0 +1,208 @@
+<template id="scene-15-tillman-template">
+  <div data-composition-id="scene-15-tillman" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s15-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s15-stage * { box-sizing:border-box; }
+
+      /* PHASE 1: SIGNED (0-12s) */
+      #s15-sign { position:absolute; inset:0; opacity:0; z-index:10; }
+      #s15-sign .label { position:absolute; top:160px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s15-sign .when { position:absolute; top:240px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:128px; color:#E8DEC8; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s15-sign .when em { color:#C87533; font-style:italic; }
+      #s15-sign .what { position:absolute; top:520px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:64px; color:#C87533; letter-spacing:-0.015em; line-height:1.1; opacity:0; }
+      #s15-sign .what em { color:#E8DEC8; font-style:italic; }
+      #s15-sign .who { position:absolute; top:680px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; opacity:0; }
+
+      /* PHASE 2: TILLMAN (12-26s) */
+      #s15-til { position:absolute; inset:0; opacity:0; z-index:11; }
+      #s15-til .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s15-til .name { position:absolute; top:210px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:800; font-size:84px; color:#E8DEC8; letter-spacing:-0.025em; line-height:1.05; opacity:0; }
+      #s15-til .stack { position:absolute; top:380px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s15-til .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s15-til .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s15-til .row .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s15-til .row .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.45; }
+      #s15-til .row .v em { color:#D4B679; font-style:italic; }
+      #s15-til .row .v strong { font-family:"Playfair Display",serif; font-weight:700; color:#C03A2C; }
+
+      /* PHASE 3: WHAT IT BANNED (26-46s) */
+      #s15-ban { position:absolute; inset:0; opacity:0; z-index:12; }
+      #s15-ban .head { position:absolute; top:160px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:56px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s15-ban .head em { color:#C03A2C; }
+      #s15-ban .ledger { position:absolute; top:340px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s15-ban .firm { padding:14px 0; border-top:1px solid #3A2E20; display:grid; grid-template-columns:1fr 280px; gap:32px; align-items:baseline; opacity:0; }
+      #s15-ban .firm:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s15-ban .firm .name { font-family:"Source Serif 4",serif; font-size:32px; color:#E8DEC8; }
+      #s15-ban .firm .name em { color:#D4B679; font-style:italic; }
+      #s15-ban .firm .verdict { text-align:right; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#C03A2C; text-transform:uppercase; }
+      #s15-ban .summary { position:absolute; top:760px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:42px; color:#C03A2C; letter-spacing:-0.01em; opacity:0; }
+      #s15-ban .summary em { color:#E8DEC8; }
+
+      /* PHASE 4: SIGNING STATEMENT (46-58s) */
+      #s15-sig { position:absolute; inset:0; opacity:0; z-index:13; }
+      #s15-sig .head { position:absolute; top:240px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:56px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s15-sig .head em { color:#D4B679; font-style:italic; }
+      #s15-sig .verdict { position:absolute; top:540px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:96px; color:#C87533; letter-spacing:-0.025em; line-height:1.0; opacity:0; }
+      #s15-sig .verdict em { color:#E8DEC8; }
+
+      /* PHASE 5: ENDURANCE (58-end) */
+      #s15-end { position:absolute; inset:0; opacity:0; z-index:14; }
+      #s15-end .head { position:absolute; top:140px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#E8DEC8; letter-spacing:-0.01em; line-height:1.2; opacity:0; }
+      #s15-end .head em { color:#D4B679; font-style:italic; }
+      #s15-end .stats { position:absolute; top:340px; left:50%; transform:translateX(-50%); display:flex; gap:48px; opacity:0; }
+      #s15-end .stat { width:520px; padding:32px 40px; border:1px solid #3A2E20; text-align:center; }
+      #s15-end .stat.win { border-color:#C87533; background:rgba(200,117,51,0.05); }
+      #s15-end .stat .lbl { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#C87533; text-transform:uppercase; margin-bottom:14px; }
+      #s15-end .stat .v { font-family:"Playfair Display",serif; font-weight:800; font-size:84px; color:#E8DEC8; line-height:1.0; letter-spacing:-0.025em; }
+      #s15-end .stat .desc { font-family:"Source Serif 4",serif; font-style:italic; font-size:28px; color:#D4B679; margin-top:14px; line-height:1.35; }
+      #s15-end .verdict { position:absolute; top:740px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#E8DEC8; opacity:0; }
+      #s15-end .verdict em { color:#C87533; }
+
+      .s15-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.4) 88%, rgba(14,11,8,0.78) 100%); }
+      .s15-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px); mix-blend-mode:overlay; }
+    </style>
+
+    <div class="s15-stage">
+      <!-- PHASE 1: SIGNED -->
+      <div id="s15-sign">
+        <div class="label">The Wall Goes Up</div>
+        <div class="when">January 26, <em>1907</em></div>
+        <div class="what">Theodore Roosevelt signs <em>the Tillman Act</em>.</div>
+        <div class="who">— eleven years after Hanna invented the system it outlawed.</div>
+      </div>
+
+      <!-- PHASE 2: TILLMAN -->
+      <div id="s15-til">
+        <div class="label">The Bill's Author</div>
+        <div class="name">Senator Benjamin Tillman.</div>
+        <div class="stack">
+          <div class="row" data-row="1"><div class="l">From</div><div class="v">South Carolina &mdash; <em>former governor</em>.</div></div>
+          <div class="row" data-row="2"><div class="l">Politics</div><div class="v">An outspoken <strong>white-supremacist demagogue</strong>.</div></div>
+          <div class="row" data-row="3"><div class="l">But Also</div><div class="v">One of the few senators willing to <em>publicly attack Wall Street</em>.</div></div>
+          <div class="row" data-row="4"><div class="l">On This</div><div class="v">A Roosevelt ally &mdash; <em>on this bill alone</em>.</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 3: WHAT IT BANNED -->
+      <div id="s15-ban">
+        <div class="head">The exact mechanism Hanna had pioneered &mdash; <em>now a federal felony</em>.</div>
+        <div class="ledger">
+          <div class="firm" data-firm="1"><div class="name"><em>Standard Oil</em></div><div class="verdict">Could Not Pay</div></div>
+          <div class="firm" data-firm="2"><div class="name"><em>Carnegie Steel</em></div><div class="verdict">Could Not Pay</div></div>
+          <div class="firm" data-firm="3"><div class="name"><em>The Railroads</em></div><div class="verdict">Could Not Pay</div></div>
+          <div class="firm" data-firm="4"><div class="name"><em>The Insurance Companies</em></div><div class="verdict">Could Not Pay</div></div>
+        </div>
+        <div class="summary">The system that elected McKinley twice &mdash; <em>now a crime</em>.</div>
+      </div>
+
+      <!-- PHASE 4: SIGNING STATEMENT -->
+      <div id="s15-sig">
+        <div class="head">Roosevelt did <em>not name Hanna</em> in the signing statement.</div>
+        <div class="verdict">He didn't <em>need to.</em></div>
+      </div>
+
+      <!-- PHASE 5: ENDURANCE -->
+      <div id="s15-end">
+        <div class="head">The most consequential <em>campaign-finance reform</em> in American history.</div>
+        <div class="stats">
+          <div class="stat win">
+            <div class="lbl">Held the Line Until</div>
+            <div class="v">1971</div>
+            <div class="desc">Federal Election Campaign Act</div>
+          </div>
+          <div class="stat win">
+            <div class="lbl">On the Books</div>
+            <div class="v">103 years</div>
+            <div class="desc">in some form</div>
+          </div>
+        </div>
+        <div class="verdict">— Roosevelt built a <em>wall</em> around Hanna's system.</div>
+      </div>
+
+      <div class="s15-grain"></div>
+      <div class="s15-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 15 The Tillman Act (74.667s)
+      // Word anchors verified vs assets/narration/transcript.json (offset = 1639.709)
+      //   +0.40   "On January twenty-sixth, nineteen oh seven"        PHASE 1
+      //   +4.57   "Tillman Act"
+      //  +12.00   pivot to Tillman                                   PHASE 2
+      //  +12.50   "The bill had been introduced by Senator Benjamin Tillman"
+      //  +26.00   pivot to what it banned                            PHASE 3
+      //  +27.50   "The exact mechanism Hanna had pioneered"
+      //  +38.79   "federal felony eleven years after he invented it"
+      //  +50.66   "system that had elected"
+      //  +46.00   pivot to signing statement                         PHASE 4
+      //  +54.53   "did not name Hanna"
+      //  +58.00   pivot to endurance                                 PHASE 5
+      //  +63.15   "most consequential"
+      //  +71.00   "one hundred and three years"
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1: SIGNED (0-12s) ───
+      tl.fromTo("#s15-sign", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+      tl.fromTo("#s15-sign .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.5);
+      tl.fromTo("#s15-sign .when", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.8);
+      tl.fromTo("#s15-sign .what", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 4.5);
+      tl.fromTo("#s15-sign .who", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 8.5);
+
+      tl.to("#s15-sign", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 11.5);
+      tl.set("#s15-sign", { visibility: "hidden" }, 12.0);
+
+      // ─── PHASE 2: TILLMAN (12-26s) ───
+      tl.set("#s15-til", { opacity: 1, visibility: "visible" }, 12.0);
+      tl.fromTo("#s15-til .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 12.1);
+      tl.fromTo("#s15-til .name", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 12.6);
+      tl.fromTo("#s15-til .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 15.0);
+      tl.fromTo("#s15-til .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 17.5);
+      tl.fromTo("#s15-til .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 20.0);
+      tl.fromTo("#s15-til .row[data-row='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 22.5);
+
+      tl.to("#s15-til", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 25.5);
+      tl.set("#s15-til", { visibility: "hidden" }, 26.0);
+
+      // ─── PHASE 3: WHAT IT BANNED (26-46s) ───
+      tl.set("#s15-ban", { opacity: 1, visibility: "visible" }, 26.0);
+      tl.fromTo("#s15-ban .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 26.4);
+      tl.fromTo("#s15-ban .firm[data-firm='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 30.5);
+      tl.fromTo("#s15-ban .firm[data-firm='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 32.0);
+      tl.fromTo("#s15-ban .firm[data-firm='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 33.5);
+      tl.fromTo("#s15-ban .firm[data-firm='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 35.0);
+      tl.fromTo("#s15-ban .summary", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 39.5);
+
+      tl.to("#s15-ban", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 45.5);
+      tl.set("#s15-ban", { visibility: "hidden" }, 46.0);
+
+      // ─── PHASE 4: SIGNING STATEMENT (46-58s) ───
+      tl.set("#s15-sig", { opacity: 1, visibility: "visible" }, 46.0);
+      tl.fromTo("#s15-sig .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 46.5);
+      tl.fromTo("#s15-sig .verdict", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.0, ease: "expo.out" }, 50.5);
+
+      tl.to("#s15-sig", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 57.5);
+      tl.set("#s15-sig", { visibility: "hidden" }, 58.0);
+
+      // ─── PHASE 5: ENDURANCE (58-end) ───
+      tl.set("#s15-end", { opacity: 1, visibility: "visible" }, 58.0);
+      tl.fromTo("#s15-end .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 58.4);
+      tl.fromTo("#s15-end .stats", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 62.5);
+      tl.fromTo("#s15-end .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 70.5);
+
+      // FINAL EXIT before 74.667
+      tl.to("#s15-end", { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: "auto" }, 74.0);
+      tl.set("#s15-end", { visibility: "hidden", opacity: 0 }, 74.5);
+
+      window.__timelines["scene-15-tillman"] = tl;
+    </script>
+  </div>
+</template>

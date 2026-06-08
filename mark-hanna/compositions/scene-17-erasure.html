@@ -1,0 +1,342 @@
+<template id="scene-17-erasure-template">
+  <div data-composition-id="scene-17-erasure" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s17-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s17-stage * { box-sizing:border-box; }
+
+      /* PHASE 1: HE DIED (0-19s) */
+      #s17-died { position:absolute; inset:0; opacity:0; z-index:10; }
+      #s17-died .lead { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height:1.4; opacity:0; }
+      #s17-died .lead em { color:#E8DEC8; }
+      #s17-died .image { position:absolute; top:340px; left:50%; transform:translateX(-50%); width:1500px; padding:36px 48px; background:rgba(232,222,200,0.04); border:1px solid #3A2E20; opacity:0; }
+      #s17-died .image .l { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#C87533; text-transform:uppercase; margin-bottom:14px; text-align:center; }
+      #s17-died .image .desc { font-family:"Source Serif 4",serif; font-size:30px; color:#E8DEC8; line-height:1.45; text-align:center; }
+      #s17-died .image .desc em { color:#D4B679; font-style:italic; }
+      #s17-died .verdict { position:absolute; top:680px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:56px; color:#C03A2C; letter-spacing:-0.015em; opacity:0; }
+
+      /* PHASE 2: THREE THINGS (19-30s) */
+      #s17-three { position:absolute; inset:0; opacity:0; z-index:11; }
+      #s17-three .head { position:absolute; top:340px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:128px; color:#E8DEC8; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s17-three .head em { color:#C87533; font-style:italic; }
+      #s17-three .meta { position:absolute; top:560px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; opacity:0; }
+
+      /* PHASE 3: FIRST — TILLMAN (30-49s) */
+      #s17-first { position:absolute; inset:0; opacity:0; z-index:12; }
+      #s17-first .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s17-first .head { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:56px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s17-first .head em { color:#C03A2C; font-style:italic; }
+      #s17-first .body { position:absolute; top:430px; left:50%; transform:translateX(-50%); width:1600px; text-align:center; font-family:"Source Serif 4",serif; font-size:32px; color:#E8DEC8; line-height:1.5; opacity:0; }
+      #s17-first .body em { color:#D4B679; font-style:italic; }
+      #s17-first .verdict { position:absolute; top:680px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:48px; color:#C03A2C; letter-spacing:-0.01em; opacity:0; }
+
+      /* PHASE 4: SECOND — TEXTBOOKS (49-66s) */
+      #s17-second { position:absolute; inset:0; opacity:0; z-index:13; }
+      #s17-second .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s17-second .head { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:56px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s17-second .head em { color:#C87533; font-style:italic; }
+      #s17-second .stack { position:absolute; top:420px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s17-second .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s17-second .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s17-second .row .l { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s17-second .row .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.45; }
+      #s17-second .row .v em { color:#D4B679; font-style:italic; }
+
+      /* PHASE 5: NEITHER (66-92s) */
+      #s17-neither { position:absolute; inset:0; opacity:0; z-index:14; }
+      #s17-neither .head { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:64px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s17-neither .head em { color:#C87533; }
+      #s17-neither .pair { position:absolute; top:340px; left:50%; transform:translateX(-50%); width:1700px; display:flex; gap:48px; }
+      #s17-neither .col { width:826px; padding:36px 44px; opacity:0; }
+      #s17-neither .col.villain { border:1px solid #C03A2C; background:rgba(192,58,44,0.05); }
+      #s17-neither .col.hero { border:1px solid #C87533; background:rgba(200,117,51,0.05); }
+      #s17-neither .col .verdict { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#C03A2C; text-transform:uppercase; margin-bottom:18px; }
+      #s17-neither .col.hero .verdict { color:#C87533; }
+      #s17-neither .col .ans { font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:42px; color:#E8DEC8; line-height:1.15; margin-bottom:22px; letter-spacing:-0.01em; }
+      #s17-neither .col .l { font-family:"Source Serif 4",serif; font-size:26px; color:#D4B679; line-height:1.4; }
+      #s17-neither .col .l em { color:#E8DEC8; font-style:italic; }
+      #s17-neither .verdict-line { position:absolute; top:780px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:84px; color:#9A8E76; letter-spacing:-0.025em; opacity:0; }
+      #s17-neither .verdict-line em { color:#E8DEC8; }
+
+      /* PHASE 6: THIRD — WIKI NUMBERS (92-130s) */
+      #s17-third { position:absolute; inset:0; opacity:0; z-index:15; }
+      #s17-third .label { position:absolute; top:130px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s17-third .head { position:absolute; top:190px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#E8DEC8; letter-spacing:-0.01em; line-height:1.2; opacity:0; }
+      #s17-third .head em { color:#D4B679; font-style:italic; }
+      #s17-third .grid { position:absolute; top:340px; left:50%; transform:translateX(-50%); width:1700px; }
+      #s17-third .row { padding:18px 0; border-top:1px solid #3A2E20; display:grid; grid-template-columns:1fr 360px; gap:32px; align-items:baseline; opacity:0; }
+      #s17-third .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s17-third .row.h { border-top:1px solid #C03A2C; background:rgba(192,58,44,0.05); padding:18px 32px; }
+      #s17-third .row .name { font-family:"Source Serif 4",serif; font-size:32px; color:#E8DEC8; line-height:1.2; }
+      #s17-third .row .name em { color:#D4B679; font-style:italic; }
+      #s17-third .row.h .name { font-family:"Playfair Display",serif; font-weight:700; font-style:italic; color:#C03A2C; }
+      #s17-third .row .views { text-align:right; font-family:"Playfair Display",serif; font-weight:700; font-size:36px; color:#E8DEC8; letter-spacing:-0.015em; }
+      #s17-third .row.h .views { color:#C03A2C; font-size:42px; }
+      #s17-third .row .views .lbl { display:block; font-family:"Roboto Mono",monospace; font-weight:400; font-size:18px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-top:4px; }
+      #s17-third .ratio { position:absolute; top:780px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:72px; color:#C87533; letter-spacing:-0.025em; opacity:0; }
+      #s17-third .ratio em { color:#E8DEC8; }
+
+      /* PHASE 7: STILL ACTIVE (130-155s) */
+      #s17-active { position:absolute; inset:0; opacity:0; z-index:16; }
+      #s17-active .body { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height:1.5; opacity:0; }
+      #s17-active .body em { color:#E8DEC8; }
+      #s17-active .verdict { position:absolute; top:480px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:108px; color:#C87533; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s17-active .verdict em { color:#E8DEC8; }
+      #s17-active .reason { position:absolute; top:740px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; line-height:1.45; opacity:0; }
+      #s17-active .reason em { color:#E8DEC8; }
+
+      /* PHASE 8: BOOKEND CARTOON (155-180s) */
+      #s17-bookend { position:absolute; inset:0; opacity:0; z-index:17; }
+      #s17-bookend .label { position:absolute; top:160px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s17-bookend .when { position:absolute; top:230px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:56px; color:#D4B679; letter-spacing:-0.015em; opacity:0; }
+      #s17-bookend .desc { position:absolute; top:340px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Source Serif 4",serif; font-size:36px; color:#E8DEC8; line-height:1.5; opacity:0; }
+      #s17-bookend .desc em { color:#D4B679; font-style:italic; }
+      #s17-bookend .joke { position:absolute; top:560px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:128px; color:#C03A2C; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s17-bookend .joke em { color:#E8DEC8; }
+      #s17-bookend .ledger { position:absolute; top:740px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s17-bookend .item { padding:10px 0; border-top:1px solid #3A2E20; font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; opacity:0; line-height:1.3; }
+      #s17-bookend .item:last-child { border-bottom:1px solid #3A2E20; }
+      #s17-bookend .item em { color:#D4B679; font-style:italic; }
+
+      /* PHASE 9: FINAL CARD (180-end) */
+      #s17-final { position:absolute; inset:0; opacity:0; z-index:18; }
+      #s17-final .a { position:absolute; top:300px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:64px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s17-final .a em { color:#C87533; font-style:italic; }
+      #s17-final .b { position:absolute; top:430px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:128px; color:#C87533; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s17-final .b em { color:#E8DEC8; }
+      #s17-final .signoff { position:absolute; top:760px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; opacity:0; }
+
+      .s17-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.4) 88%, rgba(14,11,8,0.78) 100%); }
+      .s17-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px); mix-blend-mode:overlay; }
+    </style>
+
+    <div class="s17-stage">
+      <!-- PHASE 1: HE DIED -->
+      <div id="s17-died">
+        <div class="lead">Mark Hanna died in <em>1904</em>.</div>
+        <div class="image">
+          <div class="l">The Davenport Image · Reprinted Until ~1920</div>
+          <div class="desc">Hanna in the <em>dollar-sign suit</em>. The cigar the size of a forearm. Hearst, Bryan reprints, the 1898 collected edition.</div>
+        </div>
+        <div class="verdict">By the early 1920s — gone.</div>
+      </div>
+
+      <!-- PHASE 2: THREE THINGS -->
+      <div id="s17-three">
+        <div class="head">Three things <em>erased</em> him.</div>
+        <div class="meta">— slowly. Without anyone noticing.</div>
+      </div>
+
+      <!-- PHASE 3: FIRST — TILLMAN -->
+      <div id="s17-first">
+        <div class="label">The First — January 1907</div>
+        <div class="head">Roosevelt's <em>Tillman Act</em>.</div>
+        <div class="body">After January 1907, Hanna's methods were a federal crime. No Republican Party leader could celebrate <em>the man who invented the practice the party's own president had just outlawed</em>.</div>
+        <div class="verdict">The party that owed him everything stopped mentioning him.</div>
+      </div>
+
+      <!-- PHASE 4: SECOND — TEXTBOOKS -->
+      <div id="s17-second">
+        <div class="label">The Second — Interwar Decades</div>
+        <div class="head">The <em>textbook revisions</em>.</div>
+        <div class="stack">
+          <div class="row" data-row="1"><div class="l">Tightened</div><div class="v">The Gilded Age chapter.</div></div>
+          <div class="row" data-row="2"><div class="l">Expanded</div><div class="v">The Progressive Era chapter.</div></div>
+          <div class="row" data-row="3"><div class="l">The Story</div><div class="v">Roosevelt vs. the trusts. Wilson vs. the banks. The <em>muckrakers</em> vs. the bosses.</div></div>
+          <div class="row" data-row="4"><div class="l">By 1930s</div><div class="v">Hanna had been <em>dropped</em>.</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 5: NEITHER -->
+      <div id="s17-neither">
+        <div class="head">Hanna <em>did not fit</em>.</div>
+        <div class="pair">
+          <div class="col villain" data-col="1">
+            <div class="verdict">Was He A Villain?</div>
+            <div class="ans">No.</div>
+            <div class="l">McKinley's family liked him. The press corps respected him. His Senate colleagues <em>mourned him</em>. He co-founded the National Civic Federation.</div>
+          </div>
+          <div class="col hero" data-col="2">
+            <div class="verdict">Was He A Hero?</div>
+            <div class="ans">No.</div>
+            <div class="l">He was <em>the mechanism</em>.</div>
+          </div>
+        </div>
+        <div class="verdict-line">— and a generation learned <em>1896</em> without his name.</div>
+      </div>
+
+      <!-- PHASE 6: THIRD — WIKI -->
+      <div id="s17-third">
+        <div class="label">The Third — You Can Measure It in 2026</div>
+        <div class="head">Wikipedia · <em>Average Monthly Pageviews</em></div>
+        <div class="grid">
+          <div class="row h" data-row="1"><div class="name">Mark Hanna</div><div class="views">~6,000<span class="lbl">per month</span></div></div>
+          <div class="row" data-row="2"><div class="name">William McKinley</div><div class="views">~145,000<span class="lbl">per month</span></div></div>
+          <div class="row" data-row="3"><div class="name">John D. <em>Rockefeller</em></div><div class="views">~151,000<span class="lbl">per month</span></div></div>
+          <div class="row" data-row="4"><div class="name">Theodore <em>Roosevelt</em></div><div class="views">~324,000<span class="lbl">per month</span></div></div>
+        </div>
+        <div class="ratio">1/50 of Roosevelt. <em>1/25 of Rockefeller.</em></div>
+      </div>
+
+      <!-- PHASE 7: STILL ACTIVE -->
+      <div id="s17-active">
+        <div class="body">Americans search for what Hanna <em>built</em>. They do not search for <em>him</em>.</div>
+        <div class="verdict">The erasure is <em>still active.</em></div>
+        <div class="reason">For 120 years, the people who knew his name <em>had reasons not to say it</em>.</div>
+      </div>
+
+      <!-- PHASE 8: BOOKEND -->
+      <div id="s17-bookend">
+        <div class="label">— Return to the Cartoon —</div>
+        <div class="when">In 1896, the cartoon was <em>a joke</em>.</div>
+        <div class="desc">Hanna in a suit covered in dollar signs. A cigar the size of a forearm. <em>Every week, every Hearst paper, the same man.</em></div>
+        <div class="joke">The joke was <em>right.</em></div>
+        <div class="ledger">
+          <div class="item" data-item="1">He <em>raised</em> the money.</div>
+          <div class="item" data-item="2">He <em>elected</em> the president.</div>
+          <div class="item" data-item="3">He <em>invented</em> modern campaign finance.</div>
+        </div>
+      </div>
+
+      <!-- PHASE 9: FINAL -->
+      <div id="s17-final">
+        <div class="a">The cartoon stopped running.<br>The system <em>did not.</em></div>
+        <div class="b">This is the man <em>nobody remembers.</em></div>
+        <div class="signoff">— end of episode</div>
+      </div>
+
+      <div class="s17-grain"></div>
+      <div class="s17-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 17 Why You've Never Heard His Name (188.501s)
+      // Word anchors verified vs assets/narration/transcript.json (offset = 1786.085)
+      //   +0.40   "Mark Hanna died in nineteen oh four"               PHASE 1
+      //  +18.44   "By the early 1920s it was gone"
+      //  +20.00   pivot to three things                              PHASE 2
+      //  +20.51   "Three things erased him"
+      //  +30.00   pivot to FIRST — Tillman                           PHASE 3
+      //  +25.97   "first was Roosevelt's Tillman Act"
+      //  +49.00   pivot to SECOND — textbooks                        PHASE 4
+      //  +49.00   "second was the textbook revisions"
+      //  +63.23   "Roosevelt versus the trusts"
+      //  +66.00   pivot to neither                                   PHASE 5
+      //  +68.27   "Hanna did not fit"
+      //  +79.17   "Civic Federation"
+      //  +92.00   pivot to THIRD — Wiki                              PHASE 6
+      // +106.08   "third is the one"
+      // +130.00   pivot to still active                              PHASE 7
+      // +155.00   pivot to bookend                                   PHASE 8
+      // +160.58   "cartoon was a joke"
+      // +172.44   "joke was right"
+      // +178.85   "system the cartoon"
+      // +183.00   pivot to final                                     PHASE 9
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1: HE DIED (0-19s) ───
+      tl.fromTo("#s17-died", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+      tl.fromTo("#s17-died .lead", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.6);
+      tl.fromTo("#s17-died .image", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 4.5);
+      tl.fromTo("#s17-died .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 16.0);
+
+      tl.to("#s17-died", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 19.0);
+      tl.set("#s17-died", { visibility: "hidden" }, 19.5);
+
+      // ─── PHASE 2: THREE THINGS (19.5-30s) ───
+      tl.set("#s17-three", { opacity: 1, visibility: "visible" }, 19.5);
+      tl.fromTo("#s17-three .head", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.1, ease: "expo.out" }, 20.3);
+      tl.fromTo("#s17-three .meta", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 24.0);
+
+      tl.to("#s17-three", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 29.0);
+      tl.set("#s17-three", { visibility: "hidden" }, 29.5);
+
+      // ─── PHASE 3: FIRST — TILLMAN (29.5-49s) ───
+      tl.set("#s17-first", { opacity: 1, visibility: "visible" }, 29.5);
+      tl.fromTo("#s17-first .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 29.7);
+      tl.fromTo("#s17-first .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 30.0);
+      tl.fromTo("#s17-first .body", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 33.0);
+      tl.fromTo("#s17-first .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 43.5);
+
+      tl.to("#s17-first", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 48.0);
+      tl.set("#s17-first", { visibility: "hidden" }, 48.5);
+
+      // ─── PHASE 4: SECOND — TEXTBOOKS (48.5-66s) ───
+      tl.set("#s17-second", { opacity: 1, visibility: "visible" }, 48.5);
+      tl.fromTo("#s17-second .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 48.7);
+      tl.fromTo("#s17-second .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 49.0);
+      tl.fromTo("#s17-second .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 53.0);
+      tl.fromTo("#s17-second .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 55.5);
+      tl.fromTo("#s17-second .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 58.0);
+      tl.fromTo("#s17-second .row[data-row='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 62.0);
+
+      tl.to("#s17-second", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 65.5);
+      tl.set("#s17-second", { visibility: "hidden" }, 66.0);
+
+      // ─── PHASE 5: NEITHER (66-92s) ───
+      tl.set("#s17-neither", { opacity: 1, visibility: "visible" }, 66.0);
+      tl.fromTo("#s17-neither .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 66.4);
+      tl.fromTo("#s17-neither .col[data-col='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 70.0);
+      tl.fromTo("#s17-neither .col[data-col='2']", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 79.0);
+      tl.fromTo("#s17-neither .verdict-line", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1.0, ease: "expo.out" }, 86.0);
+
+      tl.to("#s17-neither", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 91.5);
+      tl.set("#s17-neither", { visibility: "hidden" }, 92.0);
+
+      // ─── PHASE 6: THIRD — WIKI (92-130s) ───
+      tl.set("#s17-third", { opacity: 1, visibility: "visible" }, 92.0);
+      tl.fromTo("#s17-third .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 92.2);
+      tl.fromTo("#s17-third .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 92.5);
+      tl.fromTo("#s17-third .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 99.5);
+      tl.fromTo("#s17-third .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 106.5);
+      tl.fromTo("#s17-third .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 113.5);
+      tl.fromTo("#s17-third .row[data-row='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 117.5);
+      tl.fromTo("#s17-third .ratio", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 122.5);
+
+      tl.to("#s17-third", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 129.5);
+      tl.set("#s17-third", { visibility: "hidden" }, 130.0);
+
+      // ─── PHASE 7: STILL ACTIVE (130-155s) ───
+      tl.set("#s17-active", { opacity: 1, visibility: "visible" }, 130.0);
+      tl.fromTo("#s17-active .body", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 130.4);
+      tl.fromTo("#s17-active .verdict", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.2, ease: "expo.out" }, 138.5);
+      tl.fromTo("#s17-active .reason", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 145.0);
+
+      tl.to("#s17-active", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 154.5);
+      tl.set("#s17-active", { visibility: "hidden" }, 155.0);
+
+      // ─── PHASE 8: BOOKEND (155-180s) ───
+      tl.set("#s17-bookend", { opacity: 1, visibility: "visible" }, 155.0);
+      tl.fromTo("#s17-bookend .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 155.2);
+      tl.fromTo("#s17-bookend .when", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 155.5);
+      tl.fromTo("#s17-bookend .desc", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 158.5);
+      tl.fromTo("#s17-bookend .joke", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.2, ease: "expo.out" }, 171.5);
+      tl.fromTo("#s17-bookend .item[data-item='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 173.0);
+      tl.fromTo("#s17-bookend .item[data-item='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 174.5);
+      tl.fromTo("#s17-bookend .item[data-item='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 176.0);
+
+      tl.to("#s17-bookend", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 179.5);
+      tl.set("#s17-bookend", { visibility: "hidden" }, 180.0);
+
+      // ─── PHASE 9: FINAL (180-end) ───
+      tl.set("#s17-final", { opacity: 1, visibility: "visible" }, 180.0);
+      tl.fromTo("#s17-final .a", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 180.4);
+      tl.fromTo("#s17-final .b", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.4, ease: "expo.out" }, 183.5);
+      tl.fromTo("#s17-final .signoff", { opacity: 0 }, { opacity: 0.7, duration: 0.6 }, 186.5);
+
+      // FINAL EXIT before 188.501
+      tl.to("#s17-final", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 187.7);
+      tl.set("#s17-final", { visibility: "hidden", opacity: 0 }, 188.4);
+
+      window.__timelines["scene-17-erasure"] = tl;
+    </script>
+  </div>
+</template>

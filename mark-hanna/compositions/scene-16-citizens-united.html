@@ -1,0 +1,211 @@
+<template id="scene-16-citizens-united-template">
+  <div data-composition-id="scene-16-citizens-united" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s16-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s16-stage * { box-sizing:border-box; }
+
+      /* PHASE 1: DECISION (0-13s) */
+      #s16-dec { position:absolute; inset:0; opacity:0; z-index:10; }
+      #s16-dec .label { position:absolute; top:160px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C03A2C; text-transform:uppercase; opacity:0; }
+      #s16-dec .when { position:absolute; top:220px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:128px; color:#E8DEC8; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s16-dec .when em { color:#C03A2C; font-style:italic; }
+      #s16-dec .case { position:absolute; top:460px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:64px; color:#C03A2C; letter-spacing:-0.015em; line-height:1.1; opacity:0; }
+      #s16-dec .case em { color:#E8DEC8; }
+      #s16-dec .vote { position:absolute; top:620px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:32px; letter-spacing:0.4em; color:#D4B679; text-transform:uppercase; opacity:0; }
+      #s16-dec .vote strong { font-family:"Playfair Display",serif; font-weight:900; color:#C03A2C; font-size:48px; letter-spacing:-0.01em; }
+
+      /* PHASE 2: HOLDING (13-26s) */
+      #s16-hold { position:absolute; inset:0; opacity:0; z-index:11; }
+      #s16-hold .qbox { position:absolute; top:280px; left:50%; transform:translateX(-50%); width:1700px; padding:48px 64px; background:rgba(192,58,44,0.06); border-left:4px solid #C03A2C; opacity:0; }
+      #s16-hold .qbox .q { font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:48px; color:#E8DEC8; line-height:1.2; letter-spacing:-0.01em; }
+      #s16-hold .qbox .q em { color:#C03A2C; }
+      #s16-hold .qbox .small { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-top:32px; }
+
+      /* PHASE 3: WALL DOWN (26-38s) */
+      #s16-wall { position:absolute; inset:0; opacity:0; z-index:12; }
+      #s16-wall .head { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:56px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s16-wall .head em { color:#D4B679; font-style:italic; }
+      #s16-wall .timeline { position:absolute; top:430px; left:50%; transform:translateX(-50%); display:flex; gap:48px; opacity:0; }
+      #s16-wall .pole { width:540px; padding:32px 40px; text-align:center; border:1px solid #3A2E20; }
+      #s16-wall .pole.up { border-color:#C87533; background:rgba(200,117,51,0.05); }
+      #s16-wall .pole.down { border-color:#C03A2C; background:rgba(192,58,44,0.06); }
+      #s16-wall .pole .lbl { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#C87533; text-transform:uppercase; margin-bottom:14px; }
+      #s16-wall .pole.down .lbl { color:#C03A2C; }
+      #s16-wall .pole .y { font-family:"Playfair Display",serif; font-weight:800; font-size:96px; color:#E8DEC8; line-height:1.0; letter-spacing:-0.025em; }
+      #s16-wall .pole .e { font-family:"Source Serif 4",serif; font-style:italic; font-size:28px; color:#D4B679; margin-top:14px; }
+
+      /* PHASE 4: NUMBERS (38-52s) */
+      #s16-num { position:absolute; inset:0; opacity:0; z-index:13; }
+      #s16-num .head { position:absolute; top:140px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#E8DEC8; letter-spacing:-0.01em; line-height:1.2; opacity:0; }
+      #s16-num .head em { color:#C03A2C; font-style:italic; }
+      #s16-num .stats { position:absolute; top:340px; left:50%; transform:translateX(-50%); display:flex; gap:48px; opacity:0; }
+      #s16-num .stat { width:520px; padding:36px 40px; border:1px solid #C03A2C; background:rgba(192,58,44,0.05); text-align:center; }
+      #s16-num .stat .when { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#C03A2C; text-transform:uppercase; margin-bottom:18px; }
+      #s16-num .stat .v { font-family:"Playfair Display",serif; font-weight:900; font-size:104px; color:#E8DEC8; line-height:0.95; letter-spacing:-0.03em; }
+      #s16-num .stat .v em { color:#C03A2C; font-style:italic; }
+      #s16-num .stat .desc { font-family:"Source Serif 4",serif; font-style:italic; font-size:28px; color:#D4B679; margin-top:14px; line-height:1.35; }
+      #s16-num .verdict { position:absolute; top:760px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:84px; color:#C87533; letter-spacing:-0.025em; line-height:1.0; opacity:0; }
+      #s16-num .verdict em { color:#E8DEC8; }
+
+      /* PHASE 5: FORGOTTEN (52-end) */
+      #s16-end { position:absolute; inset:0; opacity:0; z-index:14; }
+      #s16-end .head { position:absolute; top:160px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#E8DEC8; letter-spacing:-0.01em; line-height:1.2; opacity:0; }
+      #s16-end .head em { color:#D4B679; font-style:italic; }
+      #s16-end .stack { position:absolute; top:340px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s16-end .row { padding:14px 0; border-top:1px solid #3A2E20; display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; opacity:0; }
+      #s16-end .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s16-end .row .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#9A8E76; text-transform:uppercase; }
+      #s16-end .row .v { font-family:"Source Serif 4",serif; font-style:italic; font-size:30px; color:#E8DEC8; line-height:1.4; }
+      #s16-end .row .v em { color:#D4B679; }
+      #s16-end .verdict { position:absolute; top:680px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:48px; color:#C87533; letter-spacing:-0.01em; line-height:1.2; opacity:0; }
+      #s16-end .verdict em { color:#E8DEC8; }
+
+      .s16-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.4) 88%, rgba(14,11,8,0.78) 100%); }
+      .s16-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px); mix-blend-mode:overlay; }
+    </style>
+
+    <div class="s16-stage">
+      <!-- PHASE 1: DECISION -->
+      <div id="s16-dec">
+        <div class="label">The Wall Comes Down</div>
+        <div class="when">January 21, <em>2010</em></div>
+        <div class="case">Citizens United v. <em>FEC</em></div>
+        <div class="vote">Decided <strong>5–4</strong></div>
+      </div>
+
+      <!-- PHASE 2: HOLDING -->
+      <div id="s16-hold">
+        <div class="qbox">
+          <div class="q">Corporate political expenditures, when made <em>independently of a candidate's campaign</em>, are protected speech under the <em>First Amendment</em>.</div>
+          <div class="small">— The Holding · Citizens United v. FEC</div>
+        </div>
+      </div>
+
+      <!-- PHASE 3: WALL DOWN -->
+      <div id="s16-wall">
+        <div class="head">The wall Roosevelt built in <em>1907</em> &mdash; came down.</div>
+        <div class="timeline">
+          <div class="pole up">
+            <div class="lbl">Wall Up</div>
+            <div class="y">1907</div>
+            <div class="e">Tillman Act signed.</div>
+          </div>
+          <div class="pole down">
+            <div class="lbl">Wall Down</div>
+            <div class="y">2010</div>
+            <div class="e">Citizens United decided.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4: NUMBERS -->
+      <div id="s16-num">
+        <div class="head">Within five years &mdash; <em>independent corporate spending</em> exploded.</div>
+        <div class="stats">
+          <div class="stat">
+            <div class="when">By 2015</div>
+            <div class="v">$1B+</div>
+            <div class="desc">per election cycle</div>
+          </div>
+          <div class="stat">
+            <div class="when">By 2024</div>
+            <div class="v">$4B+</div>
+            <div class="desc">corporate-funded Super PACs · single election</div>
+          </div>
+        </div>
+        <div class="verdict">Hanna's system was <em>back.</em></div>
+      </div>
+
+      <!-- PHASE 5: FORGOTTEN -->
+      <div id="s16-end">
+        <div class="head">The court did not <em>cite Mark Hanna</em>.</div>
+        <div class="stack">
+          <div class="row" data-row="1"><div class="l">Plaintiffs</div><div class="v">Did not <em>invoke him</em>.</div></div>
+          <div class="row" data-row="2"><div class="l">Dissents</div><div class="v">Did not <em>name him</em>.</div></div>
+          <div class="row" data-row="3"><div class="l">Time Elapsed</div><div class="v">Hanna had been dead for <em>106 years</em>.</div></div>
+        </div>
+        <div class="verdict">The country had forgotten the man whose machinery <em>it was rebuilding.</em></div>
+      </div>
+
+      <div class="s16-grain"></div>
+      <div class="s16-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 16 Citizens United (69.909s)
+      // Word anchors verified vs assets/narration/transcript.json (offset = 1715.176)
+      //   +0.40   "On January twenty-first, twenty ten"               PHASE 1
+      //   +2.63   "Supreme Court of the United States"
+      //   +5.09   "Citizens United v. FEC"
+      //   +9.25   "five to four"
+      //  +13.00   pivot to holding                                   PHASE 2
+      //  +14.00   "corporate political expenditures..."
+      //  +26.00   pivot to wall up/down                              PHASE 3
+      //  +23.47   "effectively gutted"
+      //  +28.26   "came down"
+      //  +38.00   pivot to numbers                                   PHASE 4
+      //  +40.00   "Within five years..."
+      //  +45.81   "system was back"
+      //  +52.00   pivot to forgotten                                 PHASE 5
+      //  +49.76   "did not cite Mark Hanna"
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1: DECISION (0-13s) ───
+      tl.fromTo("#s16-dec", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+      tl.fromTo("#s16-dec .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.5);
+      tl.fromTo("#s16-dec .when", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 0.8);
+      tl.fromTo("#s16-dec .case", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 4.7);
+      tl.fromTo("#s16-dec .vote", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1.0, duration: 0.8, ease: "expo.out" }, 8.9);
+
+      tl.to("#s16-dec", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 12.5);
+      tl.set("#s16-dec", { visibility: "hidden" }, 13.0);
+
+      // ─── PHASE 2: HOLDING (13-26s) ───
+      tl.set("#s16-hold", { opacity: 1, visibility: "visible" }, 13.0);
+      tl.fromTo("#s16-hold .qbox", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 13.5);
+
+      tl.to("#s16-hold", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 25.5);
+      tl.set("#s16-hold", { visibility: "hidden" }, 26.0);
+
+      // ─── PHASE 3: WALL DOWN (26-38s) ───
+      tl.set("#s16-wall", { opacity: 1, visibility: "visible" }, 26.0);
+      tl.fromTo("#s16-wall .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 26.4);
+      tl.fromTo("#s16-wall .timeline", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 29.5);
+
+      tl.to("#s16-wall", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 37.5);
+      tl.set("#s16-wall", { visibility: "hidden" }, 38.0);
+
+      // ─── PHASE 4: NUMBERS (38-52s) ───
+      tl.set("#s16-num", { opacity: 1, visibility: "visible" }, 38.0);
+      tl.fromTo("#s16-num .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 38.4);
+      tl.fromTo("#s16-num .stats", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 41.5);
+      tl.fromTo("#s16-num .verdict", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.1, ease: "expo.out" }, 45.5);
+
+      tl.to("#s16-num", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 51.5);
+      tl.set("#s16-num", { visibility: "hidden" }, 52.0);
+
+      // ─── PHASE 5: FORGOTTEN (52-end) ───
+      tl.set("#s16-end", { opacity: 1, visibility: "visible" }, 52.0);
+      tl.fromTo("#s16-end .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 52.4);
+      tl.fromTo("#s16-end .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 55.5);
+      tl.fromTo("#s16-end .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 57.5);
+      tl.fromTo("#s16-end .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 59.5);
+      tl.fromTo("#s16-end .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 64.0);
+
+      // FINAL EXIT before 69.909
+      tl.to("#s16-end", { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: "auto" }, 69.3);
+      tl.set("#s16-end", { visibility: "hidden", opacity: 0 }, 69.7);
+
+      window.__timelines["scene-16-citizens-united"] = tl;
+    </script>
+  </div>
+</template>

@@ -1,0 +1,241 @@
+<template id="scene-14-the-death-template">
+  <div data-composition-id="scene-14-the-death" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s14-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s14-stage * { box-sizing:border-box; }
+
+      /* PHASE 1: ARLINGTON (0-15s) */
+      #s14-arl { position:absolute; inset:0; opacity:0; z-index:10; }
+      #s14-arl .label { position:absolute; top:160px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s14-arl .when { position:absolute; top:230px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:800; font-size:84px; color:#E8DEC8; letter-spacing:-0.025em; line-height:1.05; opacity:0; }
+      #s14-arl .when em { color:#D4B679; font-style:italic; }
+      #s14-arl .where { position:absolute; top:430px; left:50%; transform:translateX(-50%); width:1500px; text-align:center; font-family:"Source Serif 4",serif; font-size:36px; color:#E8DEC8; line-height:1.4; opacity:0; }
+      #s14-arl .where em { color:#D4B679; font-style:italic; }
+      #s14-arl .meta { position:absolute; top:620px; left:50%; transform:translateX(-50%); width:1500px; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:30px; color:#9A8E76; line-height:1.45; opacity:0; }
+
+      /* PHASE 2: DIAGNOSIS (15-32s) */
+      #s14-diag { position:absolute; inset:0; opacity:0; z-index:11; }
+      #s14-diag .label { position:absolute; top:160px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C03A2C; text-transform:uppercase; opacity:0; }
+      #s14-diag .verb { position:absolute; top:230px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:128px; color:#C03A2C; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s14-diag .stack { position:absolute; top:480px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s14-diag .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s14-diag .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s14-diag .row .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s14-diag .row .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.45; }
+      #s14-diag .row .v em { color:#D4B679; font-style:italic; }
+
+      /* PHASE 3: BULLETIN (32-46s) */
+      #s14-bul { position:absolute; inset:0; opacity:0; z-index:12; }
+      #s14-bul .head { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#E8DEC8; letter-spacing:-0.01em; line-height:1.2; opacity:0; }
+      #s14-bul .head em { color:#D4B679; font-style:italic; }
+      #s14-bul .stack { position:absolute; top:400px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s14-bul .row { display:grid; grid-template-columns:300px 1fr; align-items:baseline; gap:32px; padding:18px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s14-bul .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s14-bul .row .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s14-bul .row .v { font-family:"Source Serif 4",serif; font-size:30px; color:#E8DEC8; line-height:1.4; }
+      #s14-bul .row .v em { color:#C03A2C; font-style:italic; }
+
+      /* PHASE 4: DEATH (46-58s) */
+      #s14-death { position:absolute; inset:0; opacity:0; z-index:13; }
+      #s14-death .when { position:absolute; top:280px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.4em; color:#C03A2C; text-transform:uppercase; opacity:0; }
+      #s14-death .verb { position:absolute; top:340px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:160px; color:#E8DEC8; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s14-death .stats { position:absolute; top:620px; left:50%; transform:translateX(-50%); display:flex; gap:60px; opacity:0; }
+      #s14-death .stat { text-align:center; padding:18px 32px; border:1px solid #3A2E20; min-width:300px; }
+      #s14-death .stat .n { font-family:"Playfair Display",serif; font-weight:700; font-size:56px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.05; }
+      #s14-death .stat .l { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; margin-top:8px; }
+
+      /* PHASE 5: BURIAL (58-72s) */
+      #s14-bury { position:absolute; inset:0; opacity:0; z-index:14; }
+      #s14-bury .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s14-bury .head { position:absolute; top:210px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:48px; color:#E8DEC8; letter-spacing:-0.01em; line-height:1.2; opacity:0; }
+      #s14-bury .head em { color:#D4B679; font-style:italic; }
+      #s14-bury .crowd { position:absolute; top:430px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-size:184px; color:#C87533; letter-spacing:-0.04em; line-height:0.95; opacity:0; }
+      #s14-bury .who { position:absolute; top:680px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; opacity:0; }
+      #s14-bury .who strong { color:#C03A2C; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; }
+
+      /* PHASE 6: TR LETTER (72-92s) */
+      #s14-letter { position:absolute; inset:0; opacity:0; z-index:15; }
+      #s14-letter .head { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:42px; color:#D4B679; letter-spacing:-0.01em; opacity:0; line-height:1.2; }
+      #s14-letter .head em { color:#E8DEC8; }
+      #s14-letter .qbox { position:absolute; top:260px; left:50%; transform:translateX(-50%); width:1700px; padding:48px 64px; background:rgba(212,182,121,0.05); border-left:4px solid #D4B679; opacity:0; }
+      #s14-letter .qbox .q { font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#E8DEC8; line-height:1.5; }
+      #s14-letter .qbox .q em { color:#D4B679; }
+      #s14-letter .qbox .small { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-top:32px; }
+
+      /* PHASE 7: HE HAD WON (92-end) */
+      #s14-won { position:absolute; inset:0; opacity:0; z-index:16; }
+      #s14-won .verdict { position:absolute; top:380px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:160px; color:#C87533; letter-spacing:-0.035em; line-height:1.0; opacity:0; }
+      #s14-won .verdict em { color:#E8DEC8; }
+      #s14-won .meta { position:absolute; top:600px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:36px; color:#D4B679; opacity:0; }
+
+      .s14-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.4) 88%, rgba(14,11,8,0.78) 100%); }
+      .s14-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px); mix-blend-mode:overlay; }
+    </style>
+
+    <div class="s14-stage">
+      <!-- PHASE 1: ARLINGTON -->
+      <div id="s14-arl">
+        <div class="label">Washington, D.C. · Early February 1904</div>
+        <div class="when">The <em>Arlington Hotel</em></div>
+        <div class="where">Two blocks from the White House. The city's <em>most fashionable address</em>.</div>
+        <div class="meta">— where senators stayed when they did not keep a Washington home.</div>
+      </div>
+
+      <!-- PHASE 2: DIAGNOSIS -->
+      <div id="s14-diag">
+        <div class="label">The Diagnosis</div>
+        <div class="verb">Typhoid.</div>
+        <div class="stack">
+          <div class="row" data-row="1"><div class="l">Symptom</div><div class="v">Running a fever. Working from his hotel room.</div></div>
+          <div class="row" data-row="2"><div class="l">Cause</div><div class="v">Contaminated water, <em>poor sanitation</em>.</div></div>
+          <div class="row" data-row="3"><div class="l">Common</div><div class="v">In the city's <em>poorer neighborhoods</em> &mdash; less common in its hotels.</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 3: BULLETIN -->
+      <div id="s14-bul">
+        <div class="head">The Theodore Roosevelt Center holds the <em>medical bulletin</em>.</div>
+        <div class="stack">
+          <div class="row" data-row="1"><div class="l">Dated</div><div class="v"><strong>February 12, 1904</strong>. Active illness reported.</div></div>
+          <div class="row" data-row="2"><div class="l">Two Days Later</div><div class="v">By <em>February 14</em> &mdash; he could not sit up.</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 4: DEATH -->
+      <div id="s14-death">
+        <div class="when">6:40 p.m. · February 15, 1904</div>
+        <div class="verb">died.</div>
+        <div class="stats">
+          <div class="stat"><div class="n">66</div><div class="l">Years Old</div></div>
+          <div class="stat"><div class="n">6 yrs 11 mo</div><div class="l">U.S. Senate</div></div>
+          <div class="stat"><div class="n">8 years</div><div class="l">RNC Chair</div></div>
+          <div class="stat"><div class="n">40 years</div><div class="l">Cleveland Business</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 5: BURIAL -->
+      <div id="s14-bury">
+        <div class="label">Cleveland · Lake View Cemetery</div>
+        <div class="head">Buried on the same hilltop where he had helped arrange the burial of <em>James Garfield</em> &mdash; twenty-three years earlier.</div>
+        <div class="crowd">20,000.</div>
+        <div class="who">Roosevelt did <strong>not come</strong>. He sent his Cabinet.</div>
+      </div>
+
+      <!-- PHASE 6: TR LETTER -->
+      <div id="s14-letter">
+        <div class="head">Four days later &mdash; a letter to his son Ted, at <em>Groton</em>.</div>
+        <div class="qbox">
+          <div class="q">"Poor Hanna's death was a tragedy. At the end he wrote me a note, the last he ever wrote, which showed him at his best, and which I much appreciate. His death was very sad for his family and close friends, for he had <em>many large and generous traits</em>, and had made a great success in life by his energy, perseverance and burly strength."</div>
+          <div class="small">— Theodore Roosevelt to Ted · February 19, 1904</div>
+        </div>
+      </div>
+
+      <!-- PHASE 7: HE HAD WON -->
+      <div id="s14-won">
+        <div class="verdict">He had <em>won.</em></div>
+        <div class="meta">— Roosevelt could afford to be generous.</div>
+      </div>
+
+      <div class="s14-grain"></div>
+      <div class="s14-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 14 The Death (98.517s)
+      // Word anchors verified vs assets/narration/transcript.json (offset = 1539.692)
+      //   +0.40   "In early February nineteen oh four"               PHASE 1
+      //   +3.04   "Arlington Hotel"
+      //   +5.67   "two blocks from the White House"
+      //  +15.50   pivot to diagnosis                                 PHASE 2
+      //  +19.63   "typhoid fever"
+      //  +32.00   pivot to bulletin                                  PHASE 3
+      //  +37.48   "could not sit up"
+      //  +46.00   pivot to death                                     PHASE 4
+      //  +47.50   "Hanna died at six forty"
+      //  +58.00   pivot to burial                                    PHASE 5
+      //  +67.63   "did not come"
+      //  +72.00   pivot to letter                                    PHASE 6
+      //  +75.31   "letter to his son Ted"
+      //  +92.00   pivot to "He had won"                              PHASE 7
+      //  +96.51   "afford to be generous"
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1: ARLINGTON (0-15s) ───
+      tl.fromTo("#s14-arl", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+      tl.fromTo("#s14-arl .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.5);
+      tl.fromTo("#s14-arl .when", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 2.7);
+      tl.fromTo("#s14-arl .where", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 5.3);
+      tl.fromTo("#s14-arl .meta", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 9.5);
+
+      tl.to("#s14-arl", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 14.5);
+      tl.set("#s14-arl", { visibility: "hidden" }, 15.0);
+
+      // ─── PHASE 2: DIAGNOSIS (15-32s) ───
+      tl.set("#s14-diag", { opacity: 1, visibility: "visible" }, 15.0);
+      tl.fromTo("#s14-diag .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 15.1);
+      tl.fromTo("#s14-diag .verb", { opacity: 0, scale: 0.94, y: 12 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.0, ease: "expo.out" }, 19.4);
+      tl.fromTo("#s14-diag .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 22.5);
+      tl.fromTo("#s14-diag .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 25.5);
+      tl.fromTo("#s14-diag .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 28.5);
+
+      tl.to("#s14-diag", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 31.5);
+      tl.set("#s14-diag", { visibility: "hidden" }, 32.0);
+
+      // ─── PHASE 3: BULLETIN (32-46s) ───
+      tl.set("#s14-bul", { opacity: 1, visibility: "visible" }, 32.0);
+      tl.fromTo("#s14-bul .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 32.4);
+      tl.fromTo("#s14-bul .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 35.5);
+      tl.fromTo("#s14-bul .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 39.5);
+
+      tl.to("#s14-bul", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 45.5);
+      tl.set("#s14-bul", { visibility: "hidden" }, 46.0);
+
+      // ─── PHASE 4: DEATH (46-58s) ───
+      tl.set("#s14-death", { opacity: 1, visibility: "visible" }, 46.0);
+      tl.fromTo("#s14-death .when", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 46.5);
+      tl.fromTo("#s14-death .verb", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.0, ease: "expo.out" }, 47.3);
+      tl.fromTo("#s14-death .stats", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 51.5);
+
+      tl.to("#s14-death", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 57.5);
+      tl.set("#s14-death", { visibility: "hidden" }, 58.0);
+
+      // ─── PHASE 5: BURIAL (58-72s) ───
+      tl.set("#s14-bury", { opacity: 1, visibility: "visible" }, 58.0);
+      tl.fromTo("#s14-bury .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 58.1);
+      tl.fromTo("#s14-bury .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 58.4);
+      tl.fromTo("#s14-bury .crowd", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1.0, duration: 0.9, ease: "expo.out" }, 63.0);
+      tl.fromTo("#s14-bury .who", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 67.4);
+
+      tl.to("#s14-bury", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 71.5);
+      tl.set("#s14-bury", { visibility: "hidden" }, 72.0);
+
+      // ─── PHASE 6: TR LETTER (72-92s) ───
+      tl.set("#s14-letter", { opacity: 1, visibility: "visible" }, 72.0);
+      tl.fromTo("#s14-letter .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 72.4);
+      tl.fromTo("#s14-letter .qbox", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 75.0);
+
+      tl.to("#s14-letter", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 91.5);
+      tl.set("#s14-letter", { visibility: "hidden" }, 92.0);
+
+      // ─── PHASE 7: HE HAD WON (92-end) ───
+      tl.set("#s14-won", { opacity: 1, visibility: "visible" }, 92.0);
+      tl.fromTo("#s14-won .verdict", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.2, ease: "expo.out" }, 95.8);
+      tl.fromTo("#s14-won .meta", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 97.0);
+
+      // FINAL EXIT before 98.517
+      tl.to("#s14-won", { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: "auto" }, 98.0);
+      tl.set("#s14-won", { visibility: "hidden", opacity: 0 }, 98.4);
+
+      window.__timelines["scene-14-the-death"] = tl;
+    </script>
+  </div>
+</template>

@@ -1,0 +1,267 @@
+<template id="scene-12-the-cowboy-template">
+  <div data-composition-id="scene-12-the-cowboy" data-width="1920" data-height="1080" style="position:absolute; top:0; left:0; width:1920px; height:1080px; overflow:hidden; background-color:#0E0B08;">
+    <style>
+      @font-face { font-family: "Source Serif 4"; src: url("../assets/fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+      @font-face { font-family: "Playfair Display"; src: url("../assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+      @font-face { font-family: "Roboto Mono"; src: url("../assets/fonts/RobotoMono-Regular.woff2") format("woff2"); font-weight: 400 700; font-style: normal; }
+
+      .s12-stage { position:absolute; inset:0; background:#0E0B08; font-family:"Source Serif 4",serif; color:#E8DEC8; overflow:hidden; }
+      .s12-stage * { box-sizing:border-box; }
+
+      /* PHASE 1: SETTING (0-12s) */
+      #s12-setting { position:absolute; inset:0; opacity:0; z-index:10; }
+      #s12-setting .label { position:absolute; top:160px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s12-setting .when { position:absolute; top:240px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:800; font-size:96px; color:#E8DEC8; letter-spacing:-0.025em; line-height:1.05; opacity:0; }
+      #s12-setting .where { position:absolute; top:430px; left:50%; transform:translateX(-50%); width:1500px; text-align:center; font-family:"Source Serif 4",serif; font-size:36px; color:#D4B679; line-height:1.4; opacity:0; }
+      #s12-setting .where em { color:#E8DEC8; font-style:italic; }
+      #s12-setting .scene { position:absolute; top:620px; left:50%; transform:translateX(-50%); width:1500px; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#9A8E76; line-height:1.45; opacity:0; }
+
+      /* PHASE 2: CZOLGOSZ (12-30s) */
+      #s12-czol { position:absolute; inset:0; opacity:0; z-index:11; }
+      #s12-czol .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#9A8E76; text-transform:uppercase; opacity:0; }
+      #s12-czol .name { position:absolute; top:210px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:84px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.05; opacity:0; }
+      #s12-czol .name em { color:#C03A2C; font-style:italic; }
+      #s12-czol .stack { position:absolute; top:380px; left:50%; transform:translateX(-50%); width:1600px; }
+      #s12-czol .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s12-czol .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s12-czol .row .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s12-czol .row .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.45; }
+      #s12-czol .row .v em { color:#D4B679; font-style:italic; }
+      #s12-czol .weapon { position:absolute; top:780px; left:50%; transform:translateX(-50%); width:1600px; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#C03A2C; opacity:0; }
+
+      /* PHASE 3: TWO SHOTS (30-50s) */
+      #s12-shots { position:absolute; inset:0; opacity:0; z-index:12; }
+      #s12-shots .verb { position:absolute; top:200px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:128px; color:#C03A2C; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s12-shots .verb em { color:#E8DEC8; font-style:italic; }
+      #s12-shots .pair { position:absolute; top:430px; left:50%; transform:translateX(-50%); width:1700px; display:flex; gap:48px; }
+      #s12-shots .bullet { width:826px; padding:32px 40px; background:rgba(192,58,44,0.06); border-left:4px solid #C03A2C; opacity:0; }
+      #s12-shots .bullet .n { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.3em; color:#C03A2C; text-transform:uppercase; margin-bottom:12px; }
+      #s12-shots .bullet .l { font-family:"Source Serif 4",serif; font-size:32px; color:#E8DEC8; line-height:1.4; }
+      #s12-shots .bullet .l em { color:#D4B679; font-style:italic; }
+
+      /* PHASE 4: WAITING (50-65s) */
+      #s12-wait { position:absolute; inset:0; opacity:0; z-index:13; }
+      #s12-wait .label { position:absolute; top:160px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s12-wait .head { position:absolute; top:230px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-size:56px; color:#E8DEC8; letter-spacing:-0.015em; line-height:1.15; opacity:0; }
+      #s12-wait .head em { color:#D4B679; font-style:italic; }
+      #s12-wait .stack { position:absolute; top:430px; left:50%; transform:translateX(-50%); width:1500px; }
+      #s12-wait .row { display:grid; grid-template-columns:280px 1fr; align-items:baseline; gap:32px; padding:14px 0; border-top:1px solid #3A2E20; opacity:0; }
+      #s12-wait .row:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s12-wait .row .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s12-wait .row .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.45; }
+      #s12-wait .row .v em { color:#D4B679; font-style:italic; }
+
+      /* PHASE 5: DEATH (65-78s) */
+      #s12-death { position:absolute; inset:0; opacity:0; z-index:14; }
+      #s12-death .when { position:absolute; top:280px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.4em; color:#C03A2C; text-transform:uppercase; opacity:0; }
+      #s12-death .verb { position:absolute; top:340px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:900; font-style:italic; font-size:160px; color:#E8DEC8; letter-spacing:-0.03em; line-height:1.0; opacity:0; }
+      #s12-death .meta { position:absolute; top:600px; left:0; width:100%; text-align:center; font-family:"Source Serif 4",serif; font-style:italic; font-size:32px; color:#D4B679; opacity:0; }
+
+      /* PHASE 6: TR SWORN IN (78-92s) */
+      #s12-tr { position:absolute; inset:0; opacity:0; z-index:15; }
+      #s12-tr .label { position:absolute; top:140px; left:0; width:100%; text-align:center; font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.5em; color:#C87533; text-transform:uppercase; opacity:0; }
+      #s12-tr .head { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1700px; text-align:center; font-family:"Playfair Display",serif; font-weight:800; font-size:72px; color:#E8DEC8; letter-spacing:-0.02em; line-height:1.1; opacity:0; }
+      #s12-tr .head em { color:#C87533; font-style:italic; }
+      #s12-tr .timeline { position:absolute; top:420px; left:50%; transform:translateX(-50%); width:1600px; }
+      #s12-tr .step { padding:18px 0; border-top:1px solid #3A2E20; display:grid; grid-template-columns:300px 1fr; gap:32px; align-items:baseline; opacity:0; }
+      #s12-tr .step:last-of-type { border-bottom:1px solid #3A2E20; }
+      #s12-tr .step .l { font-family:"Roboto Mono",monospace; font-size:24px; letter-spacing:0.25em; color:#C87533; text-transform:uppercase; }
+      #s12-tr .step .v { font-family:"Source Serif 4",serif; font-size:28px; color:#E8DEC8; line-height:1.45; }
+      #s12-tr .step .v em { color:#D4B679; font-style:italic; }
+
+      /* PHASE 7: HANNA EPITAPH (92-end) */
+      #s12-quote { position:absolute; inset:0; opacity:0; z-index:16; }
+      #s12-quote .setup { position:absolute; top:200px; left:50%; transform:translateX(-50%); width:1600px; text-align:center; font-family:"Source Serif 4",serif; font-size:32px; color:#D4B679; line-height:1.45; opacity:0; }
+      #s12-quote .setup em { color:#E8DEC8; font-style:italic; }
+      #s12-quote .qbox { position:absolute; top:400px; left:50%; transform:translateX(-50%); width:1700px; padding:48px 64px; background:rgba(192,58,44,0.07); border-left:4px solid #C03A2C; opacity:0; }
+      #s12-quote .qbox .q { font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:64px; color:#C03A2C; line-height:1.15; letter-spacing:-0.015em; }
+      #s12-quote .qbox .q em { color:#E8DEC8; font-style:italic; }
+      #s12-quote .qbox .small { font-family:"Roboto Mono",monospace; font-size:22px; letter-spacing:0.3em; color:#9A8E76; text-transform:uppercase; margin-top:24px; }
+      #s12-quote .verdict { position:absolute; top:740px; left:0; width:100%; text-align:center; font-family:"Playfair Display",serif; font-weight:700; font-style:italic; font-size:42px; color:#E8DEC8; letter-spacing:-0.01em; opacity:0; }
+      #s12-quote .verdict em { color:#C87533; }
+
+      .s12-vignette { position:absolute; inset:0; pointer-events:none; z-index:90; background:radial-gradient(ellipse at center, rgba(14,11,8,0) 38%, rgba(14,11,8,0.4) 88%, rgba(14,11,8,0.78) 100%); }
+      .s12-grain { position:absolute; inset:-10%; pointer-events:none; z-index:89; opacity:0.10; background-image:repeating-radial-gradient(circle at 20% 30%, rgba(232,222,200,0.18) 0, rgba(232,222,200,0.18) 1px, transparent 1px, transparent 3px); mix-blend-mode:overlay; }
+    </style>
+
+    <div class="s12-stage">
+      <!-- PHASE 1: SETTING -->
+      <div id="s12-setting">
+        <div class="label">Buffalo · Pan-American Exposition</div>
+        <div class="when">September 6, 1901</div>
+        <div class="where">William McKinley stood in a receiving line at the <em>Temple of Music</em>.</div>
+        <div class="scene">— shaking hands with the public.</div>
+      </div>
+
+      <!-- PHASE 2: CZOLGOSZ -->
+      <div id="s12-czol">
+        <div class="label">The Man In The Line</div>
+        <div class="name">Leon <em>Czolgosz.</em></div>
+        <div class="stack">
+          <div class="row" data-row="1"><div class="l">Age</div><div class="v"><strong>28</strong> &mdash; former steelworker.</div></div>
+          <div class="row" data-row="2"><div class="l">Born</div><div class="v">American-born, son of <em>Polish immigrants</em>.</div></div>
+          <div class="row" data-row="3"><div class="l">Work</div><div class="v">Out of work since the <em>1893 economic crash</em>.</div></div>
+          <div class="row" data-row="4"><div class="l">Politics</div><div class="v">Radicalized the year before by the <em>anarchist lecture circuit</em>.</div></div>
+        </div>
+        <div class="weapon">A handkerchief wrapped his right hand. Inside it, a <em>.32 Iver Johnson revolver</em>.</div>
+      </div>
+
+      <!-- PHASE 3: TWO SHOTS -->
+      <div id="s12-shots">
+        <div class="verb">Fired <em>twice.</em></div>
+        <div class="pair">
+          <div class="bullet" data-shot="1">
+            <div class="n">First Shot</div>
+            <div class="l">Glanced off McKinley's <em>coat button</em>.</div>
+          </div>
+          <div class="bullet" data-shot="2">
+            <div class="n">Second Shot</div>
+            <div class="l">Entered the <em>abdomen</em>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4: WAITING -->
+      <div id="s12-wait">
+        <div class="label">Delaware Avenue · Buffalo</div>
+        <div class="head">Carried to the home of a Buffalo lawyer who had <em>personally invited</em> the President.</div>
+        <div class="stack">
+          <div class="row" data-row="1"><div class="l">Operation</div><div class="v">The doctors operated. They <em>could not find the bullet</em>.</div></div>
+          <div class="row" data-row="2"><div class="l">After</div><div class="v">They closed the wound, and they waited.</div></div>
+          <div class="row" data-row="3"><div class="l">For a Week</div><div class="v">McKinley appeared to be <em>recovering</em>.</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 5: DEATH -->
+      <div id="s12-death">
+        <div class="when">2:15 a.m. · September 14, 1901</div>
+        <div class="verb">died.</div>
+        <div class="meta">— eight days after the shots.</div>
+      </div>
+
+      <!-- PHASE 6: TR SWORN IN -->
+      <div id="s12-tr">
+        <div class="label">The Cowboy Takes Over</div>
+        <div class="head">Vice President Roosevelt was hiking on <em>Mount Marcy</em> when McKinley was shot.</div>
+        <div class="timeline">
+          <div class="step" data-step="1"><div class="l">Found</div><div class="v">A guide located him in the Adirondacks.</div></div>
+          <div class="step" data-step="2"><div class="l">Carried</div><div class="v">A buckboard, then a <em>special train</em>, to Buffalo.</div></div>
+          <div class="step" data-step="3"><div class="l">Sworn In</div><div class="v"><strong>3:30 p.m. · Wilcox House · Delaware Avenue</strong>.</div></div>
+        </div>
+      </div>
+
+      <!-- PHASE 7: HANNA EPITAPH -->
+      <div id="s12-quote">
+        <div class="setup">Hanna was in Cleveland. Said it to a friend, in a private room, <em>no reporter present</em>.</div>
+        <div class="qbox">
+          <div class="q">"Now we've got that <em>damned cowboy</em> as President!"</div>
+          <div class="small">— Mark Hanna · Cleveland · September 14, 1901</div>
+        </div>
+        <div class="verdict">The line was Hanna's <em>epitaph</em>. It was also a <em>forecast</em>.</div>
+      </div>
+
+      <div class="s12-grain"></div>
+      <div class="s12-vignette"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ═════════════════════════════════════════════════════════════════
+      // BEAT MAP — section 12 The Cowboy Takes Over (109.525s)
+      // Word anchors verified vs assets/narration/transcript.json (offset = 1282.751)
+      //   +0.40   "On September sixth nineteen oh one"               PHASE 1
+      //  +12.00   pivot to Czolgosz                                  PHASE 2
+      //  +16.85   "Czolgosz" name lands
+      //  +30.00   pivot to two shots                                 PHASE 3
+      //  +35.79   "fired twice"
+      //  +37.30   "first bullet glanced"
+      //  +47.25   pivot to Delaware Avenue                           PHASE 4
+      //  +63.00   pivot to death                                     PHASE 5
+      //  +66.50   "two fifteen in the morning"
+      //  +78.00   pivot to TR sworn in                               PHASE 6
+      //  +75.40   "took the oath"
+      //  +83.93   "Hanna was in Cleveland"                           PHASE 7
+      //  +96.00   pivot to quote
+      //  +103.77  "damned cowboy" lands
+      // ═════════════════════════════════════════════════════════════════
+
+      // ─── PHASE 1: SETTING (0-12s) ───
+      tl.fromTo("#s12-setting", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+      tl.fromTo("#s12-setting .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.5);
+      tl.fromTo("#s12-setting .when", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.7);
+      tl.fromTo("#s12-setting .where", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 4.0);
+      tl.fromTo("#s12-setting .scene", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 7.5);
+
+      tl.to("#s12-setting", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 11.7);
+      tl.set("#s12-setting", { visibility: "hidden" }, 12.2);
+
+      // ─── PHASE 2: CZOLGOSZ (12-30s) ───
+      tl.set("#s12-czol", { opacity: 1, visibility: "visible" }, 12.2);
+      tl.fromTo("#s12-czol .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 12.3);
+      tl.fromTo("#s12-czol .name", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 16.7);
+      tl.fromTo("#s12-czol .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 19.4);
+      tl.fromTo("#s12-czol .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 20.6);
+      tl.fromTo("#s12-czol .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 22.0);
+      tl.fromTo("#s12-czol .row[data-row='4']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 23.5);
+      tl.fromTo("#s12-czol .weapon", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 26.4);
+
+      tl.to("#s12-czol", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 29.5);
+      tl.set("#s12-czol", { visibility: "hidden" }, 30.0);
+
+      // ─── PHASE 3: TWO SHOTS (30-50s) ───
+      tl.set("#s12-shots", { opacity: 1, visibility: "visible" }, 30.0);
+      tl.fromTo("#s12-shots .verb", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1.0, duration: 0.8, ease: "expo.out" }, 35.6);
+      tl.fromTo("#s12-shots .bullet[data-shot='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 37.0);
+      tl.fromTo("#s12-shots .bullet[data-shot='2']", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 41.0);
+
+      tl.to("#s12-shots", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 49.5);
+      tl.set("#s12-shots", { visibility: "hidden" }, 50.0);
+
+      // ─── PHASE 4: WAITING (50-65s) ───
+      tl.set("#s12-wait", { opacity: 1, visibility: "visible" }, 50.0);
+      tl.fromTo("#s12-wait .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 50.1);
+      tl.fromTo("#s12-wait .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 50.4);
+      tl.fromTo("#s12-wait .row[data-row='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 53.4);
+      tl.fromTo("#s12-wait .row[data-row='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 56.4);
+      tl.fromTo("#s12-wait .row[data-row='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 59.4);
+
+      tl.to("#s12-wait", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 64.5);
+      tl.set("#s12-wait", { visibility: "hidden" }, 65.0);
+
+      // ─── PHASE 5: DEATH (65-78s) ───
+      tl.set("#s12-death", { opacity: 1, visibility: "visible" }, 65.0);
+      tl.fromTo("#s12-death .when", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 65.5);
+      tl.fromTo("#s12-death .verb", { opacity: 0, scale: 0.94, y: 10 }, { opacity: 1, scale: 1.0, y: 0, duration: 1.0, ease: "expo.out" }, 66.3);
+      tl.fromTo("#s12-death .meta", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 71.0);
+
+      tl.to("#s12-death", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 77.0);
+      tl.set("#s12-death", { visibility: "hidden" }, 77.5);
+
+      // ─── PHASE 6: TR SWORN IN (77.5-92s) ───
+      tl.set("#s12-tr", { opacity: 1, visibility: "visible" }, 77.5);
+      tl.fromTo("#s12-tr .label", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 77.6);
+      tl.fromTo("#s12-tr .head", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 77.8);
+      tl.fromTo("#s12-tr .step[data-step='1']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 80.0);
+      tl.fromTo("#s12-tr .step[data-step='2']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 82.0);
+      tl.fromTo("#s12-tr .step[data-step='3']", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.55, ease: "power2.out" }, 84.5);
+
+      tl.to("#s12-tr", { opacity: 0, duration: 0.5, ease: "power2.in", overwrite: "auto" }, 91.5);
+      tl.set("#s12-tr", { visibility: "hidden" }, 92.0);
+
+      // ─── PHASE 7: HANNA EPITAPH (92-end) ───
+      tl.set("#s12-quote", { opacity: 1, visibility: "visible" }, 92.0);
+      tl.fromTo("#s12-quote .setup", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 92.2);
+      tl.fromTo("#s12-quote .qbox", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" }, 102.5);
+      tl.fromTo("#s12-quote .verdict", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 106.5);
+
+      // FINAL EXIT before 109.525
+      tl.to("#s12-quote", { opacity: 0, duration: 0.4, ease: "power2.in", overwrite: "auto" }, 109.0);
+      tl.set("#s12-quote", { visibility: "hidden", opacity: 0 }, 109.4);
+
+      window.__timelines["scene-12-the-cowboy"] = tl;
+    </script>
+  </div>
+</template>
