@@ -1,1 +1,6 @@
 hf-preview.log
+*.original.jpg
+*.bak.wav
+*.bak
+mark-hanna-shorts/renders/
+mark-hanna-shorts/*.bak*
